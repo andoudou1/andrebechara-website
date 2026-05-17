@@ -48,12 +48,17 @@
     box-shadow: 0 2px 30px rgba(0,0,0,0.3);
   }
   .nav-logo {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; line-height: 1.2; flex-shrink: 0;
+  }
+  .nav-logo-img { height: 56px; width: auto; display: block; flex-shrink: 0; }
+  .nav-logo-text { display: flex; flex-direction: column; }
+  .nav-logo-name {
     font-family: 'Playfair Display', serif;
     font-size: 1.25rem; font-weight: 900;
     color: var(--white); letter-spacing: -0.01em;
-    text-decoration: none; line-height: 1.2;
   }
-  .nav-logo span { color: var(--gold); display: block; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Outfit', sans-serif; }
+  .nav-logo-sub { color: var(--gold); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Outfit', sans-serif; margin-top: 2px; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a {
     color: rgba(255,255,255,0.85); text-decoration: none;
@@ -69,7 +74,7 @@
   .nav-cta:hover { background: var(--gold) !important; transform: translateY(-1px); }
   .hamburger {
     display: none; flex-direction: column; gap: 5px; cursor: pointer;
-    background: none; border: none; padding: 4px;
+    background: none; border: none; padding: 4px; z-index: 101; position: relative;
   }
   .hamburger span { display: block; width: 26px; height: 2px; background: white; border-radius: 2px; transition: 0.3s; }
 
@@ -140,7 +145,7 @@
     position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
     z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
   }
-  .hero-scroll span { color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .hero-scroll span { color: rgba(255,255,255,0.7); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
   .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(201,151,58,0.8), transparent); animation: scrollPulse 2s ease-in-out infinite; }
 
   /* ---- STATS STRIP ---- */
@@ -191,7 +196,7 @@
     flex-shrink: 0;
   }
   .client-logo:hover { opacity: 1; }
-  .client-logo img { height: 36px; width: auto; object-fit: contain; filter: grayscale(1); transition: filter 0.2s; }
+  .client-logo img { height: 48px; width: auto; object-fit: contain; filter: grayscale(1); transition: filter 0.2s; }
   .client-logo:hover img { filter: grayscale(0); }
   /* Text-based logos for companies without image files */
   .client-logo.text-logo {
@@ -436,11 +441,18 @@
 
   /* ---- MOBILE ---- */
   @media (max-width: 900px) {
-    nav { padding: 18px 24px; }
+    nav { padding: 18px 24px; background: rgba(26,46,26,0.97); }
     nav.scrolled { padding: 14px 24px; }
+    .nav-logo-img { height: 44px; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
-    .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 0; top: 60px; background: rgba(26,46,26,0.98); align-items: center; justify-content: center; gap: 32px; z-index: 99; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: fixed; inset: 0; top: 0; padding-top: 90px;
+      background: rgba(26,46,26,0.99);
+      align-items: center; justify-content: center;
+      gap: 32px; z-index: 100;
+    }
     .nav-links.open a { font-size: 1.3rem; }
     section { padding: 72px 24px; }
     #about, #founder, #contact, #basecamp { grid-template-columns: 1fr; gap: 40px; padding: 72px 24px; }
@@ -474,9 +486,11 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">
-    André Bechara
-    <span>Outdoor Team Building Expert</span>
-    <img src="Images/greatescape.png" alt="The Great Escape" style="height: 48px; width: auto; display: block; margin-top: 6px;">
+    <img src="Images/greatescape.png" alt="The Great Escape" class="nav-logo-img">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">André Bechara</span>
+      <span class="nav-logo-sub">Outdoor Team Building Expert</span>
+    </div>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
@@ -537,19 +551,19 @@
   <div class="clients-track-wrap">
     <div class="clients-track" id="clientsTrack">
       <!-- Set 1 -->
-      <div class="client-logo text-logo">Spinneys Lebanon</div>
-      <div class="client-logo text-logo">Fattal Group</div>
-      <div class="client-logo text-logo">Microsoft</div>
-      <div class="client-logo text-logo">Deloitte</div>
-      <div class="client-logo text-logo">Azadea Group</div>
-      <div class="client-logo text-logo">Solidere</div>
+      <div class="client-logo"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
+      <div class="client-logo"><img src="Images/fattal.png" alt="Fattal Group"></div>
+      <div class="client-logo"><img src="Images/microsoft.png" alt="Microsoft"></div>
+      <div class="client-logo"><img src="Images/deloitte.png" alt="Deloitte"></div>
+      <div class="client-logo"><img src="Images/azadea.png" alt="Azadea Group"></div>
+      <div class="client-logo"><img src="Images/solidere.png" alt="Solidere"></div>
       <!-- Set 2 (duplicate for seamless loop) -->
-      <div class="client-logo text-logo">Spinneys Lebanon</div>
-      <div class="client-logo text-logo">Fattal Group</div>
-      <div class="client-logo text-logo">Microsoft</div>
-      <div class="client-logo text-logo">Deloitte</div>
-      <div class="client-logo text-logo">Azadea Group</div>
-      <div class="client-logo text-logo">Solidere</div>
+      <div class="client-logo"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
+      <div class="client-logo"><img src="Images/fattal.png" alt="Fattal Group"></div>
+      <div class="client-logo"><img src="Images/microsoft.png" alt="Microsoft"></div>
+      <div class="client-logo"><img src="Images/deloitte.png" alt="Deloitte"></div>
+      <div class="client-logo"><img src="Images/azadea.png" alt="Azadea Group"></div>
+      <div class="client-logo"><img src="Images/solidere.png" alt="Solidere"></div>
     </div>
   </div>
 </div>
