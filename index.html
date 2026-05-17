@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>André Béchara — Outdoor Team Building & Corporate Experiences</title>
-<meta name="description" content="André Béchara delivers tailored outdoor team-building experiences for corporations. 25+ years expertise. Based in Lebanon, operating worldwide.">
+<title>André Bechara — Outdoor Team Building & Corporate Experiences</title>
+<meta name="description" content="André Bechara delivers tailored outdoor team-building experiences for corporations. 30+ years expertise. Based in Lebanon, operating worldwide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -82,7 +82,7 @@
     position: absolute; inset: 0;
     background:
       linear-gradient(160deg, rgba(10,25,10,0.72) 0%, rgba(26,46,26,0.45) 50%, rgba(100,60,10,0.3) 100%),
-      url('Images/hero.jpg') center/cover no-repeat;
+      url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&q=80') center/cover no-repeat;
   }
   .hero-bg-fallback {
     position: absolute; inset: 0;
@@ -303,8 +303,8 @@
     display: grid; grid-template-columns: 1fr 1.2fr;
     gap: 80px; align-items: center; padding: 96px 80px;
   }
-  .founder-img { position: relative; }
-  .founder-img img { width: 100%; border-radius: 16px; object-fit: cover; object-position: top; height: 580px; display: block; }
+  .founder-img { position: relative; display: flex; align-items: flex-start; justify-content: center; }
+  .founder-img img { width: 100%; max-width: 420px; border-radius: 16px; object-fit: cover; object-position: top; height: 580px; display: block; margin: 0 auto; }
   .badges-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
   .badge-chip {
     background: var(--forest); color: white; padding: 14px 16px;
@@ -474,13 +474,13 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">
-    André Béchara
+    André Bechara
     <span>Outdoor Team Building Expert</span>
+    <img src="Images/greatescape.png" alt="The Great Escape" style="height: 22px; width: auto; display: block; margin-top: 4px; opacity: 0.85; filter: brightness(0) invert(1);">
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#basecamp">Base Camp</a></li>
     <li><a href="#founder">Profile</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact" class="nav-cta">Book a Session</a></li>
@@ -495,7 +495,7 @@
   <div class="hero-bg-fallback"></div>
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-badge">🌿 25+ Years of Outdoor Expertise · Lebanon & Worldwide</div>
+    <div class="hero-badge">🌿 30+ Years of Outdoor Expertise · Lebanon & Worldwide</div>
     <h1 class="hero-title">
       Escape the Ordinary.<br><em>Build Extraordinary Teams.</em>
     </h1>
@@ -514,7 +514,7 @@
 <!-- STATS STRIP -->
 <div class="stats-strip">
   <div class="stat-item">
-    <div class="stat-num" data-target="25">0</div>
+    <div class="stat-num" data-target="30">0</div>
     <div class="stat-label">Years of Expertise</div>
   </div>
   <div class="stat-item">
@@ -542,14 +542,14 @@
       <div class="client-logo text-logo">Microsoft</div>
       <div class="client-logo text-logo">Deloitte</div>
       <div class="client-logo text-logo">Azadea Group</div>
-      <div class="client-logo text-logo">Middle East Airlines</div>
+      <div class="client-logo text-logo">Solidere</div>
       <!-- Set 2 (duplicate for seamless loop) -->
       <div class="client-logo text-logo">Spinneys Lebanon</div>
       <div class="client-logo text-logo">Fattal Group</div>
       <div class="client-logo text-logo">Microsoft</div>
       <div class="client-logo text-logo">Deloitte</div>
       <div class="client-logo text-logo">Azadea Group</div>
-      <div class="client-logo text-logo">Middle East Airlines</div>
+      <div class="client-logo text-logo">Solidere</div>
     </div>
   </div>
 </div>
@@ -557,19 +557,17 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="about-img-wrap reveal">
-    <img src="Images/about.jpg" alt="Outdoor team building activity" onerror="this.style.background='linear-gradient(135deg,#2d4a2d,#1a2e1a)'; this.style.minHeight='520px'; this.removeAttribute('src')">
+    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="Team working together outdoors" onerror="this.style.background='linear-gradient(135deg,#2d4a2d,#1a2e1a)'; this.style.minHeight='520px'; this.removeAttribute('src')">
     <div class="about-badge-float">
-      <strong>25+</strong>
+      <strong>30+</strong>
       Years of Outdoor<br>Leadership
     </div>
   </div>
   <div class="about-text-wrap reveal">
     <span class="section-tag">What We Do</span>
     <h2 class="section-title light">From Groups<br>to <em style="font-style:italic">Teams</em></h2>
-    <blockquote class="about-quote">
-      "Corporate team building is based on optimizing mind power using radiant thinking through fun-filled indoor and outdoor activities. Individual team members learn to work together as a team, using available resources and focusing on achieving shared goals."
-    </blockquote>
-    <p class="section-sub light">The program combines mental and physical challenge — activities that test analytical thinking, creativity, communication, and leadership in real-world scenarios that carry directly back to the workplace.</p>
+    <p class="section-sub light" style="margin-bottom: 18px;">The program combines mental and physical challenges in immersive, high-energy experiences that push participants beyond conventional thinking and routine behavior. Each activity is carefully designed to test and develop analytical thinking, creativity, communication, adaptability, decision-making, and leadership under real-world conditions.</p>
+    <p class="section-sub light">Participants are placed in dynamic scenarios where success depends on collaboration, strategic thinking, trust, and the ability to perform under pressure using limited resources and collective intelligence. The lessons learned in the field translate directly into the workplace, strengthening team cohesion, problem-solving capacity, leadership effectiveness, and organizational performance.</p>
     <div class="feature-list">
       <div class="feature-item">Radiant thinking methodology</div>
       <div class="feature-item">Mental & physical challenge</div>
@@ -661,37 +659,6 @@
   </div>
 </section>
 
-<!-- BASE CAMP -->
-<section id="basecamp">
-  <div class="basecamp-text reveal">
-    <span class="section-tag" style="color: var(--gold);">Our Home Ground</span>
-    <h2 class="section-title light">The Great Escape<br>Base Camp — Hammana</h2>
-    <p class="section-sub light" style="margin-bottom: 28px;">Just 35 minutes from Beirut, our private base camp offers a natural, authentic environment for immersive outdoor programs — with full overnight capability.</p>
-    <div class="basecamp-specs">
-      <div class="spec-item">
-        <div class="spec-value">35 min</div>
-        <div class="spec-label">from Beirut</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-value">2,000 m²</div>
-        <div class="spec-label">Green field</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-value">10,000 m²</div>
-        <div class="spec-label">Total land area</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-value">⛺</div>
-        <div class="spec-label">Overnight in tents</div>
-      </div>
-    </div>
-    <p class="section-sub light" style="margin-top: 24px; font-size: 0.9rem;">A lake surrounded by trees · Natural environment · Bathrooms · Full outdoor infrastructure</p>
-  </div>
-  <div class="reveal">
-    <img src="Images/basecamp.jpg" alt="Great Escape Base Camp Hammana" style="width:100%; border-radius:16px; object-fit:cover; height:460px; display:block; background: linear-gradient(135deg, #2d4a2d, #1a2e1a);" onerror="this.style.background='linear-gradient(135deg,#2d4a2d,#1a2e1a)'; this.removeAttribute('src')">
-  </div>
-</section>
-
 <!-- FOUNDER -->
 <section id="founder">
   <div class="founder-img reveal">
@@ -701,11 +668,12 @@
     <span class="section-tag">The Expert Behind the Programs</span>
     <div class="founder-name">André Béchara</div>
     <div class="founder-role">Outdoor Education Expert · Program Designer · Founder</div>
-    <p class="founder-bio">With over 25 years of expertise in outdoor activities and education, André Béchara has built a reputation as one of the region's leading voices in corporate team building and experiential learning.</p>
-    <p class="founder-bio" style="margin-top: 14px;">His work spans corporate team building, ecotourism, educational camps, adventure trips, creative thinking workshops, and TV game program design — bringing the same philosophy to each: <em>real teams are forged in the field, not the boardroom.</em></p>
-    <p class="founder-bio" style="margin-top: 14px;">André has worked with major regional and international organizations — designing programs trusted by companies like Microsoft, Deloitte, Middle East Airlines, Azadea Group, Fattal Group, and Spinneys Lebanon.</p>
+    <p class="founder-bio">With more than 30+ years of leadership in outdoor education, environmental awareness, rural development, adventure programming, and experiential learning, André Béchara has become one of the Middle East's most respected pioneers in corporate team building and transformational learning experiences.</p>
+    <p class="founder-bio" style="margin-top: 14px;">Blending strategic insight with field expertise, his work spans corporate team building, ecotourism, environmental and rural development initiatives, educational camps, adventure expeditions, creative thinking workshops, and television game concept design — all driven by one core belief: the strongest teams are not built in meeting rooms, but through shared challenges, trust, resilience, and real-world experience.</p>
+    <p class="founder-bio" style="margin-top: 14px;">For decades, André has designed experiences that push individuals beyond comfort zones, transform groups into cohesive teams, and reconnect people with leadership, nature, community, and purpose. His approach combines adventure, education, sustainability, psychology, and creativity to create impactful programs that generate lasting human, organizational, and social change.</p>
+    <p class="founder-bio" style="margin-top: 14px;">Deeply committed to nature conservation and the empowerment of rural communities, he has consistently used outdoor experiences as a tool for leadership development, environmental stewardship, and cultural connection — helping bridge people, places, and purpose across generations.</p>
     <div class="badges-grid">
-      <div class="badge-chip"><span>25+</span>Years of Expertise</div>
+      <div class="badge-chip"><span>30+</span>Years of Expertise</div>
       <div class="badge-chip"><span>🏆</span>Corporate Programs</div>
       <div class="badge-chip"><span>🌍</span>Regional & Global Reach</div>
       <div class="badge-chip"><span>🎬</span>TV Game Design</div>
@@ -719,7 +687,7 @@
     <div>
       <span class="section-tag" style="color: var(--gold);">Return on Investment</span>
       <h2 class="section-title light">What Your Team<br>Gains from the Field</h2>
-      <p class="section-sub light" style="margin: 0 auto 40px; text-align:center; max-width:500px;">Outdoor programs deliver measurable ROI at both team and individual levels.</p>
+      <p class="section-sub light" style="margin: 0 auto 40px; text-align:center; max-width:560px;">Success in business is often measured by numbers — but the real investment is measured in people. Outdoor programs deliver that investment in ways that are concrete, lasting, and felt at every level of your organization.</p>
     </div>
     <div class="roi-tabs">
       <button class="roi-tab active" onclick="switchTab(this, 'team')">At the Team Level</button>
@@ -800,65 +768,19 @@
   </div>
   <div class="gallery-grid">
     <div class="gallery-item">
-      <img src="Images/gallery1.jpg" alt="Team outdoor challenge" onerror="this.style.display='none'">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80" alt="Team collaboration challenge" onerror="this.style.display='none'">
     </div>
     <div class="gallery-item">
-      <img src="Images/gallery2.jpg" alt="Group activity" onerror="this.style.display='none'">
+      <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&q=80" alt="Group outdoor activity" onerror="this.style.display='none'">
     </div>
     <div class="gallery-item">
-      <img src="Images/gallery3.jpg" alt="Nature expedition" onerror="this.style.display='none'">
+      <img src="https://images.unsplash.com/photo-1473621038790-b778b4750efe?w=600&q=80" alt="Mountain hiking expedition" onerror="this.style.display='none'">
     </div>
     <div class="gallery-item">
-      <img src="Images/gallery4.jpg" alt="Team challenge" onerror="this.style.display='none'">
+      <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80" alt="Leadership in nature" onerror="this.style.display='none'">
     </div>
     <div class="gallery-item">
-      <img src="Images/gallery5.jpg" alt="Base camp" onerror="this.style.display='none'">
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div style="text-align:center; max-width: 560px; margin: 0 auto;">
-    <span class="section-tag">What Clients Say</span>
-    <h2 class="section-title">Teams That Went<br>Beyond the Ordinary</h2>
-  </div>
-  <div class="testimonials-grid">
-    <div class="testimonial-card reveal">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">"André's program gave our team an experience unlike any internal training we'd run. We came back from the field with a different way of looking at each other — more trusting, more focused, genuinely energized to work together."</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">MD</div>
-        <div>
-          <div class="author-name">Marc Daher</div>
-          <div class="author-role">Head of People & Culture</div>
-          <div class="author-company">Fattal Group</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card reveal">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">"We'd tried traditional team building before. Nothing came close to this. André put our leadership team through real challenges that revealed dynamics we didn't know existed. The debrief alone was worth the day."</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">SL</div>
-        <div>
-          <div class="author-name">Sarah Lahoud</div>
-          <div class="author-role">HR Director</div>
-          <div class="author-company">Azadea Group</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card reveal">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">"The ROI was immediate. Our 50-person team returned with a shared vocabulary, higher energy, and a renewed sense of purpose. André has a rare ability to design experiences that feel both challenging and psychologically safe."</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">KN</div>
-        <div>
-          <div class="author-name">Karim Nassar</div>
-          <div class="author-role">General Manager</div>
-          <div class="author-company">Spinneys Lebanon</div>
-        </div>
-      </div>
+      <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&q=80" alt="Team debrief session" onerror="this.style.display='none'">
     </div>
   </div>
 </section>
@@ -870,7 +792,7 @@
   <div class="faq-list">
     <div class="faq-item">
       <div class="faq-question">How large a group can you accommodate? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Programs are designed for groups ranging from 8 to 200+ participants. Each program is scaled to ensure meaningful engagement regardless of group size — from leadership teams to company-wide events.</div>
+      <div class="faq-answer">Programs are designed for groups ranging from 8 to 100 participants. Each program is scaled to ensure meaningful engagement regardless of group size — from leadership teams to company-wide events.</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">Do participants need prior outdoor experience? <span class="faq-toggle">+</span></div>
@@ -878,7 +800,7 @@
     </div>
     <div class="faq-item">
       <div class="faq-question">How long does a typical program last? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Programs range from half-day experiences to multi-day boot camps with overnight stays at our Hammana base camp. For meaningful behavioral change, a full day is recommended. Leadership programs benefit from 2–3 days.</div>
+      <div class="faq-answer">Programs range from half-day experiences to multi-day boot camps with overnight stays. For meaningful behavioral change, a full day is recommended. Leadership programs benefit from 2–3 days.</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">Can the program be tailored to our specific business objectives? <span class="faq-toggle">+</span></div>
@@ -886,7 +808,7 @@
     </div>
     <div class="faq-item">
       <div class="faq-question">Where do programs take place? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Programs can be delivered at our private Hammana base camp (35 minutes from Beirut), at a location of your choosing, or across outdoor destinations regionally and internationally.</div>
+      <div class="faq-answer">Programs can be delivered at a location of your choosing, at our private base camp in the Lebanese mountains (35 minutes from Beirut), or across outdoor destinations regionally and internationally.</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">What happens after the activity — is there a debrief? <span class="faq-toggle">+</span></div>
@@ -903,7 +825,7 @@
     <p class="section-sub light" style="margin-bottom: 36px;">Tell André about your team and objectives. Every program starts with a conversation.</p>
     <div class="contact-detail">
       <div class="contact-icon">📧</div>
-      <a href="mailto:Andrebechara1@gmail.com">Andrebechara1@gmail.com</a>
+      <a href="mailto:andrebechara1@gmail.com">andrebechara1@gmail.com</a>
     </div>
     <div class="contact-detail">
       <div class="contact-icon">📞</div>
@@ -945,7 +867,6 @@
           <option>15–30</option>
           <option>30–60</option>
           <option>60–100</option>
-          <option>100+</option>
         </select>
       </div>
       <div class="form-field">
@@ -972,23 +893,13 @@
   </form>
 </section>
 
-<!-- NEWSLETTER -->
-<div id="newsletter">
-  <h2 class="newsletter-title">Stay Inspired</h2>
-  <p class="newsletter-sub">Insights on team performance, outdoor leadership, and upcoming programs.</p>
-  <div class="newsletter-form">
-    <input type="email" placeholder="Your email address">
-    <button type="button" onclick="this.textContent='✓ Subscribed!'">Subscribe →</button>
-  </div>
-</div>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-logo">André <span>Béchara</span></div>
+      <div class="footer-logo">André <span>Bechara</span></div>
       <div class="footer-subtitle">Outdoor Team Building Expert</div>
-      <p class="footer-tagline">25+ years of expertise in outdoor education and corporate team building. Transforming groups into extraordinary teams — in Lebanon and worldwide.</p>
+      <p class="footer-tagline">30+ years of expertise in outdoor education and corporate team building. Transforming groups into extraordinary teams — in Lebanon and worldwide.</p>
       <div class="social-links">
         <a href="#" class="social-link" aria-label="LinkedIn">in</a>
         <a href="#" class="social-link" aria-label="Instagram">📷</a>
@@ -1010,8 +921,7 @@
       <h4>About</h4>
       <ul>
         <li><a href="#about">About the Programs</a></li>
-        <li><a href="#founder">André Béchara</a></li>
-        <li><a href="#basecamp">Base Camp Hammana</a></li>
+        <li><a href="#founder">André Bechara</a></li>
         <li><a href="#process">The Process</a></li>
         <li><a href="#gallery">Gallery</a></li>
       </ul>
@@ -1021,15 +931,14 @@
       <ul>
         <li><a href="#contact">Book a Consultation</a></li>
         <li><a href="https://wa.me/9613360027">WhatsApp</a></li>
-        <li><a href="mailto:Andrebechara1@gmail.com">Email André</a></li>
+        <li><a href="mailto:andrebechara1@gmail.com">Email André</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#newsletter">Newsletter</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <p>© <span id="year"></span> André Béchara. All rights reserved.</p>
-    <p>L'important n'est pas de partir, mais avec qui aller.</p>
+    <p>What matters is not the journey itself, but who you take it with.</p>
   </div>
 </footer>
 
