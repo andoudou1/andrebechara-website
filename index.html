@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Great Escape — Transform Teams Through Outdoor Experiences</title>
+<meta name="description" content="Great Escape delivers tailored outdoor team-building experiences. Strengthen collaboration, leadership, and workplace performance through immersive adventures.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a2e1a;
+    --forest-mid: #2d4a2d;
+    --forest-light: #3d6b3d;
+    --sand: #d4b896;
+    --sand-light: #ede0ce;
+    --cream: #f9f4ed;
+    --charcoal: #1c1c1c;
+    --white: #ffffff;
+    --orange: #d4722a;
+    --gold: #c9973a;
+    --gold-light: #e8b84b;
+    --text-dark: #1c1c1c;
+    --text-mid: #444;
+    --text-light: #888;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-dark);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.4s, padding 0.4s, backdrop-filter 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(26,46,26,0.96);
+    backdrop-filter: blur(12px);
+    padding: 14px 48px;
+    box-shadow: 0 2px 30px rgba(0,0,0,0.3);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--orange);
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 40px;
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; transform: translateY(-1px); }
+  .hamburger {
+    display: none;
+    flex-direction: column; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 4px;
+  }
+  .hamburger span {
+    display: block; width: 26px; height: 2px;
+    background: white; border-radius: 2px; transition: 0.3s;
+  }
+
+  /* ---- HERO ---- */
+  #hero {
+    position: relative; height: 100vh; min-height: 680px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(160deg, rgba(10,25,10,0.65) 0%, rgba(26,46,26,0.4) 50%, rgba(100,60,10,0.3) 100%),
+      url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80') center/cover no-repeat;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+    background: linear-gradient(to bottom, transparent, var(--forest));
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; max-width: 860px; padding: 0 24px;
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(201,151,58,0.6);
+    color: var(--gold);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 6px 18px; border-radius: 30px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.2rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 22px;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero-title em { color: var(--gold); font-style: italic; }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255,255,255,0.82);
+    font-weight: 300;
+    line-height: 1.65;
+    max-width: 600px; margin: 0 auto 40px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-actions {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+  .btn-primary {
+    background: var(--orange);
+    color: white;
+    padding: 15px 32px; border-radius: 50px;
+    font-size: 0.95rem; font-weight: 600;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    box-shadow: 0 4px 20px rgba(212,114,42,0.4);
+  }
+  .btn-primary:hover {
+    background: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,151,58,0.45);
+  }
+  .btn-outline {
+    background: transparent;
+    color: white;
+    padding: 15px 32px; border-radius: 50px;
+    font-size: 0.95rem; font-weight: 500;
+    border: 2px solid rgba(255,255,255,0.5);
+    text-decoration: none; cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  }
+  .btn-outline:hover {
+    border-color: var(--gold);
+    background: rgba(201,151,58,0.12);
+    transform: translateY(-2px);
+  }
+  .hero-scroll {
+    position: absolute; bottom: 36px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .hero-scroll span {
+    color: rgba(255,255,255,0.5); font-size: 0.7rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, rgba(201,151,58,0.8), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ---- STATS STRIP ---- */
+  .stats-strip {
+    background: var(--forest);
+    padding: 36px 48px;
+    display: flex; justify-content: center; gap: 64px; flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.8rem; color: rgba(255,255,255,0.65);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-top: 6px; font-weight: 500;
+  }
+
+  /* ---- SECTION SHARED ---- */
+  section { padding: 96px 48px; }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 900; line-height: 1.15;
+    color: var(--forest); margin-bottom: 18px;
+  }
+  .section-title.light { color: var(--white); }
+  .section-sub {
+    font-size: 1.05rem; color: var(--text-mid);
+    line-height: 1.7; max-width: 560px; font-weight: 300;
+  }
+  .section-sub.light { color: rgba(255,255,255,0.75); }
+
+  /* ---- ABOUT ---- */
+  #about {
+    background: var(--forest);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+    padding: 96px 80px;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img-wrap img {
+    width: 100%; border-radius: 16px;
+    display: block; object-fit: cover; height: 540px;
+  }
+  .about-badge-float {
+    position: absolute; bottom: -24px; right: -24px;
+    background: var(--orange);
+    color: white; padding: 20px 26px; border-radius: 14px;
+    font-weight: 600; font-size: 0.85rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    line-height: 1.4;
+  }
+  .about-badge-float strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 900; color: var(--gold-light);
+    line-height: 1;
+  }
+  .about-text-wrap { padding: 20px 0; }
+  .about-quote {
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+    margin: 28px 0;
+    font-style: italic;
+    color: rgba(255,255,255,0.75);
+    font-size: 1rem; line-height: 1.7;
+  }
+  .feature-list {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px; margin-top: 32px;
+  }
+  .feature-item {
+    display: flex; align-items: center; gap: 10px;
+    color: rgba(255,255,255,0.8); font-size: 0.9rem; font-weight: 500;
+  }
+  .feature-item::before {
+    content: '✦';
+    color: var(--gold); font-size: 0.7rem; flex-shrink: 0;
+  }
+
+  /* ---- SERVICES ---- */
+  #services { background: var(--cream); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 24px; margin-top: 56px;
+  }
+  .service-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px 28px;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--forest-light), var(--gold));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    font-size: 2rem; margin-bottom: 16px; display: block;
+  }
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--forest); margin-bottom: 10px;
+  }
+  .service-desc {
+    font-size: 0.88rem; color: var(--text-mid);
+    line-height: 1.65; font-weight: 300;
+  }
+
+  /* ---- FOUNDER ---- */
+  #founder {
+    background: var(--sand-light);
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 80px; align-items: center;
+    padding: 96px 80px;
+  }
+  .founder-img {
+    position: relative;
+  }
+  .founder-img img {
+    width: 100%; border-radius: 16px;
+    object-fit: cover; height: 580px; display: block;
+    filter: saturate(0.9);
+  }
+  .founder-img::after {
+    content: '';
+    position: absolute; inset: 0; border-radius: 16px;
+    background: linear-gradient(160deg, transparent 50%, rgba(26,46,26,0.25));
+  }
+  .badges-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px; margin-top: 36px;
+  }
+  .badge-chip {
+    background: var(--forest);
+    color: white; padding: 12px 16px;
+    border-radius: 10px; font-size: 0.82rem;
+    font-weight: 500; text-align: center;
+    line-height: 1.4;
+  }
+  .badge-chip span {
+    display: block; color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 900;
+    line-height: 1.1; margin-bottom: 4px;
+  }
+  .founder-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 900;
+    color: var(--forest); margin-bottom: 6px;
+  }
+  .founder-role {
+    font-size: 0.85rem; color: var(--orange);
+    font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .founder-bio {
+    font-size: 1rem; color: var(--text-mid);
+    line-height: 1.75; font-weight: 300;
+  }
+
+  /* ---- BENEFITS ---- */
+  #benefits {
+    background: var(--forest);
+    text-align: center;
+  }
+  .benefits-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 32px; margin-top: 56px; max-width: 1000px; margin-left: auto; margin-right: auto;
+  }
+  .benefit-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 36px 24px;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .benefit-card:hover {
+    background: rgba(201,151,58,0.08);
+    border-color: rgba(201,151,58,0.3);
+  }
+  .benefit-icon { font-size: 2.2rem; margin-bottom: 14px; }
+  .benefit-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--white); margin-bottom: 10px;
+  }
+  .benefit-desc {
+    font-size: 0.87rem; color: rgba(255,255,255,0.6);
+    line-height: 1.65; font-weight: 300;
+  }
+
+  /* ---- GALLERY ---- */
+  #gallery { background: var(--charcoal); padding: 96px 0; }
+  .gallery-header { padding: 0 48px; margin-bottom: 48px; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 280px 280px;
+    gap: 4px;
+  }
+  .gallery-item {
+    overflow: hidden; position: relative; cursor: pointer;
+  }
+  .gallery-item:first-child { grid-row: 1 / 3; }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s, filter 0.5s;
+    filter: saturate(0.8) brightness(0.9);
+  }
+  .gallery-item:hover img {
+    transform: scale(1.06);
+    filter: saturate(1) brightness(1);
+  }
+  .gallery-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 50%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .gallery-item:hover::after { opacity: 1; }
+
+  /* ---- TESTIMONIALS ---- */
+  #testimonials { background: var(--cream); }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 28px; margin-top: 56px;
+  }
+  .testimonial-card {
+    background: white; border-radius: 16px;
+    padding: 32px; border: 1px solid rgba(0,0,0,0.06);
+    transition: box-shadow 0.3s;
+  }
+  .testimonial-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+  .stars { color: var(--gold); font-size: 0.95rem; margin-bottom: 16px; }
+  .testimonial-text {
+    font-size: 0.95rem; color: var(--text-mid);
+    line-height: 1.7; font-weight: 300; font-style: italic;
+    margin-bottom: 24px;
+  }
+  .testimonial-author {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .author-avatar {
+    width: 46px; height: 46px; border-radius: 50%;
+    object-fit: cover; flex-shrink: 0;
+  }
+  .author-name {
+    font-weight: 600; font-size: 0.9rem;
+    color: var(--forest);
+  }
+  .author-role {
+    font-size: 0.78rem; color: var(--text-light);
+    font-weight: 400;
+  }
+
+  /* ---- VIDEO ---- */
+  #video-section {
+    background: var(--forest);
+    text-align: center; padding: 96px 48px;
+  }
+  .video-wrapper {
+    position: relative; max-width: 840px; margin: 48px auto 0;
+    border-radius: 16px; overflow: hidden;
+    background: #000;
+    aspect-ratio: 16/9;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  }
+  .video-placeholder {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80') center/cover no-repeat;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .video-placeholder::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(10,25,10,0.45);
+  }
+  .play-btn {
+    position: relative; z-index: 2;
+    width: 80px; height: 80px; border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; color: var(--forest);
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    border: none; cursor: pointer;
+  }
+  .video-placeholder:hover .play-btn {
+    transform: scale(1.1);
+    background: white;
+  }
+
+  /* ---- FAQ ---- */
+  #faq { background: var(--sand-light); }
+  .faq-list { max-width: 720px; margin-top: 48px; }
+  .faq-item {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 24px 0;
+  }
+  .faq-question {
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; gap: 20px;
+    font-weight: 600; font-size: 1rem; color: var(--forest);
+  }
+  .faq-toggle {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--forest); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+    transition: background 0.2s, transform 0.3s;
+  }
+  .faq-item.open .faq-toggle {
+    background: var(--orange); transform: rotate(45deg);
+  }
+  .faq-answer {
+    font-size: 0.92rem; color: var(--text-mid);
+    line-height: 1.7; font-weight: 300;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 200px; padding-top: 16px;
+  }
+
+  /* ---- CONTACT ---- */
+  #contact {
+    background: var(--forest);
+    padding: 96px 80px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+  .contact-info { padding-top: 8px; }
+  .contact-detail {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 20px; color: rgba(255,255,255,0.8);
+    font-size: 0.95rem;
+  }
+  .contact-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .whatsapp-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25D366; color: white;
+    padding: 13px 24px; border-radius: 40px;
+    text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    margin-top: 12px; transition: opacity 0.2s, transform 0.2s;
+  }
+  .whatsapp-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-field {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .form-field label {
+    font-size: 0.78rem; color: rgba(255,255,255,0.6);
+    font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .form-field input, .form-field textarea, .form-field select {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px; padding: 13px 16px;
+    color: white; font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem; outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+  }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+    border-color: var(--gold); background: rgba(255,255,255,0.1);
+  }
+  .form-field input::placeholder, .form-field textarea::placeholder {
+    color: rgba(255,255,255,0.3);
+  }
+  .form-field select option { background: var(--forest-mid); }
+  .form-field textarea { resize: vertical; min-height: 110px; }
+
+  /* ---- NEWSLETTER ---- */
+  #newsletter {
+    background: var(--orange);
+    padding: 56px 48px; text-align: center;
+  }
+  .newsletter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem; font-weight: 900;
+    color: white; margin-bottom: 10px;
+  }
+  .newsletter-sub {
+    color: rgba(255,255,255,0.85); font-size: 1rem;
+    font-weight: 300; margin-bottom: 28px;
+  }
+  .newsletter-form {
+    display: flex; gap: 12px; justify-content: center;
+    max-width: 480px; margin: 0 auto; flex-wrap: wrap;
+  }
+  .newsletter-form input {
+    flex: 1; min-width: 220px; padding: 14px 20px;
+    border-radius: 40px; border: none;
+    font-family: 'Outfit', sans-serif; font-size: 0.95rem;
+    outline: none; background: white;
+  }
+  .newsletter-form button {
+    background: var(--forest); color: white;
+    padding: 14px 26px; border-radius: 40px;
+    border: none; font-weight: 600; cursor: pointer;
+    font-family: 'Outfit', sans-serif; font-size: 0.9rem;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .newsletter-form button:hover { background: var(--charcoal); }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: var(--charcoal);
+    padding: 60px 80px 32px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand { }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 900;
+    color: white; margin-bottom: 14px;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-tagline {
+    font-size: 0.88rem; color: rgba(255,255,255,0.5);
+    line-height: 1.65; font-weight: 300;
+  }
+  .social-links {
+    display: flex; gap: 12px; margin-top: 20px;
+  }
+  .social-link {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.6); font-size: 0.9rem;
+    text-decoration: none; transition: background 0.2s, color 0.2s;
+  }
+  .social-link:hover { background: var(--gold); color: white; }
+  .footer-col h4 {
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul a {
+    color: rgba(255,255,255,0.65); text-decoration: none;
+    font-size: 0.9rem; transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p {
+    font-size: 0.82rem; color: rgba(255,255,255,0.35);
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1; transform: translateY(0);
+  }
+
+  /* ---- MOBILE ---- */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    nav.scrolled { padding: 14px 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: fixed; inset: 0; top: 60px;
+      background: rgba(26,46,26,0.98);
+      align-items: center; justify-content: center;
+      gap: 32px; z-index: 99;
+    }
+    .nav-links.open a { font-size: 1.4rem; }
+    section { padding: 72px 24px; }
+    #about, #founder, #contact {
+      grid-template-columns: 1fr; gap: 40px; padding: 72px 24px;
+    }
+    .about-badge-float { right: 0; bottom: -20px; }
+    #benefits .benefits-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item:first-child { grid-row: auto; }
+    .gallery-grid .gallery-item img { height: 200px; }
+    footer { padding: 48px 24px 24px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .stats-strip { gap: 32px; padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    #contact { padding: 72px 24px; }
+    #newsletter { padding: 48px 24px; }
+  }
+  @media (max-width: 560px) {
+    .services-grid { grid-template-columns: 1fr; }
+    #benefits .benefits-grid { grid-template-columns: 1fr; }
+    .badges-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Great<span>Escape</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#founder">Our Founder</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Consultation</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🌿 Outdoor Team Building Experts</div>
+    <h1 class="hero-title">
+      Transform Teams Through<br><em>Outdoor Experiences</em>
+    </h1>
+    <p class="hero-sub">Tailored team-building adventures designed to strengthen collaboration, leadership, and workplace performance — far beyond the conference room.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a Consultation</a>
+      <a href="#services" class="btn-outline">Explore Programs</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Discover</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num" data-target="25">0</div>
+    <div class="stat-label">Years of Expertise</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num" data-target="400">0</div>
+    <div class="stat-label">Programs Delivered</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num" data-target="120">0</div>
+    <div class="stat-label">Corporate Clients</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num" data-target="15">0</div>
+    <div class="stat-label">Countries Reached</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-img-wrap reveal">
+    <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=900&q=80" alt="Team hiking outdoors">
+    <div class="about-badge-float">
+      <strong>25+</strong>
+      Years of Outdoor<br>Leadership
+    </div>
+  </div>
+  <div class="about-text-wrap reveal">
+    <span class="section-tag">About Great Escape</span>
+    <h2 class="section-title light">Where Nature Becomes Your<br>Greatest Team Coach</h2>
+    <blockquote class="about-quote">
+      "Great Escape offers tailored team-building sessions for businesses, focusing on fostering outdoor teamwork dynamics. These activities are designed to immerse teams in challenging scenarios, encouraging collaboration towards common objectives."
+    </blockquote>
+    <p class="section-sub light">Through team building, employees perceive their colleagues in a new light, fostering team spirit and enhancing communication, cohesion, and individual potential. It's an opportunity for those seeking to optimize workplace efficiency.</p>
+    <div class="feature-list">
+      <div class="feature-item">Immersive outdoor scenarios</div>
+      <div class="feature-item">Leadership development</div>
+      <div class="feature-item">Communication workshops</div>
+      <div class="feature-item">Experiential learning</div>
+      <div class="feature-item">Custom programs</div>
+      <div class="feature-item">Expert facilitation</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div style="text-align:center; max-width: 600px; margin: 0 auto;">
+    <span class="section-tag">What We Offer</span>
+    <h2 class="section-title">Programs Designed for<br>Real-World Impact</h2>
+    <p class="section-sub" style="margin: 0 auto;">Every program is crafted to meet your team where they are and take them somewhere extraordinary.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🏕️</span>
+      <div class="service-title">Corporate Team Building</div>
+      <p class="service-desc">Bespoke outdoor programs that challenge teams to communicate, lead, and solve problems in dynamic natural environments.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🧭</span>
+      <div class="service-title">Outdoor Consultancy</div>
+      <p class="service-desc">Expert advisory on how outdoor experiential learning can integrate into your company's people development strategy.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🌲</span>
+      <div class="service-title">Team Outings</div>
+      <p class="service-desc">Memorable one-day or multi-day outdoor experiences that bring your team together outside the office for genuine bonding.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🌿</span>
+      <div class="service-title">Ecotourism Experiences</div>
+      <p class="service-desc">Responsible exploration of natural ecosystems designed to inspire, educate, and reconnect participants with the environment.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">⛺</span>
+      <div class="service-title">Educational Camps</div>
+      <p class="service-desc">Structured outdoor camps that combine adventure with learning objectives for youth, professionals, and executive teams.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">💡</span>
+      <div class="service-title">Creative Thinking Workshops</div>
+      <p class="service-desc">Nature-inspired facilitation techniques that break conventional thinking patterns and unlock innovative problem-solving.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🧗</span>
+      <div class="service-title">Adventure Trips</div>
+      <p class="service-desc">Guided expeditions into challenging terrain that build resilience, trust, and a shared sense of achievement among participants.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🎬</span>
+      <div class="service-title">TV Program Game Design</div>
+      <p class="service-desc">Original outdoor challenge formats designed for broadcast media — blending competition, narrative, and adventure at scale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="founder-img reveal">
+    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=900&q=80" alt="Andre Béchara - Founder">
+  </div>
+  <div class="reveal">
+    <span class="section-tag">Meet Our Founder</span>
+    <div class="founder-name">Andre Béchara</div>
+    <div class="founder-role">Founder & Lead Experience Designer</div>
+    <p class="founder-bio">Andre Béchara, founder of Great Escape, brings over 25 years of expertise in Outdoor Activities and Education. His experience spans corporate team building, ecotourism, educational camps, adventure trips, creative workshops, and TV game program design.</p>
+    <p class="founder-bio" style="margin-top: 14px;">His philosophy is simple: real teams are forged in the field, not in boardrooms. Every program he designs carries decades of learning about human behavior, nature, and what it truly takes to lead and collaborate.</p>
+    <div class="badges-grid">
+      <div class="badge-chip"><span>25+</span>Years of Expertise</div>
+      <div class="badge-chip"><span>🏆</span>Corporate Programs</div>
+      <div class="badge-chip"><span>🌍</span>Outdoor Leadership</div>
+      <div class="badge-chip"><span>🎬</span>TV Game Design</div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div style="text-align:center;">
+      <span class="section-tag">Why It Works</span>
+      <h2 class="section-title light">The Business Case for<br>Outdoor Team Building</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🗣️</div>
+        <div class="benefit-title">Better Communication</div>
+        <p class="benefit-desc">Outdoor challenges strip away workplace hierarchies, creating space for authentic communication to develop naturally.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🤝</div>
+        <div class="benefit-title">Stronger Collaboration</div>
+        <p class="benefit-desc">Shared challenges in the field build genuine camaraderie and a team culture that carries back into the workplace.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🧭</div>
+        <div class="benefit-title">Leadership Development</div>
+        <p class="benefit-desc">Real-world scenarios reveal and develop leadership capabilities that formal training often cannot replicate.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🌟</div>
+        <div class="benefit-title">Increased Morale</div>
+        <p class="benefit-desc">Shared adventure and achievement create lasting positive memories that translate into higher engagement and energy.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🔗</div>
+        <div class="benefit-title">Team Cohesion</div>
+        <p class="benefit-desc">Overcoming challenges together strengthens bonds and mutual respect, creating more resilient and unified teams.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🧩</div>
+        <div class="benefit-title">Problem-Solving Skills</div>
+        <p class="benefit-desc">Complex outdoor scenarios train creative, adaptive thinking that empowers teams to tackle workplace challenges differently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header">
+    <span class="section-tag" style="color: var(--gold);">Experience Gallery</span>
+    <h2 class="section-title light">Built for the Wild,<br>Designed for Teams</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1539183204366-63a0589187ab?w=800&q=80" alt="Team outdoor challenge">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?w=600&q=80" alt="Hiking team">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80" alt="Mountain view">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Forest adventure">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=80" alt="Campfire team">
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section id="video-section">
+  <span class="section-tag" style="color: var(--gold);">See Great Escape in Action</span>
+  <h2 class="section-title light">Adventure Is the<br>Best Teacher</h2>
+  <p class="section-sub light" style="margin: 0 auto 0; text-align:center;">Watch how a Great Escape program transforms teams from the first challenge to the final debrief.</p>
+  <div class="video-wrapper">
+    <div class="video-placeholder">
+      <button class="play-btn">▶</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div style="text-align:center; max-width: 560px; margin: 0 auto;">
+    <span class="section-tag">What Our Clients Say</span>
+    <h2 class="section-title">Teams That Went Beyond<br>the Ordinary</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"The program Andre designed for us was unlike anything our team had experienced. We came back from the mountains as a different organization — more trusting, more focused, and genuinely energized."</p>
+      <div class="testimonial-author">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Marc D." class="author-avatar">
+        <div>
+          <div class="author-name">Marc Dubois</div>
+          <div class="author-role">Head of People, TechForward Group</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"We'd tried traditional team building before — nothing came close. Great Escape put our leadership team through real challenges that revealed dynamics we didn't even know existed. Genuinely transformative."</p>
+      <div class="testimonial-author">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80" alt="Sophie L." class="author-avatar">
+        <div>
+          <div class="author-name">Sophie Laurent</div>
+          <div class="author-role">VP Operations, Meridian Capital</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Andre has an extraordinary gift for designing experiences that feel both challenging and safe. Our 40-person team returned with a shared vocabulary and a renewed sense of purpose. The ROI was immediate."</p>
+      <div class="testimonial-author">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Karim N." class="author-avatar">
+        <div>
+          <div class="author-name">Karim Nassar</div>
+          <div class="author-role">CEO, Novara Consulting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <span class="section-tag">Common Questions</span>
+  <h2 class="section-title">Everything You Need to Know</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-question">
+        How large a group can you accommodate?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">We design programs for groups ranging from 8 to 200+ participants. Each program is scaled and structured to ensure meaningful engagement regardless of group size.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        Do participants need prior outdoor experience?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">Absolutely not. Our programs are designed to be accessible to all fitness levels and backgrounds. We calibrate the physical demands to match your team and always prioritize psychological and physical safety.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        How long does a typical program last?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">Programs range from half-day experiences to multi-day expeditions. We recommend at least a full day for teams seeking meaningful behavioral change, and 2–3 days for leadership development programs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        Can programs be customized to our business objectives?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">Customization is at the core of what we do. We begin every engagement with a discovery session to understand your team dynamics, goals, and challenges — then design every element of the program around your specific needs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        Where do programs take place?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">We operate across a range of outdoor environments — forests, mountains, coastlines, and rural settings. We can work near your location or arrange travel to a destination that best serves your program objectives.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-info reveal">
+    <span class="section-tag" style="color: var(--gold);">Get in Touch</span>
+    <h2 class="section-title light">Ready to Strengthen<br>Your Team?</h2>
+    <p class="section-sub light" style="margin-bottom: 36px;">Tell us about your team and objectives. We'll design something extraordinary together.</p>
+    <div class="contact-detail">
+      <div class="contact-icon">📧</div>
+      <span>hello@greatescape.com</span>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-icon">📞</div>
+      <span>+1 (555) 000-0000</span>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-icon">📍</div>
+      <span>Available worldwide · Based in Beirut, Lebanon</span>
+    </div>
+    <a href="https://wa.me/15550000000" class="whatsapp-btn" target="_blank">
+      <span>💬</span> Chat on WhatsApp
+    </a>
+  </div>
+  <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+    <div class="form-row">
+      <div class="form-field">
+        <label>First Name</label>
+        <input type="text" placeholder="Sarah">
+      </div>
+      <div class="form-field">
+        <label>Last Name</label>
+        <input type="text" placeholder="Johnson">
+      </div>
+    </div>
+    <div class="form-field">
+      <label>Work Email</label>
+      <input type="email" placeholder="sarah@company.com">
+    </div>
+    <div class="form-field">
+      <label>Company</label>
+      <input type="text" placeholder="Your Organization">
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label>Team Size</label>
+        <select>
+          <option value="">Select size</option>
+          <option>Under 15</option>
+          <option>15–30</option>
+          <option>30–60</option>
+          <option>60–100</option>
+          <option>100+</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Program Type</label>
+        <select>
+          <option value="">Select type</option>
+          <option>Corporate Team Building</option>
+          <option>Leadership Development</option>
+          <option>Team Outing</option>
+          <option>Creative Workshop</option>
+          <option>Adventure Trip</option>
+          <option>Custom Program</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-field">
+      <label>Message</label>
+      <textarea placeholder="Tell us about your team and what you're hoping to achieve..."></textarea>
+    </div>
+    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; border: none; font-family: 'Outfit', sans-serif; font-size: 1rem;">
+      Send Consultation Request →
+    </button>
+  </form>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <h2 class="newsletter-title">Stay Inspired</h2>
+  <p class="newsletter-sub">Insights on team performance, outdoor leadership, and upcoming programs.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="Your email address">
+    <button type="button">Subscribe →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Great<span>Escape</span></div>
+      <p class="footer-tagline">Transforming teams through the power of outdoor experiences. Over 25 years of expertise in corporate team building and experiential leadership.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="social-link" aria-label="Facebook">f</a>
+        <a href="#" class="social-link" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#">Team Building</a></li>
+        <li><a href="#">Leadership</a></li>
+        <li><a href="#">Ecotourism</a></li>
+        <li><a href="#">Educational Camps</a></li>
+        <li><a href="#">Adventure Trips</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Founder</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Testimonials</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Book a Consultation</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Email Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Newsletter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Great Escape. All rights reserved.</p>
+    <p>Designed for teams who dare to go further.</p>
+  </div>
+</footer>
+
+<script>
+// Sticky nav
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+// Staggered reveals for grids
+document.querySelectorAll('.services-grid .service-card, .benefits-grid .benefit-card, .testimonials-grid .testimonial-card').forEach((el, i) => {
+  el.style.transitionDelay = (i % 3) * 0.1 + 's';
+});
+
+// Counter animation
+const counters = document.querySelectorAll('[data-target]');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '+';
+      let current = 0;
+      const step = target / 60;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          el.textContent = target + suffix;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(current) + suffix;
+        }
+      }, 25);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(el => counterObserver.observe(el));
+
+// FAQ toggle
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = '✓ Request Sent! We\'ll be in touch soon.';
+  btn.style.background = 'var(--forest-light)';
+}
+</script>
+</body>
+</html>
