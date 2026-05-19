@@ -428,10 +428,9 @@
     box-shadow: 0 4px 16px rgba(201,151,58,0.35);
   }
 
-  /* Main stage wrapper */
+  /* Main stage wrapper — panels are self-contained grids */
   .roi-stage {
     position: relative;
-    min-height: 680px;
   }
 
   /* Panel visibility — grid lives on the panel itself, not the stage */
@@ -476,10 +475,6 @@
     padding: 64px 56px;
     display: flex; flex-direction: column; justify-content: center;
   }
-
-  /* Panel visibility */
-  .roi-panel { display: none; }
-  .roi-panel.active { display: contents; }
 
   /* Benefit rows — staggered list style */
   .benefit-rows { display: flex; flex-direction: column; gap: 0; }
