@@ -1,1090 +1,311 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>André Béchara | Consultant in Human Dynamics & Corporate Experiences</title>
-<meta name="description" content="André Béchara delivers tailored team-building and transformational learning experiences for corporations. 30+ years expertise. Based in Lebanon, operating worldwide.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- ========================= -->
+<!-- HERO SECTION UPDATED -->
+<!-- ========================= -->
+
 <style>
-  :root {
-    --forest: #1a2e1a;
-    --forest-mid: #2d4a2d;
-    --forest-light: #3d6b3d;
-    --sand: #d4b896;
-    --sand-light: #ede0ce;
-    --cream: #f9f4ed;
-    --charcoal: #1c1c1c;
-    --white: #ffffff;
-    --orange: #d4722a;
-    --gold: #c9973a;
-    --gold-light: #e8b84b;
-    --text-dark: #1c1c1c;
-    --text-mid: #444;
-    --text-light: #888;
-  }
-
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Outfit', sans-serif;
-    color: var(--text-dark);
-    background: var(--cream);
-    overflow-x: hidden;
-  }
-
-  /* ---- NAV ---- */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    padding: 20px 48px;
-    display: flex; align-items: center; justify-content: space-between;
-    transition: background 0.4s, padding 0.4s;
-    background: rgba(10,24,10,0.35);
-  }
-  nav.scrolled {
-    background: rgba(18,38,18,0.97);
-    backdrop-filter: blur(12px);
-    padding: 14px 48px;
-    box-shadow: 0 2px 30px rgba(0,0,0,0.3);
-  }
-  nav.menu-open {
-    background: rgba(18,38,18,0.99) !important;
-  }
-  .nav-logo {
-    display: flex; align-items: center; gap: 14px;
-    text-decoration: none; line-height: 1.2; flex-shrink: 0;
-  }
-  .nav-logo-img { height: 56px; width: auto; display: block; flex-shrink: 0; }
-  .nav-logo-text { display: flex; flex-direction: column; }
-  .nav-logo-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem; font-weight: 900;
-    color: var(--white); letter-spacing: -0.01em;
-  }
-  .nav-logo-sub { color: var(--gold); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Outfit', sans-serif; margin-top: 2px; }
-  .nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
-  .nav-links a {
-    color: rgba(255,255,255,0.85); text-decoration: none;
-    font-size: 0.88rem; font-weight: 500; letter-spacing: 0.03em;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta {
-    background: var(--orange); color: white !important;
-    padding: 10px 22px; border-radius: 40px;
-    font-weight: 600 !important; transition: background 0.2s, transform 0.2s !important;
-  }
-  .nav-cta:hover { background: var(--gold) !important; transform: translateY(-1px); }
-  .hamburger {
-    display: none; flex-direction: column; gap: 5px; cursor: pointer;
-    background: none; border: none; padding: 4px; z-index: 1002; position: relative;
-  }
-  .hamburger span { display: block; width: 26px; height: 2px; background: white; border-radius: 2px; transition: 0.3s; }
-
   /* ---- HERO ---- */
   #hero {
-    position: relative; height: 100vh; min-height: 680px;
-    display: flex; align-items: center; justify-content: center; overflow: hidden;
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
+
   .hero-bg {
-    position: absolute; inset: 0;
+    position: absolute;
+    inset: 0;
     background:
-      linear-gradient(160deg, rgba(10,25,10,0.78) 0%, rgba(26,46,26,0.50) 45%, rgba(80,50,10,0.35) 100%),
-      url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1800&q=80') center/cover no-repeat;
+      linear-gradient(
+        160deg,
+        rgba(10,25,10,0.55) 0%,
+        rgba(26,46,26,0.35) 45%,
+        rgba(80,50,10,0.18) 100%
+      ),
+      url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1800&auto=format&fit=crop') center center/cover no-repeat;
+    transform: scale(1.03);
   }
-  .hero-bg-fallback {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 40%, #3d3010 100%);
-    z-index: -1;
-  }
+
   .hero-bg::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
-    background: linear-gradient(to bottom, transparent, var(--forest));
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.08),
+      rgba(0,0,0,0.25)
+    );
   }
+
   .hero-content {
-    position: relative; z-index: 2;
-    text-align: center; max-width: 880px; padding: 80px 24px 80px;
-  }
-  .hero-badge {
-    display: inline-block;
-    border: 1px solid rgba(201,151,58,0.6); color: var(--gold);
-    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
-    padding: 6px 18px; border-radius: 30px; margin-bottom: 28px;
-    animation: fadeUp 0.8s ease both;
-    white-space: normal;
-    max-width: 320px;
+    position: relative;
+    z-index: 2;
     text-align: center;
-    line-height: 1.6;
+    max-width: 900px;
+    padding: 120px 24px 80px;
   }
-  @media (max-width: 430px) {
-    .hero-badge {
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      padding: 6px 14px;
-      max-width: 260px;
-    }
-    .hero-content { padding-top: 90px; margin-top: 10px; }
-  }
+
   .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 5.5vw, 4.2rem);
-    font-weight: 900; color: var(--white); line-height: 1.1;
-    margin-bottom: 28px; animation: fadeUp 0.8s 0.15s ease both;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 900;
+    color: white;
+    line-height: 1.08;
+    margin-bottom: 28px;
   }
-  .hero-title em { color: var(--gold); font-style: italic; display: block; }
+
+  .hero-title em {
+    color: var(--gold);
+    font-style: italic;
+    display: block;
+  }
+
   .hero-sub {
-    font-size: clamp(0.95rem, 1.8vw, 1.15rem); color: rgba(255,255,255,0.82);
-    font-weight: 300; line-height: 1.65; max-width: 600px; margin: 0 auto 40px;
-    animation: fadeUp 0.8s 0.3s ease both;
-  }
-  .hero-actions {
-    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-    animation: fadeUp 0.8s 0.45s ease both;
-  }
-  .btn-primary {
-    background: var(--orange); color: white;
-    padding: 15px 32px; border-radius: 50px;
-    font-size: 0.95rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer;
-    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
-    box-shadow: 0 4px 20px rgba(212,114,42,0.4); font-family: 'Outfit', sans-serif;
-  }
-  .btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,151,58,0.45); }
-  .btn-outline {
-    background: transparent; color: white;
-    padding: 15px 32px; border-radius: 50px;
-    font-size: 0.95rem; font-weight: 500;
-    border: 2px solid rgba(255,255,255,0.5); text-decoration: none; cursor: pointer;
-    transition: border-color 0.2s, background 0.2s, transform 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--gold); background: rgba(201,151,58,0.12); transform: translateY(-2px); }
-  .hero-scroll {
-    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-    z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
-  }
-  @media (max-height: 760px) {
-    .hero-scroll { display: none; }
-  }
-  .hero-scroll span { color: rgba(255,255,255,0.7); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
-  .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(201,151,58,0.8), transparent); animation: scrollPulse 2s ease-in-out infinite; }
-
-  /* ---- STATS STRIP ---- */
-  .stats-strip {
-    background: var(--forest); padding: 36px 48px;
-    display: flex; justify-content: center; gap: 64px; flex-wrap: wrap;
-  }
-  .stat-item { text-align: center; }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; color: var(--gold); line-height: 1; }
-  .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px; font-weight: 500; }
-
-  /* ---- CLIENT LOGOS BANNER ---- */
-  .clients-banner {
-    background: var(--white);
-    padding: 18px 48px;
-    border-bottom: 1px solid rgba(0,0,0,0.07);
-  }
-  .clients-label {
-    text-align: center; font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--text-light); margin-bottom: 20px;
-  }
-  .clients-track-wrap { overflow: hidden; position: relative; }
-  .clients-track-wrap::before,
-  .clients-track-wrap::after {
-    content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2;
-    pointer-events: none;
-  }
-  .clients-track-wrap::before { left: 0; background: linear-gradient(to right, white, transparent); }
-  .clients-track-wrap::after { right: 0; background: linear-gradient(to left, white, transparent); }
-  .clients-track {
-    display: flex; gap: 48px; align-items: center;
-    animation: marquee 40s linear infinite;
-    width: max-content;
-  }
-  .clients-track:hover { animation-play-state: paused; }
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  .client-logo {
-    display: flex; align-items: center; justify-content: center;
-    height: 54px; white-space: nowrap;
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem; font-weight: 700;
-    color: var(--text-light); letter-spacing: -0.01em;
-    transition: opacity 0.2s;
-    flex-shrink: 0;
-  }
-  .client-logo:hover { opacity: 0.85; }
-  .client-logo img { height: 48px; width: auto; object-fit: contain; mix-blend-mode: multiply; transition: opacity 0.2s; }
-  .client-logo:hover img { opacity: 1; }
-  /* Text-based logos for companies without image files */
-  .client-logo.text-logo {
-    padding: 0 8px;
-    border: 1px solid rgba(0,0,0,0.12);
-    border-radius: 6px; height: 40px; min-width: 120px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.82rem; font-weight: 600;
-    letter-spacing: 0.04em; text-transform: uppercase;
-    color: var(--text-mid);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.88);
+    max-width: 700px;
+    margin: 0 auto 18px;
+    font-weight: 300;
   }
 
-  /* ---- SECTION SHARED ---- */
-  section { padding: 96px 48px; }
-  .section-tag { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 900; line-height: 1.15; color: var(--forest); margin-bottom: 18px; }
-  .section-title.light { color: var(--white); }
-  .section-sub { font-size: 1.05rem; color: var(--text-mid); line-height: 1.7; max-width: 560px; font-weight: 300; }
-  .section-sub.light { color: rgba(255,255,255,0.75); }
+  /* ========================= */
+  /* CLIENT LOGOS FIX */
+  /* ========================= */
 
-  /* ---- ABOUT ---- */
-  #about {
+  .client-logo img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.82;
+    transition: all 0.25s ease;
+  }
+
+  .client-logo:hover img {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+
+  /* UNDP specific fix */
+  .undp-logo img {
+    height: 52px;
+    opacity: 1 !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    object-fit: contain;
+  }
+
+  /* ========================= */
+  /* ROI SECTION REDESIGN */
+  /* ========================= */
+
+  #benefits {
     background: var(--forest);
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 80px; align-items: center; padding: 96px 80px;
-  }
-  .about-img-wrap { position: relative; }
-  .about-img-wrap img { width: 100%; border-radius: 16px; display: block; object-fit: cover; height: 520px; }
-  .about-badge-float {
-    position: absolute; bottom: -24px; right: -24px;
-    background: var(--orange); color: white; padding: 20px 26px; border-radius: 14px;
-    font-weight: 600; font-size: 0.85rem;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3); line-height: 1.4;
-  }
-  .about-badge-float strong { display: block; font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--gold-light); line-height: 1; }
-  .about-text-wrap { padding: 20px 0; }
-  .about-quote { border-left: 3px solid var(--gold); padding-left: 20px; margin: 28px 0; font-style: italic; color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.7; }
-  .feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
-  .feature-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 0.9rem; font-weight: 500; }
-  .feature-item::before { content: '✦'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; }
-
-  #process {
-    background: var(--cream);
     position: relative;
-  }
-  #process::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('Images/flower.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.10;
-    z-index: 0;
-  }
-  #process > * { position: relative; z-index: 1; }
-  .process-steps {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    gap: 32px; margin-top: 56px;
-  }
-  .process-step {
-    background: white; border-radius: 16px; padding: 36px 28px;
-    border: 1px solid rgba(0,0,0,0.06);
-    position: relative; overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .process-step:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
-  .process-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem; font-weight: 900;
-    color: rgba(26,46,26,0.07); line-height: 1;
-    position: absolute; top: 16px; right: 20px;
-  }
-  .process-phase { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
-  .process-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--forest); margin-bottom: 12px; }
-  .process-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; }
-
-  /* ---- SERVICES ---- */
-  #services {
-    background: var(--sand-light);
-    position: relative;
-  }
-  #services::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('Images/rope.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.10;
-    z-index: 0;
-  }
-  #services > * { position: relative; z-index: 1; }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; margin-top: 56px; }
-  .service-card {
-    background: white; border-radius: 16px; padding: 32px 28px;
-    border: 1px solid rgba(0,0,0,0.06);
-    transition: transform 0.3s, box-shadow 0.3s; cursor: default; position: relative; overflow: hidden;
-  }
-  .service-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--forest-light), var(--gold));
-    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
-  }
-  .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
-  .service-card:hover::before { transform: scaleX(1); }
-  .service-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
-  .service-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--forest); margin-bottom: 10px; }
-  .service-desc { font-size: 0.87rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; }
-
-  /* ---- BASE CAMP ---- */
-  #basecamp {
-    background: var(--forest);
-    display: grid; grid-template-columns: 1.1fr 1fr;
-    gap: 72px; align-items: center; padding: 96px 80px;
-  }
-  .basecamp-text { }
-  .basecamp-specs {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 16px; margin-top: 36px;
-  }
-  .spec-item {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px; padding: 18px 16px;
-  }
-  .spec-value { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--gold); line-height: 1; }
-  .spec-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 5px; font-weight: 400; }
-  .basecamp-img img {
-    width: 100%; border-radius: 16px; object-fit: cover; height: 460px; display: block;
+    overflow: hidden;
   }
 
-  /* ---- FOUNDER ---- */
-  #founder {
-    background: var(--cream);
-    display: grid; grid-template-columns: 1fr 1.2fr;
-    gap: 80px; align-items: center; padding: 96px 80px;
-  }
-  .founder-img { position: relative; display: flex; align-items: flex-start; justify-content: center; }
-  .founder-img img { width: 100%; max-width: 420px; border-radius: 16px; object-fit: cover; object-position: top; height: 580px; display: block; margin: 0 auto; }
-  .badges-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
-  .badge-chip {
-    background: var(--forest); color: white; padding: 14px 16px;
-    border-radius: 10px; font-size: 0.82rem; font-weight: 500; text-align: center; line-height: 1.4;
-  }
-  .badge-chip span { display: block; color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 4px; }
-  .founder-name { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--forest); margin-bottom: 6px; }
-  .founder-role { font-size: 0.85rem; color: var(--orange); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
-  .founder-bio { font-size: 1rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; }
-
-  /* ---- BENEFITS (ROI) ---- */
-  #benefits { background: var(--forest); text-align: center; }
-  .roi-tabs { display: flex; gap: 12px; justify-content: center; margin-bottom: 48px; flex-wrap: wrap; }
-  .roi-tab {
-    padding: 10px 24px; border-radius: 30px; font-size: 0.88rem; font-weight: 600;
-    cursor: pointer; border: 2px solid rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.6); background: transparent;
-    font-family: 'Outfit', sans-serif; transition: all 0.2s;
-  }
-  .roi-tab.active { background: var(--gold); border-color: var(--gold); color: var(--forest); }
-  .roi-panel { display: none; }
-  .roi-panel.active { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
-  .benefit-card {
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px; padding: 28px 22px;
-    transition: background 0.3s, border-color 0.3s;
-    border-top: 2px solid rgba(201,151,58,0.35);
-  }
-  .benefit-card:hover { background: rgba(201,151,58,0.08); border-color: rgba(201,151,58,0.3); border-top-color: var(--gold); }
-  .benefit-icon { font-size: 1.8rem; margin-bottom: 12px; }
-  .benefit-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
-  .benefit-desc { font-size: 0.84rem; color: rgba(255,255,255,0.55); line-height: 1.6; font-weight: 300; }
-
-  /* ---- GALLERY ---- */
-  #gallery { background: var(--charcoal); padding: 96px 0; }
-  .gallery-header { padding: 0 48px; margin-bottom: 48px; }
-  .gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 280px 280px; gap: 4px; }
-  .gallery-item { overflow: hidden; position: relative; cursor: pointer; }
-  .gallery-item:first-child { grid-row: 1 / 3; }
-  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s, filter 0.5s; filter: saturate(0.8) brightness(0.9); }
-  .gallery-item:hover img { transform: scale(1.06); filter: saturate(1) brightness(1); }
-  .gallery-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 50%); opacity: 0; transition: opacity 0.3s; }
-  .gallery-item:hover::after { opacity: 1; }
-  /* Fallback gradient backgrounds for gallery items */
-  .gallery-item:nth-child(1) { background: linear-gradient(135deg, #2d4a2d, #1a2e1a); }
-  .gallery-item:nth-child(2) { background: linear-gradient(135deg, #3d3010, #c9973a); }
-  .gallery-item:nth-child(3) { background: linear-gradient(135deg, #1a2e1a, #3d6b3d); }
-  .gallery-item:nth-child(4) { background: linear-gradient(135deg, #2d1a0a, #d4722a); }
-  .gallery-item:nth-child(5) { background: linear-gradient(135deg, #0a1a0a, #2d4a2d); }
-
-  /* ---- TESTIMONIALS ---- */
-  #testimonials { background: var(--cream); }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
-  .testimonial-card { background: white; border-radius: 16px; padding: 32px; border: 1px solid rgba(0,0,0,0.06); transition: box-shadow 0.3s; }
-  .testimonial-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-  .stars { color: var(--gold); font-size: 0.95rem; margin-bottom: 16px; }
-  .testimonial-text { font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; font-style: italic; margin-bottom: 24px; }
-  .testimonial-author { display: flex; align-items: center; gap: 14px; }
-  .author-avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; flex-shrink: 0; background: var(--forest-mid); display: flex; align-items: center; justify-content: center; color: var(--gold); font-weight: 700; font-size: 1rem; }
-  .author-name { font-weight: 600; font-size: 0.9rem; color: var(--forest); }
-  .author-role { font-size: 0.78rem; color: var(--text-light); font-weight: 400; }
-  .author-company { font-size: 0.75rem; color: var(--orange); font-weight: 600; margin-top: 2px; }
-
-  /* ---- FAQ ---- */
-  #faq { background: var(--sand-light); }
-  .faq-list { max-width: 720px; margin-top: 48px; }
-  .faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); padding: 24px 0; }
-  .faq-question { display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 20px; font-weight: 600; font-size: 1rem; color: var(--forest); }
-  .faq-toggle { width: 28px; height: 28px; border-radius: 50%; background: var(--forest); color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; transition: background 0.2s, transform 0.3s; }
-  .faq-item.open .faq-toggle { background: var(--orange); transform: rotate(45deg); }
-  .faq-answer { font-size: 0.92rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
-  .faq-item.open .faq-answer { max-height: 200px; padding-top: 16px; }
-
-  /* ---- CONTACT ---- */
-  #contact {
-    background: var(--forest);
-    padding: 0;
+  .roi-intro {
     display: grid;
-    grid-template-columns: 1fr 1.1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 42px;
     align-items: stretch;
-    max-width: none;
-    margin: 0;
-    min-height: 520px;
+    margin-bottom: 60px;
   }
-  .contact-side-img {
+
+  .roi-visuals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    height: 100%;
+  }
+
+  .roi-visual {
+    border-radius: 18px;
     overflow: hidden;
     position: relative;
-    min-height: 440px;
+    min-height: 420px;
+    background: rgba(255,255,255,0.05);
   }
-  .contact-side-img img {
+
+  .roi-visual img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
     display: block;
-    filter: brightness(0.75) saturate(0.85);
-    transition: filter 0.4s;
+    transition: transform 0.5s ease;
   }
-  .contact-side-img:hover img { filter: brightness(0.85) saturate(1); }
-  .contact-side-img::after {
+
+  .roi-visual:hover img {
+    transform: scale(1.04);
+  }
+
+  .roi-visual::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(26,46,26,0.5), transparent);
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.45),
+      rgba(0,0,0,0.05)
+    );
   }
-  .contact-side-img.right-img::after {
-    background: linear-gradient(to left, rgba(26,46,26,0.5), transparent);
-  }
-  .contact-info {
-    padding: 72px 48px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .contact-detail { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; color: rgba(255,255,255,0.8); font-size: 0.95rem; }
-  .contact-detail a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.2s; }
-  .contact-detail a:hover { color: var(--gold); }
-  .contact-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-  .whatsapp-btn { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 13px 24px; border-radius: 40px; text-decoration: none; font-weight: 600; font-size: 0.9rem; margin-top: 12px; transition: opacity 0.2s, transform 0.2s; }
-  .whatsapp-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-  .contact-form { display: flex; flex-direction: column; gap: 16px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-field { display: flex; flex-direction: column; gap: 6px; }
-  .form-field label { font-size: 0.78rem; color: rgba(255,255,255,0.6); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
-  .form-field input, .form-field textarea, .form-field select {
-    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 10px; padding: 13px 16px; color: white;
-    font-family: 'Outfit', sans-serif; font-size: 0.95rem; outline: none;
-    transition: border-color 0.2s, background 0.2s; width: 100%;
-  }
-  .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--gold); background: rgba(255,255,255,0.1); }
-  .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,0.3); }
-  .form-field select option { background: var(--forest-mid); }
-  .form-field textarea { resize: vertical; min-height: 110px; }
 
-  /* ---- NEWSLETTER ---- */
-  #newsletter { background: var(--orange); padding: 56px 48px; text-align: center; }
-  .newsletter-title { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 900; color: white; margin-bottom: 10px; }
-  .newsletter-sub { color: rgba(255,255,255,0.85); font-size: 1rem; font-weight: 300; margin-bottom: 28px; }
-  .newsletter-form { display: flex; gap: 12px; justify-content: center; max-width: 480px; margin: 0 auto; flex-wrap: wrap; }
-  .newsletter-form input { flex: 1; min-width: 220px; padding: 14px 20px; border-radius: 40px; border: none; font-family: 'Outfit', sans-serif; font-size: 0.95rem; outline: none; }
-  .newsletter-form button { background: var(--forest); color: white; padding: 14px 26px; border-radius: 40px; border: none; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 0.9rem; transition: background 0.2s; white-space: nowrap; }
-  .newsletter-form button:hover { background: var(--charcoal); }
-
-  /* ---- FOOTER ---- */
-  footer { background: var(--charcoal); padding: 60px 80px 32px; }
-  .footer-grid { display: grid; grid-template-columns: 1fr; gap: 48px; margin-bottom: 48px; }
-  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: white; margin-bottom: 6px; }
-  .footer-logo span { color: var(--gold); }
-  .footer-subtitle { font-size: 0.75rem; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
-  .footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.65; font-weight: 300; }
-  .social-links { display: flex; gap: 12px; margin-top: 20px; }
-  .social-link { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 0.9rem; text-decoration: none; transition: background 0.2s, color 0.2s; }
-  .social-link:hover { background: var(--gold); color: white; }
-  .footer-col h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
-  .footer-col ul { list-style: none; }
-  .footer-col ul li { margin-bottom: 10px; }
-  .footer-col ul a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-  .footer-col ul a:hover { color: var(--gold); }
-  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-  .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
-
-  /* ---- ANIMATIONS ---- */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes scrollPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
-  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* ---- MOBILE ---- */
-  @media (max-width: 900px) {
-    nav {
-      padding: 16px 20px !important;
-      background: rgba(18,38,18,0.97) !important;
-      backdrop-filter: blur(12px) !important;
-    }
-    nav.scrolled { padding: 12px 20px !important; }
-    .nav-logo-img { height: 40px; }
-    .nav-links { display: none !important; }
-    .hamburger { display: flex !important; z-index: 1002; position: relative; }
-    /* Full-screen overlay when open */
-    .nav-links.open {
-      display: flex !important;
-      flex-direction: column !important;
-      position: fixed !important;
-      top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
-      width: 100vw !important; height: 100vh !important;
-      background-color: #122612 !important;
-      background: #122612 !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 0 !important;
-      z-index: 1001 !important;
-      list-style: none !important;
-      margin: 0 !important; padding: 0 !important;
-    }
-    .nav-links.open li {
-      display: block !important;
-      width: 75% !important;
-      text-align: center !important;
-      border-bottom: 1px solid rgba(255,255,255,0.1) !important;
-      padding: 18px 0 !important;
-    }
-    .nav-links.open li:last-child { border-bottom: none !important; margin-top: 16px !important; }
-    .nav-links.open li a {
-      display: block !important;
-      font-size: 1.35rem !important; color: #ffffff !important; text-decoration: none !important;
-      font-family: 'Playfair Display', serif !important; font-weight: 700 !important;
-      letter-spacing: 0.02em !important;
-    }
-    .nav-links.open li:last-child a {
-      background: #d4722a !important; color: white !important;
-      padding: 14px 36px !important; border-radius: 50px !important;
-      font-family: 'Outfit', sans-serif !important; font-size: 1rem !important;
-      display: inline-block !important;
-    }
-    /* Hamburger → X animation */
-    .hamburger span { transition: transform 0.3s, opacity 0.3s; }
-    .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    #hero { align-items: flex-start; }
-    .hero-content { padding-top: 100px; }
-    /* Hide scroll indicator on mobile to prevent overlap */
-    .hero-scroll { display: none; }
-    /* Fix all reveal elements on mobile — disable animation */
-    .reveal { opacity: 1 !important; transform: translateY(0) !important; transition: none !important; }
-    section { padding: 64px 20px; }
-    #about, #founder { grid-template-columns: 1fr; gap: 36px; padding: 64px 20px; }
-    #contact { grid-template-columns: 1fr; }
-    .contact-side-img { min-height: 220px; }
-    .contact-info { padding: 48px 20px; }
-    .about-badge-float { right: 0; bottom: -18px; }
-    #benefits .roi-panel.active { grid-template-columns: 1fr 1fr; }
-    .services-grid { grid-template-columns: 1fr 1fr; }
-    .process-steps { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .gallery-item:first-child { grid-row: auto; }
-    .gallery-grid .gallery-item { height: 200px; }
-    footer { padding: 48px 20px 24px; }
-    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-    .stats-strip { gap: 28px; padding: 28px 20px; }
-    .form-row { grid-template-columns: 1fr; }
-    .clients-banner { padding: 24px 20px; }
+  .roi-caption {
+    position: absolute;
+    bottom: 22px;
+    left: 22px;
+    z-index: 2;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
   }
-  @media (max-width: 560px) {
-    .services-grid { grid-template-columns: 1fr; }
-    #benefits .roi-panel.active { grid-template-columns: 1fr; }
-    .badges-grid { grid-template-columns: 1fr 1fr; }
-    .gallery-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; }
+
+  @media (max-width: 980px) {
+
+    .roi-intro {
+      grid-template-columns: 1fr;
+    }
+
+    .roi-visuals {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .roi-visual {
+      min-height: 320px;
+    }
+  }
+
+  @media (max-width: 640px) {
+
+    .roi-visuals {
+      grid-template-columns: 1fr;
+    }
+
+    .roi-visual {
+      min-height: 280px;
+    }
   }
 </style>
-</head>
-<body>
 
-<!-- NAV -->
-<nav id="navbar">
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-text">
-      <span class="nav-logo-name">André Béchara</span>
-      <span class="nav-logo-sub">Consultant in Human Dynamics</span>
-    </div>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#founder">Profile</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
+<!-- ========================= -->
 <!-- HERO -->
+<!-- ========================= -->
+
 <section id="hero">
-  <div class="hero-bg-fallback"></div>
   <div class="hero-bg"></div>
+
   <div class="hero-content">
     <h1 class="hero-title">
-      Beyond the Office.<br>Beyond the Classroom.<br><em>Into the Experience.</em>
+      Beyond the Office.<br>
+      Beyond the Classroom.<br>
+      <em>Into the Experience.</em>
     </h1>
-    <p class="hero-sub">From corporate retreats and incentive outings to educational camps every experience places people in extraordinary environments.</p>
-    <p class="hero-sub" style="margin-top: -16px; font-size: 0.95rem; opacity: 0.75;">Every journey blends purpose, discovery, and unforgettable moments.</p>
+
+    <p class="hero-sub">
+      Outdoor team experiences designed to strengthen communication,
+      collaboration, leadership, and trust through immersive real-world challenges.
+    </p>
+
+    <p class="hero-sub" style="font-size:0.96rem; opacity:0.82;">
+      Every journey blends adventure, strategy, teamwork, and unforgettable shared moments.
+    </p>
+
     <div class="hero-actions">
       <a href="#services" class="btn-outline">Explore Programs</a>
     </div>
   </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
 </section>
 
-<!-- STATS STRIP -->
-<div class="stats-strip">
-  <div class="stat-item">
-    <div class="stat-num" data-target="30">0</div>
-    <div class="stat-label">Years of Expertise</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num" data-target="400">0</div>
-    <div class="stat-label">Programs Delivered</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num" data-target="120">0</div>
-    <div class="stat-label">Corporate Clients</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num" data-target="4">0</div>
-    <div class="stat-label">Service Specialties</div>
-  </div>
+<!-- ========================= -->
+<!-- CLIENTS -->
+<!-- ========================= -->
+
+<div class="client-logo undp-logo">
+  <img 
+    src="https://upload.wikimedia.org/wikipedia/commons/3/36/UNDP_logo.svg"
+    alt="UNDP"
+    loading="lazy"
+  >
 </div>
 
-<!-- CLIENT LOGOS BANNER -->
-<div class="clients-banner">
-  <p class="clients-label">Trusted by leading organizations</p>
-  <div class="clients-track-wrap">
-    <div class="clients-track" id="clientsTrack">
-      <!-- Set 1 — Microsoft at centre, big names radiating outward -->
-      <div class="client-logo"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
-      <div class="client-logo"><img src="Images/solidere.png" alt="Solidere"></div>
-      <div class="client-logo"><img src="Images/toshiba.png" alt="Toshiba"></div>
-      <div class="client-logo"><img src="Images/deloitte.png" alt="Deloitte"></div>
-      <div class="client-logo"><img src="Images/airfrance.png" alt="Air France"></div>
-      <div class="client-logo"><img src="Images/pepsi.png" alt="Pepsi"></div>
-      <div class="client-logo"><img src="Images/microsoft.png" alt="Microsoft"></div>
-      <div class="client-logo"><img src="Images/unilever.png" alt="Unilever"></div>
-      <div class="client-logo"><img src="Images/redbull.png" alt="Red Bull"></div>
-      <div class="client-logo"><img src="Images/total.png" alt="Total"></div>
-      <div class="client-logo"><img src="Images/loreal.png" alt="L'Oréal"></div>
-      <div class="client-logo"><img src="Images/volvo.png" alt="Volvo"></div>
-      <div class="client-logo"><img src="Images/carrefour.png" alt="Carrefour"></div>
-      <div class="client-logo"><img src="Images/schneider.png" alt="Schneider Electric"></div>
-      <div class="client-logo"><img src="Images/aramex.png" alt="Aramex"></div>
-      <div class="client-logo"><img src="Images/azadea.png" alt="Azadea Group"></div>
-      <div class="client-logo"><img src="Images/fattal.png" alt="Fattal Group"></div>
-      <div class="client-logo"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson"></div>
-      <div class="client-logo"><img src="Images/lrc.png" alt="Lebanese Red Cross"></div>
-      <div class="client-logo"><img src="Images/almaza.png" alt="Almaza"></div>
-      <div class="client-logo"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
-      <div class="client-logo"><img src="Images/uob.png" alt="UOB"></div>
-      <div class="client-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/UNDP_logo.svg/320px-UNDP_logo.svg.png" alt="UNDP" style="mix-blend-mode:normal; filter: none; opacity:0.75;"></div>
-      <div class="client-logo"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
-      <div class="client-logo"><img src="Images/solidere.png" alt="Solidere"></div>
-      <div class="client-logo"><img src="Images/toshiba.png" alt="Toshiba"></div>
-      <div class="client-logo"><img src="Images/deloitte.png" alt="Deloitte"></div>
-      <div class="client-logo"><img src="Images/airfrance.png" alt="Air France"></div>
-      <div class="client-logo"><img src="Images/pepsi.png" alt="Pepsi"></div>
-      <div class="client-logo"><img src="Images/microsoft.png" alt="Microsoft"></div>
-      <div class="client-logo"><img src="Images/unilever.png" alt="Unilever"></div>
-      <div class="client-logo"><img src="Images/redbull.png" alt="Red Bull"></div>
-      <div class="client-logo"><img src="Images/total.png" alt="Total"></div>
-      <div class="client-logo"><img src="Images/loreal.png" alt="L'Oréal"></div>
-      <div class="client-logo"><img src="Images/volvo.png" alt="Volvo"></div>
-      <div class="client-logo"><img src="Images/carrefour.png" alt="Carrefour"></div>
-      <div class="client-logo"><img src="Images/schneider.png" alt="Schneider Electric"></div>
-      <div class="client-logo"><img src="Images/aramex.png" alt="Aramex"></div>
-      <div class="client-logo"><img src="Images/azadea.png" alt="Azadea Group"></div>
-      <div class="client-logo"><img src="Images/fattal.png" alt="Fattal Group"></div>
-      <div class="client-logo"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson"></div>
-      <div class="client-logo"><img src="Images/lrc.png" alt="Lebanese Red Cross"></div>
-      <div class="client-logo"><img src="Images/almaza.png" alt="Almaza"></div>
-      <div class="client-logo"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
-      <div class="client-logo"><img src="Images/uob.png" alt="UOB"></div>
-      <div class="client-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/UNDP_logo.svg/320px-UNDP_logo.svg.png" alt="UNDP" style="mix-blend-mode:normal; filter: none; opacity:0.75;"></div>
-    </div>
-  </div>
-</div>
+<!-- ========================= -->
+<!-- ROI SECTION -->
+<!-- ========================= -->
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-img-wrap reveal">
-    <img src="Images/team.png" alt="Team working together outdoors" onerror="this.style.background='linear-gradient(135deg,#2d4a2d,#1a2e1a)'; this.style.minHeight='520px'; this.removeAttribute('src')">
-  </div>
-  <div class="about-text-wrap reveal">
-    <span class="section-tag">What we do</span>
-    <h2 class="section-title light">From Groups<br>to Teams</h2>
-    <p class="section-sub light" style="margin-bottom: 18px;">Our programs combine mental and physical challenges in immersive, high-energy experiences that push participants beyond conventional thinking and routine behavior. Each activity is carefully designed to test and develop analytical thinking, creativity, communication, adaptability, decision-making, and leadership under real-world conditions.</p>
-    <p class="section-sub light">Participants are placed in dynamic scenarios where success depends on collaboration, strategic thinking, trust, and the ability to perform under pressure using limited resources and collective intelligence. The lessons learned in the field translate directly into the workplace, strengthening team cohesion, problem-solving capacity, leadership effectiveness, and organizational performance.</p>
-    <div class="feature-list">
-      <div class="feature-item">Radiant thinking methodology</div>
-      <div class="feature-item">Mental & physical challenge</div>
-      <div class="feature-item">Tailored to your team's needs</div>
-      <div class="feature-item">Full debrief & learning transfer</div>
-      <div class="feature-item">Measurable ROI</div>
-      <div class="feature-item">Expert facilitation</div>
-    </div>
-  </div>
-</section>
-
-<!-- THE PROCESS -->
-<section id="process">
-  <div style="max-width: 760px;">
-    <span class="section-tag">How it works</span>
-    <h2 class="section-title">A Structured Process<br>for Lasting Impact</h2>
-    <p class="section-sub">Every program follows a proven three-phase methodology, from design to debrief, ensuring the experience translates into real workplace change.</p>
-  </div>
-  <div class="process-steps">
-    <div class="process-step reveal">
-      <div class="process-num">01</div>
-      <div class="process-phase">Phase 1 · Design</div>
-      <div class="process-title">Needs Discovery & Tailoring</div>
-      <p class="process-desc">We work with your leadership team (CEO, GM, HR, department head) to define objectives, understand team dynamics, and profile participants. A tailored program is then designed and refined together to ensure full alignment before implementation.</p>
-    </div>
-    <div class="process-step reveal">
-      <div class="process-num">02</div>
-      <div class="process-phase">Phase 2 · Facilitation</div>
-      <div class="process-title">Live Observation in the Field</div>
-      <p class="process-desc">During activities, our facilitators actively monitor team behavior in real time, tracking communication, collaboration, leadership emergence, creativity, conflict handling, and engagement levels, while ensuring a safe, structured, and highly immersive experience.</p>
-    </div>
-    <div class="process-step reveal">
-      <div class="process-num">03</div>
-      <div class="process-phase">Phase 3 · Debrief</div>
-      <div class="process-title">Transfer Learning to Work</div>
-      <p class="process-desc">We unpack each activity, linking it directly to workplace realities. Through guided reflection, we help the team address observed challenges, extract key insights, and translate them into clear, actionable behaviors for improved on-the-job performance.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div style="max-width: 600px;">
-    <span class="section-tag">Programs & services</span>
-    <h2 class="section-title">Every Engagement<br>Designed for Impact</h2>
-    <p class="section-sub">From half-day outings to multi-day expeditions. Each program is built around your specific goals.</p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-title">Corporate Team Building</div>
-      <p class="service-desc">Immersive programs, both indoor and outdoor, combining mental, social, and physical challenges to strengthen teamwork, communication, and leadership through realistic, high-engagement scenarios that translate directly into workplace performance.</p>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-title">Corporate Outings & Experiences</div>
-      <p class="service-desc">Designed for incentive, celebration, or team connection, these experiences take employees beyond the workplace into engaging, high-energy environments that foster authentic relationships, shared memories, and lasting team cohesion.</p>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-title">Ecotourism & Rural Development</div>
-      <p class="service-desc">Responsible exploration programs that integrate business objectives with authentic rural and natural environments. We combine experiential education, sustainability, and discovery with practical training initiatives and collaborative projects alongside NGOs and local Hima conservation networks, supporting both community development and environmental stewardship.</p>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-title">School Outings & Educational Camps</div>
-      <p class="service-desc">Immersive educational experiences designed to combine adventure, environmental awareness, leadership development, and experiential learning in dynamic outdoor and indoor settings. Programs are tailored for schools, youth groups, students, and emerging leaders, integrating structured activities that encourage teamwork, creativity, problem-solving, communication, and personal growth.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FOUNDER -->
-<section id="founder">
-  <div class="founder-img reveal">
-    <img src="Images/andre-bechara.png" alt="André Béchara, Founder" style="object-position: top;">
-  </div>
-  <div class="reveal">
-    <span class="section-tag">The expert behind the programs</span>
-    <div class="founder-name">André Béchara</div>
-    <div class="founder-role">Consultant in Human Dynamics</div>
-    <p class="founder-bio">With more than 30 years of leadership in outdoor education, environmental awareness, rural development, adventure programming, and experiential learning, André Béchara is recognized as one of the Middle East's leading pioneers in corporate team building and transformational learning. His work combines strategic vision with hands-on field expertise across corporate team building, ecotourism, adventure expeditions, educational camps, creative thinking workshops, and rural and environmental development initiatives.</p>
-    <p class="founder-bio" style="margin-top: 14px;">By blending adventure, education, sustainability, psychology, and creativity, he creates experiences that generate lasting impact for individuals, organizations, and communities.</p>
-    <p class="founder-bio" style="margin-top: 14px;">Deeply committed to nature conservation and rural empowerment, André continues to use experiential learning as a bridge between people, nature, leadership, and purpose.</p>
-  </div>
-</section>
-
-<!-- BENEFITS / ROI -->
 <section id="benefits">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div>
-      <span class="section-tag" style="color: var(--gold);">Return on investment</span>
-      <h2 class="section-title light">What Your Team<br>Gains from the Field</h2>
-      <p class="section-sub light" style="margin: 0 auto 40px; text-align:center; max-width:560px;"><strong>Success in business is often measured by numbers; but the real investment and foundation is in people.</strong><br><br>Our programs transform your investment into tangible, lasting impact, strengthening teams, shifting behaviors, and creating measurable change that resonates across every level of your organization.</p>
+
+  <div style="max-width: 1180px; margin: 0 auto;">
+
+    <div class="roi-intro">
+
+      <!-- LEFT CONTENT -->
+      <div>
+        <span class="section-tag" style="color: var(--gold);">
+          Return on investment
+        </span>
+
+        <h2 class="section-title light">
+          What Your Team<br>
+          Gains from the Field
+        </h2>
+
+        <p class="section-sub light" style="max-width: 560px;">
+          <strong>
+            Success in business is measured by numbers,
+            but the real investment is always people.
+          </strong>
+
+          <br><br>
+
+          Our programs transform shared outdoor experiences into lasting behavioral change,
+          stronger collaboration, leadership growth, and measurable team performance.
+        </p>
+      </div>
+
+      <!-- RIGHT VISUALS -->
+      <div class="roi-visuals">
+
+        <!-- AIRCRAFT -->
+        <div class="roi-visual">
+          <img src="Images/aircraft.jpg"
+               alt="Aircraft challenge experience"
+               onerror="this.style.display='none'">
+
+          <div class="roi-caption">
+            Leadership Under Pressure
+          </div>
+        </div>
+
+        <!-- TRACK -->
+        <div class="roi-visual">
+          <img src="Images/track.jpg"
+               alt="Outdoor track team activity"
+               onerror="this.style.display='none'">
+
+          <div class="roi-caption">
+            Team Momentum & Coordination
+          </div>
+        </div>
+
+      </div>
     </div>
+
+    <!-- ROI TABS -->
     <div class="roi-tabs">
-      <button class="roi-tab active" onclick="switchTab(this, 'team')">At the Team Level</button>
-      <button class="roi-tab" onclick="switchTab(this, 'personal')">At the Personal Level</button>
+      <button class="roi-tab active" onclick="switchTab(this, 'team')">
+        At the Team Level
+      </button>
+
+      <button class="roi-tab" onclick="switchTab(this, 'personal')">
+        At the Personal Level
+      </button>
     </div>
-    <div class="roi-panel active" id="tab-team">
-      <div class="benefit-card reveal">
-        <div class="benefit-title">Communication</div>
-        <p class="benefit-desc">Field-based challenges strip workplace hierarchies, creating authentic communication patterns that carry back into the office.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-title">Effective Collaboration</div>
-        <p class="benefit-desc">Shared challenges build genuine camaraderie and a team culture grounded in trust and mutual accountability.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-title">Leadership Qualities</div>
-        <p class="benefit-desc">Real-world scenarios surface and develop leadership capabilities that no classroom training can replicate.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-title">Time Management</div>
-        <p class="benefit-desc">Time-pressured challenges reinforce prioritization, decision speed, and execution under constraints.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-title">Teamwork & Cohesion</div>
-        <p class="benefit-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-title">Problem-Solving Skills</div>
-        <p class="benefit-desc">Complex immersive scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.</p>
-      </div>
-    </div>
-    <div class="roi-panel" id="tab-personal">
-      <div class="benefit-card reveal">
-        <div class="benefit-title">Build Self-Confidence</div>
-        <p class="benefit-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-title">Stretch Personal Limits</div>
-        <p class="benefit-desc">Participants discover what they're capable of when pushed beyond their comfort zone in a safe, facilitated environment.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-title">Decision-Making Skills</div>
-        <p class="benefit-desc">Evaluating solutions under pressure sharpens analytical thinking and reduces hesitation in high-stakes situations.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-title">Thinking Outside the Box</div>
-        <p class="benefit-desc">Nature-based problem solving breaks habitual thinking patterns and unlocks genuine creative capacity.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-title">Fun & Memorable Times</div>
-        <p class="benefit-desc">Shared adventure creates lasting positive memories, increasing morale, loyalty, and sense of belonging to the company.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-title">Self-Awareness</div>
-        <p class="benefit-desc">Field observation and debriefing help participants understand their own strengths, blind spots, and contribution style.</p>
-      </div>
-    </div>
+
+    <!-- Existing ROI cards stay unchanged below -->
+
   </div>
 </section>
-
-<!-- GALLERY -->
-<section id="gallery">
-  <div class="gallery-header">
-    <span class="section-tag" style="color: var(--gold);">Experience gallery</span>
-    <h2 class="section-title light">Built for the Wild,<br>Designed for Teams</h2>
-  </div>
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <img src="Images/ski.png" alt="Ski activity" onerror="this.style.display='none'">
-    </div>
-    <div class="gallery-item">
-      <img src="Images/clap.png" alt="Team clapping" onerror="this.style.display='none'">
-    </div>
-    <div class="gallery-item">
-      <img src="Images/circle.png" alt="Circle activity" onerror="this.style.display='none'">
-    </div>
-    <div class="gallery-item">
-      <img src="Images/activity.png" alt="Team activity" onerror="this.style.display='none'">
-    </div>
-    <div class="gallery-item">
-      <img src="Images/blind.png" alt="Blind trust activity" onerror="this.style.display='none'">
-    </div>
-  </div>
-</section>
-
-
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-side-img">
-    <img src="Images/topchef.png" alt="Team cooking experience">
-  </div>
-  <div class="contact-info reveal">
-    <span class="section-tag" style="color: var(--gold);">Let's talk</span>
-    <h2 class="section-title light">Ready to Strengthen<br>Your Team?</h2>
-    <p class="section-sub light" style="margin-bottom: 36px;">Tell André about your team and objectives. Every program starts with a conversation.</p>
-    <div class="contact-detail">
-      <div class="contact-icon">@</div>
-      <a href="mailto:andrebechara1@gmail.com">andrebechara1@gmail.com</a>
-    </div>
-    <div class="contact-detail">
-      <div class="contact-icon">T</div>
-      <a href="tel:+9613360027">+961 (0)3 36 00 27</a>
-    </div>
-    <div class="contact-detail">
-      <div class="contact-icon">L</div>
-      <span>Beirut, Lebanon · Available Regionally & Internationally</span>
-    </div>
-    <a href="https://wa.me/9613360027" class="whatsapp-btn" target="_blank" rel="noopener">
-      WhatsApp André Directly
-    </a>
-  </div>
-  <div class="contact-side-img right-img">
-    <img src="Images/group.png" alt="Team group photo">
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo">André <span>Béchara</span></div>
-      <div class="footer-subtitle">Consultant in Human Dynamics</div>
-      <p class="footer-tagline">30+ years of expertise in experiential learning and corporate team building. Transforming groups into extraordinary teams, in Lebanon and worldwide.</p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/andre-bechara-1367b7b/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
-        <a href="#" class="social-link" aria-label="Instagram">IG</a>
-        <a href="#" class="social-link" aria-label="Facebook">f</a>
-        <a href="#" class="social-link" aria-label="YouTube">▶</a>
-      </div>
-    </div>
-
-  </div>
-  <div class="footer-bottom">
-    <p>© <span id="year"></span> André Béchara. All rights reserved.</p>
-    <p>What matters is not the journey itself, but who you take it with.</p>
-  </div>
-</footer>
-
-<script>
-// Auto year
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// Sticky nav
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
-
-// Hamburger
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-
-function openMenu() {
-  navLinks.classList.add('open');
-  navbar.classList.add('menu-open');
-  hamburger.classList.add('is-open');
-  hamburger.setAttribute('aria-expanded', 'true');
-  // Don't block scroll — we need touchmove to detect scrolling on iOS
-}
-
-function closeMenu() {
-  navLinks.classList.remove('open');
-  navbar.classList.remove('menu-open');
-  hamburger.classList.remove('is-open');
-  hamburger.setAttribute('aria-expanded', 'false');
-}
-
-hamburger.addEventListener('click', () => {
-  navLinks.classList.contains('open') ? closeMenu() : openMenu();
-});
-
-// Close menu when a nav link is clicked
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-// Close menu on scroll — use touchmove for iOS Safari (scroll doesn't fire when menu is open)
-let touchStartY = 0;
-document.addEventListener('touchstart', (e) => {
-  touchStartY = e.touches[0].clientY;
-}, { passive: true });
-document.addEventListener('touchmove', (e) => {
-  if (!navLinks.classList.contains('open')) return;
-  const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
-  if (deltaY > 10) closeMenu(); // close if scrolled more than 10px
-}, { passive: true });
-
-// Also close on desktop scroll
-window.addEventListener('scroll', () => {
-  if (navLinks.classList.contains('open')) closeMenu();
-}, { passive: true });
-
-// Scroll reveal with stagger
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-reveals.forEach((el, i) => {
-  const parent = el.parentElement;
-  const siblings = Array.from(parent.querySelectorAll(':scope > .reveal'));
-  const idx = siblings.indexOf(el);
-  el.style.transitionDelay = (idx * 0.1) + 's';
-  observer.observe(el);
-});
-
-// Counter animation
-const counters = document.querySelectorAll('[data-target]');
-const counterObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const target = parseInt(el.dataset.target);
-      let current = 0;
-      const step = target / 55;
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) { el.textContent = target + '+'; clearInterval(timer); }
-        else { el.textContent = Math.floor(current) + '+'; }
-      }, 28);
-      counterObs.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
-counters.forEach(el => counterObs.observe(el));
-
-// FAQ toggle
-document.querySelectorAll('.faq-question').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
-
-// ROI tabs
-function switchTab(btn, id) {
-  document.querySelectorAll('.roi-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.roi-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('tab-' + id).classList.add('active');
-}
-
-// Form submit
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  btn.textContent = '✓ Message sent. André will be in touch soon.';
-  btn.style.background = 'var(--forest-light)';
-  btn.disabled = true;
-}
-</script>
-</body>
-</html>
