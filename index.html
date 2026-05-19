@@ -36,7 +36,7 @@
 
   /* ---- NAV ---- */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     padding: 20px 48px;
     display: flex; align-items: center; justify-content: space-between;
     transition: background 0.4s, padding 0.4s;
@@ -78,7 +78,7 @@
   .nav-cta:hover { background: var(--gold) !important; transform: translateY(-1px); }
   .hamburger {
     display: none; flex-direction: column; gap: 5px; cursor: pointer;
-    background: none; border: none; padding: 4px; z-index: 101; position: relative;
+    background: none; border: none; padding: 4px; z-index: 1002; position: relative;
   }
   .hamburger span { display: block; width: 26px; height: 2px; background: white; border-radius: 2px; transition: 0.3s; }
 
@@ -453,23 +453,29 @@
     nav.scrolled { padding: 12px 20px !important; }
     .nav-logo-img { height: 40px; }
     .nav-links { display: none; }
-    .hamburger { display: flex; z-index: 201; position: relative; }
+    .hamburger { display: flex; z-index: 1002; position: relative; }
     .nav-links.open {
       display: flex; flex-direction: column;
       position: fixed; inset: 0;
-      background: rgba(18,38,18,0.99);
+      background: rgb(18,38,18);
       align-items: center; justify-content: center;
-      gap: 36px; z-index: 199;
+      gap: 36px; z-index: 1001;
     }
     .nav-links.open a {
       font-size: 1.4rem; color: white; text-decoration: none;
       font-family: 'Playfair Display', serif; font-weight: 700;
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08); width: 70%; text-align: center;
     }
     .nav-links.open .nav-cta {
       background: var(--orange); color: white;
-      padding: 14px 32px; border-radius: 50px;
+      padding: 14px 36px; border-radius: 50px;
       font-family: 'Outfit', sans-serif; font-size: 1rem !important;
+      border-bottom: none !important;
     }
+    /* Hamburger animates to X when open */
+    .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     /* Hide scroll indicator on mobile to prevent overlap */
     .hero-scroll { display: none; }
     /* Fix all reveal elements on mobile — disable animation */
@@ -1010,13 +1016,17 @@ const navLinks = document.getElementById('navLinks');
 function openMenu() {
   navLinks.classList.add('open');
   navbar.classList.add('menu-open');
+  hamburger.classList.add('is-open');
   hamburger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeMenu() {
   navLinks.classList.remove('open');
   navbar.classList.remove('menu-open');
+  hamburger.classList.remove('is-open');
   hamburger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
 }
 
 hamburger.addEventListener('click', () => {
