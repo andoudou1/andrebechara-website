@@ -438,13 +438,15 @@
   .roi-panel.active {
     display: grid;
     grid-template-columns: 320px 1fr 320px;
-    min-height: 680px;
+    align-items: stretch;
   }
   .roi-photo {
     position: relative; overflow: hidden;
+    min-height: 680px;
   }
   .roi-photo img {
-    width: 100%; height: 100%;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: center top;
     display: block;
     transition: transform 6s ease;
