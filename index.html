@@ -404,7 +404,7 @@
   .faq-item.open .faq-answer { max-height: 200px; padding-top: 16px; }
 
   /* ---- CONTACT ---- */
-  #contact { background: var(--forest); padding: 96px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  #contact { background: var(--forest); padding: 96px 80px; display: flex; flex-direction: column; align-items: flex-start; max-width: 700px; margin: 0 auto; }
   .contact-info { padding-top: 8px; }
   .contact-detail { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; color: rgba(255,255,255,0.8); font-size: 0.95rem; }
   .contact-detail a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.2s; }
@@ -438,7 +438,7 @@
 
   /* ---- FOOTER ---- */
   footer { background: var(--charcoal); padding: 60px 80px 32px; }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-grid { display: grid; grid-template-columns: 1fr; gap: 48px; margin-bottom: 48px; }
   .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: white; margin-bottom: 6px; }
   .footer-logo span { color: var(--gold); }
   .footer-subtitle { font-size: 0.75rem; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
@@ -528,7 +528,7 @@
     .gallery-item:first-child { grid-row: auto; }
     .gallery-grid .gallery-item { height: 200px; }
     footer { padding: 48px 20px 24px; }
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
     .stats-strip { gap: 28px; padding: 28px 20px; }
     .form-row { grid-template-columns: 1fr; }
     .clients-banner { padding: 24px 20px; }
@@ -569,7 +569,6 @@
   <div class="hero-bg-fallback"></div>
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-badge">30+ Human Dynamics · Lebanon & Worldwide</div>
     <h1 class="hero-title">
       Beyond the Office.<br>Beyond the Classroom.<br><em>Into the Experience.</em>
     </h1>
@@ -634,6 +633,7 @@
       <div class="client-logo"><img src="Images/almaza.png" alt="Almaza"></div>
       <div class="client-logo"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
       <div class="client-logo"><img src="Images/uob.png" alt="UOB"></div>
+      <div class="client-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/UNDP_logo.svg/320px-UNDP_logo.svg.png" alt="UNDP"></div>
       <!-- Set 2 (duplicate for seamless loop) -->
       <div class="client-logo"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
       <div class="client-logo"><img src="Images/solidere.png" alt="Solidere"></div>
@@ -657,6 +657,7 @@
       <div class="client-logo"><img src="Images/almaza.png" alt="Almaza"></div>
       <div class="client-logo"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
       <div class="client-logo"><img src="Images/uob.png" alt="UOB"></div>
+      <div class="client-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/UNDP_logo.svg/320px-UNDP_logo.svg.png" alt="UNDP"></div>
     </div>
   </div>
 </div>
@@ -664,7 +665,7 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="about-img-wrap reveal">
-    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="Team working together outdoors" onerror="this.style.background='linear-gradient(135deg,#2d4a2d,#1a2e1a)'; this.style.minHeight='520px'; this.removeAttribute('src')">
+    <img src="Images/team.jpg" alt="Team working together outdoors" onerror="this.style.background='linear-gradient(135deg,#2d4a2d,#1a2e1a)'; this.style.minHeight='520px'; this.removeAttribute('src')">
     <div class="about-badge-float">
       <strong>30+</strong>
       Years of Outdoor<br>Leadership
@@ -832,54 +833,24 @@
   </div>
   <div class="gallery-grid">
     <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80" alt="Team collaboration challenge" onerror="this.style.display='none'">
+      <img src="Images/ski.jpg" alt="Ski activity" onerror="this.style.display='none'">
     </div>
     <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&q=80" alt="Group outdoor activity" onerror="this.style.display='none'">
+      <img src="Images/clap.jpg" alt="Team clapping" onerror="this.style.display='none'">
     </div>
     <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1473621038790-b778b4750efe?w=600&q=80" alt="Mountain hiking expedition" onerror="this.style.display='none'">
+      <img src="Images/circle.jpg" alt="Circle activity" onerror="this.style.display='none'">
     </div>
     <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80" alt="Leadership in nature" onerror="this.style.display='none'">
+      <img src="Images/activity.jpg" alt="Team activity" onerror="this.style.display='none'">
     </div>
     <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&q=80" alt="Team debrief session" onerror="this.style.display='none'">
+      <img src="Images/blind.jpg" alt="Blind trust activity" onerror="this.style.display='none'">
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq">
-  <span class="section-tag">Common questions</span>
-  <h2 class="section-title">Everything You<br>Need to Know</h2>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-question">How large a group can you accommodate? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Programs are designed for groups ranging from 8 to 100 participants. Each program is scaled to ensure meaningful engagement regardless of group size, from leadership teams to company-wide events.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Do participants need prior outdoor experience? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Absolutely not. Programs are designed to be accessible to all fitness levels and backgrounds. Physical demands are calibrated to your team. Psychological and physical safety always come first.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">How long does a typical program last? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Programs range from half-day experiences to multi-day boot camps with overnight stays. For meaningful behavioral change, a full day is recommended. Leadership programs benefit from 2–3 days.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Can the program be tailored to our specific business objectives? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Tailoring is the foundation of every program. We begin with a discovery meeting with your CEO, GM, or HR team to define needs, gather participant profiles, and design accordingly. The program is finalized collaboratively before delivery.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Where do programs take place? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Programs can be delivered at a location of your choosing, at our private base camp in the Lebanese mountains (35 minutes from Beirut), or across outdoor destinations regionally and internationally.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">What happens after the activity? Is there a debrief? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Yes, the debrief is a core part of every program. We explain the objectives of each activity, its relevance to the workplace, how to overcome the challenges observed, and define key learnings to apply at work. This is where the real value transfers.</div>
-    </div>
-  </div>
-</section>
+
 
 <!-- CONTACT -->
 <section id="contact">
@@ -903,56 +874,7 @@
       WhatsApp André Directly
     </a>
   </div>
-  <form class="contact-form reveal" onsubmit="handleSubmit(event)">
-    <div class="form-row">
-      <div class="form-field">
-        <label>First Name</label>
-        <input type="text" placeholder="Sarah" required>
-      </div>
-      <div class="form-field">
-        <label>Last Name</label>
-        <input type="text" placeholder="Johnson" required>
-      </div>
-    </div>
-    <div class="form-field">
-      <label>Work Email</label>
-      <input type="email" placeholder="sarah@company.com" required>
-    </div>
-    <div class="form-field">
-      <label>Company</label>
-      <input type="text" placeholder="Your Organization">
-    </div>
-    <div class="form-row">
-      <div class="form-field">
-        <label>Team Size</label>
-        <select>
-          <option value="">Select size</option>
-          <option>Under 15</option>
-          <option>15–30</option>
-          <option>30–60</option>
-          <option>60–100</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label>Program Type</label>
-        <select>
-          <option value="">Select type</option>
-          <option>Corporate Team Building</option>
-          <option>Corporate Outings & Experiences</option>
-          <option>Ecotourism & Rural Development</option>
-          <option>School Outings & Educational Camps</option>
-          <option>Custom Program</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-field">
-      <label>Message</label>
-      <textarea placeholder="Tell André about your team, your goals, and any timing you have in mind..."></textarea>
-    </div>
-    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; border: none; font-family: 'Outfit', sans-serif; font-size: 1rem;">
-      Send Consultation Request →
-    </button>
-  </form>
+
 </section>
 
 <!-- FOOTER -->
@@ -969,33 +891,7 @@
         <a href="#" class="social-link" aria-label="YouTube">▶</a>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>Programs</h4>
-      <ul>
-        <li><a href="#services">Team Building</a></li>
-        <li><a href="#services">Corporate Outings</a></li>
-        <li><a href="#services">Ecotourism</a></li>
-        <li><a href="#services">Educational Camps</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>About</h4>
-      <ul>
-        <li><a href="#about">About the Programs</a></li>
-        <li><a href="#founder">André Béchara</a></li>
-        <li><a href="#process">The Process</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="#contact">Book a Consultation</a></li>
-        <li><a href="https://wa.me/9613360027">WhatsApp</a></li>
-        <li><a href="mailto:andrebechara1@gmail.com">Email André</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-    </div>
+
   </div>
   <div class="footer-bottom">
     <p>© <span id="year"></span> André Béchara. All rights reserved.</p>
