@@ -390,29 +390,25 @@
   .founder-role { font-size: 0.85rem; color: var(--orange); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
   .founder-bio { font-size: 1rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; }
 
-  /* ---- BENEFITS (ROI) — Editorial redesign ---- */
+  /* ---- BENEFITS (ROI) — Bulletproof rebuild ---- */
   #benefits {
     background: var(--forest);
     padding: 0;
     overflow: hidden;
   }
-
-  /* Header band */
   .roi-header {
     text-align: center;
-    padding: 96px 48px 64px;
+    padding: 96px 48px 56px;
   }
   .roi-header .section-tag { color: var(--gold); }
   .roi-header .section-title { color: var(--white); margin-bottom: 18px; }
-  .roi-header .roi-lead {
+  .roi-lead {
     font-size: 1rem; color: rgba(255,255,255,0.65); font-weight: 300;
     line-height: 1.8; max-width: 520px; margin: 0 auto 40px;
   }
-  .roi-header .roi-lead strong { color: rgba(255,255,255,0.9); font-weight: 500; }
-
-  /* Tab switcher */
+  .roi-lead strong { color: rgba(255,255,255,0.9); font-weight: 500; }
   .roi-tabs {
-    display: inline-flex; gap: 0;
+    display: inline-flex;
     border: 1px solid rgba(255,255,255,0.15); border-radius: 50px;
     padding: 4px; background: rgba(255,255,255,0.04);
   }
@@ -421,85 +417,93 @@
     font-size: 0.85rem; font-weight: 600; cursor: pointer;
     border: none; color: rgba(255,255,255,0.5);
     background: transparent; font-family: 'Outfit', sans-serif;
-    transition: all 0.3s; letter-spacing: 0.02em;
+    transition: all 0.3s;
   }
-  .roi-tab.active {
-    background: var(--gold); color: var(--forest);
-    box-shadow: 0 4px 16px rgba(201,151,58,0.35);
-  }
+  .roi-tab.active { background: var(--gold); color: var(--forest); box-shadow: 0 4px 16px rgba(201,151,58,0.35); }
 
-  /* Main stage wrapper — panels are self-contained grids */
-  .roi-stage {
-    position: relative;
-  }
-
-  /* Panel visibility — grid lives on the panel itself, not the stage */
+  /* The stage: three side-by-side columns using flexbox (not grid) */
   .roi-panel { display: none; }
   .roi-panel.active {
-    display: grid;
-    grid-template-columns: 320px 1fr 320px;
+    display: flex;
+    flex-direction: row;
     align-items: stretch;
-  }
-  .roi-photo {
-    position: relative; overflow: hidden;
     min-height: 680px;
+  }
+
+  /* Photo panels — fixed width, image fills via background-image on the div */
+  .roi-photo {
+    flex: 0 0 300px;
+    width: 300px;
+    position: relative;
+    overflow: hidden;
   }
   .roi-photo img {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    object-fit: cover; object-position: center top;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
     display: block;
-    transition: transform 6s ease;
-    filter: brightness(0.75) saturate(0.85);
+    filter: brightness(0.72) saturate(0.85);
   }
-  #benefits:hover .roi-photo img { transform: scale(1.04); }
-  /* Inner shadow toward center */
   .roi-photo::after {
     content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to right, transparent 50%, rgba(26,46,26,0.85) 100%);
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to right, transparent 40%, var(--forest) 100%);
   }
   .roi-photo.right::after {
-    background: linear-gradient(to left, transparent 50%, rgba(26,46,26,0.85) 100%);
+    background: linear-gradient(to left, transparent 40%, var(--forest) 100%);
   }
-  /* Gold line accent on inner edge */
   .roi-photo::before {
     content: '';
-    position: absolute; top: 15%; bottom: 15%;
-    right: 0; width: 2px;
+    position: absolute; top: 12%; bottom: 12%;
+    right: 0; width: 2px; z-index: 2;
     background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-    z-index: 2; opacity: 0.5;
+    opacity: 0.5;
   }
   .roi-photo.right::before { right: auto; left: 0; }
 
-  /* Centre benefits column */
+  /* Centre column */
   .roi-centre {
+    flex: 1 1 auto;
     padding: 64px 56px;
-    display: flex; flex-direction: column; justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
-  /* Benefit rows — staggered list style */
-  .benefit-rows { display: flex; flex-direction: column; gap: 0; }
+  /* Benefit rows */
+  .benefit-rows { display: flex; flex-direction: column; }
   .benefit-row {
-    display: grid;
-    grid-template-columns: 3px 1fr;
-    gap: 0 24px;
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
     padding: 22px 0;
     border-bottom: 1px solid rgba(255,255,255,0.06);
-    align-items: start;
-    transition: background 0.25s;
+    align-items: flex-start;
+    transition: background 0.25s, padding 0.25s;
     cursor: default;
+    border-radius: 0;
   }
   .benefit-row:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
-  .benefit-row:hover { background: rgba(201,151,58,0.05); margin: 0 -20px; padding-left: 20px; padding-right: 20px; border-radius: 8px; border-color: transparent; }
+  .benefit-row:hover {
+    background: rgba(201,151,58,0.06);
+    padding-left: 12px; padding-right: 12px;
+    border-radius: 8px;
+  }
   .benefit-accent {
-    width: 3px; border-radius: 3px; margin-top: 6px;
+    flex: 0 0 3px;
+    width: 3px;
+    align-self: stretch;
+    min-height: 44px;
+    border-radius: 3px;
     background: linear-gradient(to bottom, var(--gold), var(--orange));
-    align-self: stretch; min-height: 40px;
-    opacity: 0.5; transition: opacity 0.25s;
+    opacity: 0.45;
+    transition: opacity 0.25s;
+    margin-top: 3px;
   }
   .benefit-row:hover .benefit-accent { opacity: 1; }
-  .benefit-body {}
+  .benefit-body { flex: 1; }
   .benefit-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem; font-weight: 700;
@@ -514,38 +518,34 @@
   }
   .benefit-row:hover .benefit-desc { color: rgba(255,255,255,0.7); }
 
-  /* Mobile responsive */
+  /* Mobile */
+  .roi-photos-mobile { display: none; }
   @media (max-width: 900px) {
     .roi-panel.active {
-      grid-template-columns: 1fr;
+      flex-direction: column;
       min-height: auto;
     }
-    .roi-stage { min-height: auto; }
+    .roi-photo { display: none; }
     .roi-photos-mobile {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
       height: 260px;
     }
-    .roi-photo { display: none; }
     .roi-photo-mobile {
-      position: relative; overflow: hidden;
+      flex: 1; position: relative; overflow: hidden;
     }
     .roi-photo-mobile img {
+      position: absolute; top: 0; left: 0;
       width: 100%; height: 100%;
       object-fit: cover; object-position: center top;
       display: block;
-      filter: brightness(0.75) saturate(0.85);
+      filter: brightness(0.72) saturate(0.85);
     }
     .roi-photo-mobile::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 40%, rgba(26,46,26,0.7));
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(26,46,26,0.75));
     }
-    .roi-centre { padding: 48px 24px; }
+    .roi-centre { padding: 40px 24px; }
     .roi-header { padding: 64px 24px 48px; }
-  }
-  @media (min-width: 901px) {
-    .roi-photos-mobile { display: none; }
   }
 
   /* ---- GALLERY ---- */
@@ -1009,10 +1009,7 @@
     </div>
   </div>
 
-  <!-- Stage -->
-  <div class="roi-stage">
-
-    <!-- Panel: Team -->
+  <!-- Panel: Team -->
     <div class="roi-panel active" id="tab-team">
       <div class="roi-photo">
         <img src="Images/aircraft.png" alt="Aircraft team experience">
@@ -1124,7 +1121,6 @@
       </div>
     </div>
 
-  </div>
 </section>
 
 <!-- GALLERY -->
