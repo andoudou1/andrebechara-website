@@ -1,1177 +1,1195 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>André Béchara | Outdoor Team Building & Corporate Experiences</title>
-<meta name="description" content="André Béchara delivers tailored outdoor team-building experiences for corporations. 30+ years expertise. Based in Lebanon, operating worldwide.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --forest: #1a2e1a;
-    --forest-mid: #2d4a2d;
-    --forest-light: #3d6b3d;
-    --sand: #d4b896;
-    --sand-light: #ede0ce;
-    --cream: #f9f4ed;
-    --charcoal: #1c1c1c;
-    --white: #ffffff;
-    --orange: #d4722a;
-    --gold: #c9973a;
-    --gold-light: #e8b84b;
-    --text-dark: #1c1c1c;
-    --text-mid: #444;
-    --text-light: #888;
-  }
-
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Outfit', sans-serif;
-    color: var(--text-dark);
-    background: var(--cream);
-    overflow-x: hidden;
-  }
-
-  /* ---- NAV ---- */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    padding: 20px 48px;
-    display: flex; align-items: center; justify-content: space-between;
-    transition: background 0.4s, padding 0.4s;
-    background: rgba(10,24,10,0.35);
-  }
-  nav.scrolled {
-    background: rgba(18,38,18,0.97);
-    backdrop-filter: blur(12px);
-    padding: 14px 48px;
-    box-shadow: 0 2px 30px rgba(0,0,0,0.3);
-  }
-  nav.menu-open {
-    background: rgba(18,38,18,0.99) !important;
-  }
-  .nav-logo {
-    display: flex; align-items: center; gap: 14px;
-    text-decoration: none; line-height: 1.2; flex-shrink: 0;
-  }
-  .nav-logo-img { height: 56px; width: auto; display: block; flex-shrink: 0; }
-  .nav-logo-text { display: flex; flex-direction: column; }
-  .nav-logo-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem; font-weight: 900;
-    color: var(--white); letter-spacing: -0.01em;
-  }
-  .nav-logo-sub { color: var(--gold); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Outfit', sans-serif; margin-top: 2px; }
-  .nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
-  .nav-links a {
-    color: rgba(255,255,255,0.85); text-decoration: none;
-    font-size: 0.88rem; font-weight: 500; letter-spacing: 0.03em;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta {
-    background: var(--orange); color: white !important;
-    padding: 10px 22px; border-radius: 40px;
-    font-weight: 600 !important; transition: background 0.2s, transform 0.2s !important;
-  }
-  .nav-cta:hover { background: var(--gold) !important; transform: translateY(-1px); }
-  .hamburger {
-    display: none; flex-direction: column; gap: 5px; cursor: pointer;
-    background: none; border: none; padding: 4px; z-index: 1002; position: relative;
-  }
-  .hamburger span { display: block; width: 26px; height: 2px; background: white; border-radius: 2px; transition: 0.3s; }
-
-  /* ---- HERO ---- */
-  #hero {
-    position: relative; height: 100vh; min-height: 680px;
-    display: flex; align-items: center; justify-content: center; overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(160deg, rgba(10,25,10,0.72) 0%, rgba(26,46,26,0.45) 50%, rgba(100,60,10,0.3) 100%),
-      url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&q=80') center/cover no-repeat;
-  }
-  .hero-bg-fallback {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 40%, #3d3010 100%);
-    z-index: -1;
-  }
-  .hero-bg::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
-    background: linear-gradient(to bottom, transparent, var(--forest));
-  }
-  .hero-content {
-    position: relative; z-index: 2;
-    text-align: center; max-width: 880px; padding: 0 24px;
-  }
-  .hero-badge {
-    display: inline-block;
-    border: 1px solid rgba(201,151,58,0.6); color: var(--gold);
-    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
-    padding: 6px 18px; border-radius: 30px; margin-bottom: 28px;
-    animation: fadeUp 0.8s ease both;
-    /* Prevent wrapping on small screens */
-    white-space: nowrap;
-  }
-  @media (max-width: 430px) {
-    .hero-badge {
-      font-size: 0.6rem;
-      letter-spacing: 0.08em;
-      padding: 5px 12px;
-      white-space: normal;
-      max-width: 280px;
-    }
-    .hero-content { padding-top: 20px; }
-  }
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.6rem, 6.5vw, 5rem);
-    font-weight: 900; color: var(--white); line-height: 1.05;
-    margin-bottom: 22px; animation: fadeUp 0.8s 0.15s ease both;
-  }
-  .hero-title em { color: var(--gold); font-style: italic; }
-  .hero-sub {
-    font-size: clamp(0.95rem, 1.8vw, 1.15rem); color: rgba(255,255,255,0.82);
-    font-weight: 300; line-height: 1.65; max-width: 600px; margin: 0 auto 40px;
-    animation: fadeUp 0.8s 0.3s ease both;
-  }
-  .hero-actions {
-    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-    animation: fadeUp 0.8s 0.45s ease both;
-  }
-  .btn-primary {
-    background: var(--orange); color: white;
-    padding: 15px 32px; border-radius: 50px;
-    font-size: 0.95rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer;
-    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
-    box-shadow: 0 4px 20px rgba(212,114,42,0.4); font-family: 'Outfit', sans-serif;
-  }
-  .btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,151,58,0.45); }
-  .btn-outline {
-    background: transparent; color: white;
-    padding: 15px 32px; border-radius: 50px;
-    font-size: 0.95rem; font-weight: 500;
-    border: 2px solid rgba(255,255,255,0.5); text-decoration: none; cursor: pointer;
-    transition: border-color 0.2s, background 0.2s, transform 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--gold); background: rgba(201,151,58,0.12); transform: translateY(-2px); }
-  .hero-scroll {
-    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-    z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
-  }
-  .hero-scroll span { color: rgba(255,255,255,0.7); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
-  .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(201,151,58,0.8), transparent); animation: scrollPulse 2s ease-in-out infinite; }
-
-  /* ---- STATS STRIP ---- */
-  .stats-strip {
-    background: var(--forest); padding: 36px 48px;
-    display: flex; justify-content: center; gap: 64px; flex-wrap: wrap;
-  }
-  .stat-item { text-align: center; }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; color: var(--gold); line-height: 1; }
-  .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px; font-weight: 500; }
-
-  /* ---- CLIENT LOGOS BANNER ---- */
-  /* ---- CLIENTS GRID ---- */
-  .clients-section {
-    background: var(--charcoal);
-    padding: 72px 80px;
-  }
-  .clients-header {
-    text-align: center;
-    margin-bottom: 52px;
-  }
-  .clients-eyebrow {
-    display: inline-block;
-    font-size: 0.7rem; font-weight: 700;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 14px;
-  }
-  .clients-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 900; color: var(--white);
-    line-height: 1.2; margin-bottom: 12px;
-  }
-  .clients-sub {
-    font-size: 0.9rem; color: rgba(255,255,255,0.45);
-    font-weight: 300; letter-spacing: 0.02em;
-  }
-  .clients-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2px;
-  }
-  .client-cell {
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px 28px;
-    min-height: 90px;
-    border: 1px solid rgba(255,255,255,0.06);
-    background: rgba(255,255,255,0.02);
-    transition: background 0.25s, border-color 0.25s, transform 0.25s;
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-  }
-  .client-cell::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at center, rgba(201,151,58,0.08), transparent 70%);
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .client-cell:hover {
-    background: rgba(255,255,255,0.07);
-    border-color: rgba(201,151,58,0.3);
-    transform: translateY(-2px);
-  }
-  .client-cell:hover::after { opacity: 1; }
-  .client-cell img {
-    height: 52px; width: 100%; max-width: 160px;
-    object-fit: contain;
-    mix-blend-mode: screen;
-    opacity: 0.75;
-    transition: opacity 0.3s, transform 0.3s;
-  }
-  .client-cell:hover img {
-    opacity: 1;
-    transform: scale(1.06);
-  }
-  /* Dark logos (e.g. Solidere, Bank Audi) need a light background pill to be visible */
-  .client-cell.dark-logo {
-    background: rgba(255,255,255,0.06);
-  }
-  .client-cell.dark-logo img {
-    mix-blend-mode: normal;
-    opacity: 0.85;
-    background: rgba(255,255,255,0.92);
-    border-radius: 6px;
-    padding: 6px 10px;
-    height: 52px;
-  }
-  .client-cell.dark-logo:hover img { opacity: 1; }
-  /* Fallback text for missing images */
-  .client-cell .client-name {
-    font-size: 0.82rem; font-weight: 600;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    text-align: center; line-height: 1.3;
-    transition: color 0.3s;
-  }
-  .client-cell:hover .client-name { color: rgba(201,151,58,0.9); }
-  .clients-count {
-    text-align: center; margin-top: 40px;
-    font-size: 0.82rem; color: rgba(255,255,255,0.3);
-    letter-spacing: 0.05em;
-  }
-  .clients-count strong { color: var(--gold); font-weight: 700; }
-
-  /* ---- SECTION SHARED ---- */
-  section { padding: 96px 48px; }
-  .section-tag { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 900; line-height: 1.15; color: var(--forest); margin-bottom: 18px; }
-  .section-title.light { color: var(--white); }
-  .section-sub { font-size: 1.05rem; color: var(--text-mid); line-height: 1.7; max-width: 560px; font-weight: 300; }
-  .section-sub.light { color: rgba(255,255,255,0.75); }
-
-  /* ---- ABOUT ---- */
-  #about {
-    background: var(--forest);
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 80px; align-items: center; padding: 96px 80px;
-  }
-  .about-img-wrap { position: relative; }
-  .about-img-wrap img { width: 100%; border-radius: 16px; display: block; object-fit: cover; height: 520px; }
-  .about-badge-float {
-    position: absolute; bottom: -24px; right: -24px;
-    background: var(--orange); color: white; padding: 20px 26px; border-radius: 14px;
-    font-weight: 600; font-size: 0.85rem;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3); line-height: 1.4;
-  }
-  .about-badge-float strong { display: block; font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--gold-light); line-height: 1; }
-  .about-text-wrap { padding: 20px 0; }
-  .about-quote { border-left: 3px solid var(--gold); padding-left: 20px; margin: 28px 0; font-style: italic; color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.7; }
-  .feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
-  .feature-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 0.9rem; font-weight: 500; }
-  .feature-item::before { content: '✦'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; }
-
-  /* ---- THE PROCESS ---- */
-  #process { background: var(--cream); }
-  .process-steps {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    gap: 32px; margin-top: 56px;
-  }
-  .process-step {
-    background: white; border-radius: 16px; padding: 36px 28px;
-    border: 1px solid rgba(0,0,0,0.06);
-    position: relative; overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .process-step:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
-  .process-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem; font-weight: 900;
-    color: rgba(26,46,26,0.07); line-height: 1;
-    position: absolute; top: 16px; right: 20px;
-  }
-  .process-phase { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
-  .process-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--forest); margin-bottom: 12px; }
-  .process-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; }
-
-  /* ---- SERVICES ---- */
-  #services { background: var(--sand-light); }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; margin-top: 56px; }
-  .service-card {
-    background: white; border-radius: 16px; padding: 32px 28px;
-    border: 1px solid rgba(0,0,0,0.06);
-    transition: transform 0.3s, box-shadow 0.3s; cursor: default; position: relative; overflow: hidden;
-  }
-  .service-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--forest-light), var(--gold));
-    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
-  }
-  .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
-  .service-card:hover::before { transform: scaleX(1); }
-  .service-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
-  .service-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--forest); margin-bottom: 10px; }
-  .service-desc { font-size: 0.87rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; }
-
-  /* ---- BASE CAMP ---- */
-  #basecamp {
-    background: var(--forest);
-    display: grid; grid-template-columns: 1.1fr 1fr;
-    gap: 72px; align-items: center; padding: 96px 80px;
-  }
-  .basecamp-text { }
-  .basecamp-specs {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 16px; margin-top: 36px;
-  }
-  .spec-item {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px; padding: 18px 16px;
-  }
-  .spec-value { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--gold); line-height: 1; }
-  .spec-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 5px; font-weight: 400; }
-  .basecamp-img img {
-    width: 100%; border-radius: 16px; object-fit: cover; height: 460px; display: block;
-  }
-
-  /* ---- FOUNDER ---- */
-  #founder {
-    background: var(--cream);
-    display: grid; grid-template-columns: 1fr 1.2fr;
-    gap: 80px; align-items: center; padding: 96px 80px;
-  }
-  .founder-img { position: relative; display: flex; align-items: flex-start; justify-content: center; }
-  .founder-img img { width: 100%; max-width: 420px; border-radius: 16px; object-fit: cover; object-position: top; height: 580px; display: block; margin: 0 auto; }
-  .badges-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
-  .badge-chip {
-    background: var(--forest); color: white; padding: 14px 16px;
-    border-radius: 10px; font-size: 0.82rem; font-weight: 500; text-align: center; line-height: 1.4;
-  }
-  .badge-chip span { display: block; color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 4px; }
-  .founder-name { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--forest); margin-bottom: 6px; }
-  .founder-role { font-size: 0.85rem; color: var(--orange); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
-  .founder-bio { font-size: 1rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; }
-
-  /* ---- BENEFITS (ROI) ---- */
-  #benefits { background: var(--forest); text-align: center; }
-  .roi-tabs { display: flex; gap: 12px; justify-content: center; margin-bottom: 48px; flex-wrap: wrap; }
-  .roi-tab {
-    padding: 10px 24px; border-radius: 30px; font-size: 0.88rem; font-weight: 600;
-    cursor: pointer; border: 2px solid rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.6); background: transparent;
-    font-family: 'Outfit', sans-serif; transition: all 0.2s;
-  }
-  .roi-tab.active { background: var(--gold); border-color: var(--gold); color: var(--forest); }
-  .roi-panel { display: none; }
-  .roi-panel.active { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
-  .benefit-card {
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px; padding: 28px 22px;
-    transition: background 0.3s, border-color 0.3s;
-  }
-  .benefit-card:hover { background: rgba(201,151,58,0.08); border-color: rgba(201,151,58,0.3); }
-  .benefit-icon { font-size: 1.8rem; margin-bottom: 12px; }
-  .benefit-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
-  .benefit-desc { font-size: 0.84rem; color: rgba(255,255,255,0.55); line-height: 1.6; font-weight: 300; }
-
-  /* ---- GALLERY ---- */
-  #gallery { background: var(--charcoal); padding: 96px 0; }
-  .gallery-header { padding: 0 48px; margin-bottom: 48px; }
-  .gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 280px 280px; gap: 4px; }
-  .gallery-item { overflow: hidden; position: relative; cursor: pointer; }
-  .gallery-item:first-child { grid-row: 1 / 3; }
-  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s, filter 0.5s; filter: saturate(0.8) brightness(0.9); }
-  .gallery-item:hover img { transform: scale(1.06); filter: saturate(1) brightness(1); }
-  .gallery-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 50%); opacity: 0; transition: opacity 0.3s; }
-  .gallery-item:hover::after { opacity: 1; }
-  /* Fallback gradient backgrounds for gallery items */
-  .gallery-item:nth-child(1) { background: linear-gradient(135deg, #2d4a2d, #1a2e1a); }
-  .gallery-item:nth-child(2) { background: linear-gradient(135deg, #3d3010, #c9973a); }
-  .gallery-item:nth-child(3) { background: linear-gradient(135deg, #1a2e1a, #3d6b3d); }
-  .gallery-item:nth-child(4) { background: linear-gradient(135deg, #2d1a0a, #d4722a); }
-  .gallery-item:nth-child(5) { background: linear-gradient(135deg, #0a1a0a, #2d4a2d); }
-
-  /* ---- TESTIMONIALS ---- */
-  #testimonials { background: var(--cream); }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
-  .testimonial-card { background: white; border-radius: 16px; padding: 32px; border: 1px solid rgba(0,0,0,0.06); transition: box-shadow 0.3s; }
-  .testimonial-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-  .stars { color: var(--gold); font-size: 0.95rem; margin-bottom: 16px; }
-  .testimonial-text { font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; font-style: italic; margin-bottom: 24px; }
-  .testimonial-author { display: flex; align-items: center; gap: 14px; }
-  .author-avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; flex-shrink: 0; background: var(--forest-mid); display: flex; align-items: center; justify-content: center; color: var(--gold); font-weight: 700; font-size: 1rem; }
-  .author-name { font-weight: 600; font-size: 0.9rem; color: var(--forest); }
-  .author-role { font-size: 0.78rem; color: var(--text-light); font-weight: 400; }
-  .author-company { font-size: 0.75rem; color: var(--orange); font-weight: 600; margin-top: 2px; }
-
-  /* ---- FAQ ---- */
-  #faq { background: var(--sand-light); }
-  .faq-list { max-width: 720px; margin-top: 48px; }
-  .faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); padding: 24px 0; }
-  .faq-question { display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 20px; font-weight: 600; font-size: 1rem; color: var(--forest); }
-  .faq-toggle { width: 28px; height: 28px; border-radius: 50%; background: var(--forest); color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; transition: background 0.2s, transform 0.3s; }
-  .faq-item.open .faq-toggle { background: var(--orange); transform: rotate(45deg); }
-  .faq-answer { font-size: 0.92rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
-  .faq-item.open .faq-answer { max-height: 200px; padding-top: 16px; }
-
-  /* ---- CONTACT ---- */
-  #contact { background: var(--forest); padding: 96px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .contact-info { padding-top: 8px; }
-  .contact-detail { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; color: rgba(255,255,255,0.8); font-size: 0.95rem; }
-  .contact-detail a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.2s; }
-  .contact-detail a:hover { color: var(--gold); }
-  .contact-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-  .whatsapp-btn { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 13px 24px; border-radius: 40px; text-decoration: none; font-weight: 600; font-size: 0.9rem; margin-top: 12px; transition: opacity 0.2s, transform 0.2s; }
-  .whatsapp-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-  .contact-form { display: flex; flex-direction: column; gap: 16px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-field { display: flex; flex-direction: column; gap: 6px; }
-  .form-field label { font-size: 0.78rem; color: rgba(255,255,255,0.6); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
-  .form-field input, .form-field textarea, .form-field select {
-    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 10px; padding: 13px 16px; color: white;
-    font-family: 'Outfit', sans-serif; font-size: 0.95rem; outline: none;
-    transition: border-color 0.2s, background 0.2s; width: 100%;
-  }
-  .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--gold); background: rgba(255,255,255,0.1); }
-  .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,0.3); }
-  .form-field select option { background: var(--forest-mid); }
-  .form-field textarea { resize: vertical; min-height: 110px; }
-
-  /* ---- NEWSLETTER ---- */
-  #newsletter { background: var(--orange); padding: 56px 48px; text-align: center; }
-  .newsletter-title { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 900; color: white; margin-bottom: 10px; }
-  .newsletter-sub { color: rgba(255,255,255,0.85); font-size: 1rem; font-weight: 300; margin-bottom: 28px; }
-  .newsletter-form { display: flex; gap: 12px; justify-content: center; max-width: 480px; margin: 0 auto; flex-wrap: wrap; }
-  .newsletter-form input { flex: 1; min-width: 220px; padding: 14px 20px; border-radius: 40px; border: none; font-family: 'Outfit', sans-serif; font-size: 0.95rem; outline: none; }
-  .newsletter-form button { background: var(--forest); color: white; padding: 14px 26px; border-radius: 40px; border: none; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 0.9rem; transition: background 0.2s; white-space: nowrap; }
-  .newsletter-form button:hover { background: var(--charcoal); }
-
-  /* ---- FOOTER ---- */
-  footer { background: var(--charcoal); padding: 60px 80px 32px; }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: white; margin-bottom: 6px; }
-  .footer-logo span { color: var(--gold); }
-  .footer-subtitle { font-size: 0.75rem; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
-  .footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.65; font-weight: 300; }
-  .social-links { display: flex; gap: 12px; margin-top: 20px; }
-  .social-link { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 0.9rem; text-decoration: none; transition: background 0.2s, color 0.2s; }
-  .social-link:hover { background: var(--gold); color: white; }
-  .footer-col h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
-  .footer-col ul { list-style: none; }
-  .footer-col ul li { margin-bottom: 10px; }
-  .footer-col ul a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-  .footer-col ul a:hover { color: var(--gold); }
-  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-  .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
-
-  /* ---- ANIMATIONS ---- */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes scrollPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
-  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* ---- MOBILE ---- */
-  @media (max-width: 900px) {
-    nav {
-      padding: 16px 20px !important;
-      background: rgba(18,38,18,0.97) !important;
-      backdrop-filter: blur(12px) !important;
-    }
-    nav.scrolled { padding: 12px 20px !important; }
-    .nav-logo-img { height: 40px; }
-    .nav-links { display: none !important; }
-    .hamburger { display: flex !important; z-index: 1002; position: relative; }
-    /* Full-screen overlay when open */
-    .nav-links.open {
-      display: flex !important;
-      flex-direction: column !important;
-      position: fixed !important;
-      top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
-      width: 100vw !important; height: 100vh !important;
-      background-color: #122612 !important;
-      background: #122612 !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 0 !important;
-      z-index: 1001 !important;
-      list-style: none !important;
-      margin: 0 !important; padding: 0 !important;
-    }
-    .nav-links.open li {
-      display: block !important;
-      width: 75% !important;
-      text-align: center !important;
-      border-bottom: 1px solid rgba(255,255,255,0.1) !important;
-      padding: 18px 0 !important;
-    }
-    .nav-links.open li:last-child { border-bottom: none !important; margin-top: 16px !important; }
-    .nav-links.open li a {
-      display: block !important;
-      font-size: 1.35rem !important; color: #ffffff !important; text-decoration: none !important;
-      font-family: 'Playfair Display', serif !important; font-weight: 700 !important;
-      letter-spacing: 0.02em !important;
-    }
-    .nav-links.open li:last-child a {
-      background: #d4722a !important; color: white !important;
-      padding: 14px 36px !important; border-radius: 50px !important;
-      font-family: 'Outfit', sans-serif !important; font-size: 1rem !important;
-      display: inline-block !important;
-    }
-    /* Hamburger → X animation */
-    .hamburger span { transition: transform 0.3s, opacity 0.3s; }
-    .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    /* Hide scroll indicator on mobile to prevent overlap */
-    .hero-scroll { display: none; }
-    /* Fix all reveal elements on mobile — disable animation */
-    .reveal { opacity: 1 !important; transform: translateY(0) !important; transition: none !important; }
-    section { padding: 64px 20px; }
-    #about, #founder, #contact { grid-template-columns: 1fr; gap: 36px; padding: 64px 20px; }
-    .about-badge-float { right: 0; bottom: -18px; }
-    #benefits .roi-panel.active { grid-template-columns: 1fr 1fr; }
-    .services-grid { grid-template-columns: 1fr 1fr; }
-    .process-steps { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .gallery-item:first-child { grid-row: auto; }
-    .gallery-grid .gallery-item { height: 200px; }
-    footer { padding: 48px 20px 24px; }
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-    .stats-strip { gap: 28px; padding: 28px 20px; }
-    .form-row { grid-template-columns: 1fr; }
-    .clients-section { padding: 56px 20px; }
-    .clients-grid { grid-template-columns: repeat(3, 1fr); }
-    .client-cell { padding: 16px 12px; min-height: 70px; }
-    .client-cell img { height: 36px; }
-  }
-  @media (max-width: 560px) {
-    .services-grid { grid-template-columns: 1fr; }
-    #benefits .roi-panel.active { grid-template-columns: 1fr; }
-    .badges-grid { grid-template-columns: 1fr 1fr; }
-    .gallery-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .clients-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px}
+    span.s1 {font: 13.0px 'Zapf Dingbats'}
+  </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav id="navbar">
-  <a href="#" class="nav-logo">
-    <img src="Images/greatescape.png" alt="The Great Escape" class="nav-logo-img">
-    <div class="nav-logo-text">
-      <span class="nav-logo-name">André Béchara</span>
-      <span class="nav-logo-sub">Outdoor Team Building Expert</span>
-    </div>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#founder">Profile</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact" class="nav-cta">Book a Session</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg-fallback"></div>
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-badge">🌿 30+ Years of Outdoor Expertise · Lebanon & Worldwide</div>
-    <h1 class="hero-title">
-      Escape the Ordinary.<br><em>Build Extraordinary Teams.</em>
-    </h1>
-    <p class="hero-sub">Tailored experiential leadership programs that transform groups into cohesive, high-performing teams through challenge, collaboration, and immersive field-based learning.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Book a Consultation</a>
-      <a href="#services" class="btn-outline">Explore Programs</a>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
-
-<!-- STATS STRIP -->
-<div class="stats-strip">
-  <div class="stat-item">
-    <div class="stat-num" data-target="30">0</div>
-    <div class="stat-label">Years of Expertise</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num" data-target="400">0</div>
-    <div class="stat-label">Programs Delivered</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num" data-target="120">0</div>
-    <div class="stat-label">Corporate Clients</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num" data-target="8">0</div>
-    <div class="stat-label">Service Specialties</div>
-  </div>
-</div>
-
-<!-- CLIENT LOGOS GRID -->
-<div class="clients-section">
-  <div class="clients-header">
-    <span class="clients-eyebrow">Trusted by leading organisations</span>
-    <h2 class="clients-headline">Teams that have made<br>the Great Escape</h2>
-    <p class="clients-sub">From regional leaders to global brands — across industries, borders, and cultures.</p>
-  </div>
-  <div class="clients-grid">
-    <div class="client-cell"><img src="Images/microsoft.png" alt="Microsoft"></div>
-    <div class="client-cell"><img src="Images/deloitte.png" alt="Deloitte"></div>
-    <div class="client-cell"><img src="Images/unilever.png" alt="Unilever"></div>
-    <div class="client-cell"><img src="Images/airfrance.png" alt="Air France"></div>
-    <div class="client-cell"><img src="Images/loreal.png" alt="L'Oréal"></div>
-    <div class="client-cell"><img src="Images/pepsi.png" alt="Pepsi"></div>
-    <div class="client-cell"><img src="Images/total.png" alt="TotalEnergies"></div>
-    <div class="client-cell"><img src="Images/schneider.png" alt="Schneider Electric"></div>
-    <div class="client-cell"><img src="Images/redbull.png" alt="Red Bull"></div>
-    <div class="client-cell"><img src="Images/carrefour.png" alt="Carrefour"></div>
-    <div class="client-cell"><img src="Images/volvo.png" alt="Volvo"></div>
-    <div class="client-cell"><img src="Images/toshiba.png" alt="Toshiba"></div>
-    <div class="client-cell"><img src="Images/azadea.png" alt="Azadea Group"></div>
-    <div class="client-cell"><img src="Images/fattal.png" alt="Fattal Group"></div>
-    <div class="client-cell"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
-    <div class="client-cell dark-logo"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
-    <div class="client-cell dark-logo"><img src="Images/solidere.png" alt="Solidere"></div>
-    <div class="client-cell"><img src="Images/aramex.png" alt="Aramex"></div>
-    <div class="client-cell"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson"></div>
-    <div class="client-cell"><img src="Images/lrc.png" alt="Lebanese Red Cross"></div>
-    <div class="client-cell"><img src="Images/almaza.png" alt="Almaza"></div>
-  </div>
-  <p class="clients-count"><strong>21+</strong> organisations trust André Béchara to transform their teams</p>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-img-wrap reveal">
-    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="Team working together outdoors" onerror="this.style.background='linear-gradient(135deg,#2d4a2d,#1a2e1a)'; this.style.minHeight='520px'; this.removeAttribute('src')">
-    <div class="about-badge-float">
-      <strong>30+</strong>
-      Years of Outdoor<br>Leadership
-    </div>
-  </div>
-  <div class="about-text-wrap reveal">
-    <span class="section-tag">What we do</span>
-    <h2 class="section-title light">From Groups<br>to <em style="font-style:italic">Teams</em></h2>
-    <p class="section-sub light" style="margin-bottom: 18px;">The program combines mental and physical challenges in immersive, high-energy experiences that push participants beyond conventional thinking and routine behavior. Each activity is carefully designed to test and develop analytical thinking, creativity, communication, adaptability, decision-making, and leadership under real-world conditions.</p>
-    <p class="section-sub light">Participants are placed in dynamic scenarios where success depends on collaboration, strategic thinking, trust, and the ability to perform under pressure using limited resources and collective intelligence. The lessons learned in the field translate directly into the workplace, strengthening team cohesion, problem-solving capacity, leadership effectiveness, and organizational performance.</p>
-    <div class="feature-list">
-      <div class="feature-item">Radiant thinking methodology</div>
-      <div class="feature-item">Mental & physical challenge</div>
-      <div class="feature-item">Tailored to your team's needs</div>
-      <div class="feature-item">Full debrief & learning transfer</div>
-      <div class="feature-item">Measurable ROI</div>
-      <div class="feature-item">Expert facilitation</div>
-    </div>
-  </div>
-</section>
-
-<!-- THE PROCESS -->
-<section id="process">
-  <div style="max-width: 760px;">
-    <span class="section-tag">How it works</span>
-    <h2 class="section-title">A Structured Process<br>for Lasting Impact</h2>
-    <p class="section-sub">Every program follows a proven three-phase methodology, from design to debrief, ensuring the experience translates into real workplace change.</p>
-  </div>
-  <div class="process-steps">
-    <div class="process-step reveal">
-      <div class="process-num">01</div>
-      <div class="process-phase">Phase 1 · Design</div>
-      <div class="process-title">Needs Discovery & Tailoring</div>
-      <p class="process-desc">We work with your leadership team (CEO, GM, HR, department head) to define objectives, understand team dynamics, and profile participants. A tailored program is then designed and refined together to ensure full alignment before implementation.</p>
-    </div>
-    <div class="process-step reveal">
-      <div class="process-num">02</div>
-      <div class="process-phase">Phase 2 · Facilitation</div>
-      <div class="process-title">Live Observation in the Field</div>
-      <p class="process-desc">During activities, our facilitators actively monitor team behavior in real time, tracking communication, collaboration, leadership emergence, creativity, conflict handling, and engagement levels, while ensuring a safe, structured, and highly immersive experience.</p>
-    </div>
-    <div class="process-step reveal">
-      <div class="process-num">03</div>
-      <div class="process-phase">Phase 3 · Debrief</div>
-      <div class="process-title">Transfer Learning to Work</div>
-      <p class="process-desc">We unpack each activity, linking it directly to workplace realities. Through guided reflection, we help the team address observed challenges, extract key insights, and translate them into clear, actionable behaviors for improved on-the-job performance.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div style="max-width: 600px;">
-    <span class="section-tag">Programs & services</span>
-    <h2 class="section-title">Every Engagement<br>Designed for Impact</h2>
-    <p class="section-sub">From half-day outings to multi-day expeditions. Each program is built around your specific goals.</p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <span class="service-icon">🏕️</span>
-      <div class="service-title">Corporate Team Building</div>
-      <p class="service-desc">Immersive programs, both indoor and outdoor, combining mental, social, and physical challenges to strengthen teamwork, communication, and leadership through realistic, high-engagement scenarios that translate directly into workplace performance.</p>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-icon">🌲</span>
-      <div class="service-title">Corporate Outings & Experiences</div>
-      <p class="service-desc">Designed for incentive, celebration, or team connection, these experiences take employees beyond the workplace into engaging, high-energy environments that foster authentic relationships, shared memories, and lasting team cohesion.</p>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-icon">🌿</span>
-      <div class="service-title">Ecotourism & Rural Development</div>
-      <p class="service-desc">Responsible exploration programs that integrate business objectives with authentic rural and natural environments. We combine experiential education, sustainability, and discovery with practical training initiatives and collaborative projects alongside NGOs and local Hima conservation networks, supporting both community development and environmental stewardship.</p>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-icon">⛺</span>
-      <div class="service-title">School Outings & Educational Camps</div>
-      <p class="service-desc">Structured outdoor camps with environmental education focus, combining adventure with learning objectives for youth, students, and emerging leaders.</p>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-icon">🧗</span>
-      <div class="service-title">Adventure Trips</div>
-      <p class="service-desc">Guided expeditions into challenging terrain, building resilience, trust, and shared achievement in experiences your team will talk about for years.</p>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-icon">🎬</span>
-      <div class="service-title">TV Program Game Design</div>
-      <p class="service-desc">Original outdoor challenge formats for broadcast media, blending competition, storytelling, and high-energy adventure in scalable game concepts.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FOUNDER -->
-<section id="founder">
-  <div class="founder-img reveal">
-    <img src="Images/andre-bechara.png" alt="André Béchara, Founder" style="object-position: top;">
-  </div>
-  <div class="reveal">
-    <span class="section-tag">The expert behind the programs</span>
-    <div class="founder-name">André Béchara</div>
-    <div class="founder-role">Consultant in Human Dynamics, Nature-Based Leadership & Rural Development · Founder</div>
-    <p class="founder-bio">With more than 30+ years of leadership in outdoor education, environmental awareness, rural development, adventure programming, and experiential learning, André Béchara has become one of the Middle East's most respected pioneers in corporate team building and transformational learning experiences.</p>
-    <p class="founder-bio" style="margin-top: 14px;">Blending strategic insight with field expertise, his work spans corporate team building, ecotourism, environmental and rural development initiatives, educational camps, adventure expeditions, creative thinking workshops, and television game concept design. His core belief: the strongest teams are not built in meeting rooms, but through shared challenges, trust, resilience, and real-world experience.</p>
-    <p class="founder-bio" style="margin-top: 14px;">For decades, André has designed experiences that push individuals beyond comfort zones, transform groups into cohesive teams, and reconnect people with leadership, nature, community, and purpose. His approach combines adventure, education, sustainability, psychology, and creativity to create impactful programs that generate lasting human, organizational, and social change.</p>
-    <p class="founder-bio" style="margin-top: 14px;">Deeply committed to nature conservation and the empowerment of rural communities, he has consistently used outdoor experiences as a tool for leadership development, environmental stewardship, and cultural connection, helping bridge people, places, and purpose across generations.</p>
-    <div class="badges-grid">
-      <div class="badge-chip"><span>30+</span>Years of Expertise</div>
-      <div class="badge-chip"><span>🏆</span>Corporate Programs</div>
-      <div class="badge-chip"><span>🌍</span>Regional & Global Reach</div>
-      <div class="badge-chip"><span>🎬</span>TV Game Design</div>
-    </div>
-  </div>
-</section>
-
-<!-- BENEFITS / ROI -->
-<section id="benefits">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div>
-      <span class="section-tag" style="color: var(--gold);">Return on investment</span>
-      <h2 class="section-title light">What Your Team<br>Gains from the Field</h2>
-      <p class="section-sub light" style="margin: 0 auto 40px; text-align:center; max-width:560px;"><strong>Success in business is often measured by numbers; but the real investment and foundation is in people.</strong><br><br>Our outdoor programs transform that investment into tangible, lasting impact, strengthening teams, shifting behaviors, and creating measurable change that resonates across every level of your organization.</p>
-    </div>
-    <div class="roi-tabs">
-      <button class="roi-tab active" onclick="switchTab(this, 'team')">At the Team Level</button>
-      <button class="roi-tab" onclick="switchTab(this, 'personal')">At the Personal Level</button>
-    </div>
-    <div class="roi-panel active" id="tab-team">
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">🗣️</div>
-        <div class="benefit-title">Communication</div>
-        <p class="benefit-desc">Outdoor challenges strip workplace hierarchies, creating authentic communication patterns that carry back into the office.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">🤝</div>
-        <div class="benefit-title">Effective Collaboration</div>
-        <p class="benefit-desc">Shared challenges build genuine camaraderie and a team culture grounded in trust and mutual accountability.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">🧭</div>
-        <div class="benefit-title">Leadership Qualities</div>
-        <p class="benefit-desc">Real-world scenarios surface and develop leadership capabilities that no classroom training can replicate.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">⏱️</div>
-        <div class="benefit-title">Time Management</div>
-        <p class="benefit-desc">Time-pressured field challenges reinforce prioritization, decision speed, and execution under constraints.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">🔗</div>
-        <div class="benefit-title">Teamwork & Cohesion</div>
-        <p class="benefit-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">🧩</div>
-        <div class="benefit-title">Problem-Solving Skills</div>
-        <p class="benefit-desc">Complex outdoor scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.</p>
-      </div>
-    </div>
-    <div class="roi-panel" id="tab-personal">
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">💪</div>
-        <div class="benefit-title">Build Self-Confidence</div>
-        <p class="benefit-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">🚀</div>
-        <div class="benefit-title">Stretch Personal Limits</div>
-        <p class="benefit-desc">Participants discover what they're capable of when pushed beyond their comfort zone in a safe, facilitated environment.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">🎯</div>
-        <div class="benefit-title">Decision-Making Skills</div>
-        <p class="benefit-desc">Evaluating solutions under pressure sharpens analytical thinking and reduces hesitation in high-stakes situations.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">💡</div>
-        <div class="benefit-title">Thinking Outside the Box</div>
-        <p class="benefit-desc">Nature-based problem solving breaks habitual thinking patterns and unlocks genuine creative capacity.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">🌟</div>
-        <div class="benefit-title">Fun & Memorable Times</div>
-        <p class="benefit-desc">Shared adventure creates lasting positive memories, increasing morale, loyalty, and sense of belonging to the company.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">🔍</div>
-        <div class="benefit-title">Self-Awareness</div>
-        <p class="benefit-desc">Field observation and debriefing help participants understand their own strengths, blind spots, and contribution style.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery">
-  <div class="gallery-header">
-    <span class="section-tag" style="color: var(--gold);">Experience gallery</span>
-    <h2 class="section-title light">Built for the Wild,<br>Designed for Teams</h2>
-  </div>
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80" alt="Team collaboration challenge" onerror="this.style.display='none'">
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&q=80" alt="Group outdoor activity" onerror="this.style.display='none'">
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1473621038790-b778b4750efe?w=600&q=80" alt="Mountain hiking expedition" onerror="this.style.display='none'">
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80" alt="Leadership in nature" onerror="this.style.display='none'">
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&q=80" alt="Team debrief session" onerror="this.style.display='none'">
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <span class="section-tag">Common questions</span>
-  <h2 class="section-title">Everything You<br>Need to Know</h2>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-question">How large a group can you accommodate? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Programs are designed for groups ranging from 8 to 100 participants. Each program is scaled to ensure meaningful engagement regardless of group size, from leadership teams to company-wide events.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Do participants need prior outdoor experience? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Absolutely not. Programs are designed to be accessible to all fitness levels and backgrounds. Physical demands are calibrated to your team. Psychological and physical safety always come first.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">How long does a typical program last? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Programs range from half-day experiences to multi-day boot camps with overnight stays. For meaningful behavioral change, a full day is recommended. Leadership programs benefit from 2–3 days.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Can the program be tailored to our specific business objectives? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Tailoring is the foundation of every program. We begin with a discovery meeting with your CEO, GM, or HR team to define needs, gather participant profiles, and design accordingly. The program is finalized collaboratively before delivery.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Where do programs take place? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Programs can be delivered at a location of your choosing, at our private base camp in the Lebanese mountains (35 minutes from Beirut), or across outdoor destinations regionally and internationally.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">What happens after the activity? Is there a debrief? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Yes, the debrief is a core part of every program. We explain the objectives of each activity, its relevance to the workplace, how to overcome the challenges observed, and define key learnings to apply at work. This is where the real value transfers.</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-info reveal">
-    <span class="section-tag" style="color: var(--gold);">Let's talk</span>
-    <h2 class="section-title light">Ready to Strengthen<br>Your Team?</h2>
-    <p class="section-sub light" style="margin-bottom: 36px;">Tell André about your team and objectives. Every program starts with a conversation.</p>
-    <div class="contact-detail">
-      <div class="contact-icon">📧</div>
-      <a href="mailto:andrebechara1@gmail.com">andrebechara1@gmail.com</a>
-    </div>
-    <div class="contact-detail">
-      <div class="contact-icon">📞</div>
-      <a href="tel:+9613360027">+961 (0)3 36 00 27</a>
-    </div>
-    <div class="contact-detail">
-      <div class="contact-icon">📍</div>
-      <span>Beirut, Lebanon · Available Regionally & Internationally</span>
-    </div>
-    <a href="https://wa.me/9613360027" class="whatsapp-btn" target="_blank" rel="noopener">
-      <span>💬</span> WhatsApp André Directly
-    </a>
-  </div>
-  <form class="contact-form reveal" onsubmit="handleSubmit(event)">
-    <div class="form-row">
-      <div class="form-field">
-        <label>First Name</label>
-        <input type="text" placeholder="Sarah" required>
-      </div>
-      <div class="form-field">
-        <label>Last Name</label>
-        <input type="text" placeholder="Johnson" required>
-      </div>
-    </div>
-    <div class="form-field">
-      <label>Work Email</label>
-      <input type="email" placeholder="sarah@company.com" required>
-    </div>
-    <div class="form-field">
-      <label>Company</label>
-      <input type="text" placeholder="Your Organization">
-    </div>
-    <div class="form-row">
-      <div class="form-field">
-        <label>Team Size</label>
-        <select>
-          <option value="">Select size</option>
-          <option>Under 15</option>
-          <option>15–30</option>
-          <option>30–60</option>
-          <option>60–100</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label>Program Type</label>
-        <select>
-          <option value="">Select type</option>
-          <option>Corporate Team Building</option>
-          <option>Corporate Outings & Experiences</option>
-          <option>Ecotourism & Rural Development</option>
-          <option>School Outings & Educational Camps</option>
-          <option>Adventure Trips</option>
-          <option>TV Program Game Design</option>
-          <option>Custom Program</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-field">
-      <label>Message</label>
-      <textarea placeholder="Tell André about your team, your goals, and any timing you have in mind..."></textarea>
-    </div>
-    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; border: none; font-family: 'Outfit', sans-serif; font-size: 1rem;">
-      Send Consultation Request →
-    </button>
-  </form>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo">André <span>Béchara</span></div>
-      <div class="footer-subtitle">Outdoor Team Building Expert</div>
-      <p class="footer-tagline">30+ years of expertise in outdoor education and corporate team building. Transforming groups into extraordinary teams, in Lebanon and worldwide.</p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/andre-bechara-1367b7b/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
-        <a href="#" class="social-link" aria-label="Instagram">📷</a>
-        <a href="#" class="social-link" aria-label="Facebook">f</a>
-        <a href="#" class="social-link" aria-label="YouTube">▶</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Programs</h4>
-      <ul>
-        <li><a href="#services">Team Building</a></li>
-        <li><a href="#services">Corporate Outings</a></li>
-        <li><a href="#services">Ecotourism</a></li>
-        <li><a href="#services">Educational Camps</a></li>
-        <li><a href="#services">Adventure Trips</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>About</h4>
-      <ul>
-        <li><a href="#about">About the Programs</a></li>
-        <li><a href="#founder">André Béchara</a></li>
-        <li><a href="#process">The Process</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="#contact">Book a Consultation</a></li>
-        <li><a href="https://wa.me/9613360027">WhatsApp</a></li>
-        <li><a href="mailto:andrebechara1@gmail.com">Email André</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© <span id="year"></span> André Béchara. All rights reserved.</p>
-    <p>What matters is not the journey itself, but who you take it with.</p>
-  </div>
-</footer>
-
-<script>
-// Auto year
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// Sticky nav
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
-
-// Hamburger
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-
-function openMenu() {
-  navLinks.classList.add('open');
-  navbar.classList.add('menu-open');
-  hamburger.classList.add('is-open');
-  hamburger.setAttribute('aria-expanded', 'true');
-  // Don't block scroll — we need touchmove to detect scrolling on iOS
-}
-
-function closeMenu() {
-  navLinks.classList.remove('open');
-  navbar.classList.remove('menu-open');
-  hamburger.classList.remove('is-open');
-  hamburger.setAttribute('aria-expanded', 'false');
-}
-
-hamburger.addEventListener('click', () => {
-  navLinks.classList.contains('open') ? closeMenu() : openMenu();
-});
-
-// Close menu when a nav link is clicked
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-// Close menu on scroll — use touchmove for iOS Safari (scroll doesn't fire when menu is open)
-let touchStartY = 0;
-document.addEventListener('touchstart', (e) => {
-  touchStartY = e.touches[0].clientY;
-}, { passive: true });
-document.addEventListener('touchmove', (e) => {
-  if (!navLinks.classList.contains('open')) return;
-  const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
-  if (deltaY > 10) closeMenu(); // close if scrolled more than 10px
-}, { passive: true });
-
-// Also close on desktop scroll
-window.addEventListener('scroll', () => {
-  if (navLinks.classList.contains('open')) closeMenu();
-}, { passive: true });
-
-// Scroll reveal with stagger
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-reveals.forEach((el, i) => {
-  const parent = el.parentElement;
-  const siblings = Array.from(parent.querySelectorAll(':scope > .reveal'));
-  const idx = siblings.indexOf(el);
-  el.style.transitionDelay = (idx * 0.1) + 's';
-  observer.observe(el);
-});
-
-// Counter animation
-const counters = document.querySelectorAll('[data-target]');
-const counterObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const target = parseInt(el.dataset.target);
-      let current = 0;
-      const step = target / 55;
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) { el.textContent = target + '+'; clearInterval(timer); }
-        else { el.textContent = Math.floor(current) + '+'; }
-      }, 28);
-      counterObs.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
-counters.forEach(el => counterObs.observe(el));
-
-// FAQ toggle
-document.querySelectorAll('.faq-question').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
-
-// ROI tabs
-function switchTab(btn, id) {
-  document.querySelectorAll('.roi-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.roi-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('tab-' + id).classList.add('active');
-}
-
-// Form submit
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  btn.textContent = '✓ Message sent. André will be in touch soon.';
-  btn.style.background = 'var(--forest-light)';
-  btn.disabled = true;
-}
-</script>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1">&lt;title&gt;André Béchara | Outdoor Team Building &amp; Corporate Experiences&lt;/title&gt;</p>
+<p class="p1">&lt;meta name="description" content="André Béchara delivers tailored outdoor team-building experiences for corporations. 30+ years expertise. Based in Lebanon, operating worldwide."&gt;</p>
+<p class="p1">&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--forest: #1a2e1a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--forest-mid: #2d4a2d;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--forest-light: #3d6b3d;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--sand: #d4b896;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--sand-light: #ede0ce;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--cream: #f9f4ed;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--charcoal: #1c1c1c;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--white: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--orange: #d4722a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--gold: #c9973a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--gold-light: #e8b84b;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--text-dark: #1c1c1c;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--text-mid: #444;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--text-light: #888;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>html { scroll-behavior: smooth; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: 'Outfit', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text-dark);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow-x: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- NAV ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>nav {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: fixed; top: 0; left: 0; right: 0; z-index: 1000;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 20px 48px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex; align-items: center; justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: background 0.4s, padding 0.4s;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(10,24,10,0.35);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>nav.scrolled {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(18,38,18,0.97);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>backdrop-filter: blur(12px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 14px 48px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 2px 30px rgba(0,0,0,0.3);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>nav.menu-open {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(18,38,18,0.99) !important;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-logo {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex; align-items: center; gap: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-decoration: none; line-height: 1.2; flex-shrink: 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-logo-img { height: 56px; width: auto; display: block; flex-shrink: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-logo-text { display: flex; flex-direction: column; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-logo-name {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: 'Playfair Display', serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1.25rem; font-weight: 900;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--white); letter-spacing: -0.01em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-logo-sub { color: var(--gold); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Outfit', sans-serif; margin-top: 2px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-links a {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: rgba(255,255,255,0.85); text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.88rem; font-weight: 500; letter-spacing: 0.03em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: color 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-links a:hover { color: var(--gold); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-cta {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--orange); color: white !important;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 10px 22px; border-radius: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 600 !important; transition: background 0.2s, transform 0.2s !important;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-cta:hover { background: var(--gold) !important; transform: translateY(-1px); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hamburger {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: none; flex-direction: column; gap: 5px; cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: none; border: none; padding: 4px; z-index: 1002; position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hamburger span { display: block; width: 26px; height: 2px; background: white; border-radius: 2px; transition: 0.3s; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- HERO ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#hero {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative; height: 100vh; min-height: 680px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex; align-items: center; justify-content: center; overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-bg {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: absolute; inset: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:</p>
+<p class="p1"><span class="Apple-converted-space">      </span>linear-gradient(160deg, rgba(10,25,10,0.72) 0%, rgba(26,46,26,0.45) 50%, rgba(100,60,10,0.3) 100%),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&amp;q=80') center/cover no-repeat;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-bg-fallback {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: absolute; inset: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 40%, #3d3010 100%);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>z-index: -1;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-bg::after {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: linear-gradient(to bottom, transparent, var(--forest));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-content {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative; z-index: 2;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center; max-width: 880px; padding: 0 24px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-badge {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid rgba(201,151,58,0.6); color: var(--gold);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 6px 18px; border-radius: 30px; margin-bottom: 28px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>animation: fadeUp 0.8s ease both;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Prevent wrapping on small screens */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>white-space: nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>@media (max-width: 430px) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-badge {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.6rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.08em;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 5px 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>white-space: normal;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 280px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-content { padding-top: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-title {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: 'Playfair Display', serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: clamp(2.2rem, 5.5vw, 4.2rem);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 900; color: var(--white); line-height: 1.1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 28px; animation: fadeUp 0.8s 0.15s ease both;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-title em { color: var(--gold); font-style: italic; display: block; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-sub {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: clamp(0.95rem, 1.8vw, 1.15rem); color: rgba(255,255,255,0.82);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 300; line-height: 1.65; max-width: 600px; margin: 0 auto 40px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>animation: fadeUp 0.8s 0.3s ease both;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-actions {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>animation: fadeUp 0.8s 0.45s ease both;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-primary {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--orange); color: white;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 15px 32px; border-radius: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.95rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: background 0.25s, transform 0.2s, box-shadow 0.25s;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 4px 20px rgba(212,114,42,0.4); font-family: 'Outfit', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,151,58,0.45); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-outline {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: transparent; color: white;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 15px 32px; border-radius: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.95rem; font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 2px solid rgba(255,255,255,0.5); text-decoration: none; cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: border-color 0.2s, background 0.2s, transform 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-outline:hover { border-color: var(--gold); background: rgba(201,151,58,0.12); transform: translateY(-2px); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-scroll {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-scroll span { color: rgba(255,255,255,0.7); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(201,151,58,0.8), transparent); animation: scrollPulse 2s ease-in-out infinite; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- STATS STRIP ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stats-strip {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--forest); padding: 36px 48px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex; justify-content: center; gap: 64px; flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat-item { text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; color: var(--gold); line-height: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px; font-weight: 500; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- CLIENT LOGOS BANNER ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- CLIENTS GRID ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.clients-section {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--charcoal);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 72px 80px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.clients-header {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 52px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.clients-eyebrow {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.7rem; font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.2em; text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--gold); margin-bottom: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.clients-headline {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: 'Playfair Display', serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: clamp(1.6rem, 3vw, 2.2rem);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 900; color: var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.2; margin-bottom: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.clients-sub {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.9rem; color: rgba(255,255,255,0.45);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 300; letter-spacing: 0.02em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.clients-grid {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>grid-template-columns: repeat(5, 1fr);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.client-cell {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex; align-items: center; justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 20px 28px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-height: 90px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid rgba(255,255,255,0.06);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(255,255,255,0.02);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: background 0.25s, border-color 0.25s, transform 0.25s;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: default;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.client-cell::after {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>content: '';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: absolute; inset: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: radial-gradient(circle at center, rgba(201,151,58,0.08), transparent 70%);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>opacity: 0; transition: opacity 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.client-cell:hover {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(255,255,255,0.07);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-color: rgba(201,151,58,0.3);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform: translateY(-2px);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.client-cell:hover::after { opacity: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.client-cell img {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 52px; width: 100%; max-width: 160px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>object-fit: contain;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>mix-blend-mode: screen;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>opacity: 0.75;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: opacity 0.3s, transform 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.client-cell:hover img {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>opacity: 1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform: scale(1.06);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Dark logos (e.g. Solidere, Bank Audi) need a light background pill to be visible */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.client-cell.dark-logo {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(255,255,255,0.06);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.client-cell.dark-logo img {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>mix-blend-mode: normal;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>opacity: 0.85;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(255,255,255,0.92);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 6px 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 52px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.client-cell.dark-logo:hover img { opacity: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Fallback text for missing images */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.client-cell .client-name {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.82rem; font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.06em; text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: rgba(255,255,255,0.4);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center; line-height: 1.3;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: color 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.client-cell:hover .client-name { color: rgba(201,151,58,0.9); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.clients-count {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center; margin-top: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.82rem; color: rgba(255,255,255,0.3);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.05em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.clients-count strong { color: var(--gold); font-weight: 700; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- SECTION SHARED ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>section { padding: 96px 48px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.section-tag { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 900; line-height: 1.15; color: var(--forest); margin-bottom: 18px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.section-title.light { color: var(--white); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.section-sub { font-size: 1.05rem; color: var(--text-mid); line-height: 1.7; max-width: 560px; font-weight: 300; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.section-sub.light { color: rgba(255,255,255,0.75); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- ABOUT ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#about {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--forest);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid; grid-template-columns: 1fr 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 80px; align-items: center; padding: 96px 80px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.about-img-wrap { position: relative; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.about-img-wrap img { width: 100%; border-radius: 16px; display: block; object-fit: cover; height: 520px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.about-badge-float {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: absolute; bottom: -24px; right: -24px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--orange); color: white; padding: 20px 26px; border-radius: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 600; font-size: 0.85rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 8px 30px rgba(0,0,0,0.3); line-height: 1.4;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.about-badge-float strong { display: block; font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--gold-light); line-height: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.about-text-wrap { padding: 20px 0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.about-quote { border-left: 3px solid var(--gold); padding-left: 20px; margin: 28px 0; font-style: italic; color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.7; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.feature-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 0.9rem; font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.feature-item::before { content: '<span class="s1">✦</span>'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- THE PROCESS ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#process { background: var(--cream); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.process-steps {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid; grid-template-columns: repeat(3,1fr);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 32px; margin-top: 56px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.process-step {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: white; border-radius: 16px; padding: 36px 28px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid rgba(0,0,0,0.06);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative; overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: transform 0.3s, box-shadow 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.process-step:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.process-num {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: 'Playfair Display', serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 4rem; font-weight: 900;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: rgba(26,46,26,0.07); line-height: 1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: absolute; top: 16px; right: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.process-phase { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.process-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--forest); margin-bottom: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.process-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- SERVICES ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#services { background: var(--sand-light); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; margin-top: 56px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.service-card {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: white; border-radius: 16px; padding: 32px 28px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid rgba(0,0,0,0.06);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: transform 0.3s, box-shadow 0.3s; cursor: default; position: relative; overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.service-card::before {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: linear-gradient(90deg, var(--forest-light), var(--gold));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform: scaleX(0); transform-origin: left; transition: transform 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.service-card:hover::before { transform: scaleX(1); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.service-icon { font-size: 2rem; margin-bottom: 16px; display: block; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.service-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--forest); margin-bottom: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.service-desc { font-size: 0.87rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- BASE CAMP ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#basecamp {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--forest);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid; grid-template-columns: 1.1fr 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 72px; align-items: center; padding: 96px 80px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.basecamp-text { }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.basecamp-specs {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid; grid-template-columns: 1fr 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 16px; margin-top: 36px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.spec-item {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(255,255,255,0.05);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid rgba(255,255,255,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 12px; padding: 18px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.spec-value { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--gold); line-height: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.spec-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 5px; font-weight: 400; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.basecamp-img img {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%; border-radius: 16px; object-fit: cover; height: 460px; display: block;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- FOUNDER ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#founder {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid; grid-template-columns: 1fr 1.2fr;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 80px; align-items: center; padding: 96px 80px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.founder-img { position: relative; display: flex; align-items: flex-start; justify-content: center; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.founder-img img { width: 100%; max-width: 420px; border-radius: 16px; object-fit: cover; object-position: top; height: 580px; display: block; margin: 0 auto; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.badges-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.badge-chip {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--forest); color: white; padding: 14px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 10px; font-size: 0.82rem; font-weight: 500; text-align: center; line-height: 1.4;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.badge-chip span { display: block; color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.founder-name { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--forest); margin-bottom: 6px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.founder-role { font-size: 0.85rem; color: var(--orange); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.founder-bio { font-size: 1rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- BENEFITS (ROI) ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#benefits { background: var(--forest); text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.roi-tabs { display: flex; gap: 12px; justify-content: center; margin-bottom: 48px; flex-wrap: wrap; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.roi-tab {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 10px 24px; border-radius: 30px; font-size: 0.88rem; font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer; border: 2px solid rgba(255,255,255,0.15);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: rgba(255,255,255,0.6); background: transparent;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: 'Outfit', sans-serif; transition: all 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.roi-tab.active { background: var(--gold); border-color: var(--gold); color: var(--forest); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.roi-panel { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.roi-panel.active { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.benefit-card {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 16px; padding: 28px 22px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: background 0.3s, border-color 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.benefit-card:hover { background: rgba(201,151,58,0.08); border-color: rgba(201,151,58,0.3); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.benefit-icon { font-size: 1.8rem; margin-bottom: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.benefit-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.benefit-desc { font-size: 0.84rem; color: rgba(255,255,255,0.55); line-height: 1.6; font-weight: 300; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- GALLERY ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#gallery { background: var(--charcoal); padding: 96px 0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-header { padding: 0 48px; margin-bottom: 48px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 280px 280px; gap: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-item { overflow: hidden; position: relative; cursor: pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-item:first-child { grid-row: 1 / 3; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s, filter 0.5s; filter: saturate(0.8) brightness(0.9); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-item:hover img { transform: scale(1.06); filter: saturate(1) brightness(1); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 50%); opacity: 0; transition: opacity 0.3s; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-item:hover::after { opacity: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Fallback gradient backgrounds for gallery items */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-item:nth-child(1) { background: linear-gradient(135deg, #2d4a2d, #1a2e1a); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-item:nth-child(2) { background: linear-gradient(135deg, #3d3010, #c9973a); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-item:nth-child(3) { background: linear-gradient(135deg, #1a2e1a, #3d6b3d); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-item:nth-child(4) { background: linear-gradient(135deg, #2d1a0a, #d4722a); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gallery-item:nth-child(5) { background: linear-gradient(135deg, #0a1a0a, #2d4a2d); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- TESTIMONIALS ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#testimonials { background: var(--cream); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.testimonial-card { background: white; border-radius: 16px; padding: 32px; border: 1px solid rgba(0,0,0,0.06); transition: box-shadow 0.3s; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.testimonial-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stars { color: var(--gold); font-size: 0.95rem; margin-bottom: 16px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.testimonial-text { font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; font-style: italic; margin-bottom: 24px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.testimonial-author { display: flex; align-items: center; gap: 14px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.author-avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; flex-shrink: 0; background: var(--forest-mid); display: flex; align-items: center; justify-content: center; color: var(--gold); font-weight: 700; font-size: 1rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.author-name { font-weight: 600; font-size: 0.9rem; color: var(--forest); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.author-role { font-size: 0.78rem; color: var(--text-light); font-weight: 400; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.author-company { font-size: 0.75rem; color: var(--orange); font-weight: 600; margin-top: 2px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- FAQ ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#faq { background: var(--sand-light); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.faq-list { max-width: 720px; margin-top: 48px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); padding: 24px 0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.faq-question { display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 20px; font-weight: 600; font-size: 1rem; color: var(--forest); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.faq-toggle { width: 28px; height: 28px; border-radius: 50%; background: var(--forest); color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; transition: background 0.2s, transform 0.3s; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.faq-item.open .faq-toggle { background: var(--orange); transform: rotate(45deg); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.faq-answer { font-size: 0.92rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.faq-item.open .faq-answer { max-height: 200px; padding-top: 16px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- CONTACT ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#contact { background: var(--forest); padding: 96px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-info { padding-top: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-detail { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; color: rgba(255,255,255,0.8); font-size: 0.95rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-detail a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-detail a:hover { color: var(--gold); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.whatsapp-btn { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 13px 24px; border-radius: 40px; text-decoration: none; font-weight: 600; font-size: 0.9rem; margin-top: 12px; transition: opacity 0.2s, transform 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.whatsapp-btn:hover { opacity: 0.9; transform: translateY(-1px); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.contact-form { display: flex; flex-direction: column; gap: 16px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.form-field { display: flex; flex-direction: column; gap: 6px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.form-field label { font-size: 0.78rem; color: rgba(255,255,255,0.6); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.form-field input, .form-field textarea, .form-field select {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 10px; padding: 13px 16px; color: white;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: 'Outfit', sans-serif; font-size: 0.95rem; outline: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: border-color 0.2s, background 0.2s; width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--gold); background: rgba(255,255,255,0.1); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,0.3); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.form-field select option { background: var(--forest-mid); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.form-field textarea { resize: vertical; min-height: 110px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- NEWSLETTER ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#newsletter { background: var(--orange); padding: 56px 48px; text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.newsletter-title { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 900; color: white; margin-bottom: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.newsletter-sub { color: rgba(255,255,255,0.85); font-size: 1rem; font-weight: 300; margin-bottom: 28px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.newsletter-form { display: flex; gap: 12px; justify-content: center; max-width: 480px; margin: 0 auto; flex-wrap: wrap; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.newsletter-form input { flex: 1; min-width: 220px; padding: 14px 20px; border-radius: 40px; border: none; font-family: 'Outfit', sans-serif; font-size: 0.95rem; outline: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.newsletter-form button { background: var(--forest); color: white; padding: 14px 26px; border-radius: 40px; border: none; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 0.9rem; transition: background 0.2s; white-space: nowrap; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.newsletter-form button:hover { background: var(--charcoal); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- FOOTER ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>footer { background: var(--charcoal); padding: 60px 80px 32px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: white; margin-bottom: 6px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-logo span { color: var(--gold); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-subtitle { font-size: 0.75rem; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.65; font-weight: 300; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.social-links { display: flex; gap: 12px; margin-top: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.social-link { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 0.9rem; text-decoration: none; transition: background 0.2s, color 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.social-link:hover { background: var(--gold); color: white; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-col h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-col ul { list-style: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-col ul li { margin-bottom: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-col ul a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-col ul a:hover { color: var(--gold); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- ANIMATIONS ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>@keyframes scrollPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.reveal.visible { opacity: 1; transform: translateY(0); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- MOBILE ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>@media (max-width: 900px) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>nav {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 16px 20px !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(18,38,18,0.97) !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>backdrop-filter: blur(12px) !important;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>nav.scrolled { padding: 12px 20px !important; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-logo-img { height: 40px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links { display: none !important; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hamburger { display: flex !important; z-index: 1002; position: relative; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Full-screen overlay when open */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links.open {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: fixed !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100vw !important; height: 100vh !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #122612 !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #122612 !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 0 !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>z-index: 1001 !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>list-style: none !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 !important; padding: 0 !important;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links.open li {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: block !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 75% !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid rgba(255,255,255,0.1) !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 18px 0 !important;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links.open li:last-child { border-bottom: none !important; margin-top: 16px !important; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links.open li a {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: block !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.35rem !important; color: #ffffff !important; text-decoration: none !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Playfair Display', serif !important; font-weight: 700 !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.02em !important;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links.open li:last-child a {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #d4722a !important; color: white !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 14px 36px !important; border-radius: 50px !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Outfit', sans-serif !important; font-size: 1rem !important;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: inline-block !important;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Hamburger → X animation */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hamburger span { transition: transform 0.3s, opacity 0.3s; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Hide scroll indicator on mobile to prevent overlap */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-scroll { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Fix all reveal elements on mobile — disable animation */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.reveal { opacity: 1 !important; transform: translateY(0) !important; transition: none !important; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>section { padding: 64px 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#about, #founder, #contact { grid-template-columns: 1fr; gap: 36px; padding: 64px 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.about-badge-float { right: 0; bottom: -18px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#benefits .roi-panel.active { grid-template-columns: 1fr 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.services-grid { grid-template-columns: 1fr 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.process-steps { grid-template-columns: 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.gallery-item:first-child { grid-row: auto; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.gallery-grid .gallery-item { height: 200px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>footer { padding: 48px 20px 24px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stats-strip { gap: 28px; padding: 28px 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.form-row { grid-template-columns: 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.clients-section { padding: 56px 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.clients-grid { grid-template-columns: repeat(3, 1fr); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.client-cell { padding: 16px 12px; min-height: 70px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.client-cell img { height: 36px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>@media (max-width: 560px) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.services-grid { grid-template-columns: 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#benefits .roi-panel.active { grid-template-columns: 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.badges-grid { grid-template-columns: 1fr 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.gallery-grid { grid-template-columns: 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-grid { grid-template-columns: 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.clients-grid { grid-template-columns: repeat(2, 1fr); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- NAV --&gt;</p>
+<p class="p1">&lt;nav id="navbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;a href="#" class="nav-logo"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;img src="Images/greatescape.png" alt="The Great Escape" class="nav-logo-img"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="nav-logo-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="nav-logo-name"&gt;André Béchara&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="nav-logo-sub"&gt;Outdoor Team Building Expert&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;ul class="nav-links" id="navLinks"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#services"&gt;Services&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#founder"&gt;Profile&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#gallery"&gt;Gallery&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#contact" class="nav-cta"&gt;Book a Session&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button class="hamburger" id="hamburger" aria-label="Menu"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/button&gt;</p>
+<p class="p1">&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- HERO --&gt;</p>
+<p class="p1">&lt;section id="hero"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hero-bg-fallback"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hero-bg"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hero-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hero-badge"&gt;🌿 30+ Years of Outdoor Expertise · Lebanon &amp; Worldwide&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1 class="hero-title"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Beyond the Office.&lt;br&gt;Beyond the Classroom.&lt;br&gt;&lt;em&gt;Into the Experience.&lt;/em&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="hero-sub"&gt;From corporate retreats and incentive outings to educational camps and eco-adventures, every experience places people in extraordinary environments where teamwork, resilience, and authentic relationships naturally emerge.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="hero-sub" style="margin-top: -16px; font-size: 0.95rem; opacity: 0.75;"&gt;Every journey blends purpose, discovery, and unforgettable moments.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hero-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="#contact" class="btn-primary"&gt;Book a Consultation&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="#services" class="btn-outline"&gt;Explore Programs&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hero-scroll"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;Scroll&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="scroll-line"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- STATS STRIP --&gt;</p>
+<p class="p1">&lt;div class="stats-strip"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="stat-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stat-num" data-target="30"&gt;0&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stat-label"&gt;Years of Expertise&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="stat-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stat-num" data-target="400"&gt;0&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stat-label"&gt;Programs Delivered&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="stat-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stat-num" data-target="120"&gt;0&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stat-label"&gt;Corporate Clients&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="stat-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stat-num" data-target="8"&gt;0&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stat-label"&gt;Service Specialties&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- CLIENT LOGOS GRID --&gt;</p>
+<p class="p1">&lt;div class="clients-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="clients-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="clients-eyebrow"&gt;Trusted by leading organisations&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="clients-headline"&gt;Teams that have made&lt;br&gt;the Great Escape&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="clients-sub"&gt;From regional leaders to global brands — across industries, borders, and cultures.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="clients-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/microsoft.png" alt="Microsoft"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/deloitte.png" alt="Deloitte"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/unilever.png" alt="Unilever"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/airfrance.png" alt="Air France"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/loreal.png" alt="L'Oréal"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/pepsi.png" alt="Pepsi"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/total.png" alt="TotalEnergies"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/schneider.png" alt="Schneider Electric"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/redbull.png" alt="Red Bull"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/carrefour.png" alt="Carrefour"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/volvo.png" alt="Volvo"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/toshiba.png" alt="Toshiba"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/azadea.png" alt="Azadea Group"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/fattal.png" alt="Fattal Group"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/spinneys.png" alt="Spinneys Lebanon"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell dark-logo"&gt;&lt;img src="Images/bankaudi.png" alt="Bank Audi"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell dark-logo"&gt;&lt;img src="Images/solidere.png" alt="Solidere"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/aramex.png" alt="Aramex"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/willistowerswatson.png" alt="Willis Towers Watson"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/lrc.png" alt="Lebanese Red Cross"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="client-cell"&gt;&lt;img src="Images/almaza.png" alt="Almaza"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p class="clients-count"&gt;&lt;strong&gt;21+&lt;/strong&gt; organisations trust André Béchara to transform their teams&lt;/p&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- ABOUT --&gt;</p>
+<p class="p1">&lt;section id="about"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="about-img-wrap reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&amp;q=80" alt="Team working together outdoors" onerror="this.style.background='linear-gradient(135deg,#2d4a2d,#1a2e1a)'; this.style.minHeight='520px'; this.removeAttribute('src')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="about-badge-float"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;strong&gt;30+&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Years of Outdoor&lt;br&gt;Leadership</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="about-text-wrap reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="section-tag"&gt;What we do&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="section-title light"&gt;From Groups&lt;br&gt;to &lt;em style="font-style:italic"&gt;Teams&lt;/em&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="section-sub light" style="margin-bottom: 18px;"&gt;The program combines mental and physical challenges in immersive, high-energy experiences that push participants beyond conventional thinking and routine behavior. Each activity is carefully designed to test and develop analytical thinking, creativity, communication, adaptability, decision-making, and leadership under real-world conditions.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="section-sub light"&gt;Participants are placed in dynamic scenarios where success depends on collaboration, strategic thinking, trust, and the ability to perform under pressure using limited resources and collective intelligence. The lessons learned in the field translate directly into the workplace, strengthening team cohesion, problem-solving capacity, leadership effectiveness, and organizational performance.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="feature-list"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-item"&gt;Radiant thinking methodology&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-item"&gt;Mental &amp; physical challenge&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-item"&gt;Tailored to your team's needs&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-item"&gt;Full debrief &amp; learning transfer&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-item"&gt;Measurable ROI&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-item"&gt;Expert facilitation&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- THE PROCESS --&gt;</p>
+<p class="p1">&lt;section id="process"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div style="max-width: 760px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="section-tag"&gt;How it works&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="section-title"&gt;A Structured Process&lt;br&gt;for Lasting Impact&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="section-sub"&gt;Every program follows a proven three-phase methodology, from design to debrief, ensuring the experience translates into real workplace change.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="process-steps"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="process-step reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="process-num"&gt;01&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="process-phase"&gt;Phase 1 · Design&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="process-title"&gt;Needs Discovery &amp; Tailoring&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="process-desc"&gt;We work with your leadership team (CEO, GM, HR, department head) to define objectives, understand team dynamics, and profile participants. A tailored program is then designed and refined together to ensure full alignment before implementation.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="process-step reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="process-num"&gt;02&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="process-phase"&gt;Phase 2 · Facilitation&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="process-title"&gt;Live Observation in the Field&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="process-desc"&gt;During activities, our facilitators actively monitor team behavior in real time, tracking communication, collaboration, leadership emergence, creativity, conflict handling, and engagement levels, while ensuring a safe, structured, and highly immersive experience.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="process-step reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="process-num"&gt;03&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="process-phase"&gt;Phase 3 · Debrief&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="process-title"&gt;Transfer Learning to Work&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="process-desc"&gt;We unpack each activity, linking it directly to workplace realities. Through guided reflection, we help the team address observed challenges, extract key insights, and translate them into clear, actionable behaviors for improved on-the-job performance.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- SERVICES --&gt;</p>
+<p class="p1">&lt;section id="services"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div style="max-width: 600px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="section-tag"&gt;Programs &amp; services&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="section-title"&gt;Every Engagement&lt;br&gt;Designed for Impact&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="section-sub"&gt;From half-day outings to multi-day expeditions. Each program is built around your specific goals.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="services-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="service-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="service-icon"&gt;🏕️&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="service-title"&gt;Corporate Team Building&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="service-desc"&gt;Immersive programs, both indoor and outdoor, combining mental, social, and physical challenges to strengthen teamwork, communication, and leadership through realistic, high-engagement scenarios that translate directly into workplace performance.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="service-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="service-icon"&gt;🌲&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="service-title"&gt;Corporate Outings &amp; Experiences&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="service-desc"&gt;Designed for incentive, celebration, or team connection, these experiences take employees beyond the workplace into engaging, high-energy environments that foster authentic relationships, shared memories, and lasting team cohesion.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="service-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="service-icon"&gt;🌿&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="service-title"&gt;Ecotourism &amp; Rural Development&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="service-desc"&gt;Responsible exploration programs that integrate business objectives with authentic rural and natural environments. We combine experiential education, sustainability, and discovery with practical training initiatives and collaborative projects alongside NGOs and local Hima conservation networks, supporting both community development and environmental stewardship.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="service-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="service-icon"&gt;⛺&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="service-title"&gt;School Outings &amp; Educational Camps&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="service-desc"&gt;Structured outdoor camps with environmental education focus, combining adventure with learning objectives for youth, students, and emerging leaders.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="service-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="service-icon"&gt;🧗&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="service-title"&gt;Adventure Trips&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="service-desc"&gt;Guided expeditions into challenging terrain, building resilience, trust, and shared achievement in experiences your team will talk about for years.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="service-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="service-icon"&gt;🎬&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="service-title"&gt;TV Program Game Design&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="service-desc"&gt;Original outdoor challenge formats for broadcast media, blending competition, storytelling, and high-energy adventure in scalable game concepts.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- FOUNDER --&gt;</p>
+<p class="p1">&lt;section id="founder"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="founder-img reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;img src="Images/andre-bechara.png" alt="André Béchara, Founder" style="object-position: top;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="section-tag"&gt;The expert behind the programs&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="founder-name"&gt;André Béchara&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="founder-role"&gt;Consultant in Human Dynamics, Nature-Based Leadership &amp; Rural Development · Founder&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="founder-bio"&gt;With more than 30+ years of leadership in outdoor education, environmental awareness, rural development, adventure programming, and experiential learning, André Béchara has become one of the Middle East's most respected pioneers in corporate team building and transformational learning experiences.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="founder-bio" style="margin-top: 14px;"&gt;Blending strategic insight with field expertise, his work spans corporate team building, ecotourism, environmental and rural development initiatives, educational camps, adventure expeditions, creative thinking workshops, and television game concept design. His core belief: the strongest teams are not built in meeting rooms, but through shared challenges, trust, resilience, and real-world experience.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="founder-bio" style="margin-top: 14px;"&gt;For decades, André has designed experiences that push individuals beyond comfort zones, transform groups into cohesive teams, and reconnect people with leadership, nature, community, and purpose. His approach combines adventure, education, sustainability, psychology, and creativity to create impactful programs that generate lasting human, organizational, and social change.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="founder-bio" style="margin-top: 14px;"&gt;Deeply committed to nature conservation and the empowerment of rural communities, he has consistently used outdoor experiences as a tool for leadership development, environmental stewardship, and cultural connection, helping bridge people, places, and purpose across generations.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="badges-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="badge-chip"&gt;&lt;span&gt;30+&lt;/span&gt;Years of Expertise&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="badge-chip"&gt;&lt;span&gt;🏆&lt;/span&gt;Corporate Programs&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="badge-chip"&gt;&lt;span&gt;🌍&lt;/span&gt;Regional &amp; Global Reach&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="badge-chip"&gt;&lt;span&gt;🎬&lt;/span&gt;TV Game Design&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- BENEFITS / ROI --&gt;</p>
+<p class="p1">&lt;section id="benefits"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div style="max-width: 1100px; margin: 0 auto;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="section-tag" style="color: var(--gold);"&gt;Return on investment&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title light"&gt;What Your Team&lt;br&gt;Gains from the Field&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-sub light" style="margin: 0 auto 40px; text-align:center; max-width:560px;"&gt;&lt;strong&gt;Success in business is often measured by numbers; but the real investment and foundation is in people.&lt;/strong&gt;&lt;br&gt;&lt;br&gt;Our outdoor programs transform that investment into tangible, lasting impact, strengthening teams, shifting behaviors, and creating measurable change that resonates across every level of your organization.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="roi-tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="roi-tab active" onclick="switchTab(this, 'team')"&gt;At the Team Level&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="roi-tab" onclick="switchTab(this, 'personal')"&gt;At the Personal Level&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="roi-panel active" id="tab-team"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="benefit-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-icon"&gt;🗣️&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-title"&gt;Communication&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="benefit-desc"&gt;Outdoor challenges strip workplace hierarchies, creating authentic communication patterns that carry back into the office.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="benefit-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-icon"&gt;🤝&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-title"&gt;Effective Collaboration&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="benefit-desc"&gt;Shared challenges build genuine camaraderie and a team culture grounded in trust and mutual accountability.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="benefit-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-icon"&gt;🧭&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-title"&gt;Leadership Qualities&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="benefit-desc"&gt;Real-world scenarios surface and develop leadership capabilities that no classroom training can replicate.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="benefit-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-icon"&gt;⏱️&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-title"&gt;Time Management&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="benefit-desc"&gt;Time-pressured field challenges reinforce prioritization, decision speed, and execution under constraints.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="benefit-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-icon"&gt;🔗&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-title"&gt;Teamwork &amp; Cohesion&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="benefit-desc"&gt;Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="benefit-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-icon"&gt;🧩&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-title"&gt;Problem-Solving Skills&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="benefit-desc"&gt;Complex outdoor scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="roi-panel" id="tab-personal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="benefit-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-icon"&gt;💪&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-title"&gt;Build Self-Confidence&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="benefit-desc"&gt;Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="benefit-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-icon"&gt;🚀&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-title"&gt;Stretch Personal Limits&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="benefit-desc"&gt;Participants discover what they're capable of when pushed beyond their comfort zone in a safe, facilitated environment.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="benefit-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-icon"&gt;🎯&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-title"&gt;Decision-Making Skills&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="benefit-desc"&gt;Evaluating solutions under pressure sharpens analytical thinking and reduces hesitation in high-stakes situations.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="benefit-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-icon"&gt;💡&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-title"&gt;Thinking Outside the Box&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="benefit-desc"&gt;Nature-based problem solving breaks habitual thinking patterns and unlocks genuine creative capacity.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="benefit-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-icon"&gt;🌟&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-title"&gt;Fun &amp; Memorable Times&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="benefit-desc"&gt;Shared adventure creates lasting positive memories, increasing morale, loyalty, and sense of belonging to the company.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="benefit-card reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-icon"&gt;🔍&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="benefit-title"&gt;Self-Awareness&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="benefit-desc"&gt;Field observation and debriefing help participants understand their own strengths, blind spots, and contribution style.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- GALLERY --&gt;</p>
+<p class="p1">&lt;section id="gallery"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="gallery-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="section-tag" style="color: var(--gold);"&gt;Experience gallery&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="section-title light"&gt;Built for the Wild,&lt;br&gt;Designed for Teams&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="gallery-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="gallery-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&amp;q=80" alt="Team collaboration challenge" onerror="this.style.display='none'"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="gallery-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&amp;q=80" alt="Group outdoor activity" onerror="this.style.display='none'"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="gallery-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;img src="https://images.unsplash.com/photo-1473621038790-b778b4750efe?w=600&amp;q=80" alt="Mountain hiking expedition" onerror="this.style.display='none'"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="gallery-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&amp;q=80" alt="Leadership in nature" onerror="this.style.display='none'"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="gallery-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&amp;q=80" alt="Team debrief session" onerror="this.style.display='none'"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- FAQ --&gt;</p>
+<p class="p1">&lt;section id="faq"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;span class="section-tag"&gt;Common questions&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h2 class="section-title"&gt;Everything You&lt;br&gt;Need to Know&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="faq-list"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="faq-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="faq-question"&gt;How large a group can you accommodate? &lt;span class="faq-toggle"&gt;+&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="faq-answer"&gt;Programs are designed for groups ranging from 8 to 100 participants. Each program is scaled to ensure meaningful engagement regardless of group size, from leadership teams to company-wide events.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="faq-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="faq-question"&gt;Do participants need prior outdoor experience? &lt;span class="faq-toggle"&gt;+&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="faq-answer"&gt;Absolutely not. Programs are designed to be accessible to all fitness levels and backgrounds. Physical demands are calibrated to your team. Psychological and physical safety always come first.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="faq-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="faq-question"&gt;How long does a typical program last? &lt;span class="faq-toggle"&gt;+&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="faq-answer"&gt;Programs range from half-day experiences to multi-day boot camps with overnight stays. For meaningful behavioral change, a full day is recommended. Leadership programs benefit from 2–3 days.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="faq-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="faq-question"&gt;Can the program be tailored to our specific business objectives? &lt;span class="faq-toggle"&gt;+&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="faq-answer"&gt;Tailoring is the foundation of every program. We begin with a discovery meeting with your CEO, GM, or HR team to define needs, gather participant profiles, and design accordingly. The program is finalized collaboratively before delivery.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="faq-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="faq-question"&gt;Where do programs take place? &lt;span class="faq-toggle"&gt;+&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="faq-answer"&gt;Programs can be delivered at a location of your choosing, at our private base camp in the Lebanese mountains (35 minutes from Beirut), or across outdoor destinations regionally and internationally.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="faq-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="faq-question"&gt;What happens after the activity? Is there a debrief? &lt;span class="faq-toggle"&gt;+&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="faq-answer"&gt;Yes, the debrief is a core part of every program. We explain the objectives of each activity, its relevance to the workplace, how to overcome the challenges observed, and define key learnings to apply at work. This is where the real value transfers.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- CONTACT --&gt;</p>
+<p class="p1">&lt;section id="contact"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="contact-info reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="section-tag" style="color: var(--gold);"&gt;Let's talk&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="section-title light"&gt;Ready to Strengthen&lt;br&gt;Your Team?&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="section-sub light" style="margin-bottom: 36px;"&gt;Tell André about your team and objectives. Every program starts with a conversation.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="contact-detail"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="contact-icon"&gt;📧&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="mailto:andrebechara1@gmail.com"&gt;andrebechara1@gmail.com&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="contact-detail"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="contact-icon"&gt;📞&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="tel:+9613360027"&gt;+961 (0)3 36 00 27&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="contact-detail"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="contact-icon"&gt;📍&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;Beirut, Lebanon · Available Regionally &amp; Internationally&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="https://wa.me/9613360027" class="whatsapp-btn" target="_blank" rel="noopener"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;💬&lt;/span&gt; WhatsApp André Directly</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;form class="contact-form reveal" onsubmit="handleSubmit(event)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="form-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;First Name&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" placeholder="Sarah" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="form-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Last Name&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" placeholder="Johnson" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="form-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;Work Email&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input type="email" placeholder="sarah@company.com" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="form-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;Company&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input type="text" placeholder="Your Organization"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="form-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Team Size&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value=""&gt;Select size&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Under 15&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;15–30&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;30–60&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;60–100&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="form-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Program Type&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value=""&gt;Select type&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Corporate Team Building&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Corporate Outings &amp; Experiences&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Ecotourism &amp; Rural Development&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;School Outings &amp; Educational Camps&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Adventure Trips&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;TV Program Game Design&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Custom Program&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="form-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;Message&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;textarea placeholder="Tell André about your team, your goals, and any timing you have in mind..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button type="submit" class="btn-primary" style="width: 100%; justify-content: center; border: none; font-family: 'Outfit', sans-serif; font-size: 1rem;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Send Consultation Request →</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/form&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- FOOTER --&gt;</p>
+<p class="p1">&lt;footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="footer-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="footer-logo"&gt;André &lt;span&gt;Béchara&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="footer-subtitle"&gt;Outdoor Team Building Expert&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="footer-tagline"&gt;30+ years of expertise in outdoor education and corporate team building. Transforming groups into extraordinary teams, in Lebanon and worldwide.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="social-links"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="https://www.linkedin.com/in/andre-bechara-1367b7b/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener"&gt;in&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#" class="social-link" aria-label="Instagram"&gt;📷&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#" class="social-link" aria-label="Facebook"&gt;f&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#" class="social-link" aria-label="YouTube"&gt;▶&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="footer-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h4&gt;Programs&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="#services"&gt;Team Building&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="#services"&gt;Corporate Outings&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="#services"&gt;Ecotourism&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="#services"&gt;Educational Camps&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="#services"&gt;Adventure Trips&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="footer-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h4&gt;About&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="#about"&gt;About the Programs&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="#founder"&gt;André Béchara&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="#process"&gt;The Process&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="#gallery"&gt;Gallery&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="footer-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h4&gt;Contact&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="#contact"&gt;Book a Consultation&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="https://wa.me/9613360027"&gt;WhatsApp&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="mailto:andrebechara1@gmail.com"&gt;Email André&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;&lt;a href="#faq"&gt;FAQ&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="footer-bottom"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;© &lt;span id="year"&gt;&lt;/span&gt; André Béchara. All rights reserved.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;What matters is not the journey itself, but who you take it with.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">// Auto year</p>
+<p class="p1">document.getElementById('year').textContent = new Date().getFullYear();</p>
+<p class="p2"><br></p>
+<p class="p1">// Sticky nav</p>
+<p class="p1">const navbar = document.getElementById('navbar');</p>
+<p class="p1">window.addEventListener('scroll', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>navbar.classList.toggle('scrolled', window.scrollY &gt; 60);</p>
+<p class="p1">}, { passive: true });</p>
+<p class="p2"><br></p>
+<p class="p1">// Hamburger</p>
+<p class="p1">const hamburger = document.getElementById('hamburger');</p>
+<p class="p1">const navLinks = document.getElementById('navLinks');</p>
+<p class="p2"><br></p>
+<p class="p1">function openMenu() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>navLinks.classList.add('open');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>navbar.classList.add('menu-open');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>hamburger.classList.add('is-open');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>hamburger.setAttribute('aria-expanded', 'true');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Don't block scroll — we need touchmove to detect scrolling on iOS</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function closeMenu() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>navLinks.classList.remove('open');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>navbar.classList.remove('menu-open');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>hamburger.classList.remove('is-open');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>hamburger.setAttribute('aria-expanded', 'false');</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">hamburger.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>navLinks.classList.contains('open') ? closeMenu() : openMenu();</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">// Close menu when a nav link is clicked</p>
+<p class="p1">navLinks.querySelectorAll('a').forEach(a =&gt; a.addEventListener('click', closeMenu));</p>
+<p class="p2"><br></p>
+<p class="p1">// Close menu on scroll — use touchmove for iOS Safari (scroll doesn't fire when menu is open)</p>
+<p class="p1">let touchStartY = 0;</p>
+<p class="p1">document.addEventListener('touchstart', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>touchStartY = e.touches[0].clientY;</p>
+<p class="p1">}, { passive: true });</p>
+<p class="p1">document.addEventListener('touchmove', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (!navLinks.classList.contains('open')) return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const deltaY = Math.abs(e.touches[0].clientY - touchStartY);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (deltaY &gt; 10) closeMenu(); // close if scrolled more than 10px</p>
+<p class="p1">}, { passive: true });</p>
+<p class="p2"><br></p>
+<p class="p1">// Also close on desktop scroll</p>
+<p class="p1">window.addEventListener('scroll', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (navLinks.classList.contains('open')) closeMenu();</p>
+<p class="p1">}, { passive: true });</p>
+<p class="p2"><br></p>
+<p class="p1">// Scroll reveal with stagger</p>
+<p class="p1">const reveals = document.querySelectorAll('.reveal');</p>
+<p class="p1">const observer = new IntersectionObserver((entries) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>entries.forEach((entry) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (entry.isIntersecting) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>entry.target.classList.add('visible');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>observer.unobserve(entry.target);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">}, { threshold: 0.1 });</p>
+<p class="p1">reveals.forEach((el, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const parent = el.parentElement;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const siblings = Array.from(parent.querySelectorAll(':scope &gt; .reveal'));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const idx = siblings.indexOf(el);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>el.style.transitionDelay = (idx * 0.1) + 's';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>observer.observe(el);</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">// Counter animation</p>
+<p class="p1">const counters = document.querySelectorAll('[data-target]');</p>
+<p class="p1">const counterObs = new IntersectionObserver((entries) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>entries.forEach(entry =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (entry.isIntersecting) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const el = entry.target;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const target = parseInt(el.dataset.target);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let current = 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const step = target / 55;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const timer = setInterval(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>current += step;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (current &gt;= target) { el.textContent = target + '+'; clearInterval(timer); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>else { el.textContent = Math.floor(current) + '+'; }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}, 28);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>counterObs.unobserve(el);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">}, { threshold: 0.5 });</p>
+<p class="p1">counters.forEach(el =&gt; counterObs.observe(el));</p>
+<p class="p2"><br></p>
+<p class="p1">// FAQ toggle</p>
+<p class="p1">document.querySelectorAll('.faq-question').forEach(q =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>q.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const item = q.closest('.faq-item');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const isOpen = item.classList.contains('open');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.querySelectorAll('.faq-item').forEach(i =&gt; i.classList.remove('open'));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!isOpen) item.classList.add('open');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">// ROI tabs</p>
+<p class="p1">function switchTab(btn, id) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.roi-tab').forEach(t =&gt; t.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.roi-panel').forEach(p =&gt; p.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('tab-' + id).classList.add('active');</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// Form submit</p>
+<p class="p1">function handleSubmit(e) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const btn = e.target.querySelector('button[type="submit"]');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.textContent = '✓ Message sent. André will be in touch soon.';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.style.background = 'var(--forest-light)';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.disabled = true;</p>
+<p class="p1">}</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
 </body>
 </html>
