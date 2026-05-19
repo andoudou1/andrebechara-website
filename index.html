@@ -63,7 +63,7 @@
     color: var(--white); letter-spacing: -0.01em;
   }
   .nav-logo-sub { color: var(--gold); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Outfit', sans-serif; margin-top: 2px; }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
   .nav-links a {
     color: rgba(255,255,255,0.85); text-decoration: none;
     font-size: 0.88rem; font-weight: 500; letter-spacing: 0.03em;
@@ -452,27 +452,46 @@
     }
     nav.scrolled { padding: 12px 20px !important; }
     .nav-logo-img { height: 40px; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; z-index: 1002; position: relative; }
+    .nav-links { display: none !important; }
+    .hamburger { display: flex !important; z-index: 1002; position: relative; }
+    /* Full-screen overlay when open */
     .nav-links.open {
-      display: flex; flex-direction: column;
-      position: fixed; inset: 0;
-      background: rgb(18,38,18);
-      align-items: center; justify-content: center;
-      gap: 36px; z-index: 1001;
+      display: flex !important;
+      flex-direction: column !important;
+      position: fixed !important;
+      top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+      width: 100vw !important; height: 100vh !important;
+      background-color: #122612 !important;
+      background: #122612 !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0 !important;
+      z-index: 1001 !important;
+      list-style: none !important;
+      margin: 0 !important; padding: 0 !important;
     }
-    .nav-links.open a {
-      font-size: 1.4rem; color: white; text-decoration: none;
-      font-family: 'Playfair Display', serif; font-weight: 700;
-      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08); width: 70%; text-align: center;
+    .nav-links.open li {
+      display: block !important;
+      width: 75% !important;
+      text-align: center !important;
+      border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+      padding: 18px 0 !important;
     }
-    .nav-links.open .nav-cta {
-      background: var(--orange); color: white;
-      padding: 14px 36px; border-radius: 50px;
-      font-family: 'Outfit', sans-serif; font-size: 1rem !important;
-      border-bottom: none !important;
+    .nav-links.open li:last-child { border-bottom: none !important; margin-top: 16px !important; }
+    .nav-links.open li a {
+      display: block !important;
+      font-size: 1.35rem !important; color: #ffffff !important; text-decoration: none !important;
+      font-family: 'Playfair Display', serif !important; font-weight: 700 !important;
+      letter-spacing: 0.02em !important;
     }
-    /* Hamburger animates to X when open */
+    .nav-links.open li:last-child a {
+      background: #d4722a !important; color: white !important;
+      padding: 14px 36px !important; border-radius: 50px !important;
+      font-family: 'Outfit', sans-serif !important; font-size: 1rem !important;
+      display: inline-block !important;
+    }
+    /* Hamburger → X animation */
+    .hamburger span { transition: transform 0.3s, opacity 0.3s; }
     .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -1018,7 +1037,7 @@ function openMenu() {
   navbar.classList.add('menu-open');
   hamburger.classList.add('is-open');
   hamburger.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
+  // Don't block scroll — we need touchmove to detect scrolling on iOS
 }
 
 function closeMenu() {
@@ -1026,7 +1045,6 @@ function closeMenu() {
   navbar.classList.remove('menu-open');
   hamburger.classList.remove('is-open');
   hamburger.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
 }
 
 hamburger.addEventListener('click', () => {
@@ -1036,7 +1054,18 @@ hamburger.addEventListener('click', () => {
 // Close menu when a nav link is clicked
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
-// Close menu when user scrolls (as requested)
+// Close menu on scroll — use touchmove for iOS Safari (scroll doesn't fire when menu is open)
+let touchStartY = 0;
+document.addEventListener('touchstart', (e) => {
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+document.addEventListener('touchmove', (e) => {
+  if (!navLinks.classList.contains('open')) return;
+  const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+  if (deltaY > 10) closeMenu(); // close if scrolled more than 10px
+}, { passive: true });
+
+// Also close on desktop scroll
 window.addEventListener('scroll', () => {
   if (navLinks.classList.contains('open')) closeMenu();
 }, { passive: true });
