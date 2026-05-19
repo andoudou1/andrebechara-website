@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>André Bechara — Outdoor Team Building & Corporate Experiences</title>
-<meta name="description" content="André Bechara delivers tailored outdoor team-building experiences for corporations. 30+ years expertise. Based in Lebanon, operating worldwide.">
+<title>André Béchara | Outdoor Team Building & Corporate Experiences</title>
+<meta name="description" content="André Béchara delivers tailored outdoor team-building experiences for corporations. 30+ years expertise. Based in Lebanon, operating worldwide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -40,6 +40,7 @@
     padding: 20px 48px;
     display: flex; align-items: center; justify-content: space-between;
     transition: background 0.4s, padding 0.4s;
+    background: rgba(10,24,10,0.35);
   }
   nav.scrolled {
     background: rgba(26,46,26,0.97);
@@ -178,7 +179,7 @@
   .clients-track-wrap::after { right: 0; background: linear-gradient(to left, white, transparent); }
   .clients-track {
     display: flex; gap: 48px; align-items: center;
-    animation: marquee 38s linear infinite;
+    animation: marquee 60s linear infinite;
     width: max-content;
   }
   .clients-track:hover { animation-play-state: paused; }
@@ -441,7 +442,7 @@
 
   /* ---- MOBILE ---- */
   @media (max-width: 900px) {
-    nav { padding: 18px 24px; background: rgba(26,46,26,0.97); }
+    nav { padding: 18px 24px; background: rgba(18,38,18,0.98) !important; backdrop-filter: blur(8px); }
     nav.scrolled { padding: 14px 24px; }
     .nav-logo-img { height: 44px; }
     .nav-links { display: none; }
@@ -449,13 +450,18 @@
     .nav-links.open {
       display: flex; flex-direction: column;
       position: fixed; inset: 0; top: 0; padding-top: 90px;
-      background: rgba(26,46,26,0.99);
+      background: rgba(18,38,18,0.99);
       align-items: center; justify-content: center;
       gap: 32px; z-index: 100;
     }
     .nav-links.open a { font-size: 1.3rem; }
+    /* Fix Scroll overlapping Explore button */
+    .hero-scroll { bottom: 16px; }
+    #hero { min-height: 720px; padding-bottom: 80px; }
     section { padding: 72px 24px; }
     #about, #founder, #contact, #basecamp { grid-template-columns: 1fr; gap: 40px; padding: 72px 24px; }
+    /* Ensure About text is visible */
+    .about-text-wrap { opacity: 1 !important; transform: none !important; }
     .about-badge-float { right: 0; bottom: -18px; }
     #benefits .roi-panel.active { grid-template-columns: 1fr 1fr; }
     .testimonials-grid { grid-template-columns: 1fr; }
@@ -488,7 +494,7 @@
   <a href="#" class="nav-logo">
     <img src="Images/greatescape.png" alt="The Great Escape" class="nav-logo-img">
     <div class="nav-logo-text">
-      <span class="nav-logo-name">André Bechara</span>
+      <span class="nav-logo-name">André Béchara</span>
       <span class="nav-logo-sub">Outdoor Team Building Expert</span>
     </div>
   </a>
@@ -513,7 +519,7 @@
     <h1 class="hero-title">
       Escape the Ordinary.<br><em>Build Extraordinary Teams.</em>
     </h1>
-    <p class="hero-sub">Tailored outdoor team-building experiences that transform groups into high-performing teams — through challenge, collaboration, and experiential learning in the field.</p>
+    <p class="hero-sub">Tailored experiential leadership programs that transform groups into cohesive, high-performing teams through challenge, collaboration, and immersive field-based learning.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Book a Consultation</a>
       <a href="#services" class="btn-outline">Explore Programs</a>
@@ -561,8 +567,16 @@
       <div class="client-logo"><img src="Images/unilever.png" alt="Unilever"></div>
       <div class="client-logo"><img src="Images/redbull.png" alt="Red Bull"></div>
       <div class="client-logo"><img src="Images/total.png" alt="Total"></div>
+      <div class="client-logo"><img src="Images/loreal.png" alt="L'Oréal"></div>
+      <div class="client-logo"><img src="Images/volvo.png" alt="Volvo"></div>
+      <div class="client-logo"><img src="Images/carrefour.png" alt="Carrefour"></div>
+      <div class="client-logo"><img src="Images/schneider.png" alt="Schneider Electric"></div>
+      <div class="client-logo"><img src="Images/aramex.png" alt="Aramex"></div>
       <div class="client-logo"><img src="Images/azadea.png" alt="Azadea Group"></div>
       <div class="client-logo"><img src="Images/fattal.png" alt="Fattal Group"></div>
+      <div class="client-logo"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson"></div>
+      <div class="client-logo"><img src="Images/lrc.png" alt="Lebanese Red Cross"></div>
+      <div class="client-logo"><img src="Images/almaza.png" alt="Almaza"></div>
       <div class="client-logo"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
       <!-- Set 2 (duplicate for seamless loop) -->
       <div class="client-logo"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
@@ -575,8 +589,16 @@
       <div class="client-logo"><img src="Images/unilever.png" alt="Unilever"></div>
       <div class="client-logo"><img src="Images/redbull.png" alt="Red Bull"></div>
       <div class="client-logo"><img src="Images/total.png" alt="Total"></div>
+      <div class="client-logo"><img src="Images/loreal.png" alt="L'Oréal"></div>
+      <div class="client-logo"><img src="Images/volvo.png" alt="Volvo"></div>
+      <div class="client-logo"><img src="Images/carrefour.png" alt="Carrefour"></div>
+      <div class="client-logo"><img src="Images/schneider.png" alt="Schneider Electric"></div>
+      <div class="client-logo"><img src="Images/aramex.png" alt="Aramex"></div>
       <div class="client-logo"><img src="Images/azadea.png" alt="Azadea Group"></div>
       <div class="client-logo"><img src="Images/fattal.png" alt="Fattal Group"></div>
+      <div class="client-logo"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson"></div>
+      <div class="client-logo"><img src="Images/lrc.png" alt="Lebanese Red Cross"></div>
+      <div class="client-logo"><img src="Images/almaza.png" alt="Almaza"></div>
       <div class="client-logo"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
     </div>
   </div>
@@ -592,7 +614,7 @@
     </div>
   </div>
   <div class="about-text-wrap reveal">
-    <span class="section-tag">What We Do</span>
+    <span class="section-tag">What we do</span>
     <h2 class="section-title light">From Groups<br>to <em style="font-style:italic">Teams</em></h2>
     <p class="section-sub light" style="margin-bottom: 18px;">The program combines mental and physical challenges in immersive, high-energy experiences that push participants beyond conventional thinking and routine behavior. Each activity is carefully designed to test and develop analytical thinking, creativity, communication, adaptability, decision-making, and leadership under real-world conditions.</p>
     <p class="section-sub light">Participants are placed in dynamic scenarios where success depends on collaboration, strategic thinking, trust, and the ability to perform under pressure using limited resources and collective intelligence. The lessons learned in the field translate directly into the workplace, strengthening team cohesion, problem-solving capacity, leadership effectiveness, and organizational performance.</p>
@@ -610,28 +632,28 @@
 <!-- THE PROCESS -->
 <section id="process">
   <div style="max-width: 760px;">
-    <span class="section-tag">How It Works</span>
+    <span class="section-tag">How it works</span>
     <h2 class="section-title">A Structured Process<br>for Lasting Impact</h2>
-    <p class="section-sub">Every program follows a proven three-phase methodology — from design to debrief — ensuring the experience translates into real workplace change.</p>
+    <p class="section-sub">Every program follows a proven three-phase methodology, from design to debrief, ensuring the experience translates into real workplace change.</p>
   </div>
   <div class="process-steps">
     <div class="process-step reveal">
       <div class="process-num">01</div>
       <div class="process-phase">Phase 1 · Design</div>
       <div class="process-title">Needs Discovery & Tailoring</div>
-      <p class="process-desc">We meet with your CEO, GM, or HR team to define goals, understand team dynamics, and gather participant profiles. We then design a custom program — and refine it together before go-live.</p>
+      <p class="process-desc">We work with your leadership team (CEO, GM, HR, department head) to define objectives, understand team dynamics, and profile participants. A tailored program is then designed and refined together to ensure full alignment before implementation.</p>
     </div>
     <div class="process-step reveal">
       <div class="process-num">02</div>
       <div class="process-phase">Phase 2 · Facilitation</div>
       <div class="process-title">Live Observation in the Field</div>
-      <p class="process-desc">During activities, our facilitator observes behavior — participation, creativity, communication, conflict, listening, and team spirit — while ensuring safety and maximum engagement.</p>
+      <p class="process-desc">During activities, our facilitators actively monitor team behavior in real time, tracking communication, collaboration, leadership emergence, creativity, conflict handling, and engagement levels, while ensuring a safe, structured, and highly immersive experience.</p>
     </div>
     <div class="process-step reveal">
       <div class="process-num">03</div>
       <div class="process-phase">Phase 3 · Debrief</div>
       <div class="process-title">Transfer Learning to Work</div>
-      <p class="process-desc">We explain the objectives and relevance of each activity to the workplace, guide the team through overcoming challenges observed, and define key learnings to apply back on the job.</p>
+      <p class="process-desc">We unpack each activity, linking it directly to workplace realities. Through guided reflection, we help the team address observed challenges, extract key insights, and translate them into clear, actionable behaviors for improved on-the-job performance.</p>
     </div>
   </div>
 </section>
@@ -639,50 +661,40 @@
 <!-- SERVICES -->
 <section id="services">
   <div style="max-width: 600px;">
-    <span class="section-tag">Programs & Services</span>
+    <span class="section-tag">Programs & services</span>
     <h2 class="section-title">Every Engagement<br>Designed for Impact</h2>
-    <p class="section-sub">From half-day outings to multi-day expeditions — each program is built around your specific goals.</p>
+    <p class="section-sub">From half-day outings to multi-day expeditions. Each program is built around your specific goals.</p>
   </div>
   <div class="services-grid">
     <div class="service-card reveal">
       <span class="service-icon">🏕️</span>
       <div class="service-title">Corporate Team Building</div>
-      <p class="service-desc">Immersive outdoor programs combining mental and physical challenges to strengthen teamwork, communication, and leadership in real-world settings.</p>
+      <p class="service-desc">Immersive programs, both indoor and outdoor, combining mental, social, and physical challenges to strengthen teamwork, communication, and leadership through realistic, high-engagement scenarios that translate directly into workplace performance.</p>
     </div>
     <div class="service-card reveal">
       <span class="service-icon">🌲</span>
-      <div class="service-title">Corporate Outings & Boot Camps</div>
-      <p class="service-desc">Designed for fun, incentive, or special occasions — giving employees a platform to connect outside the work environment in ways that leave a lasting impact.</p>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-icon">🧭</span>
-      <div class="service-title">Outdoor Consultancy</div>
-      <p class="service-desc">Expert advisory on how outdoor experiential learning integrates into your people development strategy — from program design to facilitator training.</p>
+      <div class="service-title">Corporate Outings & Experiences</div>
+      <p class="service-desc">Designed for incentive, celebration, or team connection, these experiences take employees beyond the workplace into engaging, high-energy environments that foster authentic relationships, shared memories, and lasting team cohesion.</p>
     </div>
     <div class="service-card reveal">
       <span class="service-icon">🌿</span>
       <div class="service-title">Ecotourism & Rural Development</div>
-      <p class="service-desc">Responsible exploration programs that combine business objectives with authentic natural and rural environments — education, sustainability, and discovery.</p>
+      <p class="service-desc">Responsible exploration programs that integrate business objectives with authentic rural and natural environments. We combine experiential education, sustainability, and discovery with practical training initiatives and collaborative projects alongside NGOs and local Hima conservation networks, supporting both community development and environmental stewardship.</p>
     </div>
     <div class="service-card reveal">
       <span class="service-icon">⛺</span>
       <div class="service-title">School Outings & Educational Camps</div>
-      <p class="service-desc">Structured outdoor camps with environmental education focus — combining adventure with learning objectives for youth, students, and emerging leaders.</p>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-icon">💡</span>
-      <div class="service-title">Tailored Trainings & Workshops</div>
-      <p class="service-desc">Nature-inspired facilitation that breaks conventional thinking — creativity, problem-solving, and decision-making workshops designed around your context.</p>
+      <p class="service-desc">Structured outdoor camps with environmental education focus, combining adventure with learning objectives for youth, students, and emerging leaders.</p>
     </div>
     <div class="service-card reveal">
       <span class="service-icon">🧗</span>
       <div class="service-title">Adventure Trips</div>
-      <p class="service-desc">Guided expeditions into challenging terrain — building resilience, trust, and shared achievement in experiences your team will talk about for years.</p>
+      <p class="service-desc">Guided expeditions into challenging terrain, building resilience, trust, and shared achievement in experiences your team will talk about for years.</p>
     </div>
     <div class="service-card reveal">
       <span class="service-icon">🎬</span>
       <div class="service-title">TV Program Game Design</div>
-      <p class="service-desc">Original outdoor challenge formats for broadcast media — blending competition, storytelling, and high-energy adventure in scalable game concepts.</p>
+      <p class="service-desc">Original outdoor challenge formats for broadcast media, blending competition, storytelling, and high-energy adventure in scalable game concepts.</p>
     </div>
   </div>
 </section>
@@ -690,16 +702,16 @@
 <!-- FOUNDER -->
 <section id="founder">
   <div class="founder-img reveal">
-    <img src="Images/andre-bechara.png" alt="André Béchara — Founder" style="object-position: top;">
+    <img src="Images/andre-béchara.png" alt="André Béchara, Founder" style="object-position: top;">
   </div>
   <div class="reveal">
-    <span class="section-tag">The Expert Behind the Programs</span>
+    <span class="section-tag">The expert behind the programs</span>
     <div class="founder-name">André Béchara</div>
-    <div class="founder-role">Outdoor Education Expert · Program Designer · Founder</div>
+    <div class="founder-role">Consultant in Human Dynamics, Nature-Based Leadership & Rural Development · Founder</div>
     <p class="founder-bio">With more than 30+ years of leadership in outdoor education, environmental awareness, rural development, adventure programming, and experiential learning, André Béchara has become one of the Middle East's most respected pioneers in corporate team building and transformational learning experiences.</p>
-    <p class="founder-bio" style="margin-top: 14px;">Blending strategic insight with field expertise, his work spans corporate team building, ecotourism, environmental and rural development initiatives, educational camps, adventure expeditions, creative thinking workshops, and television game concept design — all driven by one core belief: the strongest teams are not built in meeting rooms, but through shared challenges, trust, resilience, and real-world experience.</p>
+    <p class="founder-bio" style="margin-top: 14px;">Blending strategic insight with field expertise, his work spans corporate team building, ecotourism, environmental and rural development initiatives, educational camps, adventure expeditions, creative thinking workshops, and television game concept design. His core belief: the strongest teams are not built in meeting rooms, but through shared challenges, trust, resilience, and real-world experience.</p>
     <p class="founder-bio" style="margin-top: 14px;">For decades, André has designed experiences that push individuals beyond comfort zones, transform groups into cohesive teams, and reconnect people with leadership, nature, community, and purpose. His approach combines adventure, education, sustainability, psychology, and creativity to create impactful programs that generate lasting human, organizational, and social change.</p>
-    <p class="founder-bio" style="margin-top: 14px;">Deeply committed to nature conservation and the empowerment of rural communities, he has consistently used outdoor experiences as a tool for leadership development, environmental stewardship, and cultural connection — helping bridge people, places, and purpose across generations.</p>
+    <p class="founder-bio" style="margin-top: 14px;">Deeply committed to nature conservation and the empowerment of rural communities, he has consistently used outdoor experiences as a tool for leadership development, environmental stewardship, and cultural connection, helping bridge people, places, and purpose across generations.</p>
     <div class="badges-grid">
       <div class="badge-chip"><span>30+</span>Years of Expertise</div>
       <div class="badge-chip"><span>🏆</span>Corporate Programs</div>
@@ -713,9 +725,9 @@
 <section id="benefits">
   <div style="max-width: 1100px; margin: 0 auto;">
     <div>
-      <span class="section-tag" style="color: var(--gold);">Return on Investment</span>
+      <span class="section-tag" style="color: var(--gold);">Return on investment</span>
       <h2 class="section-title light">What Your Team<br>Gains from the Field</h2>
-      <p class="section-sub light" style="margin: 0 auto 40px; text-align:center; max-width:560px;">Success in business is often measured by numbers — but the real investment is measured in people. Outdoor programs deliver that investment in ways that are concrete, lasting, and felt at every level of your organization.</p>
+      <p class="section-sub light" style="margin: 0 auto 40px; text-align:center; max-width:560px;"><strong>Success in business is often measured by numbers; but the real investment and foundation is in people.</strong><br><br>Our outdoor programs transform that investment into tangible, lasting impact, strengthening teams, shifting behaviors, and creating measurable change that resonates across every level of your organization.</p>
     </div>
     <div class="roi-tabs">
       <button class="roi-tab active" onclick="switchTab(this, 'team')">At the Team Level</button>
@@ -745,7 +757,7 @@
       <div class="benefit-card reveal">
         <div class="benefit-icon">🔗</div>
         <div class="benefit-title">Teamwork & Cohesion</div>
-        <p class="benefit-desc">Overcoming obstacles together strengthens bonds and mutual respect — creating more resilient, unified teams.</p>
+        <p class="benefit-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p>
       </div>
       <div class="benefit-card reveal">
         <div class="benefit-icon">🧩</div>
@@ -757,7 +769,7 @@
       <div class="benefit-card reveal">
         <div class="benefit-icon">💪</div>
         <div class="benefit-title">Build Self-Confidence</div>
-        <p class="benefit-desc">Completing challenging activities builds genuine belief in personal capability — carried forward into everyday work.</p>
+        <p class="benefit-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p>
       </div>
       <div class="benefit-card reveal">
         <div class="benefit-icon">🚀</div>
@@ -777,7 +789,7 @@
       <div class="benefit-card reveal">
         <div class="benefit-icon">🌟</div>
         <div class="benefit-title">Fun & Memorable Times</div>
-        <p class="benefit-desc">Shared adventure creates lasting positive memories — increasing morale, loyalty, and sense of belonging to the company.</p>
+        <p class="benefit-desc">Shared adventure creates lasting positive memories, increasing morale, loyalty, and sense of belonging to the company.</p>
       </div>
       <div class="benefit-card reveal">
         <div class="benefit-icon">🔍</div>
@@ -791,7 +803,7 @@
 <!-- GALLERY -->
 <section id="gallery">
   <div class="gallery-header">
-    <span class="section-tag" style="color: var(--gold);">Experience Gallery</span>
+    <span class="section-tag" style="color: var(--gold);">Experience gallery</span>
     <h2 class="section-title light">Built for the Wild,<br>Designed for Teams</h2>
   </div>
   <div class="gallery-grid">
@@ -815,16 +827,16 @@
 
 <!-- FAQ -->
 <section id="faq">
-  <span class="section-tag">Common Questions</span>
+  <span class="section-tag">Common questions</span>
   <h2 class="section-title">Everything You<br>Need to Know</h2>
   <div class="faq-list">
     <div class="faq-item">
       <div class="faq-question">How large a group can you accommodate? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Programs are designed for groups ranging from 8 to 100 participants. Each program is scaled to ensure meaningful engagement regardless of group size — from leadership teams to company-wide events.</div>
+      <div class="faq-answer">Programs are designed for groups ranging from 8 to 100 participants. Each program is scaled to ensure meaningful engagement regardless of group size, from leadership teams to company-wide events.</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">Do participants need prior outdoor experience? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Absolutely not. Programs are designed to be accessible to all fitness levels and backgrounds. Physical demands are calibrated to your team — psychological and physical safety always come first.</div>
+      <div class="faq-answer">Absolutely not. Programs are designed to be accessible to all fitness levels and backgrounds. Physical demands are calibrated to your team. Psychological and physical safety always come first.</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">How long does a typical program last? <span class="faq-toggle">+</span></div>
@@ -839,8 +851,8 @@
       <div class="faq-answer">Programs can be delivered at a location of your choosing, at our private base camp in the Lebanese mountains (35 minutes from Beirut), or across outdoor destinations regionally and internationally.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">What happens after the activity — is there a debrief? <span class="faq-toggle">+</span></div>
-      <div class="faq-answer">Yes — the debrief is a core part of every program. We explain the objectives of each activity, its relevance to the workplace, how to overcome the challenges observed, and define key learnings to apply at work. This is where the real value transfers.</div>
+      <div class="faq-question">What happens after the activity? Is there a debrief? <span class="faq-toggle">+</span></div>
+      <div class="faq-answer">Yes, the debrief is a core part of every program. We explain the objectives of each activity, its relevance to the workplace, how to overcome the challenges observed, and define key learnings to apply at work. This is where the real value transfers.</div>
     </div>
   </div>
 </section>
@@ -848,7 +860,7 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-info reveal">
-    <span class="section-tag" style="color: var(--gold);">Let's Talk</span>
+    <span class="section-tag" style="color: var(--gold);">Let's talk</span>
     <h2 class="section-title light">Ready to Strengthen<br>Your Team?</h2>
     <p class="section-sub light" style="margin-bottom: 36px;">Tell André about your team and objectives. Every program starts with a conversation.</p>
     <div class="contact-detail">
@@ -902,11 +914,11 @@
         <select>
           <option value="">Select type</option>
           <option>Corporate Team Building</option>
-          <option>Corporate Outing / Boot Camp</option>
-          <option>Leadership Development</option>
-          <option>Outdoor Consultancy</option>
-          <option>Educational Camp</option>
-          <option>Adventure Trip</option>
+          <option>Corporate Outings & Experiences</option>
+          <option>Ecotourism & Rural Development</option>
+          <option>School Outings & Educational Camps</option>
+          <option>Adventure Trips</option>
+          <option>TV Program Game Design</option>
           <option>Custom Program</option>
         </select>
       </div>
@@ -925,11 +937,11 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-logo">André <span>Bechara</span></div>
+      <div class="footer-logo">André <span>Béchara</span></div>
       <div class="footer-subtitle">Outdoor Team Building Expert</div>
-      <p class="footer-tagline">30+ years of expertise in outdoor education and corporate team building. Transforming groups into extraordinary teams — in Lebanon and worldwide.</p>
+      <p class="footer-tagline">30+ years of expertise in outdoor education and corporate team building. Transforming groups into extraordinary teams, in Lebanon and worldwide.</p>
       <div class="social-links">
-        <a href="https://www.linkedin.com/in/andre-bechara-1367b7b/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+        <a href="https://www.linkedin.com/in/andre-béchara-1367b7b/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
         <a href="#" class="social-link" aria-label="Instagram">📷</a>
         <a href="#" class="social-link" aria-label="Facebook">f</a>
         <a href="#" class="social-link" aria-label="YouTube">▶</a>
@@ -949,7 +961,7 @@
       <h4>About</h4>
       <ul>
         <li><a href="#about">About the Programs</a></li>
-        <li><a href="#founder">André Bechara</a></li>
+        <li><a href="#founder">André Béchara</a></li>
         <li><a href="#process">The Process</a></li>
         <li><a href="#gallery">Gallery</a></li>
       </ul>
@@ -1046,7 +1058,7 @@ function switchTab(btn, id) {
 function handleSubmit(e) {
   e.preventDefault();
   const btn = e.target.querySelector('button[type="submit"]');
-  btn.textContent = '✓ Message sent — André will be in touch soon.';
+  btn.textContent = '✓ Message sent. André will be in touch soon.';
   btn.style.background = 'var(--forest-light)';
   btn.disabled = true;
 }
