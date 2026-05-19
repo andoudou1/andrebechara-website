@@ -227,15 +227,15 @@
   }
   .client-cell:hover::after { opacity: 1; }
   .client-cell img {
-    height: 40px; width: auto; max-width: 130px;
+    height: 44px; width: auto; max-width: 140px;
     object-fit: contain;
-    filter: brightness(0) invert(1);
-    opacity: 0.45;
-    transition: opacity 0.3s, filter 0.3s;
+    mix-blend-mode: screen;
+    opacity: 0.7;
+    transition: opacity 0.3s, transform 0.3s;
   }
   .client-cell:hover img {
-    opacity: 0.9;
-    filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg);
+    opacity: 1;
+    transform: scale(1.05);
   }
   /* Fallback text for missing images */
   .client-cell .client-name {
@@ -639,27 +639,27 @@
     <p class="clients-sub">From regional leaders to global brands — across industries, borders, and cultures.</p>
   </div>
   <div class="clients-grid">
-    <div class="client-cell"><img src="Images/microsoft.png" alt="Microsoft" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Microsoft</span></div>
-    <div class="client-cell"><img src="Images/deloitte.png" alt="Deloitte" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Deloitte</span></div>
-    <div class="client-cell"><img src="Images/unilever.png" alt="Unilever" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Unilever</span></div>
-    <div class="client-cell"><img src="Images/airfrance.png" alt="Air France" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Air France</span></div>
-    <div class="client-cell"><img src="Images/loreal.png" alt="L'Oréal" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">L'Oréal</span></div>
-    <div class="client-cell"><img src="Images/pepsi.png" alt="Pepsi" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Pepsi</span></div>
-    <div class="client-cell"><img src="Images/total.png" alt="TotalEnergies" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">TotalEnergies</span></div>
-    <div class="client-cell"><img src="Images/schneider.png" alt="Schneider Electric" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Schneider Electric</span></div>
-    <div class="client-cell"><img src="Images/redbull.png" alt="Red Bull" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Red Bull</span></div>
-    <div class="client-cell"><img src="Images/carrefour.png" alt="Carrefour" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Carrefour</span></div>
-    <div class="client-cell"><img src="Images/volvo.png" alt="Volvo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Volvo</span></div>
-    <div class="client-cell"><img src="Images/toshiba.png" alt="Toshiba" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Toshiba</span></div>
-    <div class="client-cell"><img src="Images/azadea.png" alt="Azadea Group" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Azadea Group</span></div>
-    <div class="client-cell"><img src="Images/fattal.png" alt="Fattal Group" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Fattal Group</span></div>
-    <div class="client-cell"><img src="Images/spinneys.png" alt="Spinneys Lebanon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Spinneys Lebanon</span></div>
-    <div class="client-cell"><img src="Images/bankaudi.png" alt="Bank Audi" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Bank Audi</span></div>
-    <div class="client-cell"><img src="Images/solidere.png" alt="Solidere" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Solidere</span></div>
-    <div class="client-cell"><img src="Images/aramex.png" alt="Aramex" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Aramex</span></div>
-    <div class="client-cell"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Willis Towers Watson</span></div>
-    <div class="client-cell"><img src="Images/lrc.png" alt="Lebanese Red Cross" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Lebanese Red Cross</span></div>
-    <div class="client-cell"><img src="Images/almaza.png" alt="Almaza" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Almaza</span></div>
+    <div class="client-cell"><img src="Images/microsoft.png" alt="Microsoft"></div>
+    <div class="client-cell"><img src="Images/deloitte.png" alt="Deloitte"></div>
+    <div class="client-cell"><img src="Images/unilever.png" alt="Unilever"></div>
+    <div class="client-cell"><img src="Images/airfrance.png" alt="Air France"></div>
+    <div class="client-cell"><img src="Images/loreal.png" alt="L'Oréal"></div>
+    <div class="client-cell"><img src="Images/pepsi.png" alt="Pepsi"></div>
+    <div class="client-cell"><img src="Images/total.png" alt="TotalEnergies"></div>
+    <div class="client-cell"><img src="Images/schneider.png" alt="Schneider Electric"></div>
+    <div class="client-cell"><img src="Images/redbull.png" alt="Red Bull"></div>
+    <div class="client-cell"><img src="Images/carrefour.png" alt="Carrefour"></div>
+    <div class="client-cell"><img src="Images/volvo.png" alt="Volvo"></div>
+    <div class="client-cell"><img src="Images/toshiba.png" alt="Toshiba"></div>
+    <div class="client-cell"><img src="Images/azadea.png" alt="Azadea Group"></div>
+    <div class="client-cell"><img src="Images/fattal.png" alt="Fattal Group"></div>
+    <div class="client-cell"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
+    <div class="client-cell"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
+    <div class="client-cell"><img src="Images/solidere.png" alt="Solidere"></div>
+    <div class="client-cell"><img src="Images/aramex.png" alt="Aramex"></div>
+    <div class="client-cell"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson"></div>
+    <div class="client-cell"><img src="Images/lrc.png" alt="Lebanese Red Cross"></div>
+    <div class="client-cell"><img src="Images/almaza.png" alt="Almaza"></div>
   </div>
   <p class="clients-count"><strong>21+</strong> organisations trust André Béchara to transform their teams</p>
 </div>
