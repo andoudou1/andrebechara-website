@@ -206,7 +206,8 @@
   }
   .client-cell {
     display: flex; align-items: center; justify-content: center;
-    padding: 28px 24px;
+    padding: 20px 28px;
+    min-height: 90px;
     border: 1px solid rgba(255,255,255,0.06);
     background: rgba(255,255,255,0.02);
     transition: background 0.25s, border-color 0.25s, transform 0.25s;
@@ -221,22 +222,35 @@
     opacity: 0; transition: opacity 0.3s;
   }
   .client-cell:hover {
-    background: rgba(255,255,255,0.05);
-    border-color: rgba(201,151,58,0.25);
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(201,151,58,0.3);
     transform: translateY(-2px);
   }
   .client-cell:hover::after { opacity: 1; }
   .client-cell img {
-    height: 44px; width: auto; max-width: 140px;
+    height: 52px; width: 100%; max-width: 160px;
     object-fit: contain;
     mix-blend-mode: screen;
-    opacity: 0.7;
+    opacity: 0.75;
     transition: opacity 0.3s, transform 0.3s;
   }
   .client-cell:hover img {
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.06);
   }
+  /* Dark logos (e.g. Solidere, Bank Audi) need a light background pill to be visible */
+  .client-cell.dark-logo {
+    background: rgba(255,255,255,0.06);
+  }
+  .client-cell.dark-logo img {
+    mix-blend-mode: normal;
+    opacity: 0.85;
+    background: rgba(255,255,255,0.92);
+    border-radius: 6px;
+    padding: 6px 10px;
+    height: 52px;
+  }
+  .client-cell.dark-logo:hover img { opacity: 1; }
   /* Fallback text for missing images */
   .client-cell .client-name {
     font-size: 0.82rem; font-weight: 600;
@@ -554,8 +568,8 @@
     .form-row { grid-template-columns: 1fr; }
     .clients-section { padding: 56px 20px; }
     .clients-grid { grid-template-columns: repeat(3, 1fr); }
-    .client-cell { padding: 20px 14px; }
-    .client-cell img { height: 28px; }
+    .client-cell { padding: 16px 12px; min-height: 70px; }
+    .client-cell img { height: 36px; }
   }
   @media (max-width: 560px) {
     .services-grid { grid-template-columns: 1fr; }
@@ -654,8 +668,8 @@
     <div class="client-cell"><img src="Images/azadea.png" alt="Azadea Group"></div>
     <div class="client-cell"><img src="Images/fattal.png" alt="Fattal Group"></div>
     <div class="client-cell"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
-    <div class="client-cell"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
-    <div class="client-cell"><img src="Images/solidere.png" alt="Solidere"></div>
+    <div class="client-cell dark-logo"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
+    <div class="client-cell dark-logo"><img src="Images/solidere.png" alt="Solidere"></div>
     <div class="client-cell"><img src="Images/aramex.png" alt="Aramex"></div>
     <div class="client-cell"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson"></div>
     <div class="client-cell"><img src="Images/lrc.png" alt="Lebanese Red Cross"></div>
