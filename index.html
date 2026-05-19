@@ -428,14 +428,19 @@
     box-shadow: 0 4px 16px rgba(201,151,58,0.35);
   }
 
-  /* Main stage: image | benefits | image */
+  /* Main stage wrapper */
   .roi-stage {
+    position: relative;
+    min-height: 680px;
+  }
+
+  /* Panel visibility — grid lives on the panel itself, not the stage */
+  .roi-panel { display: none; }
+  .roi-panel.active {
     display: grid;
     grid-template-columns: 320px 1fr 320px;
     min-height: 680px;
   }
-
-  /* Portrait image panels */
   .roi-photo {
     position: relative; overflow: hidden;
   }
@@ -514,10 +519,11 @@
 
   /* Mobile responsive */
   @media (max-width: 900px) {
-    .roi-stage {
+    .roi-panel.active {
       grid-template-columns: 1fr;
       min-height: auto;
     }
+    .roi-stage { min-height: auto; }
     .roi-photos-mobile {
       display: grid;
       grid-template-columns: 1fr 1fr;
