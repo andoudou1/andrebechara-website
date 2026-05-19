@@ -90,8 +90,8 @@
   .hero-bg {
     position: absolute; inset: 0;
     background:
-      linear-gradient(160deg, rgba(10,25,10,0.72) 0%, rgba(26,46,26,0.45) 50%, rgba(100,60,10,0.3) 100%),
-      url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&q=80') center/cover no-repeat;
+      linear-gradient(160deg, rgba(10,25,10,0.78) 0%, rgba(26,46,26,0.50) 45%, rgba(80,50,10,0.35) 100%),
+      url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1800&q=80') center/cover no-repeat;
   }
   .hero-bg-fallback {
     position: absolute; inset: 0;
@@ -258,8 +258,22 @@
   .feature-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 0.9rem; font-weight: 500; }
   .feature-item::before { content: '✦'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; }
 
-  /* ---- THE PROCESS ---- */
-  #process { background: var(--cream); }
+  #process {
+    background: var(--cream);
+    position: relative;
+  }
+  #process::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('Images/flower.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.10;
+    z-index: 0;
+  }
+  #process > * { position: relative; z-index: 1; }
   .process-steps {
     display: grid; grid-template-columns: repeat(3,1fr);
     gap: 32px; margin-top: 56px;
@@ -282,7 +296,22 @@
   .process-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; }
 
   /* ---- SERVICES ---- */
-  #services { background: var(--sand-light); }
+  #services {
+    background: var(--sand-light);
+    position: relative;
+  }
+  #services::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('Images/rope.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.10;
+    z-index: 0;
+  }
+  #services > * { position: relative; z-index: 1; }
   .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; margin-top: 56px; }
   .service-card {
     background: white; border-radius: 16px; padding: 32px 28px;
@@ -404,8 +433,46 @@
   .faq-item.open .faq-answer { max-height: 200px; padding-top: 16px; }
 
   /* ---- CONTACT ---- */
-  #contact { background: var(--forest); padding: 96px 80px; display: flex; flex-direction: column; align-items: flex-start; max-width: 700px; margin: 0 auto; }
-  .contact-info { padding-top: 8px; }
+  #contact {
+    background: var(--forest);
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 1fr;
+    align-items: stretch;
+    max-width: none;
+    margin: 0;
+    min-height: 520px;
+  }
+  .contact-side-img {
+    overflow: hidden;
+    position: relative;
+    min-height: 440px;
+  }
+  .contact-side-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    filter: brightness(0.75) saturate(0.85);
+    transition: filter 0.4s;
+  }
+  .contact-side-img:hover img { filter: brightness(0.85) saturate(1); }
+  .contact-side-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(26,46,26,0.5), transparent);
+  }
+  .contact-side-img.right-img::after {
+    background: linear-gradient(to left, rgba(26,46,26,0.5), transparent);
+  }
+  .contact-info {
+    padding: 72px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   .contact-detail { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; color: rgba(255,255,255,0.8); font-size: 0.95rem; }
   .contact-detail a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.2s; }
   .contact-detail a:hover { color: var(--gold); }
@@ -519,7 +586,10 @@
     /* Fix all reveal elements on mobile — disable animation */
     .reveal { opacity: 1 !important; transform: translateY(0) !important; transition: none !important; }
     section { padding: 64px 20px; }
-    #about, #founder, #contact { grid-template-columns: 1fr; gap: 36px; padding: 64px 20px; }
+    #about, #founder { grid-template-columns: 1fr; gap: 36px; padding: 64px 20px; }
+    #contact { grid-template-columns: 1fr; }
+    .contact-side-img { min-height: 220px; }
+    .contact-info { padding: 48px 20px; }
     .about-badge-float { right: 0; bottom: -18px; }
     #benefits .roi-panel.active { grid-template-columns: 1fr 1fr; }
     .services-grid { grid-template-columns: 1fr 1fr; }
@@ -553,11 +623,12 @@
     </div>
   </a>
   <ul class="nav-links" id="navLinks">
+    <li><a href="#hero">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#founder">Profile</a></li>
     <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact" class="nav-cta">Book a Session</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -575,7 +646,6 @@
     <p class="hero-sub">From corporate retreats and incentive outings to educational camps every experience places people in extraordinary environments.</p>
     <p class="hero-sub" style="margin-top: -16px; font-size: 0.95rem; opacity: 0.75;">Every journey blends purpose, discovery, and unforgettable moments.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Book a Consultation</a>
       <a href="#services" class="btn-outline">Explore Programs</a>
     </div>
   </div>
@@ -633,8 +703,7 @@
       <div class="client-logo"><img src="Images/almaza.png" alt="Almaza"></div>
       <div class="client-logo"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
       <div class="client-logo"><img src="Images/uob.png" alt="UOB"></div>
-      <div class="client-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/UNDP_logo.svg/320px-UNDP_logo.svg.png" alt="UNDP"></div>
-      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="client-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/UNDP_logo.svg/320px-UNDP_logo.svg.png" alt="UNDP" style="mix-blend-mode:normal; filter: none; opacity:0.75;"></div>
       <div class="client-logo"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
       <div class="client-logo"><img src="Images/solidere.png" alt="Solidere"></div>
       <div class="client-logo"><img src="Images/toshiba.png" alt="Toshiba"></div>
@@ -657,7 +726,7 @@
       <div class="client-logo"><img src="Images/almaza.png" alt="Almaza"></div>
       <div class="client-logo"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
       <div class="client-logo"><img src="Images/uob.png" alt="UOB"></div>
-      <div class="client-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/UNDP_logo.svg/320px-UNDP_logo.svg.png" alt="UNDP"></div>
+      <div class="client-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/UNDP_logo.svg/320px-UNDP_logo.svg.png" alt="UNDP" style="mix-blend-mode:normal; filter: none; opacity:0.75;"></div>
     </div>
   </div>
 </div>
@@ -666,15 +735,11 @@
 <section id="about">
   <div class="about-img-wrap reveal">
     <img src="Images/team.png" alt="Team working together outdoors" onerror="this.style.background='linear-gradient(135deg,#2d4a2d,#1a2e1a)'; this.style.minHeight='520px'; this.removeAttribute('src')">
-    <div class="about-badge-float">
-      <strong>30+</strong>
-      Years of Outdoor<br>Leadership
-    </div>
   </div>
   <div class="about-text-wrap reveal">
     <span class="section-tag">What we do</span>
     <h2 class="section-title light">From Groups<br>to Teams</h2>
-    <p class="section-sub light" style="margin-bottom: 18px;">The program combines mental and physical challenges in immersive, high-energy experiences that push participants beyond conventional thinking and routine behavior. Each activity is carefully designed to test and develop analytical thinking, creativity, communication, adaptability, decision-making, and leadership under real-world conditions.</p>
+    <p class="section-sub light" style="margin-bottom: 18px;">Our programs combine mental and physical challenges in immersive, high-energy experiences that push participants beyond conventional thinking and routine behavior. Each activity is carefully designed to test and develop analytical thinking, creativity, communication, adaptability, decision-making, and leadership under real-world conditions.</p>
     <p class="section-sub light">Participants are placed in dynamic scenarios where success depends on collaboration, strategic thinking, trust, and the ability to perform under pressure using limited resources and collective intelligence. The lessons learned in the field translate directly into the workplace, strengthening team cohesion, problem-solving capacity, leadership effectiveness, and organizational performance.</p>
     <div class="feature-list">
       <div class="feature-item">Radiant thinking methodology</div>
@@ -854,6 +919,9 @@
 
 <!-- CONTACT -->
 <section id="contact">
+  <div class="contact-side-img">
+    <img src="Images/topchef.png" alt="Team cooking experience">
+  </div>
   <div class="contact-info reveal">
     <span class="section-tag" style="color: var(--gold);">Let's talk</span>
     <h2 class="section-title light">Ready to Strengthen<br>Your Team?</h2>
@@ -874,7 +942,9 @@
       WhatsApp André Directly
     </a>
   </div>
-
+  <div class="contact-side-img right-img">
+    <img src="Images/group.png" alt="Team group photo">
+  </div>
 </section>
 
 <!-- FOOTER -->
