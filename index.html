@@ -390,11 +390,10 @@
   .founder-role { font-size: 0.85rem; color: var(--orange); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
   .founder-bio { font-size: 1rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; }
 
-  /* ---- BENEFITS (ROI) — Bulletproof rebuild ---- */
+  /* ---- BENEFITS (ROI) — Rebuilt using contact image pattern ---- */
   #benefits {
     background: var(--forest);
     padding: 0;
-    overflow: hidden;
   }
   .roi-header {
     text-align: center;
@@ -421,52 +420,43 @@
   }
   .roi-tab.active { background: var(--gold); color: var(--forest); box-shadow: 0 4px 16px rgba(201,151,58,0.35); }
 
-  /* The stage: three side-by-side columns using flexbox (not grid) */
+  /* Panel layout — identical to #contact */
   .roi-panel { display: none; }
   .roi-panel.active {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
     align-items: stretch;
-    min-height: 680px;
+    min-height: 520px;
   }
 
-  .roi-photo {
-    width: 300px;
-    flex: 0 0 300px;
+  /* Side images — identical CSS to .contact-side-img */
+  .roi-side-img {
     overflow: hidden;
     position: relative;
+    min-height: 440px;
   }
-  .roi-photo img {
+  .roi-side-img img {
     width: 100%;
-    height: 680px;
+    height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center;
     display: block;
     filter: brightness(0.72) saturate(0.85);
+    transition: filter 0.4s;
   }
-  .roi-photo .roi-photo-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, transparent 40%, var(--forest) 100%);
-    pointer-events: none;
+  .roi-side-img:hover img { filter: brightness(0.85) saturate(1); }
+  .roi-side-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(26,46,26,0.5), transparent);
   }
-  .roi-photo.right .roi-photo-overlay {
-    background: linear-gradient(to left, transparent 40%, var(--forest) 100%);
+  .roi-side-img.right-img::after {
+    background: linear-gradient(to left, rgba(26,46,26,0.5), transparent);
   }
-  .roi-photo .roi-photo-line {
-    position: absolute;
-    top: 12%; bottom: 12%;
-    right: 0; width: 2px;
-    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-    opacity: 0.5;
-    pointer-events: none;
-  }
-  .roi-photo.right .roi-photo-line { right: auto; left: 0; }
 
-  /* Centre column */
+  /* Centre content column */
   .roi-centre {
-    flex: 1 1 auto;
-    padding: 64px 56px;
+    padding: 56px 48px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -475,79 +465,41 @@
   /* Benefit rows */
   .benefit-rows { display: flex; flex-direction: column; }
   .benefit-row {
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-    padding: 22px 0;
+    display: flex; flex-direction: row; gap: 20px;
+    padding: 20px 0;
     border-bottom: 1px solid rgba(255,255,255,0.06);
     align-items: flex-start;
     transition: background 0.25s, padding 0.25s;
     cursor: default;
-    border-radius: 0;
   }
   .benefit-row:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
-  .benefit-row:hover {
-    background: rgba(201,151,58,0.06);
-    padding-left: 12px; padding-right: 12px;
-    border-radius: 8px;
-  }
+  .benefit-row:hover { background: rgba(201,151,58,0.06); padding-left: 10px; padding-right: 10px; border-radius: 8px; }
   .benefit-accent {
-    flex: 0 0 3px;
-    width: 3px;
-    align-self: stretch;
-    min-height: 44px;
+    flex: 0 0 3px; width: 3px; align-self: stretch; min-height: 40px;
     border-radius: 3px;
     background: linear-gradient(to bottom, var(--gold), var(--orange));
-    opacity: 0.45;
-    transition: opacity 0.25s;
-    margin-top: 3px;
+    opacity: 0.45; transition: opacity 0.25s; margin-top: 3px;
   }
   .benefit-row:hover .benefit-accent { opacity: 1; }
   .benefit-body { flex: 1; }
   .benefit-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.05rem; font-weight: 700;
-    color: var(--white); margin-bottom: 5px;
+    font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 5px;
     transition: color 0.25s;
   }
   .benefit-row:hover .benefit-title { color: var(--gold-light); }
   .benefit-desc {
-    font-size: 0.85rem; color: rgba(255,255,255,0.48);
-    line-height: 1.65; font-weight: 300;
-    transition: color 0.25s;
+    font-size: 0.85rem; color: rgba(255,255,255,0.5);
+    line-height: 1.65; font-weight: 300; transition: color 0.25s;
   }
-  .benefit-row:hover .benefit-desc { color: rgba(255,255,255,0.7); }
+  .benefit-row:hover .benefit-desc { color: rgba(255,255,255,0.75); }
 
   /* Mobile */
-  .roi-photos-mobile { display: none; }
   @media (max-width: 768px) {
-    .roi-panel.active {
-      display: flex;
-      flex-direction: column;
-      min-height: auto;
-    }
-    .roi-photo { display: none; }
-    .roi-photos-mobile {
-      display: flex;
-      height: 260px;
-    }
-    .roi-photo-mobile {
-      flex: 1; position: relative; overflow: hidden;
-    }
-    .roi-photo-mobile img {
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      display: block;
-      filter: brightness(0.72) saturate(0.85);
-    }
-    .roi-photo-mobile .roi-photo-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 40%, rgba(26,46,26,0.75));
-      pointer-events: none;
-    }
-    .roi-centre { padding: 40px 24px; }
-    .roi-header { padding: 64px 24px 48px; }
+    .roi-panel.active { grid-template-columns: 1fr; }
+    .roi-side-img { min-height: 220px; }
+    .roi-centre { padding: 40px 20px; }
+    .roi-header { padding: 64px 20px 48px; }
   }
 
   /* ---- GALLERY ---- */
@@ -1025,12 +977,11 @@
 </section>
 
 <!-- BENEFITS / ROI -->
-<section id="benefits" style="z-index:16; position: relative; background: var(--forest);">
+<section id="benefits" class="stack-section" style="z-index:16; background: var(--forest);">
 
-  <!-- Header -->
   <div class="roi-header">
     <span class="section-tag">Return on investment</span>
-    <h2 class="section-title">What Your Team<br>Gains from the Field</h2>
+    <h2 class="section-title">What Your Team<br>Gains from the Experience</h2>
     <p class="roi-lead"><strong>Success in business is measured by numbers — but the real foundation is people.</strong><br>Every program transforms your investment into lasting behavioural change, stronger teams, and measurable performance.</p>
     <div class="roi-tabs">
       <button class="roi-tab active" onclick="switchTab(this, 'team')">At the Team Level</button>
@@ -1038,137 +989,117 @@
     </div>
   </div>
 
-  <!-- Mobile image strip (shown only on small screens) -->
-  <div class="roi-photos-mobile">
-    <div class="roi-photo-mobile">
+  <!-- Panel: Team -->
+  <div class="roi-panel active" id="tab-team">
+    <div class="roi-side-img">
       <img src="Images/aircraft.png" alt="Aircraft team experience">
-      <div class="roi-photo-overlay"></div>
     </div>
-    <div class="roi-photo-mobile">
+    <div class="roi-centre">
+      <div class="benefit-rows">
+        <div class="benefit-row reveal">
+          <div class="benefit-accent"></div>
+          <div class="benefit-body">
+            <div class="benefit-title">Communication</div>
+            <p class="benefit-desc">Shared challenges strip workplace hierarchies, creating authentic communication patterns that carry back into the office.</p>
+          </div>
+        </div>
+        <div class="benefit-row reveal">
+          <div class="benefit-accent"></div>
+          <div class="benefit-body">
+            <div class="benefit-title">Effective Collaboration</div>
+            <p class="benefit-desc">Shared challenges build genuine camaraderie and a team culture grounded in trust and mutual accountability.</p>
+          </div>
+        </div>
+        <div class="benefit-row reveal">
+          <div class="benefit-accent"></div>
+          <div class="benefit-body">
+            <div class="benefit-title">Leadership Qualities</div>
+            <p class="benefit-desc">Real-world scenarios surface and develop leadership capabilities that no classroom training can replicate.</p>
+          </div>
+        </div>
+        <div class="benefit-row reveal">
+          <div class="benefit-accent"></div>
+          <div class="benefit-body">
+            <div class="benefit-title">Time Management</div>
+            <p class="benefit-desc">Time-pressured challenges reinforce prioritisation, decision speed, and execution under constraints.</p>
+          </div>
+        </div>
+        <div class="benefit-row reveal">
+          <div class="benefit-accent"></div>
+          <div class="benefit-body">
+            <div class="benefit-title">Teamwork & Cohesion</div>
+            <p class="benefit-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p>
+          </div>
+        </div>
+        <div class="benefit-row reveal">
+          <div class="benefit-accent"></div>
+          <div class="benefit-body">
+            <div class="benefit-title">Problem-Solving Skills</div>
+            <p class="benefit-desc">Complex immersive scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="roi-side-img right-img">
       <img src="Images/track.png" alt="Track team activity">
-      <div class="roi-photo-overlay"></div>
     </div>
   </div>
 
-  <!-- Panel: Team -->
-    <div class="roi-panel active" id="tab-team">
-      <div class="roi-photo">
-        <img src="Images/aircraft.png" alt="Aircraft team experience">
-        <div class="roi-photo-overlay"></div>
-        <div class="roi-photo-line"></div>
-      </div>
-      <div class="roi-centre">
-        <div class="benefit-rows">
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Communication</div>
-              <p class="benefit-desc">Field-based challenges strip workplace hierarchies, creating authentic communication patterns that carry back into the office.</p>
-            </div>
+  <!-- Panel: Personal -->
+  <div class="roi-panel" id="tab-personal">
+    <div class="roi-side-img">
+      <img src="Images/track.png" alt="Track team activity">
+    </div>
+    <div class="roi-centre">
+      <div class="benefit-rows">
+        <div class="benefit-row reveal">
+          <div class="benefit-accent"></div>
+          <div class="benefit-body">
+            <div class="benefit-title">Build Self-Confidence</div>
+            <p class="benefit-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p>
           </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Effective Collaboration</div>
-              <p class="benefit-desc">Shared challenges build genuine camaraderie and a team culture grounded in trust and mutual accountability.</p>
-            </div>
+        </div>
+        <div class="benefit-row reveal">
+          <div class="benefit-accent"></div>
+          <div class="benefit-body">
+            <div class="benefit-title">Stretch Personal Limits</div>
+            <p class="benefit-desc">Participants discover what they're capable of when pushed beyond their comfort zone in a safe, facilitated environment.</p>
           </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Leadership Qualities</div>
-              <p class="benefit-desc">Real-world scenarios surface and develop leadership capabilities that no classroom training can replicate.</p>
-            </div>
+        </div>
+        <div class="benefit-row reveal">
+          <div class="benefit-accent"></div>
+          <div class="benefit-body">
+            <div class="benefit-title">Decision-Making Skills</div>
+            <p class="benefit-desc">Evaluating solutions under pressure sharpens analytical thinking and reduces hesitation in high-stakes situations.</p>
           </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Time Management</div>
-              <p class="benefit-desc">Time-pressured challenges reinforce prioritisation, decision speed, and execution under constraints.</p>
-            </div>
+        </div>
+        <div class="benefit-row reveal">
+          <div class="benefit-accent"></div>
+          <div class="benefit-body">
+            <div class="benefit-title">Thinking Outside the Box</div>
+            <p class="benefit-desc">Immersive problem solving breaks habitual thinking patterns and unlocks genuine creative capacity.</p>
           </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Teamwork & Cohesion</div>
-              <p class="benefit-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p>
-            </div>
+        </div>
+        <div class="benefit-row reveal">
+          <div class="benefit-accent"></div>
+          <div class="benefit-body">
+            <div class="benefit-title">Fun & Memorable Times</div>
+            <p class="benefit-desc">Shared experiences create lasting positive memories, increasing morale, loyalty, and sense of belonging.</p>
           </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Problem-Solving Skills</div>
-              <p class="benefit-desc">Complex immersive scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.</p>
-            </div>
+        </div>
+        <div class="benefit-row reveal">
+          <div class="benefit-accent"></div>
+          <div class="benefit-body">
+            <div class="benefit-title">Self-Awareness</div>
+            <p class="benefit-desc">Guided debriefing helps participants understand their own strengths, blind spots, and contribution style.</p>
           </div>
         </div>
       </div>
-      <div class="roi-photo right">
-        <img src="Images/track.png" alt="Track team activity">
-        <div class="roi-photo-overlay"></div>
-        <div class="roi-photo-line"></div>
-      </div>
     </div>
-
-    <!-- Panel: Personal -->
-    <div class="roi-panel" id="tab-personal">
-      <div class="roi-photo">
-        <img src="Images/track.png" alt="Track team activity">
-        <div class="roi-photo-overlay"></div>
-        <div class="roi-photo-line"></div>
-      </div>
-      <div class="roi-centre">
-        <div class="benefit-rows">
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Build Self-Confidence</div>
-              <p class="benefit-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Stretch Personal Limits</div>
-              <p class="benefit-desc">Participants discover what they're capable of when pushed beyond their comfort zone in a safe, facilitated environment.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Decision-Making Skills</div>
-              <p class="benefit-desc">Evaluating solutions under pressure sharpens analytical thinking and reduces hesitation in high-stakes situations.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Thinking Outside the Box</div>
-              <p class="benefit-desc">Nature-based problem solving breaks habitual thinking patterns and unlocks genuine creative capacity.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Fun & Memorable Times</div>
-              <p class="benefit-desc">Shared adventure creates lasting positive memories, increasing morale, loyalty, and sense of belonging to the company.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Self-Awareness</div>
-              <p class="benefit-desc">Field observation and debriefing help participants understand their own strengths, blind spots, and contribution style.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="roi-photo right">
-        <img src="Images/aircraft.png" alt="Aircraft team experience">
-        <div class="roi-photo-overlay"></div>
-        <div class="roi-photo-line"></div>
-      </div>
+    <div class="roi-side-img right-img">
+      <img src="Images/aircraft.png" alt="Aircraft team experience">
     </div>
+  </div>
 
 </section>
 
