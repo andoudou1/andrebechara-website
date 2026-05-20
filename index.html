@@ -435,7 +435,6 @@
     flex: 0 0 300px;
     overflow: hidden;
     position: relative;
-    isolation: isolate;
   }
   .roi-photo img {
     width: 100%;
@@ -444,7 +443,6 @@
     object-position: center top;
     display: block;
     filter: brightness(0.72) saturate(0.85);
-    will-change: transform;
     position: relative;
     z-index: 0;
   }
@@ -542,7 +540,6 @@
       object-fit: cover; object-position: center top;
       display: block;
       filter: brightness(0.72) saturate(0.85);
-      will-change: transform;
       z-index: 0;
     }
     .roi-photo-mobile::after {
@@ -700,7 +697,6 @@
   #process.stack-section,
   #services.stack-section,
   #founder.stack-section,
-  #benefits.stack-section,
   #gallery.stack-section,
   #contact.stack-section {
     box-shadow: 0 -8px 40px rgba(0,0,0,0.18);
@@ -1028,7 +1024,7 @@
 </section>
 
 <!-- BENEFITS / ROI -->
-<section id="benefits" class="stack-section" style="z-index:16;">
+<section id="benefits" style="z-index:16; position: relative; background: var(--forest);">
 
   <!-- Header -->
   <div class="roi-header">
