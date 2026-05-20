@@ -435,17 +435,18 @@
     flex: 0 0 300px;
     overflow: hidden;
     position: relative;
-    height: 100%;
-    min-height: 680px;
+    isolation: isolate;
   }
   .roi-photo img {
     width: 100%;
-    height: 100%;
-    min-height: 680px;
+    height: 680px;
     object-fit: cover;
     object-position: center top;
     display: block;
     filter: brightness(0.72) saturate(0.85);
+    will-change: transform;
+    position: relative;
+    z-index: 0;
   }
   .roi-photo::after {
     content: '';
@@ -533,7 +534,7 @@
       height: 260px;
     }
     .roi-photo-mobile {
-      flex: 1; position: relative; overflow: hidden;
+      flex: 1; position: relative; overflow: hidden; isolation: isolate;
     }
     .roi-photo-mobile img {
       position: absolute; top: 0; left: 0;
@@ -541,6 +542,8 @@
       object-fit: cover; object-position: center top;
       display: block;
       filter: brightness(0.72) saturate(0.85);
+      will-change: transform;
+      z-index: 0;
     }
     .roi-photo-mobile::after {
       content: ''; position: absolute; inset: 0;
@@ -679,29 +682,40 @@
   .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
   .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
 
-  /* ---- SCROLL STACK ---- */
-  .stack-wrap {
+  /* ---- SCROLL STACKING ---- */
+  .stack-container {
     position: relative;
   }
   .stack-section {
     position: sticky;
     top: 0;
-    border-radius: 28px 28px 0 0;
-    overflow: hidden;
     will-change: transform;
     transform-origin: top center;
+  }
+  /* Ensure every stack-section is fully opaque — no see-through gaps */
+  .stats-strip.stack-section { background: var(--forest); }
+  .clients-banner.stack-section { background: var(--white); }
+  /* Add a top shadow so stacking depth is visible */
+  #about.stack-section,
+  #process.stack-section,
+  #services.stack-section,
+  #founder.stack-section,
+  #benefits.stack-section,
+  #gallery.stack-section,
+  #contact.stack-section {
     box-shadow: 0 -8px 40px rgba(0,0,0,0.18);
   }
-  /* Each section gets a slightly higher z so it covers the one before */
-  #about      { z-index: 10; }
-  #process    { z-index: 11; }
-  #services   { z-index: 12; }
-  #founder    { z-index: 13; }
-  #benefits   { z-index: 14; }
-  #gallery    { z-index: 15; }
-  #testimonials { z-index: 16; }
-  #faq        { z-index: 17; }
-  #contact    { z-index: 18; border-radius: 28px 28px 0 0; }
+  /* Disable stacking on mobile — normal scroll */
+  @media (max-width: 900px) {
+    .stack-section {
+      position: static !important;
+      transform: none !important;
+      filter: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  /* ---- ANIMATIONS ---- */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes scrollPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
   .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -827,7 +841,8 @@
     <p class="hero-sub">From corporate retreats and incentive outings to educational camps every experience places people in extraordinary environments.</p>
     <p class="hero-sub" style="margin-top: -16px; font-size: 0.95rem; opacity: 0.75;">Every journey blends purpose, discovery, and unforgettable moments.</p>
     <div class="hero-actions">
-      <a href="#about" class="btn-outline">Discover More</a>
+      <a href="#contact" class="btn-primary">Book a Consultation</a>
+      <a href="#about" class="btn-outline">Discover the Approach</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -841,8 +856,11 @@
   </div>
 </section>
 
+<!-- STACK CONTAINER: sections stack on scroll -->
+<div class="stack-container">
+
 <!-- STATS STRIP -->
-<div class="stats-strip stack-section" style="z-index:9; position:sticky; top:0; border-radius: 0;">
+<div class="stats-strip stack-section" style="z-index:10;">
   <div class="stat-item">
     <div class="stat-num" data-target="30">0</div>
     <div class="stat-label">Years of Expertise</div>
@@ -862,7 +880,7 @@
 </div>
 
 <!-- CLIENT LOGOS BANNER -->
-<div class="clients-banner">
+<div class="clients-banner stack-section" style="z-index:11;">
   <p class="clients-label">Trusted by leading organizations</p>
   <div class="clients-track-wrap">
     <div class="clients-track" id="clientsTrack">
@@ -918,7 +936,7 @@
 </div>
 
 <!-- ABOUT -->
-<section id="about" class="stack-section">
+<section id="about" class="stack-section" style="z-index:12;">
   <div class="about-img-wrap reveal">
     <img src="Images/team.png" alt="Team working together outdoors" onerror="this.style.background='linear-gradient(135deg,#2d4a2d,#1a2e1a)'; this.style.minHeight='520px'; this.removeAttribute('src')">
   </div>
@@ -939,7 +957,7 @@
 </section>
 
 <!-- THE PROCESS -->
-<section id="process" class="stack-section">
+<section id="process" class="stack-section" style="z-index:13;">
   <div style="max-width: 760px;">
     <span class="section-tag">How it works</span>
     <h2 class="section-title">A Structured Process<br>for Lasting Impact</h2>
@@ -968,7 +986,7 @@
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="stack-section">
+<section id="services" class="stack-section" style="z-index:14;">
   <div style="max-width: 600px;">
     <span class="section-tag">Programs & services</span>
     <h2 class="section-title">Every Engagement<br>Designed for Impact</h2>
@@ -995,7 +1013,7 @@
 </section>
 
 <!-- FOUNDER -->
-<section id="founder" class="stack-section">
+<section id="founder" class="stack-section" style="z-index:15;">
   <div class="founder-img reveal">
     <img src="Images/andre-bechara.png" alt="André Béchara, Founder" style="object-position: top;">
   </div>
@@ -1010,7 +1028,7 @@
 </section>
 
 <!-- BENEFITS / ROI -->
-<section id="benefits" class="stack-section">
+<section id="benefits" class="stack-section" style="z-index:16;">
 
   <!-- Header -->
   <div class="roi-header">
@@ -1148,7 +1166,7 @@
 </section>
 
 <!-- GALLERY -->
-<section id="gallery" class="stack-section">
+<section id="gallery" class="stack-section" style="z-index:17;">
   <div class="gallery-header">
     <span class="section-tag" style="color: var(--gold);">Experience gallery</span>
     <h2 class="section-title light">Built for the Wild,<br>Designed for Teams</h2>
@@ -1175,7 +1193,7 @@
 
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="stack-section" style="z-index:18;">
   <div class="contact-side-img">
     <img src="Images/topchef.png" alt="Team cooking experience">
   </div>
@@ -1203,6 +1221,8 @@
     <img src="Images/group.png" alt="Team group photo">
   </div>
 </section>
+
+</div><!-- end .stack-container -->
 
 <!-- FOOTER -->
 <footer>
@@ -1360,34 +1380,53 @@ function handleSubmit(e) {
   btn.disabled = true;
 }
 
-// Scroll stack — scale down section as the next one slides over it
+// ---- SCROLL STACKING ----
+// Only on desktop (>900px) to avoid breaking mobile layout
 (function() {
-  const sections = Array.from(document.querySelectorAll('.stack-section'));
-  if (!sections.length) return;
-  const SCALE_MIN = 0.92;
-  const OFFSET = 60; // px from top where scaling starts
+  if (window.innerWidth <= 900) return;
+
+  const stackSections = Array.from(document.querySelectorAll('.stack-section'));
+  if (!stackSections.length) return;
 
   function onScroll() {
-    sections.forEach((el, i) => {
-      const next = sections[i + 1];
-      if (!next) { el.style.transform = ''; return; }
+    stackSections.forEach((section, i) => {
+      const rect = section.getBoundingClientRect();
+      const isFullyScrolledPast = rect.bottom <= 0;
 
-      const elTop = el.getBoundingClientRect().top;
-      const nextTop = next.getBoundingClientRect().top;
-      const elH = el.offsetHeight;
+      // How far the NEXT section has scrolled over this one (0 = not at all, 1 = fully covered)
+      const nextSection = stackSections[i + 1];
+      if (!nextSection) {
+        section.style.transform = '';
+        section.style.filter = '';
+        return;
+      }
 
-      // How far the next section has scrolled over this one (0→1)
-      const overlap = Math.max(0, Math.min(1, (OFFSET - nextTop) / elH));
-      const scale = 1 - (1 - SCALE_MIN) * overlap;
-      el.style.transform = overlap > 0 ? `scale(${scale.toFixed(4)})` : '';
-      el.style.transformOrigin = 'top center';
+      const nextRect = nextSection.getBoundingClientRect();
+      // progress: 0 when next section's top is at viewport bottom, 1 when fully covers this section
+      const overlapStart = window.innerHeight;
+      const overlapEnd = 0;
+      const progress = Math.max(0, Math.min(1, (overlapStart - nextRect.top) / overlapStart));
+
+      if (progress > 0 && progress < 1) {
+        const scale = 1 - (progress * 0.03);      // shrinks from 1.0 → 0.97
+        const translateY = -(progress * 10);        // nudges up 10px
+        const brightness = 1 - (progress * 0.08);  // darkens slightly
+        section.style.transform = `scale(${scale.toFixed(4)}) translateY(${translateY.toFixed(1)}px)`;
+        section.style.filter = `brightness(${brightness.toFixed(3)})`;
+        section.style.transformOrigin = 'top center';
+      } else if (progress >= 1 || isFullyScrolledPast) {
+        section.style.transform = 'scale(0.97) translateY(-10px)';
+        section.style.filter = 'brightness(0.92)';
+      } else {
+        section.style.transform = '';
+        section.style.filter = '';
+      }
     });
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  onScroll(); // run once on load
 })();
-
 </script>
 </body>
 </html>
