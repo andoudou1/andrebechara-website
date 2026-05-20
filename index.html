@@ -443,25 +443,25 @@
     object-position: center top;
     display: block;
     filter: brightness(0.72) saturate(0.85);
+    position: relative;
+    z-index: 0;
   }
-  .roi-photo .roi-photo-overlay {
-    position: absolute;
-    inset: 0;
+  .roi-photo::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
     background: linear-gradient(to right, transparent 40%, var(--forest) 100%);
-    pointer-events: none;
   }
-  .roi-photo.right .roi-photo-overlay {
+  .roi-photo.right::after {
     background: linear-gradient(to left, transparent 40%, var(--forest) 100%);
   }
-  .roi-photo .roi-photo-line {
-    position: absolute;
-    top: 12%; bottom: 12%;
-    right: 0; width: 2px;
+  .roi-photo::before {
+    content: '';
+    position: absolute; top: 12%; bottom: 12%;
+    right: 0; width: 2px; z-index: 2;
     background: linear-gradient(to bottom, transparent, var(--gold), transparent);
     opacity: 0.5;
-    pointer-events: none;
   }
-  .roi-photo.right .roi-photo-line { right: auto; left: 0; }
+  .roi-photo.right::before { right: auto; left: 0; }
 
   /* Centre column */
   .roi-centre {
@@ -532,7 +532,7 @@
       height: 260px;
     }
     .roi-photo-mobile {
-      flex: 1; position: relative; overflow: hidden;
+      flex: 1; position: relative; overflow: hidden; isolation: isolate;
     }
     .roi-photo-mobile img {
       position: absolute; top: 0; left: 0;
@@ -540,11 +540,11 @@
       object-fit: cover; object-position: center top;
       display: block;
       filter: brightness(0.72) saturate(0.85);
+      z-index: 0;
     }
-    .roi-photo-mobile .roi-photo-overlay {
-      position: absolute; inset: 0;
+    .roi-photo-mobile::after {
+      content: ''; position: absolute; inset: 0;
       background: linear-gradient(to bottom, transparent 40%, rgba(26,46,26,0.75));
-      pointer-events: none;
     }
     .roi-centre { padding: 40px 24px; }
     .roi-header { padding: 64px 24px 48px; }
@@ -697,7 +697,6 @@
   #process.stack-section,
   #services.stack-section,
   #founder.stack-section,
-  #benefits.stack-section,
   #gallery.stack-section,
   #contact.stack-section {
     box-shadow: 0 -8px 40px rgba(0,0,0,0.18);
@@ -1042,11 +1041,9 @@
   <div class="roi-photos-mobile">
     <div class="roi-photo-mobile">
       <img src="Images/aircraft.png" alt="Aircraft team experience">
-      <div class="roi-photo-overlay"></div>
     </div>
     <div class="roi-photo-mobile">
       <img src="Images/track.png" alt="Track team activity">
-      <div class="roi-photo-overlay"></div>
     </div>
   </div>
 
@@ -1054,8 +1051,6 @@
     <div class="roi-panel active" id="tab-team">
       <div class="roi-photo">
         <img src="Images/aircraft.png" alt="Aircraft team experience">
-        <div class="roi-photo-overlay"></div>
-        <div class="roi-photo-line"></div>
       </div>
       <div class="roi-centre">
         <div class="benefit-rows">
@@ -1105,8 +1100,6 @@
       </div>
       <div class="roi-photo right">
         <img src="Images/track.png" alt="Track team activity">
-        <div class="roi-photo-overlay"></div>
-        <div class="roi-photo-line"></div>
       </div>
     </div>
 
@@ -1114,8 +1107,6 @@
     <div class="roi-panel" id="tab-personal">
       <div class="roi-photo">
         <img src="Images/track.png" alt="Track team activity">
-        <div class="roi-photo-overlay"></div>
-        <div class="roi-photo-line"></div>
       </div>
       <div class="roi-centre">
         <div class="benefit-rows">
@@ -1165,8 +1156,6 @@
       </div>
       <div class="roi-photo right">
         <img src="Images/aircraft.png" alt="Aircraft team experience">
-        <div class="roi-photo-overlay"></div>
-        <div class="roi-photo-line"></div>
       </div>
     </div>
 
