@@ -1458,14 +1458,7 @@ function showPage(n) {
         revealObserver.observe(el);
       });
     }
-    // Reset and re-run counters when returning to page-0
-    if (n === 0) {
-      document.querySelectorAll('[data-target]').forEach(el => {
-        delete el.dataset.animated;
-        el.textContent = '0';
-      });
-      runCounters();
-    }
+    if (n === 0) { initCounters(); checkCounters(); }
   }, 80);
 }
 
@@ -1560,30 +1553,38 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // Counter animation
-// Stats strip is position:sticky so IntersectionObserver cannot reliably detect visibility.
-// Instead: run on scroll, check if the stats strip is actually painted on screen.
-function runCounters() {
-  const strip = document.querySelector('.stats-strip');
-  if (!strip) return;
-  const rect = strip.getBoundingClientRect();
-  const inView = rect.top < window.innerHeight && rect.bottom > 0;
-  if (!inView) return;
+function animateCounter(el) {
+  if (el.dataset.animated) return;
+  el.dataset.animated = 'true';
+  const target = parseInt(el.dataset.target);
+  let current = 0;
+  const step = target / 55;
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) { el.textContent = target + '+'; clearInterval(timer); }
+    else { el.textContent = Math.floor(current) + '+'; }
+  }, 28);
+}
+
+function initCounters() {
   document.querySelectorAll('[data-target]').forEach(el => {
-    if (el.dataset.animated) return;
-    el.dataset.animated = 'true';
-    const target = parseInt(el.dataset.target);
-    let current = 0;
-    const step = target / 55;
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) { el.textContent = target + '+'; clearInterval(timer); }
-      else { el.textContent = Math.floor(current) + '+'; }
-    }, 28);
+    delete el.dataset.animated;
+    el.textContent = '0';
   });
 }
-// Run on scroll and once on load (after a short paint delay)
-window.addEventListener('scroll', runCounters, { passive: true });
-setTimeout(runCounters, 300);
+
+function checkCounters() {
+  document.querySelectorAll('[data-target]').forEach(el => {
+    if (el.dataset.animated) return;
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) animateCounter(el);
+  });
+}
+
+initCounters();
+window.addEventListener('scroll', checkCounters, { passive: true });
+let _poll = 0;
+const _pollTimer = setInterval(() => { checkCounters(); if (++_poll >= 15) clearInterval(_pollTimer); }, 200);
 
 // FAQ toggle
 document.querySelectorAll('.faq-question').forEach(q => {
