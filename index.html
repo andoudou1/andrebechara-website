@@ -580,7 +580,7 @@
   .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
 
   /* ---- 3-PAGE SYSTEM ---- */
-  .page { display: none; min-height: 100vh; }
+  .page { display: none; min-height: 100vh; background: var(--cream); }
   .page.active { display: block; }
 
   /* Page tab switcher in nav */
@@ -654,7 +654,7 @@
     display: flex; flex-direction: column; justify-content: flex-start;
   }
   .roi-content-col .section-tag { color: var(--gold); margin-bottom: 8px; }
-  .roi-content-col .section-title { color: var(--white); margin-bottom: 10px; font-size: clamp(1.6rem,2.8vw,2.3rem); }
+  .roi-content-col .section-title { color: var(--white); margin-bottom: 10px; font-size: clamp(2rem,3.5vw,3.2rem); }
   .roi-lead {
     font-size: 0.88rem; color: rgba(255,255,255,0.55); font-weight: 300;
     line-height: 1.65; margin-bottom: 18px; max-width: 500px;
@@ -1074,7 +1074,7 @@
 </div><!-- END PAGE 1 -->
 
 <!-- PAGE 2: PROGRAMS -->
-<div class="page" id="page-1">
+<div class="page" id="page-1" style="background: var(--cream);">
 
 <!-- THE PROCESS -->
 <section id="process" class="stack-section" style="z-index:13;">
@@ -1167,7 +1167,7 @@
 </div><!-- END PAGE 1 (Programs) -->
 
 <!-- PAGE 2: RESULTS -->
-<div class="page" id="page-2">
+<div class="page" id="page-2" style="background: var(--cream);">
 
 <!-- BENEFITS / ROI — Split layout -->
 <section id="benefits" style="background: var(--forest);">
@@ -1344,19 +1344,19 @@
   </div>
   <div class="gallery-grid">
     <div class="gallery-item">
-      <img src="Images/ski.png" alt="Ski activity" onerror="this.style.display='none'">
+      <img src="Images/ski.png" alt="Ski activity" onerror="this.style.opacity='0'">
     </div>
     <div class="gallery-item">
-      <img src="Images/clap.png" alt="Team clapping" onerror="this.style.display='none'">
+      <img src="Images/clap.png" alt="Team clapping" onerror="this.style.opacity='0'">
     </div>
     <div class="gallery-item">
-      <img src="Images/circle.png" alt="Circle activity" onerror="this.style.display='none'">
+      <img src="Images/circle.png" alt="Circle activity" onerror="this.style.opacity='0'">
     </div>
     <div class="gallery-item">
-      <img src="Images/activity.png" alt="Team activity" onerror="this.style.display='none'">
+      <img src="Images/activity.png" alt="Team activity" onerror="this.style.opacity='0'">
     </div>
     <div class="gallery-item">
-      <img src="Images/blind.png" alt="Blind trust activity" onerror="this.style.display='none'">
+      <img src="Images/blind.png" alt="Blind trust activity" onerror="this.style.opacity='0'">
     </div>
   </div>
 </section>
@@ -1369,9 +1369,6 @@
 
 <!-- CONTACT -->
 <section id="contact" class="stack-section" style="z-index:18;">
-  <div class="contact-side-img">
-    <img src="Images/topchef.png" alt="Team cooking experience">
-  </div>
   <div class="contact-info reveal">
     <span class="section-tag" style="color: var(--gold);">Let's talk</span>
     <h2 class="section-title light">Ready to Strengthen<br>Your Team?</h2>
@@ -1391,9 +1388,6 @@
     <a href="https://wa.me/9613360027" class="whatsapp-btn" target="_blank" rel="noopener">
       WhatsApp André Directly
     </a>
-  </div>
-  <div class="contact-side-img right-img">
-    <img src="Images/group.png" alt="Team group photo">
   </div>
 </section>
 
@@ -1417,11 +1411,29 @@
   </div>
   <div class="footer-bottom">
     <p>© <span id="year"></span> André Bechara. All rights reserved.</p>
-    <p>What matters is not the journey itself, but who you take it with.</p>
+    
   </div>
 </footer>
 
 <script>
+// Scroll reveal with stagger
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach((el, i) => {
+  const parent = el.parentElement;
+  const siblings = Array.from(parent.querySelectorAll(':scope > .reveal'));
+  const idx = siblings.indexOf(el);
+  el.style.transitionDelay = (idx * 0.1) + 's';
+  revealObserver.observe(el);
+});
+
 // ---- 4-PAGE SYSTEM ----
 function showPage(n) {
   document.querySelectorAll('.page').forEach((p, i) => {
@@ -1433,10 +1445,12 @@ function showPage(n) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   // Re-trigger reveal animations on newly shown page
   setTimeout(() => {
-    document.querySelectorAll('#page-' + n + ' .reveal').forEach(el => {
-      el.classList.remove('visible');
-      revealObserver.observe(el);
-    });
+    if (typeof revealObserver !== 'undefined') {
+      document.querySelectorAll('#page-' + n + ' .reveal').forEach(el => {
+        el.classList.remove('visible');
+        revealObserver.observe(el);
+      });
+    }
   }, 80);
 }
 
@@ -1530,23 +1544,7 @@ window.addEventListener('scroll', () => {
   if (navLinks.classList.contains('open')) closeMenu();
 }, { passive: true });
 
-// Scroll reveal with stagger
-const reveals = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-reveals.forEach((el, i) => {
-  const parent = el.parentElement;
-  const siblings = Array.from(parent.querySelectorAll(':scope > .reveal'));
-  const idx = siblings.indexOf(el);
-  el.style.transitionDelay = (idx * 0.1) + 's';
-  revealObserver.observe(el);
-});
+// Scroll reveal moved above showPage
 
 // Counter animation
 const counters = document.querySelectorAll('[data-target]');
@@ -1565,8 +1563,21 @@ const counterObs = new IntersectionObserver((entries) => {
       counterObs.unobserve(el);
     }
   });
-}, { threshold: 0.5 });
-counters.forEach(el => counterObs.observe(el));
+}, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+counters.forEach(el => {
+  counterObs.observe(el);
+  // Trigger immediately if page-0 is active and element is in viewport
+  const rect = el.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    const target = parseInt(el.dataset.target);
+    let current = 0; const step = target / 55;
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) { el.textContent = target + '+'; clearInterval(timer); }
+      else { el.textContent = Math.floor(current) + '+'; }
+    }, 28);
+  }
+});
 
 // FAQ toggle
 document.querySelectorAll('.faq-question').forEach(q => {
