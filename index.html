@@ -1180,7 +1180,7 @@
 </footer>
 
 <script>
-// ---- PAGE SYSTEM ----
+// ---- 3-PAGE SYSTEM ----
 function showPage(n) {
   document.querySelectorAll('.page').forEach((p, i) => {
     p.classList.toggle('active', i === n);
@@ -1335,27 +1335,6 @@ function handleSubmit(e) {
   btn.textContent = '✓ Message sent. André will be in touch soon.';
   btn.style.background = 'var(--forest-light)';
   btn.disabled = true;
-}
-
-
-// ---- ACCORDION ----
-function toggleAccordion(el) {
-  const header = el.classList.contains('accordion-header') ? el : el.closest('.accordion-header');
-  if (!header) return;
-  const body = header.nextElementSibling;
-  if (!body || !body.classList.contains('accordion-body')) return;
-  const btn = header.querySelector('.accordion-toggle');
-  const isOpen = body.classList.contains('open');
-  body.classList.toggle('open', !isOpen);
-  if (btn) btn.classList.toggle('open', !isOpen);
-}
-
-// ---- FLOATING BAR ----
-const floatingBar = document.getElementById('floatingBar');
-if (floatingBar) {
-  window.addEventListener('scroll', () => {
-    floatingBar.classList.toggle('visible', window.scrollY > 200);
-  }, { passive: true });
 }
 
 // ---- SCROLL STACKING ----
