@@ -632,6 +632,19 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     margin-top: 8px;
+    background-size: 55% auto;
+    background-position: right center;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    padding: 8px;
+  }
+  #tab-team.active {
+    background-image: linear-gradient(to right, var(--forest) 30%, transparent 80%),
+                      url('Images/aircraft.png');
+  }
+  #tab-personal.active {
+    background-image: linear-gradient(to right, var(--forest) 30%, transparent 80%),
+                      url('Images/track.png');
   }
   .roi-card {
     background: rgba(255,255,255,0.04);
