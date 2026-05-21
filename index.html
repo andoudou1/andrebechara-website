@@ -536,6 +536,7 @@
   .contact-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
   .whatsapp-btn { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 13px 24px; border-radius: 40px; text-decoration: none; font-weight: 600; font-size: 0.9rem; margin-top: 12px; transition: opacity 0.2s, transform 0.2s; }
   .whatsapp-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .contact-mobile-img { display: none; }
   .contact-form { display: flex; flex-direction: column; gap: 16px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-field { display: flex; flex-direction: column; gap: 6px; }
@@ -816,6 +817,8 @@
     #contact { grid-template-columns: 1fr; }
     .contact-side-img { display: none; }
     .contact-info { padding: 48px 20px; }
+    .contact-mobile-img { display: block; width: 100%; height: 240px; overflow: hidden; }
+    .contact-mobile-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(0.75) saturate(0.85); }
     .about-badge-float { right: 0; bottom: -18px; }
     .services-grid { grid-template-columns: 1fr 1fr; }
     .process-steps { grid-template-columns: 1fr; }
@@ -1194,6 +1197,9 @@
     </a>
   </div>
   <div class="contact-side-img right-img">
+    <img src="Images/group.png" alt="Team group photo">
+  </div>
+  <div class="contact-mobile-img">
     <img src="Images/group.png" alt="Team group photo">
   </div>
 </section>
