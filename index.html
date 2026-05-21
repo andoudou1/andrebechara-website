@@ -1458,6 +1458,8 @@ function showPage(n) {
         revealObserver.observe(el);
       });
     }
+    // Re-run counters when returning to page-0
+    if (n === 0) initCounters();
   }, 80);
 }
 
@@ -1554,7 +1556,7 @@ window.addEventListener('scroll', () => {
 // Scroll reveal moved above showPage
 
 // Counter animation
-// Counter animation — runs on load for page-0 stats, and on scroll for others
+// Counter animation
 function animateCounter(el) {
   if (el.dataset.animated) return;
   el.dataset.animated = 'true';
@@ -1572,23 +1574,24 @@ function animateCounter(el) {
   }, 25);
 }
 
-const counters = document.querySelectorAll('[data-target]');
-
-// Always fire on load after short delay (stats are on page-0, always visible first)
-setTimeout(() => {
-  counters.forEach(el => animateCounter(el));
-}, 400);
-
-// Also observe for cases where stats might be scrolled into view later
-const counterObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateCounter(entry.target);
-      counterObs.unobserve(entry.target);
-    }
+function initCounters() {
+  const counters = document.querySelectorAll('[data-target]');
+  counters.forEach(el => {
+    delete el.dataset.animated;
+    el.textContent = '0';
   });
-}, { threshold: 0.1 });
-counters.forEach(el => counterObs.observe(el));
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  counters.forEach(el => counterObs.observe(el));
+}
+
+initCounters();
 
 // FAQ toggle
 document.querySelectorAll('.faq-question').forEach(q => {
