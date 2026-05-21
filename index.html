@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>André Béchara | Consultant in Human Dynamics & Corporate Experiences</title>
-<meta name="description" content="André Béchara delivers tailored team-building and transformational learning experiences for corporations. 30+ years expertise. Based in Lebanon, operating worldwide.">
+<title>André Bechara | Consultant in Human Dynamics & Corporate Experiences</title>
+<meta name="description" content="André Bechara delivers tailored team-building and transformational learning experiences for corporations. 30+ years expertise. Based in Lebanon, operating worldwide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -330,15 +330,13 @@
     transition: transform 0.3s, box-shadow 0.3s;
   }
   .process-step:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
-  .process-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem; font-weight: 900;
-    color: rgba(26,46,26,0.07); line-height: 1;
-    position: absolute; top: 16px; right: 20px;
-  }
   .process-phase { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
-  .process-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--forest); margin-bottom: 12px; }
-  .process-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; }
+  .process-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--forest); margin-bottom: 0; }
+  .process-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding-top: 0; }
+  .process-step.step-open .process-desc { max-height: 300px; padding-top: 12px; }
+  .step-toggle-row { display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+  .step-toggle-btn { width: 28px; height: 28px; border-radius: 50%; background: var(--forest); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; transition: background 0.2s, transform 0.3s; border: none; cursor: pointer; font-family: 'Outfit', sans-serif; line-height: 1; }
+  .process-step.step-open .step-toggle-btn { background: var(--orange); transform: rotate(45deg); }
 
   /* ---- SERVICES ---- */
   #services {
@@ -371,8 +369,12 @@
   .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
   .service-card:hover::before { transform: scaleX(1); }
   .service-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
-  .service-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--forest); margin-bottom: 10px; }
-  .service-desc { font-size: 0.87rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; }
+  .service-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--forest); margin-bottom: 0; }
+  .service-desc { font-size: 0.87rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding-top: 0; }
+  .service-card.svc-open .service-desc { max-height: 300px; padding-top: 10px; }
+  .svc-toggle-row { display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+  .svc-toggle-btn { width: 28px; height: 28px; border-radius: 50%; background: var(--forest); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; transition: background 0.2s, transform 0.3s; border: none; cursor: pointer; font-family: 'Outfit', sans-serif; line-height: 1; }
+  .service-card.svc-open .svc-toggle-btn { background: var(--orange); transform: rotate(45deg); }
 
   /* ---- BASE CAMP ---- */
   #basecamp {
@@ -568,6 +570,22 @@
   .social-links { display: flex; gap: 12px; margin-top: 20px; }
   .social-link { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 0.9rem; text-decoration: none; transition: background 0.2s, color 0.2s; }
   .social-link:hover { background: var(--gold); color: white; }
+  .social-link.linkedin { background: #0A66C2; color: white; }
+  .social-link.linkedin:hover { background: #004182; color: white; }
+  .social-link.whatsapp-icon { background: #25D366; color: white; }
+  .social-link.whatsapp-icon:hover { background: #1da851; color: white; }
+  /* Floating contact button */
+  .float-contact-btn {
+    position: fixed; bottom: 80px; right: 20px; z-index: 998;
+    background: var(--orange); color: white;
+    width: 52px; height: 52px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(212,114,42,0.5);
+    transition: background 0.2s, transform 0.2s;
+    border: none; cursor: pointer;
+  }
+  .float-contact-btn:hover { background: var(--gold); transform: scale(1.08); }
   .footer-col h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
   .footer-col ul { list-style: none; }
   .footer-col ul li { margin-bottom: 10px; }
@@ -685,11 +703,15 @@
   }
   .roi-card:hover { background: rgba(201,151,58,0.07); border-color: rgba(201,151,58,0.25); transform: translateY(-2px); }
   .roi-card:hover::before { opacity: 1; }
-  .roi-card-num { font-family: 'Playfair Display', serif; font-size: 0.65rem; font-weight: 700; color: var(--gold); opacity: 0.5; letter-spacing: 0.1em; margin-bottom: 5px; display: block; }
-  .roi-card-title { font-family: 'Playfair Display', serif; font-size: 0.92rem; font-weight: 700; color: var(--white); margin-bottom: 4px; transition: color 0.25s; }
+  .roi-card-num { font-family: 'Playfair Display', serif; font-size: 0.65rem; font-weight: 700; color: var(--gold); opacity: 0.5; letter-spacing: 0.1em; margin-bottom: 5px; display: none; }
+  .roi-card-title { font-family: 'Playfair Display', serif; font-size: 1.08rem; font-weight: 700; color: var(--white); margin-bottom: 0; transition: color 0.25s; }
   .roi-card:hover .roi-card-title { color: var(--gold-light); }
-  .roi-card-desc { font-size: 0.76rem; color: rgba(255,255,255,0.4); line-height: 1.5; font-weight: 300; transition: color 0.25s; }
+  .roi-card-desc { font-size: 0.76rem; color: rgba(255,255,255,0.4); line-height: 1.5; font-weight: 300; transition: color 0.25s; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, color 0.25s; padding-top: 0; }
   .roi-card:hover .roi-card-desc { color: rgba(255,255,255,0.65); }
+  .roi-card.roi-open .roi-card-desc { max-height: 200px; padding-top: 6px; }
+  .roi-toggle-row { display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+  .roi-toggle-btn { width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.1); color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; transition: background 0.2s, transform 0.3s; border: none; cursor: pointer; font-family: 'Outfit', sans-serif; line-height: 1; }
+  .roi-card.roi-open .roi-toggle-btn { background: var(--gold); color: var(--forest); transform: rotate(45deg); }
   @media (max-width: 1024px) { .roi-layout { grid-template-columns: 300px 1fr; } }
   @media (max-width: 900px) {
     .roi-layout { grid-template-columns: 1fr; }
@@ -748,7 +770,7 @@
     nav.scrolled { padding: 12px 20px !important; }
     .nav-logo-img { height: 40px; }
     .nav-links { display: none !important; }
-    .hamburger { display: flex !important; z-index: 1002; position: relative; }
+    /* Hamburger hidden — navigation via bottom tab bar */
     /* Full-screen overlay when open */
     .nav-links.open {
       display: flex !important;
@@ -794,12 +816,15 @@
     .hero-content { padding-top: 100px; }
     /* Hide scroll indicator on mobile to prevent overlap */
     .hero-scroll { display: none; }
+    .hamburger { display: none !important; }
+    /* Fix hero dots overlap on mobile */
+    .hero-dots { bottom: 110px; }
     /* Fix all reveal elements on mobile — disable animation */
     .reveal { opacity: 1 !important; transform: translateY(0) !important; transition: none !important; }
     section { padding: 64px 20px; }
     #about, #founder { grid-template-columns: 1fr; gap: 36px; padding: 64px 20px; }
     #contact { grid-template-columns: 1fr; }
-    .contact-side-img { min-height: 220px; }
+    .contact-side-img { display: none; }
     .contact-info { padding: 48px 20px; }
     .about-badge-float { right: 0; bottom: -18px; }
     .services-grid { grid-template-columns: 1fr 1fr; }
@@ -827,7 +852,7 @@
 <nav id="navbar">
   <a href="#" class="nav-logo">
     <div class="nav-logo-text">
-      <span class="nav-logo-name">André Béchara</span>
+      <span class="nav-logo-name">André Bechara</span>
       <span class="nav-logo-sub">Consultant in Human Dynamics</span>
     </div>
   </a>
@@ -866,7 +891,7 @@
     <p class="hero-sub">From corporate retreats and incentive outings to educational camps every experience places people in extraordinary environments.</p>
     <p class="hero-sub" style="margin-top: -16px; font-size: 0.95rem; opacity: 0.75;">Every journey blends purpose, discovery, and unforgettable moments.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Contact Us</a>
+      <a href="#" onclick="event.preventDefault(); showPage(2); window.scrollTo({top:0,behavior:'smooth'});" class="btn-primary">Contact Us</a>
       <a href="#about" class="btn-outline">Discover the Approach</a>
     </div>
   </div>
@@ -986,13 +1011,13 @@
 <!-- FOUNDER -->
 <section id="founder" class="stack-section" style="z-index:15;">
   <div class="founder-img reveal">
-    <img src="Images/andre-bechara.png" alt="André Béchara, Founder" style="object-position: top;">
+    <img src="Images/andre-bechara.png" alt="André Bechara, Founder" style="object-position: top;">
   </div>
   <div class="reveal">
     <span class="section-tag">The expert behind the programs</span>
-    <div class="founder-name">André Béchara</div>
+    <div class="founder-name">André Bechara</div>
     <div class="founder-role">Consultant in Human Dynamics</div>
-    <p class="founder-bio">With more than 30 years of leadership in outdoor education, environmental awareness, rural development, adventure programming, and experiential learning, André Béchara is recognized as one of the Middle East's leading pioneers in corporate team building and transformational learning. His work combines strategic vision with hands-on field expertise across corporate team building, ecotourism, adventure expeditions, educational camps, creative thinking workshops, and rural and environmental development initiatives.</p>
+    <p class="founder-bio">With more than 30 years of leadership in outdoor education, environmental awareness, rural development, adventure programming, and experiential learning, André Bechara is recognized as one of the Middle East's leading pioneers in corporate team building and transformational learning. His work combines strategic vision with hands-on field expertise across corporate team building, ecotourism, adventure expeditions, educational camps, creative thinking workshops, and rural and environmental development initiatives.</p>
     <p class="founder-bio" style="margin-top: 14px;">By blending adventure, education, sustainability, psychology, and creativity, he creates experiences that generate lasting impact for individuals, organizations, and communities.</p>
     <p class="founder-bio" style="margin-top: 14px;">Deeply committed to nature conservation and rural empowerment, André continues to use experiential learning as a bridge between people, nature, leadership, and purpose.</p>
   </div>
@@ -1014,21 +1039,27 @@
   </div>
   <div class="process-steps">
     <div class="process-step reveal">
-      <div class="process-num">01</div>
       <div class="process-phase">Phase 1 · Design</div>
-      <div class="process-title">Needs Discovery & Tailoring</div>
+      <div class="step-toggle-row" onclick="toggleStep(this)">
+        <div class="process-title">Needs Discovery & Tailoring</div>
+        <button class="step-toggle-btn" aria-label="Expand">+</button>
+      </div>
       <p class="process-desc">We work with your leadership team (CEO, GM, HR, department head) to define objectives, understand team dynamics, and profile participants. A tailored program is then designed and refined together to ensure full alignment before implementation.</p>
     </div>
     <div class="process-step reveal">
-      <div class="process-num">02</div>
       <div class="process-phase">Phase 2 · Facilitation</div>
-      <div class="process-title">Live Observation in the Field</div>
+      <div class="step-toggle-row" onclick="toggleStep(this)">
+        <div class="process-title">Live Observation in the Field</div>
+        <button class="step-toggle-btn" aria-label="Expand">+</button>
+      </div>
       <p class="process-desc">During activities, our facilitators actively monitor team behavior in real time, tracking communication, collaboration, leadership emergence, creativity, conflict handling, and engagement levels, while ensuring a safe, structured, and highly immersive experience.</p>
     </div>
     <div class="process-step reveal">
-      <div class="process-num">03</div>
       <div class="process-phase">Phase 3 · Debrief</div>
-      <div class="process-title">Transfer Learning to Work</div>
+      <div class="step-toggle-row" onclick="toggleStep(this)">
+        <div class="process-title">Transfer Learning to Work</div>
+        <button class="step-toggle-btn" aria-label="Expand">+</button>
+      </div>
       <p class="process-desc">We unpack each activity, linking it directly to workplace realities. Through guided reflection, we help the team address observed challenges, extract key insights, and translate them into clear, actionable behaviors for improved on-the-job performance.</p>
     </div>
   </div>
@@ -1043,19 +1074,31 @@
   </div>
   <div class="services-grid">
     <div class="service-card reveal">
-      <div class="service-title">Corporate Team Building</div>
+      <div class="svc-toggle-row" onclick="toggleService(this)">
+        <div class="service-title">Corporate Team Building</div>
+        <button class="svc-toggle-btn" aria-label="Expand">+</button>
+      </div>
       <p class="service-desc">Immersive programs, both indoor and outdoor, combining mental, social, and physical challenges to strengthen teamwork, communication, and leadership through realistic, high-engagement scenarios that translate directly into workplace performance.</p>
     </div>
     <div class="service-card reveal">
-      <div class="service-title">Corporate Outings & Experiences</div>
+      <div class="svc-toggle-row" onclick="toggleService(this)">
+        <div class="service-title">Corporate Outings & Experiences</div>
+        <button class="svc-toggle-btn" aria-label="Expand">+</button>
+      </div>
       <p class="service-desc">Designed for incentive, celebration, or team connection, these experiences take employees beyond the workplace into engaging, high-energy environments that foster authentic relationships, shared memories, and lasting team cohesion.</p>
     </div>
     <div class="service-card reveal">
-      <div class="service-title">Ecotourism & Rural Development</div>
+      <div class="svc-toggle-row" onclick="toggleService(this)">
+        <div class="service-title">Ecotourism & Rural Development</div>
+        <button class="svc-toggle-btn" aria-label="Expand">+</button>
+      </div>
       <p class="service-desc">Responsible exploration programs that integrate business objectives with authentic rural and natural environments. We combine experiential education, sustainability, and discovery with practical training initiatives and collaborative projects alongside NGOs and local Hima conservation networks, supporting both community development and environmental stewardship.</p>
     </div>
     <div class="service-card reveal">
-      <div class="service-title">School Outings & Educational Camps</div>
+      <div class="svc-toggle-row" onclick="toggleService(this)">
+        <div class="service-title">School Outings & Educational Camps</div>
+        <button class="svc-toggle-btn" aria-label="Expand">+</button>
+      </div>
       <p class="service-desc">Immersive educational experiences designed to combine adventure, environmental awareness, leadership development, and experiential learning in dynamic outdoor and indoor settings. Programs are tailored for schools, youth groups, students, and emerging leaders, integrating structured activities that encourage teamwork, creativity, problem-solving, communication, and personal growth.</p>
     </div>
   </div>
@@ -1082,20 +1125,20 @@
         <button class="roi-tab" onclick="switchTab(this, 'personal')">At the Personal Level</button>
       </div>
       <div class="roi-panel active" id="tab-team">
-        <div class="roi-card reveal"><span class="roi-card-num">01</span><div class="roi-card-title">Communication</div><p class="roi-card-desc">Shared challenges strip workplace hierarchies, building authentic communication patterns that carry back into the office.</p></div>
-        <div class="roi-card reveal"><span class="roi-card-num">02</span><div class="roi-card-title">Effective Collaboration</div><p class="roi-card-desc">Shared challenges build genuine camaraderie and a culture grounded in trust and mutual accountability.</p></div>
-        <div class="roi-card reveal"><span class="roi-card-num">03</span><div class="roi-card-title">Leadership Qualities</div><p class="roi-card-desc">Real-world scenarios surface and develop leadership capabilities that no classroom training can replicate.</p></div>
-        <div class="roi-card reveal"><span class="roi-card-num">04</span><div class="roi-card-title">Time Management</div><p class="roi-card-desc">Time-pressured challenges reinforce prioritisation, decision speed, and execution under constraints.</p></div>
-        <div class="roi-card reveal"><span class="roi-card-num">05</span><div class="roi-card-title">Teamwork & Cohesion</div><p class="roi-card-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p></div>
-        <div class="roi-card reveal"><span class="roi-card-num">06</span><div class="roi-card-title">Problem-Solving Skills</div><p class="roi-card-desc">Complex immersive scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">01</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Communication</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Shared challenges strip workplace hierarchies, building authentic communication patterns that carry back into the office.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">02</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Effective Collaboration</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Shared challenges build genuine camaraderie and a culture grounded in trust and mutual accountability.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">03</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Leadership Qualities</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Real-world scenarios surface and develop leadership capabilities that no classroom training can replicate.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">04</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Time Management</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Time-pressured challenges reinforce prioritisation, decision speed, and execution under constraints.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">05</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Teamwork & Cohesion</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">06</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Problem-Solving Skills</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Complex immersive scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.</p></div>
       </div>
       <div class="roi-panel" id="tab-personal">
-        <div class="roi-card reveal"><span class="roi-card-num">01</span><div class="roi-card-title">Build Self-Confidence</div><p class="roi-card-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p></div>
-        <div class="roi-card reveal"><span class="roi-card-num">02</span><div class="roi-card-title">Stretch Personal Limits</div><p class="roi-card-desc">Participants discover what they're capable of when pushed beyond their comfort zone in a safe, facilitated environment.</p></div>
-        <div class="roi-card reveal"><span class="roi-card-num">03</span><div class="roi-card-title">Decision-Making Skills</div><p class="roi-card-desc">Evaluating solutions under pressure sharpens analytical thinking and reduces hesitation in high-stakes situations.</p></div>
-        <div class="roi-card reveal"><span class="roi-card-num">04</span><div class="roi-card-title">Creative Thinking</div><p class="roi-card-desc">Immersive problem solving breaks habitual thinking patterns and unlocks genuine creative capacity.</p></div>
-        <div class="roi-card reveal"><span class="roi-card-num">05</span><div class="roi-card-title">Fun & Memorable Times</div><p class="roi-card-desc">Shared experiences create lasting positive memories, increasing morale, loyalty, and belonging.</p></div>
-        <div class="roi-card reveal"><span class="roi-card-num">06</span><div class="roi-card-title">Self-Awareness</div><p class="roi-card-desc">Guided debriefing helps participants understand their strengths, blind spots, and contribution style.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">01</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Build Self-Confidence</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">02</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Stretch Personal Limits</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Participants discover what they're capable of when pushed beyond their comfort zone in a safe, facilitated environment.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">03</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Decision-Making Skills</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Evaluating solutions under pressure sharpens analytical thinking and reduces hesitation in high-stakes situations.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">04</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Creative Thinking</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Immersive problem solving breaks habitual thinking patterns and unlocks genuine creative capacity.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">05</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Fun & Memorable Times</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Shared experiences create lasting positive memories, increasing morale, loyalty, and belonging.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">06</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Self-Awareness</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Guided debriefing helps participants understand their strengths, blind spots, and contribution style.</p></div>
       </div>
     </div>
   </div>
@@ -1122,6 +1165,9 @@
     </div>
     <div class="gallery-item">
       <img src="Images/blind.png" alt="Blind trust activity" onerror="this.style.display='none'">
+    </div>
+    <div class="gallery-item">
+      <img src="Images/topchef.png" alt="Top Chef cooking experience" onerror="this.style.display='none'">
     </div>
   </div>
 </section>
@@ -1164,20 +1210,23 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-logo">André <span>Béchara</span></div>
+      <div class="footer-logo">André <span>Bechara</span></div>
       <div class="footer-subtitle">Consultant in Human Dynamics</div>
       <p class="footer-tagline">30+ years of expertise in experiential learning and corporate team building. Transforming groups into extraordinary teams, in Lebanon and worldwide.</p>
       <div class="social-links">
-        <a href="https://www.linkedin.com/in/andre-bechara-1367b7b/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+        <a href="https://www.linkedin.com/in/andre-bechara-1367b7b/" class="social-link linkedin" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+        <a href="https://wa.me/9613360027" class="social-link whatsapp-icon" aria-label="WhatsApp" target="_blank" rel="noopener">&#x1F4AC;</a>
       </div>
     </div>
 
   </div>
   <div class="footer-bottom">
-    <p>© <span id="year"></span> André Béchara. All rights reserved.</p>
-    <p>What matters is not the journey itself, but who you take it with.</p>
+    <p>© <span id="year"></span> André Bechara. All rights reserved.</p>
   </div>
 </footer>
+
+<!-- Floating Contact Button -->
+<button class="float-contact-btn" onclick="showPage(2); window.scrollTo({top:0,behavior:'smooth'});" aria-label="Contact Us" title="Contact Us">✉</button>
 
 <script>
 // ---- 3-PAGE SYSTEM ----
@@ -1326,6 +1375,20 @@ function switchTab(btn, id) {
   document.querySelectorAll('.roi-img').forEach(i => i.classList.remove('active'));
   const img = document.getElementById('roi-img-' + id);
   if (img) img.classList.add('active');
+}
+
+// Toggle functions for collapsible sections
+function toggleStep(row) {
+  const step = row.closest('.process-step');
+  step.classList.toggle('step-open');
+}
+function toggleService(row) {
+  const card = row.closest('.service-card');
+  card.classList.toggle('svc-open');
+}
+function toggleRoi(row) {
+  const card = row.closest('.roi-card');
+  card.classList.toggle('roi-open');
 }
 
 // Form submit
