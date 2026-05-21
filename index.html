@@ -807,10 +807,10 @@
     </div>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#hero" onclick="showPage(0)">Home</a></li>
-    <li><a href="#" onclick="showPage(1)">Programs</a></li>
-    <li><a href="#" onclick="showPage(2)">Results</a></li>
-    <li><a href="#contact" onclick="showPage(2)" class="nav-cta">Contact Us</a></li>
+    <li><a href="#" onclick="event.preventDefault(); showPage(0)">Home</a></li>
+    <li><a href="#" onclick="event.preventDefault(); showPage(1)">Programs</a></li>
+    <li><a href="#" onclick="event.preventDefault(); showPage(2)">Results</a></li>
+    <li><a href="#" onclick="event.preventDefault(); showPage(2)" class="nav-cta">Contact Us</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -826,6 +826,9 @@
 
 <!-- PAGE 1: HOME -->
 <div class="page active" id="page-0">
+
+<!-- HERO -->
+<section id="hero">
   <div class="hero-bg-fallback"></div>
   <div class="hero-slide hero-slide-1 active"></div>
   <div class="hero-slide hero-slide-2"></div>
@@ -965,6 +968,8 @@
     <p class="founder-bio" style="margin-top: 14px;">Deeply committed to nature conservation and rural empowerment, André continues to use experiential learning as a bridge between people, nature, leadership, and purpose.</p>
   </div>
 </section>
+
+</div><!-- end .stack-container -->
 
 </div><!-- END PAGE 1 -->
 
@@ -1170,8 +1175,6 @@
 
 </div><!-- END PAGE 3 -->
 
-</div><!-- end .stack-container -->
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
@@ -1201,16 +1204,16 @@ function showPage(n) {
     t.classList.toggle('active', i === n);
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  // Re-trigger reveal animations for newly visible page
+  // Re-trigger reveal animations on newly shown page
   setTimeout(() => {
     document.querySelectorAll('#page-' + n + ' .reveal').forEach(el => {
       el.classList.remove('visible');
-      observer.observe(el);
+      revealObserver.observe(el);
     });
-  }, 100);
+  }, 80);
 }
 
-// Hero slideshow
+// Scroll reveal with stagger
 const slides = document.querySelectorAll('.hero-slide');
 const dots = document.querySelectorAll('.hero-dot');
 let currentSlide = 0;
@@ -1283,11 +1286,11 @@ window.addEventListener('scroll', () => {
 
 // Scroll reveal with stagger
 const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
+      revealObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.1 });
@@ -1296,7 +1299,7 @@ reveals.forEach((el, i) => {
   const siblings = Array.from(parent.querySelectorAll(':scope > .reveal'));
   const idx = siblings.indexOf(el);
   el.style.transitionDelay = (idx * 0.1) + 's';
-  observer.observe(el);
+  revealObserver.observe(el);
 });
 
 // Counter animation
