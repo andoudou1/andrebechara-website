@@ -321,7 +321,7 @@
   #process > * { position: relative; z-index: 1; }
   .process-steps {
     display: grid; grid-template-columns: repeat(3,1fr);
-    gap: 32px; margin-top: 56px;
+    gap: 16px; margin-top: 28px;
   }
   .process-step {
     background: white; border-radius: 16px; padding: 36px 28px;
@@ -355,7 +355,7 @@
     z-index: 0;
   }
   #services > * { position: relative; z-index: 1; }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; margin-top: 56px; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 28px; }
   .service-card {
     background: white; border-radius: 16px; padding: 32px 28px;
     border: 1px solid rgba(0,0,0,0.06);
@@ -811,6 +811,7 @@
     /* Fix all reveal elements on mobile — disable animation */
     .reveal { opacity: 1 !important; transform: translateY(0) !important; transition: none !important; }
     section { padding: 64px 20px; }
+    #process { padding-top: 96px; }
     #about, #founder { grid-template-columns: 1fr; gap: 36px; padding: 64px 20px; }
     #contact { grid-template-columns: 1fr; }
     .contact-side-img { display: none; }
@@ -1162,7 +1163,10 @@
   </div>
 </section>
 
+</div><!-- END PAGE 3: RESULTS -->
 
+<!-- PAGE 4: CONTACT -->
+<div class="page" id="page-3">
 
 <!-- CONTACT -->
 <section id="contact" class="stack-section" style="z-index:18;">
@@ -1194,7 +1198,7 @@
   </div>
 </section>
 
-</div><!-- END PAGE 3 -->
+</div><!-- END PAGE 4: CONTACT -->
 
 <!-- FOOTER -->
 <footer>
@@ -1218,16 +1222,18 @@
 </footer>
 
 <script>
-// ---- 3-PAGE SYSTEM ----
-function showPage(n) {
+// ---- 4-PAGE SYSTEM ----
+function showPage(n, save) {
   document.querySelectorAll('.page').forEach((p, i) => {
     p.classList.toggle('active', i === n);
   });
-  // Update tabs 0-2; deactivate tab-3 (contact) when switching to others
   document.querySelectorAll('.page-tab').forEach((t, i) => {
     t.classList.toggle('active', i === n);
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (save !== false) {
+    try { localStorage.setItem('ab_page', n); } catch(e) {}
+  }
   setTimeout(() => {
     document.querySelectorAll('#page-' + n + ' .reveal').forEach(el => {
       el.classList.remove('visible');
@@ -1237,24 +1243,23 @@ function showPage(n) {
 }
 
 function showPageContact() {
-  // Show page 2 (Results & Contact)
+  // Page 3 (index 3) is the Contact page
   document.querySelectorAll('.page').forEach((p, i) => {
-    p.classList.toggle('active', i === 2);
+    p.classList.toggle('active', i === 3);
   });
-  // Highlight the Contact tab (index 3)
   document.querySelectorAll('.page-tab').forEach((t, i) => {
     t.classList.toggle('active', i === 3);
   });
-  // Scroll to contact section after page renders
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  try { localStorage.setItem('ab_page', 3); } catch(e) {}
   setTimeout(() => {
-    const contact = document.getElementById('contact');
-    if (contact) contact.scrollIntoView({ behavior: 'smooth' });
-    document.querySelectorAll('#page-2 .reveal').forEach(el => {
+    document.querySelectorAll('#page-3 .reveal').forEach(el => {
       el.classList.remove('visible');
       revealObserver.observe(el);
     });
   }, 80);
 }
+
 
 // Scroll reveal with stagger
 const slides = document.querySelectorAll('.hero-slide');
@@ -1344,6 +1349,16 @@ reveals.forEach((el, i) => {
   el.style.transitionDelay = (idx * 0.1) + 's';
   revealObserver.observe(el);
 });
+
+// Restore last page on reload — must run after revealObserver is ready
+(function() {
+  try {
+    const saved = parseInt(localStorage.getItem('ab_page'));
+    if (!isNaN(saved) && saved >= 1 && saved <= 3) {
+      showPage(saved, false);
+    }
+  } catch(e) {}
+})();
 
 // Counter animation
 const counters = document.querySelectorAll('[data-target]');
