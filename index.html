@@ -103,9 +103,8 @@
     background: linear-gradient(160deg, rgba(10,25,10,0.80) 0%, rgba(26,46,26,0.52) 45%, rgba(80,50,10,0.38) 100%);
   }
   .hero-slide.active { opacity: 1; }
-  .hero-slide-1 { background-image: url('Images/brief.png'); }
-  .hero-slide-2 { background-image: url('Images/group2.png'); }
-  .hero-slide-3 { background-image: url('Images/group3.png'); }
+  .hero-slide-1 { background-image: url('Images/group2.png'); }
+  .hero-slide-2 { background-image: url('Images/group3.png'); }
   /* Bottom fade into forest */
   .hero-bottom-fade {
     position: absolute; bottom: 0; left: 0; right: 0; height: 200px; z-index: 2;
@@ -201,7 +200,7 @@
   /* ---- CLIENT LOGOS BANNER ---- */
   .clients-banner {
     background: var(--white);
-    padding: 18px 48px;
+    padding: 18px 48px 40px;
     border-bottom: 1px solid rgba(0,0,0,0.07);
   }
   .clients-label {
@@ -233,13 +232,37 @@
     font-family: 'Playfair Display', serif;
     font-size: 1rem; font-weight: 700;
     color: var(--text-light); letter-spacing: -0.01em;
-    transition: opacity 0.2s;
+    transition: transform 0.25s, opacity 0.25s;
     flex-shrink: 0;
+    position: relative;
+    cursor: pointer;
   }
-  .client-logo:hover { opacity: 0.85; }
-  .client-logo img { height: 48px; width: auto; object-fit: contain; mix-blend-mode: multiply; transition: opacity 0.2s; }
-  .client-logo:hover img { opacity: 1; }
-  /* Text-based logos for companies without image files */
+  .client-logo:hover { opacity: 1; transform: scale(1.12) translateY(-3px); }
+  .client-logo img {
+    height: 48px; width: auto; object-fit: contain;
+    mix-blend-mode: multiply;
+    transition: filter 0.25s, opacity 0.25s;
+    opacity: 0.85;
+  }
+  .client-logo:hover img {
+    opacity: 1;
+    filter: drop-shadow(0 4px 10px rgba(201,151,58,0.35));
+  }
+  /* Tooltip on hover */
+  .client-logo::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: -28px; left: 50%; transform: translateX(-50%);
+    background: var(--charcoal); color: var(--gold);
+    font-family: 'Outfit', sans-serif; font-size: 0.68rem;
+    font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 20px;
+    white-space: nowrap; pointer-events: none;
+    opacity: 0; transition: opacity 0.2s;
+    z-index: 10;
+  }
+  .client-logo:hover::after { opacity: 1; }
+  /* Text-based logos */
   .client-logo.text-logo {
     padding: 0 8px;
     border: 1px solid rgba(0,0,0,0.12);
@@ -421,134 +444,7 @@
   }
   .roi-tab.active { background: var(--gold); color: var(--forest); box-shadow: 0 4px 16px rgba(201,151,58,0.35); }
 
-  /* The stage: three side-by-side columns using flexbox (not grid) */
-  .roi-panel { display: none; }
-  .roi-panel.active {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    min-height: 680px;
-  }
-
-  .roi-photo {
-    width: 300px;
-    flex: 0 0 300px;
-    overflow: hidden;
-    position: relative;
-  }
-  .roi-photo img {
-    width: 100%;
-    height: 680px;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    filter: brightness(0.72) saturate(0.85);
-    position: relative;
-    z-index: 0;
-  }
-  .roi-photo::after {
-    content: '';
-    position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(to right, transparent 40%, var(--forest) 100%);
-  }
-  .roi-photo.right::after {
-    background: linear-gradient(to left, transparent 40%, var(--forest) 100%);
-  }
-  .roi-photo::before {
-    content: '';
-    position: absolute; top: 12%; bottom: 12%;
-    right: 0; width: 2px; z-index: 2;
-    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-    opacity: 0.5;
-  }
-  .roi-photo.right::before { right: auto; left: 0; }
-
-  /* Centre column */
-  .roi-centre {
-    flex: 1 1 auto;
-    padding: 64px 56px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  /* Benefit rows */
-  .benefit-rows { display: flex; flex-direction: column; }
-  .benefit-row {
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-    padding: 22px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    align-items: flex-start;
-    transition: background 0.25s, padding 0.25s;
-    cursor: default;
-    border-radius: 0;
-  }
-  .benefit-row:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
-  .benefit-row:hover {
-    background: rgba(201,151,58,0.06);
-    padding-left: 12px; padding-right: 12px;
-    border-radius: 8px;
-  }
-  .benefit-accent {
-    flex: 0 0 3px;
-    width: 3px;
-    align-self: stretch;
-    min-height: 44px;
-    border-radius: 3px;
-    background: linear-gradient(to bottom, var(--gold), var(--orange));
-    opacity: 0.45;
-    transition: opacity 0.25s;
-    margin-top: 3px;
-  }
-  .benefit-row:hover .benefit-accent { opacity: 1; }
-  .benefit-body { flex: 1; }
-  .benefit-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem; font-weight: 700;
-    color: var(--white); margin-bottom: 5px;
-    transition: color 0.25s;
-  }
-  .benefit-row:hover .benefit-title { color: var(--gold-light); }
-  .benefit-desc {
-    font-size: 0.85rem; color: rgba(255,255,255,0.48);
-    line-height: 1.65; font-weight: 300;
-    transition: color 0.25s;
-  }
-  .benefit-row:hover .benefit-desc { color: rgba(255,255,255,0.7); }
-
-  /* Mobile */
-  .roi-photos-mobile { display: none; }
-  @media (max-width: 768px) {
-    .roi-panel.active {
-      display: flex;
-      flex-direction: column;
-      min-height: auto;
-    }
-    .roi-photo { display: none; }
-    .roi-photos-mobile {
-      display: flex;
-      height: 260px;
-    }
-    .roi-photo-mobile {
-      flex: 1; position: relative; overflow: hidden; isolation: isolate;
-    }
-    .roi-photo-mobile img {
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      display: block;
-      filter: brightness(0.72) saturate(0.85);
-      z-index: 0;
-    }
-    .roi-photo-mobile::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 40%, rgba(26,46,26,0.75));
-    }
-    .roi-centre { padding: 40px 24px; }
-    .roi-header { padding: 64px 24px 48px; }
-  }
+  /* old roi-photo and benefit-row styles removed — replaced by roi-card grid above */
 
   /* ---- GALLERY ---- */
   #gallery { background: var(--charcoal); padding: 96px 0; }
@@ -679,7 +575,107 @@
   .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
   .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
 
-  /* ---- SCROLL STACKING ---- */
+  /* ---- 3-PAGE SYSTEM ---- */
+  .page { display: none; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* Page tab switcher in nav */
+  .page-tabs {
+    display: flex; gap: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 30px; padding: 4px;
+  }
+  .page-tab {
+    padding: 7px 18px; border-radius: 24px;
+    font-size: 0.82rem; font-weight: 600;
+    color: rgba(255,255,255,0.6); cursor: pointer;
+    border: none; background: transparent;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.25s; white-space: nowrap;
+  }
+  .page-tab.active {
+    background: var(--gold); color: var(--forest);
+    box-shadow: 0 2px 10px rgba(201,151,58,0.3);
+  }
+  .page-tab:hover:not(.active) { color: white; background: rgba(255,255,255,0.12); }
+
+  /* Page transition animation */
+  .page { animation: pageFadeIn 0.5s ease both; }
+  @keyframes pageFadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---- ROI REMODEL — Compact card grid ---- */
+  #benefits { background: var(--forest); padding: 72px 48px; }
+  .roi-header { text-align: center; max-width: 680px; margin: 0 auto 48px; }
+  .roi-header .section-tag { color: var(--gold); }
+  .roi-header .section-title { color: var(--white); margin-bottom: 14px; }
+  .roi-lead {
+    font-size: 0.95rem; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.7;
+  }
+  .roi-lead strong { color: var(--gold); font-weight: 600; }
+  .roi-tabs {
+    display: inline-flex; gap: 0;
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 50px;
+    padding: 4px; background: rgba(255,255,255,0.04); margin-top: 28px;
+  }
+  .roi-tab {
+    padding: 9px 26px; border-radius: 40px;
+    font-size: 0.83rem; font-weight: 600; cursor: pointer;
+    border: none; color: rgba(255,255,255,0.45);
+    background: transparent; font-family: 'Outfit', sans-serif; transition: all 0.3s;
+  }
+  .roi-tab.active { background: var(--gold); color: var(--forest); box-shadow: 0 3px 12px rgba(201,151,58,0.3); }
+
+  /* Card grid — compact 3-column layout */
+  .roi-panel { display: none; }
+  .roi-panel.active {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .roi-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px; padding: 24px 22px;
+    transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .roi-card::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(to bottom, var(--gold), var(--orange));
+    opacity: 0; transition: opacity 0.25s;
+    border-radius: 3px 0 0 3px;
+  }
+  .roi-card:hover { background: rgba(201,151,58,0.07); border-color: rgba(201,151,58,0.25); transform: translateY(-3px); }
+  .roi-card:hover::before { opacity: 1; }
+  .roi-card-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.72rem; font-weight: 700;
+    color: var(--gold); opacity: 0.5; letter-spacing: 0.1em;
+    margin-bottom: 10px; display: block;
+  }
+  .roi-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px;
+    transition: color 0.25s;
+  }
+  .roi-card:hover .roi-card-title { color: var(--gold-light); }
+  .roi-card-desc {
+    font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6; font-weight: 300;
+    transition: color 0.25s;
+  }
+  .roi-card:hover .roi-card-desc { color: rgba(255,255,255,0.7); }
+
+  @media (max-width: 900px) {
+    .roi-panel.active { grid-template-columns: 1fr 1fr; }
+    #benefits { padding: 56px 20px; }
+    .page-tabs { display: none; }
+  }
+  @media (max-width: 560px) {
+    .roi-panel.active { grid-template-columns: 1fr; }
+  }
   .stack-container {
     position: relative;
   }
@@ -811,28 +807,32 @@
     </div>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#founder">Profile</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    <li><a href="#hero" onclick="showPage(0)">Home</a></li>
+    <li><a href="#" onclick="showPage(1)">Programs</a></li>
+    <li><a href="#" onclick="showPage(2)">Results</a></li>
+    <li><a href="#contact" onclick="showPage(2)" class="nav-cta">Contact Us</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
+<!-- PAGE TAB BAR -->
+<div style="position:fixed; bottom: 24px; left:50%; transform:translateX(-50%); z-index:999; display:flex; gap:8px; background:rgba(18,38,18,0.92); padding:6px; border-radius:40px; backdrop-filter:blur(12px); box-shadow: 0 4px 24px rgba(0,0,0,0.3);">
+  <button class="page-tab active" id="ptab-0" onclick="showPage(0)">Home</button>
+  <button class="page-tab" id="ptab-1" onclick="showPage(1)">Programs</button>
+  <button class="page-tab" id="ptab-2" onclick="showPage(2)">Results & Contact</button>
+</div>
+
+<!-- PAGE 1: HOME -->
+<div class="page active" id="page-0">
   <div class="hero-bg-fallback"></div>
   <div class="hero-slide hero-slide-1 active"></div>
   <div class="hero-slide hero-slide-2"></div>
-  <div class="hero-slide hero-slide-3"></div>
   <div class="hero-bottom-fade"></div>
   <div class="hero-content" style="z-index:3;">
     <h1 class="hero-title">
-      Beyond the Office.<br>Beyond the Classroom.<br><em>Into the Experience.</em>
+      Beyond the office.<br>Beyond the classroom.<br><em>Into the experience.</em>
     </h1>
     <p class="hero-sub">From corporate retreats and incentive outings to educational camps every experience places people in extraordinary environments.</p>
     <p class="hero-sub" style="margin-top: -16px; font-size: 0.95rem; opacity: 0.75;">Every journey blends purpose, discovery, and unforgettable moments.</p>
@@ -848,7 +848,6 @@
   <div class="hero-dots" id="heroDots">
     <button class="hero-dot active" onclick="goToSlide(0)"></button>
     <button class="hero-dot" onclick="goToSlide(1)"></button>
-    <button class="hero-dot" onclick="goToSlide(2)"></button>
   </div>
 </section>
 
@@ -881,51 +880,51 @@
   <div class="clients-track-wrap">
     <div class="clients-track" id="clientsTrack">
       <!-- Set 1 — Microsoft at centre, big names radiating outward -->
-      <div class="client-logo"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
-      <div class="client-logo"><img src="Images/solidere.png" alt="Solidere"></div>
-      <div class="client-logo"><img src="Images/toshiba.png" alt="Toshiba"></div>
-      <div class="client-logo"><img src="Images/deloitte.png" alt="Deloitte"></div>
-      <div class="client-logo"><img src="Images/airfrance.png" alt="Air France"></div>
-      <div class="client-logo"><img src="Images/pepsi.png" alt="Pepsi"></div>
-      <div class="client-logo"><img src="Images/microsoft.png" alt="Microsoft"></div>
-      <div class="client-logo"><img src="Images/unilever.png" alt="Unilever"></div>
-      <div class="client-logo"><img src="Images/redbull.png" alt="Red Bull"></div>
-      <div class="client-logo"><img src="Images/total.png" alt="Total"></div>
-      <div class="client-logo"><img src="Images/loreal.png" alt="L'Oréal"></div>
-      <div class="client-logo"><img src="Images/volvo.png" alt="Volvo"></div>
-      <div class="client-logo"><img src="Images/carrefour.png" alt="Carrefour"></div>
-      <div class="client-logo"><img src="Images/schneider.png" alt="Schneider Electric"></div>
-      <div class="client-logo"><img src="Images/aramex.png" alt="Aramex"></div>
-      <div class="client-logo"><img src="Images/azadea.png" alt="Azadea Group"></div>
-      <div class="client-logo"><img src="Images/fattal.png" alt="Fattal Group"></div>
-      <div class="client-logo"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson"></div>
-      <div class="client-logo"><img src="Images/lrc.png" alt="Lebanese Red Cross"></div>
-      <div class="client-logo"><img src="Images/almaza.png" alt="Almaza"></div>
-      <div class="client-logo"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
-      <div class="client-logo"><img src="Images/uob.png" alt="UOB"></div>
+      <div class="client-logo" data-name="Bank Audi"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
+      <div class="client-logo" data-name="Solidere"><img src="Images/solidere.png" alt="Solidere"></div>
+      <div class="client-logo" data-name="Toshiba"><img src="Images/toshiba.png" alt="Toshiba"></div>
+      <div class="client-logo" data-name="Deloitte"><img src="Images/deloitte.png" alt="Deloitte"></div>
+      <div class="client-logo" data-name="Air France"><img src="Images/airfrance.png" alt="Air France"></div>
+      <div class="client-logo" data-name="Pepsi"><img src="Images/pepsi.png" alt="Pepsi"></div>
+      <div class="client-logo" data-name="Microsoft"><img src="Images/microsoft.png" alt="Microsoft"></div>
+      <div class="client-logo" data-name="Unilever"><img src="Images/unilever.png" alt="Unilever"></div>
+      <div class="client-logo" data-name="Red Bull"><img src="Images/redbull.png" alt="Red Bull"></div>
+      <div class="client-logo" data-name="TotalEnergies"><img src="Images/total.png" alt="Total"></div>
+      <div class="client-logo" data-name="L'Oréal"><img src="Images/loreal.png" alt="L'Oréal"></div>
+      <div class="client-logo" data-name="Volvo"><img src="Images/volvo.png" alt="Volvo"></div>
+      <div class="client-logo" data-name="Carrefour"><img src="Images/carrefour.png" alt="Carrefour"></div>
+      <div class="client-logo" data-name="Schneider"><img src="Images/schneider.png" alt="Schneider Electric"></div>
+      <div class="client-logo" data-name="Aramex"><img src="Images/aramex.png" alt="Aramex"></div>
+      <div class="client-logo" data-name="Azadea Group"><img src="Images/azadea.png" alt="Azadea Group"></div>
+      <div class="client-logo" data-name="Fattal Group"><img src="Images/fattal.png" alt="Fattal Group"></div>
+      <div class="client-logo" data-name="Willis Towers Watson"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson"></div>
+      <div class="client-logo" data-name="Lebanese Red Cross"><img src="Images/lrc.png" alt="Lebanese Red Cross"></div>
+      <div class="client-logo" data-name="Almaza"><img src="Images/almaza.png" alt="Almaza"></div>
+      <div class="client-logo" data-name="Spinneys Lebanon"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
+      <div class="client-logo" data-name="UOB"><img src="Images/uob.png" alt="UOB"></div>
       <div class="client-logo"><img src="Images/undp.png" alt="UNDP" style="mix-blend-mode:multiply; filter:none; opacity:0.8;"></div>
-      <div class="client-logo"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
-      <div class="client-logo"><img src="Images/solidere.png" alt="Solidere"></div>
-      <div class="client-logo"><img src="Images/toshiba.png" alt="Toshiba"></div>
-      <div class="client-logo"><img src="Images/deloitte.png" alt="Deloitte"></div>
-      <div class="client-logo"><img src="Images/airfrance.png" alt="Air France"></div>
-      <div class="client-logo"><img src="Images/pepsi.png" alt="Pepsi"></div>
-      <div class="client-logo"><img src="Images/microsoft.png" alt="Microsoft"></div>
-      <div class="client-logo"><img src="Images/unilever.png" alt="Unilever"></div>
-      <div class="client-logo"><img src="Images/redbull.png" alt="Red Bull"></div>
-      <div class="client-logo"><img src="Images/total.png" alt="Total"></div>
-      <div class="client-logo"><img src="Images/loreal.png" alt="L'Oréal"></div>
-      <div class="client-logo"><img src="Images/volvo.png" alt="Volvo"></div>
-      <div class="client-logo"><img src="Images/carrefour.png" alt="Carrefour"></div>
-      <div class="client-logo"><img src="Images/schneider.png" alt="Schneider Electric"></div>
-      <div class="client-logo"><img src="Images/aramex.png" alt="Aramex"></div>
-      <div class="client-logo"><img src="Images/azadea.png" alt="Azadea Group"></div>
-      <div class="client-logo"><img src="Images/fattal.png" alt="Fattal Group"></div>
-      <div class="client-logo"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson"></div>
-      <div class="client-logo"><img src="Images/lrc.png" alt="Lebanese Red Cross"></div>
-      <div class="client-logo"><img src="Images/almaza.png" alt="Almaza"></div>
-      <div class="client-logo"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
-      <div class="client-logo"><img src="Images/uob.png" alt="UOB"></div>
+      <div class="client-logo" data-name="Bank Audi"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
+      <div class="client-logo" data-name="Solidere"><img src="Images/solidere.png" alt="Solidere"></div>
+      <div class="client-logo" data-name="Toshiba"><img src="Images/toshiba.png" alt="Toshiba"></div>
+      <div class="client-logo" data-name="Deloitte"><img src="Images/deloitte.png" alt="Deloitte"></div>
+      <div class="client-logo" data-name="Air France"><img src="Images/airfrance.png" alt="Air France"></div>
+      <div class="client-logo" data-name="Pepsi"><img src="Images/pepsi.png" alt="Pepsi"></div>
+      <div class="client-logo" data-name="Microsoft"><img src="Images/microsoft.png" alt="Microsoft"></div>
+      <div class="client-logo" data-name="Unilever"><img src="Images/unilever.png" alt="Unilever"></div>
+      <div class="client-logo" data-name="Red Bull"><img src="Images/redbull.png" alt="Red Bull"></div>
+      <div class="client-logo" data-name="TotalEnergies"><img src="Images/total.png" alt="Total"></div>
+      <div class="client-logo" data-name="L'Oréal"><img src="Images/loreal.png" alt="L'Oréal"></div>
+      <div class="client-logo" data-name="Volvo"><img src="Images/volvo.png" alt="Volvo"></div>
+      <div class="client-logo" data-name="Carrefour"><img src="Images/carrefour.png" alt="Carrefour"></div>
+      <div class="client-logo" data-name="Schneider"><img src="Images/schneider.png" alt="Schneider Electric"></div>
+      <div class="client-logo" data-name="Aramex"><img src="Images/aramex.png" alt="Aramex"></div>
+      <div class="client-logo" data-name="Azadea Group"><img src="Images/azadea.png" alt="Azadea Group"></div>
+      <div class="client-logo" data-name="Fattal Group"><img src="Images/fattal.png" alt="Fattal Group"></div>
+      <div class="client-logo" data-name="Willis Towers Watson"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson"></div>
+      <div class="client-logo" data-name="Lebanese Red Cross"><img src="Images/lrc.png" alt="Lebanese Red Cross"></div>
+      <div class="client-logo" data-name="Almaza"><img src="Images/almaza.png" alt="Almaza"></div>
+      <div class="client-logo" data-name="Spinneys Lebanon"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
+      <div class="client-logo" data-name="UOB"><img src="Images/uob.png" alt="UOB"></div>
       <div class="client-logo"><img src="Images/undp.png" alt="UNDP" style="mix-blend-mode:multiply; filter:none; opacity:0.8;"></div>
     </div>
   </div>
@@ -951,6 +950,26 @@
     </div>
   </div>
 </section>
+
+<!-- FOUNDER -->
+<section id="founder" class="stack-section" style="z-index:15;">
+  <div class="founder-img reveal">
+    <img src="Images/andre-bechara.png" alt="André Béchara, Founder" style="object-position: top;">
+  </div>
+  <div class="reveal">
+    <span class="section-tag">The expert behind the programs</span>
+    <div class="founder-name">André Béchara</div>
+    <div class="founder-role">Consultant in Human Dynamics</div>
+    <p class="founder-bio">With more than 30 years of leadership in outdoor education, environmental awareness, rural development, adventure programming, and experiential learning, André Béchara is recognized as one of the Middle East's leading pioneers in corporate team building and transformational learning. His work combines strategic vision with hands-on field expertise across corporate team building, ecotourism, adventure expeditions, educational camps, creative thinking workshops, and rural and environmental development initiatives.</p>
+    <p class="founder-bio" style="margin-top: 14px;">By blending adventure, education, sustainability, psychology, and creativity, he creates experiences that generate lasting impact for individuals, organizations, and communities.</p>
+    <p class="founder-bio" style="margin-top: 14px;">Deeply committed to nature conservation and rural empowerment, André continues to use experiential learning as a bridge between people, nature, leadership, and purpose.</p>
+  </div>
+</section>
+
+</div><!-- END PAGE 1 -->
+
+<!-- PAGE 2: PROGRAMS -->
+<div class="page" id="page-1">
 
 <!-- THE PROCESS -->
 <section id="process" class="stack-section" style="z-index:13;">
@@ -1008,157 +1027,88 @@
   </div>
 </section>
 
-<!-- FOUNDER -->
-<section id="founder" class="stack-section" style="z-index:15;">
-  <div class="founder-img reveal">
-    <img src="Images/andre-bechara.png" alt="André Béchara, Founder" style="object-position: top;">
-  </div>
-  <div class="reveal">
-    <span class="section-tag">The expert behind the programs</span>
-    <div class="founder-name">André Béchara</div>
-    <div class="founder-role">Consultant in Human Dynamics</div>
-    <p class="founder-bio">With more than 30 years of leadership in outdoor education, environmental awareness, rural development, adventure programming, and experiential learning, André Béchara is recognized as one of the Middle East's leading pioneers in corporate team building and transformational learning. His work combines strategic vision with hands-on field expertise across corporate team building, ecotourism, adventure expeditions, educational camps, creative thinking workshops, and rural and environmental development initiatives.</p>
-    <p class="founder-bio" style="margin-top: 14px;">By blending adventure, education, sustainability, psychology, and creativity, he creates experiences that generate lasting impact for individuals, organizations, and communities.</p>
-    <p class="founder-bio" style="margin-top: 14px;">Deeply committed to nature conservation and rural empowerment, André continues to use experiential learning as a bridge between people, nature, leadership, and purpose.</p>
-  </div>
-</section>
+</div><!-- END PAGE 2 -->
 
-<!-- BENEFITS / ROI -->
-<section id="benefits" style="z-index:16; position: relative; background: var(--forest);">
+<!-- PAGE 3: RESULTS & CONTACT -->
+<div class="page" id="page-2">
 
-  <!-- Header -->
+<!-- BENEFITS / ROI — Compact card grid -->
+<section id="benefits" style="background: var(--forest);">
   <div class="roi-header">
     <span class="section-tag">Return on investment</span>
-    <h2 class="section-title">What Your Team<br>Gains from the Field</h2>
-    <p class="roi-lead"><strong>Success in business is measured by numbers — but the real foundation is people.</strong><br>Every program transforms your investment into lasting behavioural change, stronger teams, and measurable performance.</p>
+    <h2 class="section-title">What Your Team Gains</h2>
+    <p class="roi-lead"><strong>Success in business is measured by numbers — but the real foundation is people.</strong> Every program transforms your investment into lasting behavioural change, stronger teams, and measurable performance.</p>
     <div class="roi-tabs">
       <button class="roi-tab active" onclick="switchTab(this, 'team')">At the Team Level</button>
       <button class="roi-tab" onclick="switchTab(this, 'personal')">At the Personal Level</button>
     </div>
   </div>
 
-  <!-- Mobile image strip (shown only on small screens) -->
-  <div class="roi-photos-mobile">
-    <div class="roi-photo-mobile">
-      <img src="Images/aircraft.png" alt="Aircraft team experience">
+  <div class="roi-panel active" id="tab-team">
+    <div class="roi-card reveal">
+      <span class="roi-card-num">01</span>
+      <div class="roi-card-title">Communication</div>
+      <p class="roi-card-desc">Shared challenges strip workplace hierarchies, building authentic communication patterns that carry back into the office.</p>
     </div>
-    <div class="roi-photo-mobile">
-      <img src="Images/track.png" alt="Track team activity">
+    <div class="roi-card reveal">
+      <span class="roi-card-num">02</span>
+      <div class="roi-card-title">Effective Collaboration</div>
+      <p class="roi-card-desc">Shared challenges build genuine camaraderie and a culture grounded in trust and mutual accountability.</p>
+    </div>
+    <div class="roi-card reveal">
+      <span class="roi-card-num">03</span>
+      <div class="roi-card-title">Leadership Qualities</div>
+      <p class="roi-card-desc">Real-world scenarios surface and develop leadership capabilities that no classroom training can replicate.</p>
+    </div>
+    <div class="roi-card reveal">
+      <span class="roi-card-num">04</span>
+      <div class="roi-card-title">Time Management</div>
+      <p class="roi-card-desc">Time-pressured challenges reinforce prioritisation, decision speed, and execution under constraints.</p>
+    </div>
+    <div class="roi-card reveal">
+      <span class="roi-card-num">05</span>
+      <div class="roi-card-title">Teamwork & Cohesion</div>
+      <p class="roi-card-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p>
+    </div>
+    <div class="roi-card reveal">
+      <span class="roi-card-num">06</span>
+      <div class="roi-card-title">Problem-Solving Skills</div>
+      <p class="roi-card-desc">Complex immersive scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.</p>
     </div>
   </div>
 
-  <!-- Panel: Team -->
-    <div class="roi-panel active" id="tab-team">
-      <div class="roi-photo">
-        <img src="Images/aircraft.png" alt="Aircraft team experience">
-      </div>
-      <div class="roi-centre">
-        <div class="benefit-rows">
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Communication</div>
-              <p class="benefit-desc">Field-based challenges strip workplace hierarchies, creating authentic communication patterns that carry back into the office.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Effective Collaboration</div>
-              <p class="benefit-desc">Shared challenges build genuine camaraderie and a team culture grounded in trust and mutual accountability.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Leadership Qualities</div>
-              <p class="benefit-desc">Real-world scenarios surface and develop leadership capabilities that no classroom training can replicate.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Time Management</div>
-              <p class="benefit-desc">Time-pressured challenges reinforce prioritisation, decision speed, and execution under constraints.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Teamwork & Cohesion</div>
-              <p class="benefit-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Problem-Solving Skills</div>
-              <p class="benefit-desc">Complex immersive scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="roi-photo right">
-        <img src="Images/track.png" alt="Track team activity">
-      </div>
+  <div class="roi-panel" id="tab-personal">
+    <div class="roi-card reveal">
+      <span class="roi-card-num">01</span>
+      <div class="roi-card-title">Build Self-Confidence</div>
+      <p class="roi-card-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p>
     </div>
-
-    <!-- Panel: Personal -->
-    <div class="roi-panel" id="tab-personal">
-      <div class="roi-photo">
-        <img src="Images/track.png" alt="Track team activity">
-      </div>
-      <div class="roi-centre">
-        <div class="benefit-rows">
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Build Self-Confidence</div>
-              <p class="benefit-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Stretch Personal Limits</div>
-              <p class="benefit-desc">Participants discover what they're capable of when pushed beyond their comfort zone in a safe, facilitated environment.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Decision-Making Skills</div>
-              <p class="benefit-desc">Evaluating solutions under pressure sharpens analytical thinking and reduces hesitation in high-stakes situations.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Thinking Outside the Box</div>
-              <p class="benefit-desc">Nature-based problem solving breaks habitual thinking patterns and unlocks genuine creative capacity.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Fun & Memorable Times</div>
-              <p class="benefit-desc">Shared adventure creates lasting positive memories, increasing morale, loyalty, and sense of belonging to the company.</p>
-            </div>
-          </div>
-          <div class="benefit-row reveal">
-            <div class="benefit-accent"></div>
-            <div class="benefit-body">
-              <div class="benefit-title">Self-Awareness</div>
-              <p class="benefit-desc">Field observation and debriefing help participants understand their own strengths, blind spots, and contribution style.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="roi-photo right">
-        <img src="Images/aircraft.png" alt="Aircraft team experience">
-      </div>
+    <div class="roi-card reveal">
+      <span class="roi-card-num">02</span>
+      <div class="roi-card-title">Stretch Personal Limits</div>
+      <p class="roi-card-desc">Participants discover what they're capable of when pushed beyond their comfort zone in a safe, facilitated environment.</p>
     </div>
-
+    <div class="roi-card reveal">
+      <span class="roi-card-num">03</span>
+      <div class="roi-card-title">Decision-Making Skills</div>
+      <p class="roi-card-desc">Evaluating solutions under pressure sharpens analytical thinking and reduces hesitation in high-stakes situations.</p>
+    </div>
+    <div class="roi-card reveal">
+      <span class="roi-card-num">04</span>
+      <div class="roi-card-title">Creative Thinking</div>
+      <p class="roi-card-desc">Immersive problem solving breaks habitual thinking patterns and unlocks genuine creative capacity.</p>
+    </div>
+    <div class="roi-card reveal">
+      <span class="roi-card-num">05</span>
+      <div class="roi-card-title">Fun & Memorable Times</div>
+      <p class="roi-card-desc">Shared experiences create lasting positive memories, increasing morale, loyalty, and belonging.</p>
+    </div>
+    <div class="roi-card reveal">
+      <span class="roi-card-num">06</span>
+      <div class="roi-card-title">Self-Awareness</div>
+      <p class="roi-card-desc">Guided debriefing helps participants understand their strengths, blind spots, and contribution style.</p>
+    </div>
+  </div>
 </section>
 
 <!-- GALLERY -->
@@ -1218,6 +1168,8 @@
   </div>
 </section>
 
+</div><!-- END PAGE 3 -->
+
 </div><!-- end .stack-container -->
 
 <!-- FOOTER -->
@@ -1240,6 +1192,24 @@
 </footer>
 
 <script>
+// ---- 3-PAGE SYSTEM ----
+function showPage(n) {
+  document.querySelectorAll('.page').forEach((p, i) => {
+    p.classList.toggle('active', i === n);
+  });
+  document.querySelectorAll('.page-tab').forEach((t, i) => {
+    t.classList.toggle('active', i === n);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Re-trigger reveal animations for newly visible page
+  setTimeout(() => {
+    document.querySelectorAll('#page-' + n + ' .reveal').forEach(el => {
+      el.classList.remove('visible');
+      observer.observe(el);
+    });
+  }, 100);
+}
+
 // Hero slideshow
 const slides = document.querySelectorAll('.hero-slide');
 const dots = document.querySelectorAll('.hero-dot');
