@@ -1458,8 +1458,6 @@ function showPage(n) {
         revealObserver.observe(el);
       });
     }
-    // Re-run counters when returning to page-0
-    if (n === 0) initCounters();
   }, 80);
 }
 
@@ -1553,45 +1551,25 @@ window.addEventListener('scroll', () => {
   if (navLinks.classList.contains('open')) closeMenu();
 }, { passive: true });
 
-// Scroll reveal moved above showPage
-
 // Counter animation
-// Counter animation
-function animateCounter(el) {
-  if (el.dataset.animated) return;
-  el.dataset.animated = 'true';
-  const target = parseInt(el.dataset.target);
-  let current = 0;
-  const step = target / 60;
-  const timer = setInterval(() => {
-    current += step;
-    if (current >= target) {
-      el.textContent = target + '+';
-      clearInterval(timer);
-    } else {
-      el.textContent = Math.floor(current) + '+';
+const counters = document.querySelectorAll('[data-target]');
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const step = target / 55;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { el.textContent = target + '+'; clearInterval(timer); }
+        else { el.textContent = Math.floor(current) + '+'; }
+      }, 28);
+      counterObs.unobserve(el);
     }
-  }, 25);
-}
-
-function initCounters() {
-  const counters = document.querySelectorAll('[data-target]');
-  counters.forEach(el => {
-    delete el.dataset.animated;
-    el.textContent = '0';
   });
-  const counterObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        counterObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  counters.forEach(el => counterObs.observe(el));
-}
-
-initCounters();
+}, { threshold: 0.5 });
+counters.forEach(el => counterObs.observe(el));
 
 // FAQ toggle
 document.querySelectorAll('.faq-question').forEach(q => {
