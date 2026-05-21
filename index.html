@@ -103,8 +103,9 @@
     background: linear-gradient(160deg, rgba(10,25,10,0.80) 0%, rgba(26,46,26,0.52) 45%, rgba(80,50,10,0.38) 100%);
   }
   .hero-slide.active { opacity: 1; }
-  .hero-slide-1 { background-image: url('Images/group2.png'); }
-  .hero-slide-2 { background-image: url('Images/group3.png'); }
+  .hero-slide-1 { background-image: url('Images/basecamp.jpg'); }
+  .hero-slide-2 { background-image: url('Images/group2.png'); }
+  .hero-slide-3 { background-image: url('Images/group3.png'); }
   /* Bottom fade into forest */
   .hero-bottom-fade {
     position: absolute; bottom: 0; left: 0; right: 0; height: 200px; z-index: 2;
@@ -208,7 +209,7 @@
     letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--text-light); margin-bottom: 20px;
   }
-  .clients-track-wrap { overflow: hidden; position: relative; }
+  .clients-track-wrap { overflow: hidden; position: relative; cursor: default; }
   .clients-track-wrap::before,
   .clients-track-wrap::after {
     content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2;
@@ -603,51 +604,54 @@
   .page { animation: pageFadeIn 0.5s ease both; }
   @keyframes pageFadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ---- ROI — Split layout: image left, content+cards right ---- */
+  /* ---- ROI REMODEL — Compact card grid ---- */
+  #benefits { background: var(--forest); padding: 72px 48px; }
+  .roi-header { text-align: center; max-width: 680px; margin: 0 auto 48px; }
+  .roi-header .section-tag { color: var(--gold); }
+  .roi-header .section-title { color: var(--white); margin-bottom: 14px; }
+  .roi-lead {
+    font-size: 0.95rem; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.7;
+  }
+  .roi-lead strong { color: var(--gold); font-weight: 600; }
+  .roi-tabs {
+    display: inline-flex; gap: 0;
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 50px;
+    padding: 4px; background: rgba(255,255,255,0.04); margin-top: 28px;
+  }
+  .roi-tab {
+    padding: 9px 26px; border-radius: 40px;
+    font-size: 0.83rem; font-weight: 600; cursor: pointer;
+    border: none; color: rgba(255,255,255,0.45);
+    background: transparent; font-family: 'Outfit', sans-serif; transition: all 0.3s;
+  }
+  .roi-tab.active { background: var(--gold); color: var(--forest); box-shadow: 0 3px 12px rgba(201,151,58,0.3); }
+
+  /* ── ROI: split layout image-left / content-right ── */
   #benefits { background: var(--forest); padding: 0; overflow: hidden; }
-
   .roi-layout {
-    display: grid;
-    grid-template-columns: 400px 1fr;
-    min-height: 560px;
-    align-items: stretch;
+    display: grid; grid-template-columns: 400px 1fr;
+    min-height: 580px; align-items: stretch;
   }
-
-  /* Left: full-height crossfading image */
-  .roi-image-col {
-    position: relative;
-    overflow: hidden;
-  }
+  .roi-image-col { position: relative; overflow: hidden; }
   .roi-image-col .roi-img {
     position: absolute; inset: 0;
-    background-size: cover;
-    background-position: center top;
-    opacity: 0;
-    transition: opacity 0.6s ease;
+    background-size: cover; background-position: center top;
+    opacity: 0; transition: opacity 0.6s ease;
   }
   .roi-image-col .roi-img.active { opacity: 1; }
-  .roi-img-team     { background-image: url('Images/blind.png'); }
-  .roi-img-personal { background-image: url('Images/track.png'); }
-  /* Fade right edge into forest */
+  .roi-img-team     { background-image: url('Images/group5.png'); }
+  .roi-img-personal { background-image: url('Images/allhand.png'); }
   .roi-image-col::after {
-    content: '';
-    position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: linear-gradient(to right, transparent 60%, var(--forest) 100%);
     pointer-events: none;
   }
-
-  /* Right: header + tabs + cards — tight, no wasted space */
   .roi-content-col {
     padding: 52px 56px 52px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    display: flex; flex-direction: column; justify-content: flex-start;
   }
   .roi-content-col .section-tag { color: var(--gold); margin-bottom: 8px; }
-  .roi-content-col .section-title {
-    color: var(--white); margin-bottom: 10px;
-    font-size: clamp(1.6rem, 2.8vw, 2.3rem);
-  }
+  .roi-content-col .section-title { color: var(--white); margin-bottom: 10px; font-size: clamp(1.6rem,2.8vw,2.3rem); }
   .roi-lead {
     font-size: 0.88rem; color: rgba(255,255,255,0.55); font-weight: 300;
     line-height: 1.65; margin-bottom: 18px; max-width: 500px;
@@ -666,49 +670,27 @@
     background: transparent; font-family: 'Outfit', sans-serif; transition: all 0.3s;
   }
   .roi-tab.active { background: var(--gold); color: var(--forest); box-shadow: 0 3px 12px rgba(201,151,58,0.3); }
-
-  /* 2-col card grid inside right column */
   .roi-panel { display: none; }
-  .roi-panel.active {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
+  .roi-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .roi-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px; padding: 16px 16px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 16px;
     transition: background 0.25s, border-color 0.25s, transform 0.2s;
     cursor: default; position: relative; overflow: hidden;
   }
   .roi-card::before {
-    content: '';
-    position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
     background: linear-gradient(to bottom, var(--gold), var(--orange));
-    opacity: 0; transition: opacity 0.25s;
-    border-radius: 3px 0 0 3px;
+    opacity: 0; transition: opacity 0.25s; border-radius: 3px 0 0 3px;
   }
   .roi-card:hover { background: rgba(201,151,58,0.07); border-color: rgba(201,151,58,0.25); transform: translateY(-2px); }
   .roi-card:hover::before { opacity: 1; }
-  .roi-card-num {
-    font-family: 'Playfair Display', serif; font-size: 0.65rem; font-weight: 700;
-    color: var(--gold); opacity: 0.5; letter-spacing: 0.1em; margin-bottom: 5px; display: block;
-  }
-  .roi-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.92rem; font-weight: 700; color: var(--white); margin-bottom: 4px;
-    transition: color 0.25s;
-  }
+  .roi-card-num { font-family: 'Playfair Display', serif; font-size: 0.65rem; font-weight: 700; color: var(--gold); opacity: 0.5; letter-spacing: 0.1em; margin-bottom: 5px; display: block; }
+  .roi-card-title { font-family: 'Playfair Display', serif; font-size: 0.92rem; font-weight: 700; color: var(--white); margin-bottom: 4px; transition: color 0.25s; }
   .roi-card:hover .roi-card-title { color: var(--gold-light); }
-  .roi-card-desc {
-    font-size: 0.76rem; color: rgba(255,255,255,0.4); line-height: 1.5; font-weight: 300;
-    transition: color 0.25s;
-  }
+  .roi-card-desc { font-size: 0.76rem; color: rgba(255,255,255,0.4); line-height: 1.5; font-weight: 300; transition: color 0.25s; }
   .roi-card:hover .roi-card-desc { color: rgba(255,255,255,0.65); }
-
-  @media (max-width: 1024px) {
-    .roi-layout { grid-template-columns: 300px 1fr; }
-  }
+  @media (max-width: 1024px) { .roi-layout { grid-template-columns: 300px 1fr; } }
   @media (max-width: 900px) {
     .roi-layout { grid-template-columns: 1fr; }
     .roi-image-col { height: 240px; }
@@ -716,11 +698,8 @@
     .roi-content-col { padding: 36px 20px; }
     .roi-panel.active { grid-template-columns: 1fr 1fr; }
     #benefits { padding: 0; }
-    .page-tabs { display: none; }
   }
-  @media (max-width: 560px) {
-    .roi-panel.active { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 560px) { .roi-panel.active { grid-template-columns: 1fr; } }
 
   .stack-container {
     position: relative;
@@ -878,6 +857,7 @@
   <div class="hero-bg-fallback"></div>
   <div class="hero-slide hero-slide-1 active"></div>
   <div class="hero-slide hero-slide-2"></div>
+  <div class="hero-slide hero-slide-3"></div>
   <div class="hero-bottom-fade"></div>
   <div class="hero-content" style="z-index:3;">
     <h1 class="hero-title">
@@ -897,6 +877,7 @@
   <div class="hero-dots" id="heroDots">
     <button class="hero-dot active" onclick="goToSlide(0)"></button>
     <button class="hero-dot" onclick="goToSlide(1)"></button>
+    <button class="hero-dot" onclick="goToSlide(2)"></button>
   </div>
 </section>
 
@@ -925,6 +906,8 @@
 
 <!-- CLIENT LOGOS BANNER -->
 <div class="clients-banner stack-section" style="z-index:11;">
+  <button class="clients-arrow left" id="logoArrowLeft" aria-label="Scroll logos left">&#8592;</button>
+  <button class="clients-arrow right" id="logoArrowRight" aria-label="Scroll logos right">&#8594;</button>
   <p class="clients-label">Trusted by leading organizations</p>
   <div class="clients-track-wrap">
     <div class="clients-track" id="clientsTrack">
@@ -1086,14 +1069,10 @@
 <!-- BENEFITS / ROI — Split layout -->
 <section id="benefits" style="background: var(--forest);">
   <div class="roi-layout">
-
-    <!-- Left: crossfading image column -->
     <div class="roi-image-col">
       <div class="roi-img roi-img-team active" id="roi-img-team"></div>
       <div class="roi-img roi-img-personal" id="roi-img-personal"></div>
     </div>
-
-    <!-- Right: all content tightly stacked from the top -->
     <div class="roi-content-col">
       <span class="section-tag">Return on investment</span>
       <h2 class="section-title">What Your Team Gains</h2>
@@ -1102,73 +1081,24 @@
         <button class="roi-tab active" onclick="switchTab(this, 'team')">At the Team Level</button>
         <button class="roi-tab" onclick="switchTab(this, 'personal')">At the Personal Level</button>
       </div>
-
-  <div class="roi-panel active" id="tab-team">
-    <div class="roi-card reveal">
-      <span class="roi-card-num">01</span>
-      <div class="roi-card-title">Communication</div>
-      <p class="roi-card-desc">Shared challenges strip workplace hierarchies, building authentic communication patterns that carry back into the office.</p>
-    </div>
-    <div class="roi-card reveal">
-      <span class="roi-card-num">02</span>
-      <div class="roi-card-title">Effective Collaboration</div>
-      <p class="roi-card-desc">Shared challenges build genuine camaraderie and a culture grounded in trust and mutual accountability.</p>
-    </div>
-    <div class="roi-card reveal">
-      <span class="roi-card-num">03</span>
-      <div class="roi-card-title">Leadership Qualities</div>
-      <p class="roi-card-desc">Real-world scenarios surface and develop leadership capabilities that no classroom training can replicate.</p>
-    </div>
-    <div class="roi-card reveal">
-      <span class="roi-card-num">04</span>
-      <div class="roi-card-title">Time Management</div>
-      <p class="roi-card-desc">Time-pressured challenges reinforce prioritisation, decision speed, and execution under constraints.</p>
-    </div>
-    <div class="roi-card reveal">
-      <span class="roi-card-num">05</span>
-      <div class="roi-card-title">Teamwork & Cohesion</div>
-      <p class="roi-card-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p>
-    </div>
-    <div class="roi-card reveal">
-      <span class="roi-card-num">06</span>
-      <div class="roi-card-title">Problem-Solving Skills</div>
-      <p class="roi-card-desc">Complex immersive scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.</p>
+      <div class="roi-panel active" id="tab-team">
+        <div class="roi-card reveal"><span class="roi-card-num">01</span><div class="roi-card-title">Communication</div><p class="roi-card-desc">Shared challenges strip workplace hierarchies, building authentic communication patterns that carry back into the office.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">02</span><div class="roi-card-title">Effective Collaboration</div><p class="roi-card-desc">Shared challenges build genuine camaraderie and a culture grounded in trust and mutual accountability.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">03</span><div class="roi-card-title">Leadership Qualities</div><p class="roi-card-desc">Real-world scenarios surface and develop leadership capabilities that no classroom training can replicate.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">04</span><div class="roi-card-title">Time Management</div><p class="roi-card-desc">Time-pressured challenges reinforce prioritisation, decision speed, and execution under constraints.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">05</span><div class="roi-card-title">Teamwork & Cohesion</div><p class="roi-card-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">06</span><div class="roi-card-title">Problem-Solving Skills</div><p class="roi-card-desc">Complex immersive scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.</p></div>
+      </div>
+      <div class="roi-panel" id="tab-personal">
+        <div class="roi-card reveal"><span class="roi-card-num">01</span><div class="roi-card-title">Build Self-Confidence</div><p class="roi-card-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">02</span><div class="roi-card-title">Stretch Personal Limits</div><p class="roi-card-desc">Participants discover what they're capable of when pushed beyond their comfort zone in a safe, facilitated environment.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">03</span><div class="roi-card-title">Decision-Making Skills</div><p class="roi-card-desc">Evaluating solutions under pressure sharpens analytical thinking and reduces hesitation in high-stakes situations.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">04</span><div class="roi-card-title">Creative Thinking</div><p class="roi-card-desc">Immersive problem solving breaks habitual thinking patterns and unlocks genuine creative capacity.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">05</span><div class="roi-card-title">Fun & Memorable Times</div><p class="roi-card-desc">Shared experiences create lasting positive memories, increasing morale, loyalty, and belonging.</p></div>
+        <div class="roi-card reveal"><span class="roi-card-num">06</span><div class="roi-card-title">Self-Awareness</div><p class="roi-card-desc">Guided debriefing helps participants understand their strengths, blind spots, and contribution style.</p></div>
+      </div>
     </div>
   </div>
-
-  <div class="roi-panel" id="tab-personal">
-    <div class="roi-card reveal">
-      <span class="roi-card-num">01</span>
-      <div class="roi-card-title">Build Self-Confidence</div>
-      <p class="roi-card-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p>
-    </div>
-    <div class="roi-card reveal">
-      <span class="roi-card-num">02</span>
-      <div class="roi-card-title">Stretch Personal Limits</div>
-      <p class="roi-card-desc">Participants discover what they're capable of when pushed beyond their comfort zone in a safe, facilitated environment.</p>
-    </div>
-    <div class="roi-card reveal">
-      <span class="roi-card-num">03</span>
-      <div class="roi-card-title">Decision-Making Skills</div>
-      <p class="roi-card-desc">Evaluating solutions under pressure sharpens analytical thinking and reduces hesitation in high-stakes situations.</p>
-    </div>
-    <div class="roi-card reveal">
-      <span class="roi-card-num">04</span>
-      <div class="roi-card-title">Creative Thinking</div>
-      <p class="roi-card-desc">Immersive problem solving breaks habitual thinking patterns and unlocks genuine creative capacity.</p>
-    </div>
-    <div class="roi-card reveal">
-      <span class="roi-card-num">05</span>
-      <div class="roi-card-title">Fun & Memorable Times</div>
-      <p class="roi-card-desc">Shared experiences create lasting positive memories, increasing morale, loyalty, and belonging.</p>
-    </div>
-    <div class="roi-card reveal">
-      <span class="roi-card-num">06</span>
-      <div class="roi-card-title">Self-Awareness</div>
-      <p class="roi-card-desc">Guided debriefing helps participants understand their strengths, blind spots, and contribution style.</p>
-    </div>
-    </div><!-- end roi-content-col -->
-  </div><!-- end roi-layout -->
 </section>
 
 <!-- GALLERY -->
@@ -1393,7 +1323,6 @@ function switchTab(btn, id) {
   document.querySelectorAll('.roi-panel').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('tab-' + id).classList.add('active');
-  // Crossfade image
   document.querySelectorAll('.roi-img').forEach(i => i.classList.remove('active'));
   const img = document.getElementById('roi-img-' + id);
   if (img) img.classList.add('active');
@@ -1454,6 +1383,44 @@ function handleSubmit(e) {
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll(); // run once on load
+})();
+
+// Logo banner arrow scroll
+(function() {
+  const track   = document.getElementById('clientsTrack');
+  const btnL    = document.getElementById('logoArrowLeft');
+  const btnR    = document.getElementById('logoArrowRight');
+  if (!track || !btnL || !btnR) return;
+
+  let offset = 0;          // manual offset on top of animation
+  let paused = false;
+  let resumeTimer;
+
+  function nudge(dir) {
+    // Pause animation
+    track.style.animationPlayState = 'paused';
+    paused = true;
+    clearTimeout(resumeTimer);
+
+    // Get current animated position
+    const matrix = new DOMMatrix(window.getComputedStyle(track).transform);
+    const base   = matrix.m41;
+
+    offset = base + dir * 200;
+    track.style.transition = 'transform 0.35s ease';
+    track.style.transform  = 'translateX(' + offset + 'px)';
+
+    // Resume auto-scroll after 2 s
+    resumeTimer = setTimeout(() => {
+      track.style.transition = '';
+      track.style.transform  = '';
+      track.style.animationPlayState = '';
+      paused = false;
+    }, 2000);
+  }
+
+  btnL.addEventListener('click', () => nudge(1));   // ← move right (show earlier logos)
+  btnR.addEventListener('click', () => nudge(-1));  // → move left  (show later logos)
 })();
 </script>
 </body>
