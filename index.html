@@ -377,7 +377,7 @@
     z-index: 0;
   }
   #services > * { position: relative; z-index: 1; }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 28px; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 28px; }
   .service-card {
     background: white; border-radius: 16px; padding: 32px 28px;
     border: 1px solid rgba(0,0,0,0.06);
@@ -1148,10 +1148,10 @@
         <button class="roi-tab active" onclick="switchTab(this, 'team')">At the Team Level</button>
         <button class="roi-tab" onclick="switchTab(this, 'personal')">At the Personal Level</button>
       </div>
-      <div style="margin-bottom:8px; text-align:right;">
-        <button class="toggle-all-btn" onclick="toggleAllGroup(this, '#tab-team .roi-card', 'roi-open')" data-state="collapsed">Expand All ↓</button>
-      </div>
       <div class="roi-panel active" id="tab-team">
+        <div style="margin-bottom:8px; text-align:right;">
+          <button class="toggle-all-btn" onclick="toggleAllGroup(this, '#tab-team .roi-card', 'roi-open')" data-state="collapsed">Expand All ↓</button>
+        </div>
         <div class="roi-card reveal"><span class="roi-card-num">01</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Communication</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Shared challenges strip workplace hierarchies, building authentic communication patterns that carry back into the office.</p></div>
         <div class="roi-card reveal"><span class="roi-card-num">02</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Effective Collaboration</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Shared challenges build genuine camaraderie and a culture grounded in trust and mutual accountability.</p></div>
         <div class="roi-card reveal"><span class="roi-card-num">03</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Leadership Qualities</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Real-world scenarios surface and develop leadership capabilities that no classroom training can replicate.</p></div>
@@ -1159,10 +1159,10 @@
         <div class="roi-card reveal"><span class="roi-card-num">05</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Teamwork & Cohesion</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p></div>
         <div class="roi-card reveal"><span class="roi-card-num">06</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Problem-Solving Skills</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Complex immersive scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.</p></div>
       </div>
-      <div style="margin-bottom:8px; text-align:right;">
-        <button class="toggle-all-btn" onclick="toggleAllGroup(this, '#tab-personal .roi-card', 'roi-open')" data-state="collapsed">Expand All ↓</button>
-      </div>
       <div class="roi-panel" id="tab-personal">
+        <div style="margin-bottom:8px; text-align:right;">
+          <button class="toggle-all-btn" onclick="toggleAllGroup(this, '#tab-personal .roi-card', 'roi-open')" data-state="collapsed">Expand All ↓</button>
+        </div>
         <div class="roi-card reveal"><span class="roi-card-num">01</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Build Self-Confidence</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p></div>
         <div class="roi-card reveal"><span class="roi-card-num">02</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Stretch Personal Limits</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Participants discover what they're capable of when pushed beyond their comfort zone in a safe, facilitated environment.</p></div>
         <div class="roi-card reveal"><span class="roi-card-num">03</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Decision-Making Skills</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Evaluating solutions under pressure sharpens analytical thinking and reduces hesitation in high-stakes situations.</p></div>
