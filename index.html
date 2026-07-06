@@ -245,6 +245,10 @@
     transition: filter 0.25s, opacity 0.25s;
     opacity: 0.85;
   }
+  .undp-logo-wrap img {
+    mix-blend-mode: normal !important;
+    opacity: 0.9 !important;
+  }
   .client-logo:hover img {
     opacity: 1;
     filter: drop-shadow(0 4px 10px rgba(201,151,58,0.35));
@@ -273,6 +277,24 @@
     letter-spacing: 0.04em; text-transform: uppercase;
     color: var(--text-mid);
   }
+
+  /* ---- EXPAND / COLLAPSE ALL ---- */
+  .toggle-all-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.18);
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--forest); cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .toggle-all-btn:hover { background: var(--forest); color: white; border-color: var(--forest); }
+  /* On dark backgrounds (ROI section) */
+  #benefits .toggle-all-btn { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.2); }
+  #benefits .toggle-all-btn:hover { background: var(--gold); color: var(--forest); border-color: var(--gold); }
 
   /* ---- SECTION SHARED ---- */
   section { padding: 96px 48px; }
@@ -844,6 +866,7 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">
+    <img src="Images/spnl.png" alt="SPNL" class="nav-logo-img" style="height:48px; width:auto; object-fit:contain;">
     <div class="nav-logo-text">
       <span class="nav-logo-name">André Bechara</span>
       <span class="nav-logo-sub">Consultant in Human Dynamics</span>
@@ -953,7 +976,7 @@
       <div class="client-logo" data-name="Almaza"><img src="Images/almaza.png" alt="Almaza"></div>
       <div class="client-logo" data-name="Spinneys Lebanon"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
       <div class="client-logo" data-name="UOB"><img src="Images/uob.png" alt="UOB"></div>
-      <div class="client-logo"><img src="Images/undp.png" alt="UNDP" style="mix-blend-mode:multiply; filter:none; opacity:0.8;"></div>
+      <div class="client-logo undp-logo-wrap" data-name="UNDP"><img src="Images/undp.png" alt="UNDP"></div>
       <div class="client-logo" data-name="Bank Audi"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
       <div class="client-logo" data-name="Solidere"><img src="Images/solidere.png" alt="Solidere"></div>
       <div class="client-logo" data-name="Toshiba"><img src="Images/toshiba.png" alt="Toshiba"></div>
@@ -976,7 +999,7 @@
       <div class="client-logo" data-name="Almaza"><img src="Images/almaza.png" alt="Almaza"></div>
       <div class="client-logo" data-name="Spinneys Lebanon"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
       <div class="client-logo" data-name="UOB"><img src="Images/uob.png" alt="UOB"></div>
-      <div class="client-logo"><img src="Images/undp.png" alt="UNDP" style="mix-blend-mode:multiply; filter:none; opacity:0.8;"></div>
+      <div class="client-logo undp-logo-wrap" data-name="UNDP"><img src="Images/undp.png" alt="UNDP"></div>
     </div>
   </div>
 </div>
@@ -1031,6 +1054,9 @@
     <h2 class="section-title">A Structured Process<br>for Lasting Impact</h2>
     <p class="section-sub">Every program follows a proven three-phase methodology, from design to debrief, ensuring the experience translates into real workplace change.</p>
   </div>
+  <div style="margin-top:28px; margin-bottom:0; text-align:right;">
+    <button class="toggle-all-btn" onclick="toggleAllGroup(this, '.process-step', 'step-open')" data-state="collapsed">Expand All ↓</button>
+  </div>
   <div class="process-steps">
     <div class="process-step reveal">
       <div class="process-phase">Phase 1 · Design</div>
@@ -1066,6 +1092,9 @@
     <h2 class="section-title">Every Engagement<br>Designed for Impact</h2>
     <p class="section-sub">From half-day outings to multi-day expeditions. Each program is built around your specific goals.</p>
   </div>
+  <div style="margin-top:28px; margin-bottom:0; text-align:right;">
+    <button class="toggle-all-btn" onclick="toggleAllGroup(this, '.service-card', 'svc-open')" data-state="collapsed">Expand All ↓</button>
+  </div>
   <div class="services-grid">
     <div class="service-card reveal">
       <div class="svc-toggle-row" onclick="toggleService(this)">
@@ -1083,10 +1112,10 @@
     </div>
     <div class="service-card reveal">
       <div class="svc-toggle-row" onclick="toggleService(this)">
-        <div class="service-title">Ecotourism & Rural Development</div>
+        <div class="service-title">Responsible Tourism & Rural Development</div>
         <button class="svc-toggle-btn" aria-label="Expand">+</button>
       </div>
-      <p class="service-desc">Responsible exploration programs that integrate business objectives with authentic rural and natural environments. We combine experiential education, sustainability, and discovery with practical training initiatives and collaborative projects alongside NGOs and local Hima conservation networks, supporting both community development and environmental stewardship.</p>
+      <p class="service-desc">Responsible exploration programs that integrate business objectives with authentic rural and natural environments. Through our strategic partnership with <a href="https://www.spnl.org/" target="_blank" rel="noopener" style="color:var(--forest-light); font-weight:600; text-decoration:underline;">SPNL</a>, we combine experiential immersion, sustainability, and discovery with practical training initiatives and collaborative projects across local <a href="https://www.spnl.org/category/hima/" target="_blank" rel="noopener" style="color:var(--forest-light); font-weight:600; text-decoration:underline;">Hima</a> conservation networks, supporting community development and environmental stewardship.</p>
     </div>
     <div class="service-card reveal">
       <div class="svc-toggle-row" onclick="toggleService(this)">
@@ -1118,6 +1147,9 @@
         <button class="roi-tab active" onclick="switchTab(this, 'team')">At the Team Level</button>
         <button class="roi-tab" onclick="switchTab(this, 'personal')">At the Personal Level</button>
       </div>
+      <div style="margin-bottom:8px; text-align:right;">
+        <button class="toggle-all-btn" onclick="toggleAllGroup(this, '#tab-team .roi-card', 'roi-open')" data-state="collapsed">Expand All ↓</button>
+      </div>
       <div class="roi-panel active" id="tab-team">
         <div class="roi-card reveal"><span class="roi-card-num">01</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Communication</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Shared challenges strip workplace hierarchies, building authentic communication patterns that carry back into the office.</p></div>
         <div class="roi-card reveal"><span class="roi-card-num">02</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Effective Collaboration</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Shared challenges build genuine camaraderie and a culture grounded in trust and mutual accountability.</p></div>
@@ -1125,6 +1157,9 @@
         <div class="roi-card reveal"><span class="roi-card-num">04</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Time Management</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Time-pressured challenges reinforce prioritisation, decision speed, and execution under constraints.</p></div>
         <div class="roi-card reveal"><span class="roi-card-num">05</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Teamwork & Cohesion</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Overcoming obstacles together strengthens bonds and mutual respect, creating more resilient, unified teams.</p></div>
         <div class="roi-card reveal"><span class="roi-card-num">06</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Problem-Solving Skills</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Complex immersive scenarios train creative, adaptive thinking that teams apply directly to workplace challenges.</p></div>
+      </div>
+      <div style="margin-bottom:8px; text-align:right;">
+        <button class="toggle-all-btn" onclick="toggleAllGroup(this, '#tab-personal .roi-card', 'roi-open')" data-state="collapsed">Expand All ↓</button>
       </div>
       <div class="roi-panel" id="tab-personal">
         <div class="roi-card reveal"><span class="roi-card-num">01</span><div class="roi-toggle-row" onclick="toggleRoi(this)"><div class="roi-card-title">Build Self-Confidence</div><button class="roi-toggle-btn" aria-label="Expand">+</button></div><p class="roi-card-desc">Completing challenging activities builds genuine belief in personal capability, carried forward into everyday work.</p></div>
@@ -1419,6 +1454,21 @@ function toggleService(row) {
 function toggleRoi(row) {
   const card = row.closest('.roi-card');
   card.classList.toggle('roi-open');
+}
+
+// Expand / Collapse All
+function toggleAllGroup(btn, selector, openClass) {
+  const items = document.querySelectorAll(selector);
+  const isCollapsed = btn.dataset.state === 'collapsed';
+  items.forEach(item => {
+    if (isCollapsed) {
+      item.classList.add(openClass);
+    } else {
+      item.classList.remove(openClass);
+    }
+  });
+  btn.dataset.state = isCollapsed ? 'expanded' : 'collapsed';
+  btn.textContent = isCollapsed ? 'Collapse All ↑' : 'Expand All ↓';
 }
 
 // Form submit
