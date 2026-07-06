@@ -702,7 +702,7 @@
   .roi-tab.active { background: var(--gold); color: var(--forest); box-shadow: 0 3px 12px rgba(201,151,58,0.3); }
   .roi-panel { display: none; }
   .roi-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .roi-panel .toggle-all-btn-wrap { grid-column: 1 / -1; text-align: right; margin-bottom: -2px; }
+  .roi-panel .toggle-all-btn-wrap { grid-column: 1 / -1; text-align: left; margin-bottom: -2px; }
   .roi-card {
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px; padding: 16px;
@@ -1056,7 +1056,7 @@
     <h2 class="section-title">A Structured Process<br>for Lasting Impact</h2>
     <p class="section-sub">Every program follows a proven three-phase methodology, from design to debrief, ensuring the experience translates into real workplace change.</p>
   </div>
-  <div style="margin-top:28px; margin-bottom:0; text-align:right;">
+  <div style="margin-top:28px; margin-bottom:0; text-align:left;">
     <button class="toggle-all-btn" onclick="toggleAllGroup(this, '.process-step', 'step-open')" data-state="collapsed">Expand All ↓</button>
   </div>
   <div class="process-steps">
@@ -1094,7 +1094,7 @@
     <h2 class="section-title">Every Engagement<br>Designed for Impact</h2>
     <p class="section-sub">From half-day outings to multi-day expeditions. Each program is built around your specific goals.</p>
   </div>
-  <div style="margin-top:28px; margin-bottom:0; text-align:right;">
+  <div style="margin-top:28px; margin-bottom:0; text-align:left;">
     <button class="toggle-all-btn" onclick="toggleAllGroup(this, '.service-card', 'svc-open')" data-state="collapsed">Expand All ↓</button>
   </div>
   <div class="services-grid">
@@ -1117,7 +1117,7 @@
         <div class="service-title">Responsible Tourism & Rural Development</div>
         <button class="svc-toggle-btn" aria-label="Expand">+</button>
       </div>
-      <p class="service-desc">Responsible exploration programs that integrate business objectives with authentic rural and natural environments. Through our strategic partnership with <a href="https://www.spnl.org/" target="_blank" rel="noopener" style="color:var(--forest-light); font-weight:600; text-decoration:underline;">SPNL</a>, we combine experiential immersion, sustainability, and discovery with practical training initiatives and collaborative projects across local <a href="https://www.spnl.org/category/hima/" target="_blank" rel="noopener" style="color:var(--forest-light); font-weight:600; text-decoration:underline;">Hima</a> conservation networks, supporting community development and environmental stewardship.</p>
+      <p class="service-desc">Responsible exploration programs that integrate business objectives with authentic rural and natural environments. Through our strategic partnership with <a href="https://www.spnl.org/" target="_blank" rel="noopener" style="color:var(--forest-light); font-weight:600; text-decoration:underline;">SPNL</a>, we combine experiential learning, sustainability, and discovery with practical training initiatives and collaborative projects across local <a href="https://www.spnl.org/category/hima/" target="_blank" rel="noopener" style="color:var(--forest-light); font-weight:600; text-decoration:underline;">Hima</a> conservation networks, supporting community development and environmental stewardship.</p>
     </div>
     <div class="service-card reveal">
       <div class="svc-toggle-row" onclick="toggleService(this)">
