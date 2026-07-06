@@ -865,8 +865,7 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">
-    <img src="Images/spnl.png" alt="SPNL" class="nav-logo-img" style="height:48px; width:auto; object-fit:contain;">
+  <a href="#" onclick="event.preventDefault(); showPage(0)" class="nav-logo">
     <div class="nav-logo-text">
       <span class="nav-logo-name">André Bechara</span>
       <span class="nav-logo-sub">Consultant in Human Dynamics</span>
@@ -977,6 +976,7 @@
       <div class="client-logo" data-name="Spinneys Lebanon"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
       <div class="client-logo" data-name="UOB"><img src="Images/uob.png" alt="UOB"></div>
       <div class="client-logo undp-logo-wrap" data-name="UNDP"><img src="Images/undp.png" alt="UNDP"></div>
+      <div class="client-logo undp-logo-wrap" data-name="SPNL"><img src="Images/spnl.png" alt="SPNL"></div>
       <div class="client-logo" data-name="Bank Audi"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
       <div class="client-logo" data-name="Solidere"><img src="Images/solidere.png" alt="Solidere"></div>
       <div class="client-logo" data-name="Toshiba"><img src="Images/toshiba.png" alt="Toshiba"></div>
@@ -1000,6 +1000,7 @@
       <div class="client-logo" data-name="Spinneys Lebanon"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
       <div class="client-logo" data-name="UOB"><img src="Images/uob.png" alt="UOB"></div>
       <div class="client-logo undp-logo-wrap" data-name="UNDP"><img src="Images/undp.png" alt="UNDP"></div>
+      <div class="client-logo undp-logo-wrap" data-name="SPNL"><img src="Images/spnl.png" alt="SPNL"></div>
     </div>
   </div>
 </div>
@@ -1112,7 +1113,7 @@
     </div>
     <div class="service-card reveal">
       <div class="svc-toggle-row" onclick="toggleService(this)">
-        <div class="service-title">Responsible Tourism & Rural Development</div>
+        <div class="service-title">Responsible Tourism &<br>Rural Development</div>
         <button class="svc-toggle-btn" aria-label="Expand">+</button>
       </div>
       <p class="service-desc">Responsible exploration programs that integrate business objectives with authentic rural and natural environments. Through our strategic partnership with <a href="https://www.spnl.org/" target="_blank" rel="noopener" style="color:var(--forest-light); font-weight:600; text-decoration:underline;">SPNL</a>, we combine experiential immersion, sustainability, and discovery with practical training initiatives and collaborative projects across local <a href="https://www.spnl.org/category/hima/" target="_blank" rel="noopener" style="color:var(--forest-light); font-weight:600; text-decoration:underline;">Hima</a> conservation networks, supporting community development and environmental stewardship.</p>
