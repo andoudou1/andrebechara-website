@@ -60,18 +60,18 @@
   .nav-logo-name-row { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; }
   .nav-logo-name {
     font-family: 'Playfair Display', serif;
-    font-size: 1.25rem; font-weight: 900;
+    font-size: 1.40rem; font-weight: 900;
     color: var(--white); letter-spacing: -0.01em; white-space: nowrap;
   }
   .nav-since {
     display: inline-flex; align-items: center; justify-content: center;
     border: 1px solid rgba(201,151,58,0.75); color: var(--gold-light);
     border-radius: 30px; padding: 3px 8px;
-    font-size: 0.56rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+    font-size: 0.60rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
     white-space: nowrap; line-height: 1.2;
   }
-  .nav-logo-sub { color: var(--gold); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Outfit', sans-serif; margin-top: 2px; }
-  .nav-logo-experience { color: rgba(255,255,255,0.62); font-size: 0.63rem; font-weight: 300; letter-spacing: 0.025em; margin-top: 3px; white-space: nowrap; }
+  .nav-logo-sub { color: var(--gold); font-size: 0.73rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Outfit', sans-serif; margin-top: 2px; }
+  .nav-logo-experience { color: rgba(255,255,255,0.68); font-size: 0.68rem; font-weight: 300; letter-spacing: 0.025em; margin-top: 3px; white-space: nowrap; }
   .nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
   .nav-links a {
     color: rgba(255,255,255,0.85); text-decoration: none;
@@ -237,7 +237,7 @@
   .clients-progress-thumb { height: 100%; width: 28%; background: var(--gold); border-radius: inherit; transform: translateX(0); will-change: transform; }
   .client-logo {
     display: flex; align-items: center; justify-content: center;
-    width: 124px; height: 54px; white-space: nowrap;
+    width: 142px; height: 58px; white-space: nowrap;
     font-family: 'Playfair Display', serif;
     font-size: 1rem; font-weight: 700;
     color: var(--text-light); letter-spacing: -0.01em;
@@ -248,7 +248,7 @@
   }
   .client-logo:hover { opacity: 1; transform: scale(1.12) translateY(-3px); }
   .client-logo img {
-    max-height: 42px; max-width: 116px; width: auto; height: auto; object-fit: contain;
+    max-height: 45px; max-width: 134px; width: auto; height: auto; object-fit: contain;
     mix-blend-mode: multiply;
     transition: filter 0.25s, opacity 0.25s;
     opacity: 0.85;
@@ -784,17 +784,17 @@
   /* ---- MOBILE ---- */
   @media (max-width: 900px) {
     nav {
-      padding: 16px 20px !important;
+      padding: 20px 20px 18px !important;
       background: rgba(18,38,18,0.97) !important;
       backdrop-filter: blur(12px) !important;
     }
-    nav.scrolled { padding: 12px 20px !important; }
+    nav.scrolled { padding: 16px 20px 14px !important; }
     .nav-logo-img { height: 40px; }
-    .nav-logo-name-row { gap: 7px; }
-    .nav-logo-name { font-size: 1.18rem; }
-    .nav-since { font-size: 0.50rem; padding: 3px 7px; }
-    .nav-logo-sub { font-size: 0.61rem; letter-spacing: 0.10em; }
-    .nav-logo-experience { font-size: 0.56rem; margin-top: 2px; }
+    .nav-logo-name-row { gap: 9px; }
+    .nav-logo-name { font-size: 1.48rem; line-height: 1.05; }
+    .nav-since { font-size: 0.57rem; padding: 4px 8px; }
+    .nav-logo-sub { font-size: 0.72rem; letter-spacing: 0.095em; margin-top: 4px; }
+    .nav-logo-experience { font-size: 0.66rem; margin-top: 3px; line-height: 1.3; }
     .nav-links { display: none !important; }
     /* Hamburger hidden — navigation via bottom tab bar */
     /* Full-screen overlay when open */
@@ -867,9 +867,9 @@
     .form-row { grid-template-columns: 1fr; }
     .clients-banner { padding: 22px 0 18px; }
     .clients-label { margin-bottom: 14px; }
-    .clients-track { gap: 12px; padding: 0 18px; }
-    .client-logo { width: 86px; height: 46px; }
-    .client-logo img { max-width: 82px; max-height: 34px; }
+    .clients-track { gap: 16px; padding: 0 20px; }
+    .client-logo { width: 126px; height: 56px; }
+    .client-logo img { max-width: 118px; max-height: 44px; }
     .client-logo.text-logo { min-width: 86px; width: 86px; height: 36px; font-size: 0.68rem; padding: 0 5px; }
     .clients-track-wrap { -webkit-mask-image: linear-gradient(to right, transparent 0, black 14px, black calc(100% - 14px), transparent 100%); mask-image: linear-gradient(to right, transparent 0, black 14px, black calc(100% - 14px), transparent 100%); }
     .clients-progress { margin-top: 12px; }
