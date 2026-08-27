@@ -56,13 +56,22 @@
     text-decoration: none; line-height: 1.2; flex-shrink: 0;
   }
   .nav-logo-img { height: 56px; width: auto; display: block; flex-shrink: 0; }
-  .nav-logo-text { display: flex; flex-direction: column; }
+  .nav-logo-text { display: flex; flex-direction: column; min-width: 0; }
+  .nav-logo-name-row { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; }
   .nav-logo-name {
     font-family: 'Playfair Display', serif;
     font-size: 1.25rem; font-weight: 900;
-    color: var(--white); letter-spacing: -0.01em;
+    color: var(--white); letter-spacing: -0.01em; white-space: nowrap;
+  }
+  .nav-since {
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(201,151,58,0.75); color: var(--gold-light);
+    border-radius: 30px; padding: 3px 8px;
+    font-size: 0.56rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+    white-space: nowrap; line-height: 1.2;
   }
   .nav-logo-sub { color: var(--gold); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Outfit', sans-serif; margin-top: 2px; }
+  .nav-logo-experience { color: rgba(255,255,255,0.62); font-size: 0.63rem; font-weight: 300; letter-spacing: 0.025em; margin-top: 3px; white-space: nowrap; }
   .nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
   .nav-links a {
     color: rgba(255,255,255,0.85); text-decoration: none;
@@ -201,35 +210,34 @@
   /* ---- CLIENT LOGOS BANNER ---- */
   .clients-banner {
     background: var(--white);
-    padding: 18px 48px 40px;
+    padding: 18px 0 22px;
     border-bottom: 1px solid rgba(0,0,0,0.07);
   }
   .clients-label {
     text-align: center; font-size: 0.72rem; font-weight: 600;
     letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--text-light); margin-bottom: 20px;
+    color: var(--text-light); margin: 0 24px 16px;
   }
-  .clients-track-wrap { overflow-x: auto; overflow-y: hidden; position: relative; cursor: grab; scrollbar-width: none; -ms-overflow-style: none; touch-action: pan-x; user-select: none; -webkit-overflow-scrolling: touch; }
+  .clients-track-wrap {
+    overflow-x: auto; overflow-y: hidden; position: relative; cursor: grab;
+    scrollbar-width: none; -ms-overflow-style: none; touch-action: pan-x; user-select: none;
+    -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 22px, black calc(100% - 22px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, black 22px, black calc(100% - 22px), transparent 100%);
+  }
   .clients-track-wrap::-webkit-scrollbar { display: none; }
-  .clients-track-wrap.dragging { cursor: grabbing; }
+  .clients-track-wrap.dragging { cursor: grabbing; scroll-behavior: auto; }
   .clients-track-wrap.dragging * { pointer-events: none; }
-  .clients-track-wrap::before,
-  .clients-track-wrap::after {
-    content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2;
-    pointer-events: none;
-  }
-  .clients-track-wrap::before { left: 0; background: linear-gradient(to right, white, transparent); }
-  .clients-track-wrap::after { right: 0; background: linear-gradient(to left, white, transparent); }
   .clients-track {
-    display: flex; gap: 48px; align-items: center;
+    display: flex; gap: 22px; align-items: center;
     width: max-content;
-    padding: 0 80px;
+    padding: 0 34px;
   }
-  .clients-hint { text-align: center; margin-top: 12px; font-size: 0.72rem; color: var(--text-light); letter-spacing: 0.04em; transition: opacity 0.3s; }
-  .clients-banner.interacted .clients-hint { opacity: 0; }
+  .clients-progress { width: 92px; height: 2px; margin: 14px auto 0; background: rgba(26,46,26,0.10); border-radius: 99px; overflow: hidden; }
+  .clients-progress-thumb { height: 100%; width: 28%; background: var(--gold); border-radius: inherit; transform: translateX(0); will-change: transform; }
   .client-logo {
     display: flex; align-items: center; justify-content: center;
-    height: 54px; white-space: nowrap;
+    width: 124px; height: 54px; white-space: nowrap;
     font-family: 'Playfair Display', serif;
     font-size: 1rem; font-weight: 700;
     color: var(--text-light); letter-spacing: -0.01em;
@@ -240,7 +248,7 @@
   }
   .client-logo:hover { opacity: 1; transform: scale(1.12) translateY(-3px); }
   .client-logo img {
-    height: 48px; width: auto; object-fit: contain;
+    max-height: 42px; max-width: 116px; width: auto; height: auto; object-fit: contain;
     mix-blend-mode: multiply;
     transition: filter 0.25s, opacity 0.25s;
     opacity: 0.85;
@@ -434,10 +442,7 @@
     border-radius: 10px; font-size: 0.82rem; font-weight: 500; text-align: center; line-height: 1.4;
   }
   .badge-chip span { display: block; color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 4px; }
-  .founder-name-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
   .founder-name { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--forest); margin-bottom: 0; }
-  .founder-since { display: inline-flex; align-items: center; border: 1px solid rgba(201,151,58,0.65); color: var(--orange); border-radius: 30px; padding: 5px 11px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; white-space: nowrap; }
-  .founder-experience { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-style: italic; color: var(--forest-mid); margin: -8px 0 20px; }
   .founder-role { font-size: 0.85rem; color: var(--orange); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
   .founder-bio { font-size: 1rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; }
 
@@ -785,6 +790,11 @@
     }
     nav.scrolled { padding: 12px 20px !important; }
     .nav-logo-img { height: 40px; }
+    .nav-logo-name-row { gap: 7px; }
+    .nav-logo-name { font-size: 1.18rem; }
+    .nav-since { font-size: 0.50rem; padding: 3px 7px; }
+    .nav-logo-sub { font-size: 0.61rem; letter-spacing: 0.10em; }
+    .nav-logo-experience { font-size: 0.56rem; margin-top: 2px; }
     .nav-links { display: none !important; }
     /* Hamburger hidden — navigation via bottom tab bar */
     /* Full-screen overlay when open */
@@ -829,7 +839,7 @@
     .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     #hero { align-items: flex-start; }
-    .hero-content { padding-top: 100px; }
+    .hero-content { padding-top: 118px; }
     /* Hide scroll indicator on mobile to prevent overlap */
     .hero-scroll { display: none; }
     .hamburger { display: none !important; }
@@ -855,7 +865,14 @@
     .footer-grid { grid-template-columns: 1fr; gap: 32px; }
     .stats-strip { gap: 28px; padding: 28px 20px; }
     .form-row { grid-template-columns: 1fr; }
-    .clients-banner { padding: 24px 20px; }
+    .clients-banner { padding: 22px 0 18px; }
+    .clients-label { margin-bottom: 14px; }
+    .clients-track { gap: 12px; padding: 0 18px; }
+    .client-logo { width: 86px; height: 46px; }
+    .client-logo img { max-width: 82px; max-height: 34px; }
+    .client-logo.text-logo { min-width: 86px; width: 86px; height: 36px; font-size: 0.68rem; padding: 0 5px; }
+    .clients-track-wrap { -webkit-mask-image: linear-gradient(to right, transparent 0, black 14px, black calc(100% - 14px), transparent 100%); mask-image: linear-gradient(to right, transparent 0, black 14px, black calc(100% - 14px), transparent 100%); }
+    .clients-progress { margin-top: 12px; }
   }
   @media (max-width: 560px) {
     .services-grid { grid-template-columns: 1fr; }
@@ -871,8 +888,12 @@
 <nav id="navbar">
   <a href="#" onclick="event.preventDefault(); showPage(0)" class="nav-logo">
     <div class="nav-logo-text">
-      <span class="nav-logo-name">André Bechara</span>
+      <div class="nav-logo-name-row">
+        <span class="nav-logo-name">André Bechara</span>
+        <span class="nav-since">Since 1996</span>
+      </div>
       <span class="nav-logo-sub">Consultant in Human Dynamics</span>
+      <span class="nav-logo-experience"><span class="dynamic-years">30</span> years shaping people, teams &amp; experiences</span>
     </div>
   </a>
   <ul class="nav-links" id="navLinks">
@@ -905,7 +926,6 @@
   <div class="hero-slide hero-slide-3"></div>
   <div class="hero-bottom-fade"></div>
   <div class="hero-content" style="z-index:3;">
-    <div class="hero-badge">Transforming People &amp; Teams · Since 1996</div>
     <h1 class="hero-title">
       Beyond the office.<br>Beyond the classroom.<br><em>Into the experience.</em>
     </h1>
@@ -933,7 +953,7 @@
 <!-- STATS STRIP -->
 <div class="stats-strip stack-section" style="z-index:10;">
   <div class="stat-item">
-    <div class="stat-num" id="experienceYears" data-start-year="1996" data-target="30">0</div>
+    <div class="stat-num" id="experienceYears" data-start-year="1996" data-target="30" data-suffix="">0</div>
     <div class="stat-label">Years of Experience · Since 1996</div>
   </div>
   <div class="stat-item">
@@ -980,33 +1000,9 @@
       <div class="client-logo" data-name="UOB"><img src="Images/uob.png" alt="UOB"></div>
       <div class="client-logo undp-logo-wrap" data-name="UNDP"><img src="Images/undp.png" alt="UNDP"></div>
       <div class="client-logo undp-logo-wrap" data-name="SPNL"><img src="Images/spnl.png" alt="SPNL"></div>
-      <div class="client-logo" data-name="Bank Audi"><img src="Images/bankaudi.png" alt="Bank Audi"></div>
-      <div class="client-logo" data-name="Solidere"><img src="Images/solidere.png" alt="Solidere"></div>
-      <div class="client-logo" data-name="Toshiba"><img src="Images/toshiba.png" alt="Toshiba"></div>
-      <div class="client-logo" data-name="Deloitte"><img src="Images/deloitte.png" alt="Deloitte"></div>
-      <div class="client-logo" data-name="Air France"><img src="Images/airfrance.png" alt="Air France"></div>
-      <div class="client-logo" data-name="Pepsi"><img src="Images/pepsi.png" alt="Pepsi"></div>
-      <div class="client-logo" data-name="Microsoft"><img src="Images/microsoft.png" alt="Microsoft"></div>
-      <div class="client-logo" data-name="Unilever"><img src="Images/unilever.png" alt="Unilever"></div>
-      <div class="client-logo" data-name="Red Bull"><img src="Images/redbull.png" alt="Red Bull"></div>
-      <div class="client-logo" data-name="TotalEnergies"><img src="Images/total.png" alt="Total"></div>
-      <div class="client-logo" data-name="L'Oréal"><img src="Images/loreal.png" alt="L'Oréal"></div>
-      <div class="client-logo" data-name="Volvo"><img src="Images/volvo.png" alt="Volvo"></div>
-      <div class="client-logo" data-name="Carrefour"><img src="Images/carrefour.png" alt="Carrefour"></div>
-      <div class="client-logo" data-name="Schneider"><img src="Images/schneider.png" alt="Schneider Electric"></div>
-      <div class="client-logo" data-name="Aramex"><img src="Images/aramex.png" alt="Aramex"></div>
-      <div class="client-logo" data-name="Azadea Group"><img src="Images/azadea.png" alt="Azadea Group"></div>
-      <div class="client-logo" data-name="Fattal Group"><img src="Images/fattal.png" alt="Fattal Group"></div>
-      <div class="client-logo" data-name="Willis Towers Watson"><img src="Images/willistowerswatson.png" alt="Willis Towers Watson"></div>
-      <div class="client-logo" data-name="Lebanese Red Cross"><img src="Images/lrc.png" alt="Lebanese Red Cross"></div>
-      <div class="client-logo" data-name="Almaza"><img src="Images/almaza.png" alt="Almaza"></div>
-      <div class="client-logo" data-name="Spinneys Lebanon"><img src="Images/spinneys.png" alt="Spinneys Lebanon"></div>
-      <div class="client-logo" data-name="UOB"><img src="Images/uob.png" alt="UOB"></div>
-      <div class="client-logo undp-logo-wrap" data-name="UNDP"><img src="Images/undp.png" alt="UNDP"></div>
-      <div class="client-logo undp-logo-wrap" data-name="SPNL"><img src="Images/spnl.png" alt="SPNL"></div>
     </div>
   </div>
-  <p class="clients-hint">Drag, swipe or use your trackpad to explore</p>
+  <div class="clients-progress" aria-hidden="true"><div class="clients-progress-thumb" id="clientsProgressThumb"></div></div>
 </div>
 
 <!-- ABOUT -->
@@ -1037,12 +1033,8 @@
   </div>
   <div class="reveal">
     <span class="section-tag">The expert behind the programs</span>
-    <div class="founder-name-row">
-      <div class="founder-name">André Bechara</div>
-      <span class="founder-since">Since 1996</span>
-    </div>
+    <div class="founder-name">André Bechara</div>
     <div class="founder-role">Consultant in Human Dynamics</div>
-    <p class="founder-experience"><span class="dynamic-years">30</span> years shaping people, teams &amp; experiences.</p>
     <p class="founder-bio">With <span class="dynamic-years">30</span> years of leadership in outdoor education, environmental awareness, rural development, adventure programming, and experiential learning, André Bechara is recognized as one of the Middle East's leading pioneers in corporate team building and transformational learning. His work combines strategic vision with hands-on field expertise across corporate team building, ecotourism, adventure expeditions, educational camps, creative thinking workshops, and rural and environmental development initiatives.</p>
     <p class="founder-bio" style="margin-top: 14px;">By blending adventure, education, sustainability, psychology, and creativity, he creates experiences that generate lasting impact for individuals, organizations, and communities.</p>
     <p class="founder-bio" style="margin-top: 14px;">Deeply committed to nature conservation and rural empowerment, André continues to use experiential learning as a bridge between people, nature, leadership, and purpose.</p>
@@ -1430,12 +1422,13 @@ const counterObs = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       const el = entry.target;
       const target = parseInt(el.dataset.target);
+      const suffix = el.hasAttribute('data-suffix') ? el.dataset.suffix : '+';
       let current = 0;
       const step = target / 55;
       const timer = setInterval(() => {
         current += step;
-        if (current >= target) { el.textContent = target + '+'; clearInterval(timer); }
-        else { el.textContent = Math.floor(current) + '+'; }
+        if (current >= target) { el.textContent = target + suffix; clearInterval(timer); }
+        else { el.textContent = Math.floor(current) + suffix; }
       }, 28);
       counterObs.unobserve(el);
     }
@@ -1553,14 +1546,23 @@ function handleSubmit(e) {
 // Client logos: direct drag / swipe / trackpad browsing (no arrows, no auto-marquee)
 (function() {
   const wrap = document.querySelector('.clients-track-wrap');
-  const banner = document.querySelector('.clients-banner');
+  const thumb = document.getElementById('clientsProgressThumb');
   if (!wrap) return;
 
   let isDown = false;
   let startX = 0;
   let startScrollLeft = 0;
 
-  const markInteracted = () => banner && banner.classList.add('interacted');
+  function updateProgress() {
+    if (!thumb) return;
+    const maxScroll = Math.max(1, wrap.scrollWidth - wrap.clientWidth);
+    const visibleRatio = Math.min(1, wrap.clientWidth / wrap.scrollWidth);
+    const thumbRatio = Math.max(0.20, visibleRatio);
+    const progress = Math.max(0, Math.min(1, wrap.scrollLeft / maxScroll));
+    const travel = 100 - (thumbRatio * 100);
+    thumb.style.width = (thumbRatio * 100).toFixed(2) + '%';
+    thumb.style.transform = 'translateX(' + ((progress * travel) / thumbRatio).toFixed(2) + '%)';
+  }
 
   wrap.addEventListener('pointerdown', (e) => {
     if (e.pointerType === 'touch') return;
@@ -1569,7 +1571,6 @@ function handleSubmit(e) {
     startScrollLeft = wrap.scrollLeft;
     wrap.classList.add('dragging');
     wrap.setPointerCapture(e.pointerId);
-    markInteracted();
   });
 
   wrap.addEventListener('pointermove', (e) => {
@@ -1580,10 +1581,9 @@ function handleSubmit(e) {
   const stopDrag = () => { isDown = false; wrap.classList.remove('dragging'); };
   wrap.addEventListener('pointerup', stopDrag);
   wrap.addEventListener('pointercancel', stopDrag);
-  wrap.addEventListener('wheel', (e) => {
-    if (Math.abs(e.deltaX) > 0 || e.shiftKey) markInteracted();
-  }, { passive: true });
-  wrap.addEventListener('scroll', markInteracted, { passive: true });
+  wrap.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress, { passive: true });
+  requestAnimationFrame(updateProgress);
 })();
 </script>
 </body>
