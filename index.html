@@ -221,7 +221,7 @@
   .clients-track-wrap {
     overflow-x: auto; overflow-y: hidden; position: relative; cursor: grab;
     scrollbar-width: none; -ms-overflow-style: none; touch-action: pan-x; user-select: none;
-    -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; scroll-behavior: auto;
     -webkit-mask-image: linear-gradient(to right, transparent 0, black 22px, black calc(100% - 22px), transparent 100%);
     mask-image: linear-gradient(to right, transparent 0, black 22px, black calc(100% - 22px), transparent 100%);
   }
@@ -843,8 +843,12 @@
     /* Hide scroll indicator on mobile to prevent overlap */
     .hero-scroll { display: none; }
     .hamburger { display: none !important; }
-    /* Fix hero dots overlap on mobile — push well above CTA buttons */
-    .hero-dots { bottom: 160px; }
+    /* Hero slide indicators: keep clear of CTA buttons on mobile */
+    .hero-dots {
+      top: 152px; bottom: auto; left: auto; right: 18px; transform: none;
+      flex-direction: column; gap: 9px;
+    }
+    .hero-dot { width: 9px; height: 9px; }
     /* Fix all reveal elements on mobile — disable animation */
     .reveal { opacity: 1 !important; transform: translateY(0) !important; transition: none !important; }
     section { padding: 64px 20px; }
@@ -1544,7 +1548,7 @@ function handleSubmit(e) {
 })();
 
 // Client logos: auto-scroll by default, with direct drag / swipe / trackpad browsing.
-// Manual interaction pauses the movement briefly, then auto-scroll resumes.
+// Uses a floating-point position accumulator so slow motion works reliably in Safari/iPhone.
 (function() {
   const wrap = document.querySelector('.clients-track-wrap');
   const track = document.getElementById('clientsTrack');
@@ -1562,21 +1566,36 @@ function handleSubmit(e) {
   let pauseUntil = 0;
   let lastFrame = performance.now();
   let setWidth = 0;
-  const autoSpeed = 24; // pixels per second: slow, premium motion
+  let autoPosition = 0;
+  let internalScroll = false;
+  const autoSpeed = 26; // pixels per second
 
   function measureAndCenter() {
-    // One third of the repeated track is one complete logo sequence.
     setWidth = track.scrollWidth / 3;
-    if (setWidth > 0 && (wrap.scrollLeft < setWidth * 0.25 || wrap.scrollLeft > setWidth * 2.75)) {
+    if (!setWidth) return;
+    if (wrap.scrollLeft < setWidth * 0.5 || wrap.scrollLeft >= setWidth * 2.5) {
       wrap.scrollLeft = setWidth;
     }
+    autoPosition = wrap.scrollLeft;
     updateProgress();
+  }
+
+  function normalizePosition(pos) {
+    if (!setWidth) return pos;
+    while (pos >= setWidth * 2) pos -= setWidth;
+    while (pos < setWidth * 0.5) pos += setWidth;
+    return pos;
   }
 
   function normalizeLoop() {
     if (!setWidth) return;
-    if (wrap.scrollLeft >= setWidth * 2) wrap.scrollLeft -= setWidth;
-    else if (wrap.scrollLeft < setWidth * 0.5) wrap.scrollLeft += setWidth;
+    const normalized = normalizePosition(wrap.scrollLeft);
+    if (Math.abs(normalized - wrap.scrollLeft) > 0.5) {
+      internalScroll = true;
+      wrap.scrollLeft = normalized;
+      autoPosition = normalized;
+      requestAnimationFrame(() => { internalScroll = false; });
+    }
   }
 
   function pauseAuto(ms = 2600) {
@@ -1599,53 +1618,73 @@ function handleSubmit(e) {
   function animate(now) {
     const dt = Math.min(50, now - lastFrame) / 1000;
     lastFrame = now;
-    if (!isDown && now > pauseUntil && !document.hidden) {
-      wrap.scrollLeft += autoSpeed * dt;
-      normalizeLoop();
+
+    if (!isDown && now > pauseUntil && !document.hidden && setWidth) {
+      // Accumulate sub-pixel motion instead of repeatedly adding <1px to scrollLeft.
+      autoPosition = normalizePosition(autoPosition + autoSpeed * dt);
+      internalScroll = true;
+      wrap.scrollLeft = autoPosition;
       updateProgress();
+      requestAnimationFrame(() => { internalScroll = false; });
     }
     requestAnimationFrame(animate);
   }
 
   wrap.addEventListener('pointerdown', (e) => {
     pauseAuto();
+    autoPosition = wrap.scrollLeft;
     if (e.pointerType === 'touch') return;
     isDown = true;
     startX = e.clientX;
     startScrollLeft = wrap.scrollLeft;
     wrap.classList.add('dragging');
-    wrap.setPointerCapture(e.pointerId);
+    try { wrap.setPointerCapture(e.pointerId); } catch (_) {}
   });
 
   wrap.addEventListener('pointermove', (e) => {
     if (!isDown) return;
     wrap.scrollLeft = startScrollLeft - (e.clientX - startX);
     normalizeLoop();
+    autoPosition = wrap.scrollLeft;
     updateProgress();
   });
 
-  const stopDrag = () => {
+  function stopDrag() {
     if (isDown) pauseAuto(2200);
     isDown = false;
     wrap.classList.remove('dragging');
-  };
+    autoPosition = wrap.scrollLeft;
+  }
+
   wrap.addEventListener('pointerup', stopDrag);
   wrap.addEventListener('pointercancel', stopDrag);
-  wrap.addEventListener('touchstart', () => pauseAuto(3000), { passive: true });
-  wrap.addEventListener('touchend', () => pauseAuto(2200), { passive: true });
-  wrap.addEventListener('wheel', () => pauseAuto(2600), { passive: true });
+  wrap.addEventListener('touchstart', () => { pauseAuto(3000); autoPosition = wrap.scrollLeft; }, { passive: true });
+  wrap.addEventListener('touchend', () => { pauseAuto(2200); autoPosition = wrap.scrollLeft; }, { passive: true });
+  wrap.addEventListener('wheel', () => { pauseAuto(2600); autoPosition = wrap.scrollLeft; }, { passive: true });
   wrap.addEventListener('scroll', () => {
-    normalizeLoop();
+    if (!internalScroll) {
+      normalizeLoop();
+      autoPosition = wrap.scrollLeft;
+    }
     updateProgress();
   }, { passive: true });
 
+  document.addEventListener('visibilitychange', () => {
+    lastFrame = performance.now();
+    autoPosition = wrap.scrollLeft;
+  });
   window.addEventListener('resize', measureAndCenter, { passive: true });
-  requestAnimationFrame(() => {
+
+  // Wait for layout/images, then start in the middle copy and animate immediately.
+  function startScroller() {
     measureAndCenter();
+    autoPosition = wrap.scrollLeft;
     lastFrame = performance.now();
     requestAnimationFrame(animate);
-  });
-})();
+  }
+  if (document.readyState === 'complete') startScroller();
+  else window.addEventListener('load', startScroller, { once: true });
+})();;
 </script>
 </body>
 </html>
